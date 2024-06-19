@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React,{useEffect, useState} from "react";
 import {
   Page,
   Text,
@@ -6,6 +7,7 @@ import {
   Document,
   StyleSheet,
   Image,
+  PDFViewer,
 } from "@react-pdf/renderer";
 
 // Create styles
@@ -72,5 +74,19 @@ const MyDocument = (props) => (
     
   </Document>
 );
+
+export const PDFView = () => {
+    const [client,setClient] = useState(false);
+
+    useEffect(() =>{
+        setClient(true);
+    },[])
+    return(
+        <PDFViewer>
+        <MyDocument/>
+        </PDFViewer>
+    )
+
+}
 
 export default MyDocument;
