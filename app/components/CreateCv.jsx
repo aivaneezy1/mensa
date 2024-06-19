@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex justify-between items-center flex-row mt-10 ml-5">
+    <div className="flex justify-start flex-row mt-10 ml-5">
       <form onSubmit={handleSubmit} className="flex flex-col mt-5">
         <input
           type="text"
@@ -74,10 +74,9 @@ export default function Home() {
         <button type="submit" className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-2 ">
           Generate CV
         </button>
-       
-      </form>
-      {isSubmitted && (
-        <div className="flex justify-center items-center ">
+
+         {isSubmitted && (
+        <div className="justify-center flex items-center">
         <PDFDownloadLink
           document={<MyDocument
           name={name}
@@ -97,15 +96,14 @@ export default function Home() {
           }
         </PDFDownloadLink>
         </div>
-      )}
-
-    <div>
      
-    </div>
-
+      )}
+  
+      </form>
+    
       
-
-
+    
+    
     </div>
   );
 }

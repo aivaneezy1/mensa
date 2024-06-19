@@ -59,6 +59,8 @@ const MyDocument = (props) => (
         <Text style={styles.heading}>Skills:</Text>
         <Text style={styles.text}>{props.skills}</Text>
       </View>
+
+      
       {props.images && (
         <View style={styles.section}>
           <Text style={styles.heading}>Photo:</Text>
@@ -66,6 +68,8 @@ const MyDocument = (props) => (
         </View>
       )}
     </Page>
+
+    
   </Document>
 );
 
