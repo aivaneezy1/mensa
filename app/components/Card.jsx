@@ -18,7 +18,7 @@ const Card = (props) => {
       <div className="w-auto border-r border-solid border-solid ">
         <header>
           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal ">
-            Dati Personali
+            Dati Personalii
           </h2>
           <h1>
             {props.name ? (
