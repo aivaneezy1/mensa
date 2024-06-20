@@ -37,7 +37,22 @@ export default function Home() {
   return (
     <div className="flex justify-start flex-row mt-10 ml-5">
       <form onSubmit={handleSubmit} className="flex flex-col mt-5">
-        <input
+         <div className="flex items-center justify-between">
+          <button
+          type="button"
+          onClick={() => setShowOptionalFields(!showOptionalFields)}
+          className="border border-solid p-2 rounded-2xl mb-2 w-32 flex items-center justify-center"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+</svg>
+
+          <span>Dati Personali</span>
+        </button>
+        </div>
+        {showOptionalFields && (
+          <>
+          <input
           type="text"
           name="name"
           placeholder="Name"
@@ -117,8 +132,7 @@ export default function Home() {
         onChange={(e) =>setCivilStatus(e.target.value)}
         className="mb-2 p-2 border"/>
 
-
-        {/* Button to toggle optional fields */}
+          {/* Button to toggle optional fields */}
         <div className="flex items-center justify-between">
           <button
           type="button"
@@ -164,6 +178,11 @@ export default function Home() {
             />
           </>
         )}
+          </>
+        )}
+
+
+      
 
 
 
@@ -225,9 +244,9 @@ export default function Home() {
         )}
       </form>
      
-      <div className=" mx-auto  mt-10" >
+      <div className=" sm:block hidden mx-auto  mt-10" >
        <Card name={name}
-       email={email}
+       email={email}  
        phone={phone}
        address={address}
        dateBirth={dateBirth}

@@ -12,7 +12,8 @@ const Card = (props) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col md:flex-row gap-20 justify-between ">
+    <div className="md:w-1/3  border-r border-solid border-solid border-gray-500">
       <header>
         <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5  ">
           Dati Personali
@@ -316,6 +317,31 @@ const Card = (props) => {
             : ""}
         </div>
       </header>
+      </div>
+
+       <div className="flex flex-col ">
+        <section>
+          <h2>Profile</h2>
+          {/* Add your content for Profile here */}
+        </section>
+        <section>
+          <h2>Formazione</h2>
+          {/* Add your content for Formazione here */}
+        </section>
+        <section>
+          <h2>Competenze</h2>
+          {/* Add your content for Competenze here */}
+        </section>
+        <section>
+          <h2>Esperienze lavorative</h2>
+          {/* Add your content for Esperienze lavorative here */}
+        </section>
+        <section>
+          <h2>Lingue ed altro</h2>
+          {/* Add your content for Lingue ed altro here */}
+        </section>
+      </div>
+
     </div>
   );
 };
