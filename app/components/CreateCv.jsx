@@ -27,6 +27,7 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   // State to toggle optional fields
+  const [showDatiPersonali, setShowDatiPersonali] = useState(false);
   const [showOptionalFields, setShowOptionalFields] = useState(false);
 
   const handleSubmit = (e) => {
@@ -40,17 +41,17 @@ export default function Home() {
          <div className="flex items-center justify-between">
           <button
           type="button"
-          onClick={() => setShowOptionalFields(!showOptionalFields)}
-          className="border border-solid p-2 rounded-2xl mb-2 w-32 flex items-center justify-center"
+          onClick={() => setShowDatiPersonali(!showDatiPersonali)}
+          className="border border-solid p-2 rounded-2xl mb-2 w-32 flex items-center justify-center b"
         >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 </svg>
 
-          <span>Dati Personali</span>
+          <span>Dati Personali</span> 
         </button>
         </div>
-        {showOptionalFields && (
+        {showDatiPersonali && (
           <>
           <input
           type="text"
@@ -58,7 +59,7 @@ export default function Home() {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mb-2 p-2 border"
+          className="mb-2 p-2 border "
         />
 
         <input
