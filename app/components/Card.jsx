@@ -340,6 +340,7 @@ const Card = (props) => {
               <h2>Competenza</h2>
              <div key={index}>
                 <h2>{post.competenza}</h2>
+                <h2>test</h2>
              </div>
              </>
             ))}
