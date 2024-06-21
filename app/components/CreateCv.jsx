@@ -5,22 +5,39 @@ import MyDocument from "./Document";
 import Card from "./Card";
 import handleButton from "../utils/handleButton";
 import Compotenze from "./Card/Compotenze";
+import Language from "./Card/Language";
 import { DatiContext } from "../context/DatiContext";
 
 export default function Home() {
- 
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAdress] = useState("");
-  const [dateBirth, setDateBirth] = useState("");
-  const [placeBirth, setPlaceBirth] = useState("");
-  const [genere, setGenere] = useState("");
-  const [civilStatus, setCivilStatus] = useState("");
-  const [nationality, setNationality] = useState("");
-
-
-
-  const {name, setName} = useContext(DatiContext);
+  // Dati states
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    phone,
+    setPhone,
+    address,
+    setAdress,
+    dateBirth,
+    setDateBirth,
+    placeBirth,
+    setPlaceBirth,
+    genere,
+    setGenere,
+    civilStatus,
+    setCivilStatus,
+    nationality,
+    setNationality,
+    compDati,
+    setCompDati,
+    langDati,
+    setLangDati,
+    compFieldList,
+    setCompFieldList,
+    langFieldList,
+    setLangFieldList,
+  } = useContext(DatiContext);
 
   {
     /*OPTIONALS INPUT */
@@ -28,7 +45,6 @@ export default function Home() {
   const [license, setLicense] = useState("");
   const [website, setWebsite] = useState("");
   const [linkin, setLinkin] = useState("");
-
 
   const [education, setEducation] = useState("");
   const [experience, setExperience] = useState("");
@@ -40,8 +56,6 @@ export default function Home() {
   // State to toggle optional fields
   const [showDatiPersonali, setShowDatiPersonali] = useState(false);
   const [showOptionalFields, setShowOptionalFields] = useState(false);
-  
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -181,13 +195,27 @@ export default function Home() {
             </>
           )}
 
+          {/*Profile */}
+
+          {/*Formazione */}
+
+          {/*Esperienza lavorativa */}
+
           {/*Compotenze button */}
-          <Compotenze/>
+          <Compotenze 
+          dati={compDati} 
+          setDati={setCompDati}
+          compFieldList={compFieldList}
+          setCompFieldList={setCompFieldList} 
+          />
 
-
-
-
-
+          {/*Language button */}
+          <Language 
+          dati={langDati} 
+          setDati={setLangDati} 
+          langFieldList={langFieldList}
+          setLangFieldList={setLangFieldList}
+          />
 
           <textarea
             name="education"
@@ -258,6 +286,11 @@ export default function Home() {
             license={license}
             website={website}
             linkin={linkin}
+            compDati={compDati}
+            langDati={langDati}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+           
           />
         </div>
       </div>

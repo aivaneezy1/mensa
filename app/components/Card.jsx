@@ -328,6 +328,26 @@ const Card = (props) => {
                 )
               : ""}
           </div>
+
+          <div>
+            {props.compDati ? (
+              <div>
+              <h2 className="font-bold">Competenza</h2>
+              {props.compDati}
+              </div>
+            ) : props.compFieldList.map((post, index) =>(
+              <>
+              <h2>Competenza</h2>
+             <div key={index}>
+                <h2>{post.competenza}</h2>
+             </div>
+             </>
+            ))}
+          </div>
+
+             <div>
+            {props.langDati && "Languages"}
+          </div>
         </header>
       </div>
 
