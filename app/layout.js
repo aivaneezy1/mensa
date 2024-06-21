@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./style.css"
 import Provider from "./context/provier";
 import Navbar from "./components/Navbar";
 import DatiContextProvider from "./context/DatiContext";

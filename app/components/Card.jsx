@@ -17,8 +17,8 @@ const Card = (props) => {
     <div className="flex flex-col md:flex-row gap-20 justify-between max-w-lg">
       <div className="w-auto border-r border-solid border-solid ">
         <header>
-          <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal ">
-            Dati Personalii
+          <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-center">
+            Dati Personali
           </h2>
           <h1>
             {props.name ? (
@@ -253,7 +253,7 @@ const Card = (props) => {
               ? datiPersonali(
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                     className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
+                    className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -281,7 +281,7 @@ const Card = (props) => {
               ? datiPersonali(
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                     className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
+                    className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -307,7 +307,7 @@ const Card = (props) => {
               ? datiPersonali(
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                     className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
+                    className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -328,26 +328,57 @@ const Card = (props) => {
                 )
               : ""}
           </div>
-
-          <div>
+          {/*Competenze */}
+          <div className="flex justify-center  flex-col max-w-lg">
+            {props.compFieldList.length > 0 && (
+              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center">
+                Competenza  
+              </h2>
+            )}
             {props.compDati ? (
               <div>
-              <h2 className="font-bold">Competenza</h2>
-              {props.compDati}
+                <h2 className="font-bold">Competenza</h2>
+                {props.compDati}
               </div>
-            ) : props.compFieldList.map((post, index) =>(
-              <>
-              <h2>Competenza</h2>
-             <div key={index}>
-                <h2>{post.competenza}</h2>
-                <h2>test</h2>
-             </div>
-             </>
-            ))}
+            ) : (
+              props.compFieldList.map((post, index) => (
+                <>
+                  <div
+                    className="max-w-sm break-words whitespace-normal mt-2"
+                    key={index}
+                  >
+                    <h2 className=" text-1xl">{post.competenza}</h2>
+                    <h2 className="text-gray-500">{post.livello}</h2>
+                  </div>
+                </>
+              ))
+            )}
           </div>
-
-             <div>
-            {props.langDati && "Languages"}
+          {/*Language */}
+          <div className="flex justify-center  flex-col">
+            {props.langFieldList.length > 0 && (
+              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center">
+                Languages
+              </h2>
+            )}
+            {props.langDati ? (
+              <div>
+                <h2 className="text-1xl">Languages</h2>
+                {props.langDati}
+              </div>
+            ) : (
+              props.langFieldList.map((post, index) => (
+                <>
+                  <div
+                    key={index}
+                    className="max-w-sm break-words whitespace-normal mt-2"
+                  >
+                    <h2 className=" text-1xl">{post.competenza}</h2>
+                    <h2 className="text-gray-500">{post.livello}</h2>
+                  </div>
+                </>
+              ))
+            )}
           </div>
         </header>
       </div>
@@ -361,17 +392,10 @@ const Card = (props) => {
           <h2>Formazione</h2>
           {/* Add your content for Formazione here */}
         </section>
-        <section>
-          <h2>Competenze</h2>
-          {/* Add your content for Competenze here */}
-        </section>
+
         <section>
           <h2>Esperienze lavorative</h2>
           {/* Add your content for Esperienze lavorative here */}
-        </section>
-        <section>
-          <h2>Lingue ed altro</h2>
-          {/* Add your content for Lingue ed altro here */}
         </section>
       </div>
     </div>
