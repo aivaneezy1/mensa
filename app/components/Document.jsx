@@ -57,6 +57,13 @@ const MyDocument = (props) => (
         <Text style={styles.heading}>Experience:</Text>
         <Text style={styles.text}>{props.experience}</Text>
       </View>
+
+        <View style={styles.section}>
+        <Text style={styles.heading}>Test</Text>
+        <Text style={styles.text}>{props.experience}</Text>
+      </View>
+
+      
       <View style={styles.section}>
         <Text style={styles.heading}>Skills:</Text>
         <Text style={styles.text}>{props.skills}</Text>

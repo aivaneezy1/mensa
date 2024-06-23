@@ -44,7 +44,7 @@ export const RichTextEditor = (props) => {
         formats={formats}
         value={props.content}
         onChange={(value) => props.setContent(value)}
-        className="react-quill break-words whitespace-pre-wrap sm:w-full h-48 mb-10 mr-10 "
+        className="react-quill break-words whitespace-pre-wrap sm:w-full h-48 mb-10 mr-10 rounded-md"
       />
     </div>
   );

@@ -7,7 +7,7 @@ const CompAndEdit = (props) => {
   const [addField, setAddField] = useState(false);
   const [showField, setShowField] = useState(false);
   const [range, setRange] = useState(0);
-  const [rangeEdit, setRangeEdit] = useState(0)
+  const [rangeEdit, setRangeEdit] = useState(0);
   const [editIndex, setEditIndex] = useState(null);
   const [editData, setEditData] = useState({
     competenza: "",
@@ -44,11 +44,9 @@ const CompAndEdit = (props) => {
 
   const editPost = (index) => {
     const updatedList = props.fieldList.map((item, i) =>
-      i === index
-        ? {
-            competenza: editData.competenza,
-            livello: handleInputRange(editData.livello),
-          }
+      i === index ? { competenza: editData.competenza,
+                      livello: handleInputRange(editData.livello),
+                    }
         : item
     );
     props.setFieldList(updatedList);
@@ -67,7 +65,6 @@ const CompAndEdit = (props) => {
       {showField && (
         <>
           <div className="flex flex-col p-5">
-
             <div>
               <label htmlFor="competenze" className="text-gray-500 text-2xl">
                 {props.field}
@@ -97,9 +94,8 @@ const CompAndEdit = (props) => {
             </div>
 
             <div className="flex justify-end items-center gap-2 w-sm mt-5">
-              
               <button
-                onClick={(e) =>setShowField(!showField)}
+                onClick={(e) => setShowField(!showField)}
                 className="text-gray-500 hover:text-gray-700"
               >
                 Cancel
@@ -110,23 +106,17 @@ const CompAndEdit = (props) => {
               >
                 Add
               </button>
-
             </div>
           </div>
         </>
       )}
 
       {props.fieldList.length > 0 && (
-        <div className="mb-2 mt-2  p-5">
+        <div className="mb-2  p-5">
           {props.fieldList.map((item, index) => (
-            <div
-              key={index}
-              className=" mb-2 mt-5"
-            >
+            <div key={index} className=" mb-2 ">
               {editIndex === index ? (
-
                 <div className="flex flex-col justify-center items-center">
-
                   <div>
                     <input
                       type="text"
@@ -151,34 +141,27 @@ const CompAndEdit = (props) => {
                       }
                       className="w-md"
                     />
-                    <label className="ml-2 text-center"htmlFor="edit">{handleInputRange(rangeEdit)}</label>  
+                    <label className="ml-2 text-center" htmlFor="edit">
+                      {handleInputRange(rangeEdit)}
+                    </label>
                   </div>
 
-                  
-
-                 <div className="flex flex-row justify-end  gap-5 ml-auto">
+                  <div className="flex flex-row justify-end  gap-5 ml-auto">
                     <button
-                    onClick={() => deletePost(index)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    Delete
-                  </button>
+                      onClick={() => deletePost(index)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      Delete
+                    </button>
 
-        
-                   <button
-                    onClick={() => editPost(index)}
-                    className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400"
-                  >
-                    Save
-                  </button>
-                 </div>
-
-
+                    <button
+                      onClick={() => editPost(index)}
+                      className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400"
+                    >
+                      Save
+                    </button>
+                  </div>
                 </div>
-
-
-
-
               ) : (
                 <div className="flex justify-between items-center w-full border border-gray-500 border-solid p-5">
                   <div>
@@ -187,6 +170,7 @@ const CompAndEdit = (props) => {
                     </h2>
                     <h2 className="text-gray-500">{item.livello}</h2>
                   </div>
+
                   <button
                     onClick={() => {
                       setEditIndex(index);

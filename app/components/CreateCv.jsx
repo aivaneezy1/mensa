@@ -83,7 +83,7 @@ export default function Home() {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mb-2 p-2 border "
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -92,7 +92,7 @@ export default function Home() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
               <input
                 type="tel"
@@ -100,7 +100,7 @@ export default function Home() {
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -109,7 +109,7 @@ export default function Home() {
                 placeholder="Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -118,7 +118,7 @@ export default function Home() {
                 placeholder="Date of Birth"
                 value={dateBirth}
                 onChange={(e) => setDateBirth(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -127,7 +127,7 @@ export default function Home() {
                 placeholder="Place of Birth"
                 value={placeBirth}
                 onChange={(e) => setPlaceBirth(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -136,7 +136,7 @@ export default function Home() {
                 placeholder="Genere"
                 value={genere}
                 onChange={(e) => setGenere(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100" 
               />
 
               <input
@@ -145,7 +145,7 @@ export default function Home() {
                 placeholder="Nationality"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -154,7 +154,7 @@ export default function Home() {
                 placeholder="Civil Status"
                 value={civilStatus}
                 onChange={(e) => setCivilStatus(e.target.value)}
-                className="mb-2 p-2 border"
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               {/* Button to toggle optional fields */}
@@ -173,7 +173,7 @@ export default function Home() {
                     placeholder="License"
                     value={license}
                     onChange={(e) => setLicense(e.target.value)}
-                    className="mb-2 p-2 border"
+                    className="mb-2 p-2 border bg-gray-100"
                   />
 
                   <input
@@ -182,7 +182,7 @@ export default function Home() {
                     placeholder="Website"
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
-                    className="mb-2 p-2 border"
+                    className="mb-2 p-2 border bg-gray-100"
                   />
 
                   <input
@@ -191,7 +191,7 @@ export default function Home() {
                     placeholder="LinkedIn"
                     value={linkin}
                     onChange={(e) => setLinkin(e.target.value)}
-                    className="mb-2 p-2 border"
+                    className="mb-2 p-2 border bg-gray-100"
                   />
                 </>
               )}
@@ -223,27 +223,7 @@ export default function Home() {
           setLangFieldList={setLangFieldList}
           />
 
-          <textarea
-            name="education"
-            placeholder="Education"
-            value={education}
-            onChange={(e) => setEducation(e.target.value)}
-            className="mb-2 p-2 border"
-          />
-          <textarea
-            name="experience"
-            placeholder="Experience"
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-            className="mb-2 p-2 border"
-          />
-          <textarea
-            name="skills"
-            placeholder="Skills"
-            value={skills}
-            onChange={(e) => setSkills(e.target.value)}
-            className="mb-2 p-2 border"
-          />
+          
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
           <button
