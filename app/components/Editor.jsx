@@ -37,7 +37,7 @@ export const RichTextEditor = (props) => {
 
   return (
     <div className="w-full">
-      <h2 className="font-semibold mb-2 mt-5 text-2xl">Description</h2>
+      <h2 className="font-semibold mb-2 mt-5 text-medium">Description</h2>
       <ReactQuill
         theme="snow"
         modules={modules}
