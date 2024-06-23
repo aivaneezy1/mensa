@@ -7,6 +7,7 @@ const CompAndEdit = (props) => {
   const [addField, setAddField] = useState(false);
   const [showField, setShowField] = useState(false);
   const [range, setRange] = useState(0);
+  const [rangeEdit, setRangeEdit] = useState(0)
   const [editIndex, setEditIndex] = useState(null);
   const [editData, setEditData] = useState({
     competenza: "",
@@ -65,7 +66,8 @@ const CompAndEdit = (props) => {
       {handleButton(showField, setShowField, props.field)}
       {showField && (
         <>
-          <div className="flex flex-col border border-gray-500 border-solid p-5">
+          <div className="flex flex-col p-5">
+
             <div>
               <label htmlFor="competenze" className="text-gray-500 text-2xl">
                 {props.field}
@@ -96,7 +98,6 @@ const CompAndEdit = (props) => {
 
             <div className="flex justify-end items-center gap-2 w-sm mt-5">
               
-              
               <button
                 onClick={(e) =>setShowField(!showField)}
                 className="text-gray-500 hover:text-gray-700"
@@ -116,40 +117,46 @@ const CompAndEdit = (props) => {
       )}
 
       {props.fieldList.length > 0 && (
-        <div className="border border-gray-500 border-solid p-5 mb-2 mt-2">
+        <div className="mb-2 mt-2  p-5">
           {props.fieldList.map((item, index) => (
             <div
               key={index}
-              className="flex justify-between items-center mb-2 mt-5"
+              className=" mb-2 mt-5"
             >
               {editIndex === index ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editData.competenza}
-                    onChange={(e) =>
-                      setEditData({ ...editData, competenza: e.target.value })
-                    }
-                    className="mb-2 p-2 border bg-gray-100 w-full mt-2"
-                  />
-                  <input
-                    type="range"
-                    id="edit"
-                    min="0"
-                    max="5"
-                    value={editData.livello}
-                    onChange={(e) =>
-                      setEditData({
-                        ...editData,
-                        livello: parseInt(e.target.value),
-                        setRange: setRange(parseInt(e.target.value)),
-                      })
-                    }
-                    className="w-md"
-                  />
-                  <label htmlFor="edit">{handleInputRange(range)}</label>
 
-                 <div className="flex justify-end items-center gap-5">
+                <div className="flex flex-col justify-center items-center">
+
+                  <div>
+                    <input
+                      type="text"
+                      value={editData.competenza}
+                      onChange={(e) =>
+                        setEditData({ ...editData, competenza: e.target.value })
+                      }
+                      className="mb-2 p-2 border bg-gray-100 w-full mt-2"
+                    />
+                    <input
+                      type="range"
+                      id="edit"
+                      min="0"
+                      max="5"
+                      value={editData.livello}
+                      onChange={(e) =>
+                        setEditData({
+                          ...editData,
+                          livello: parseInt(e.target.value),
+                          setRange: setRangeEdit(parseInt(e.target.value)),
+                        })
+                      }
+                      className="w-md"
+                    />
+                    <label className="ml-2 text-center"htmlFor="edit">{handleInputRange(rangeEdit)}</label>  
+                  </div>
+
+                  
+
+                 <div className="flex flex-row justify-end  gap-5 ml-auto">
                     <button
                     onClick={() => deletePost(index)}
                     className="text-red-500 hover:text-red-700"
@@ -165,11 +172,17 @@ const CompAndEdit = (props) => {
                     Save
                   </button>
                  </div>
+
+
                 </div>
+
+
+
+
               ) : (
-                <div className="flex justify-between items-center w-full">
+                <div className="flex justify-between items-center w-full border border-gray-500 border-solid p-5">
                   <div>
-                    <h2 className="font-semibold text-1xl">
+                    <h2 className="font-semibold text-1xl break-words whitespace-normal">
                       {item.competenza ? item.competenza : `[${props.field}]`}
                     </h2>
                     <h2 className="text-gray-500">{item.livello}</h2>

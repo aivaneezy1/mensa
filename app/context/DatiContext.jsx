@@ -7,7 +7,7 @@ const DatiContextProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAdress] = useState("");
+  const [address, setAddress] = useState("");
   const [dateBirth, setDateBirth] = useState("");
   const [placeBirth, setPlaceBirth] = useState("");
   const [genere, setGenere] = useState("");
@@ -30,7 +30,7 @@ const DatiContextProvider = ({ children }) => {
         phone,
         setPhone,
         address,
-        setAdress,
+        setAddress,
         dateBirth,
         setDateBirth,
         placeBirth,

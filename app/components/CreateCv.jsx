@@ -7,6 +7,9 @@ import handleButton from "../utils/handleButton";
 import Compotenze from "./Card/Compotenze";
 import Language from "./Card/Language";
 import { DatiContext } from "../context/DatiContext";
+import Profile from "./Card/Profile";
+import EsperienzeLavoro from "./Card/EsperienzeLavoro";
+import Formazione from "./Card/Formazione";
 
 export default function Home() {
   // Dati states
@@ -18,7 +21,7 @@ export default function Home() {
     phone,
     setPhone,
     address,
-    setAdress,
+    setAddress,
     dateBirth,
     setDateBirth,
     placeBirth,
@@ -105,7 +108,7 @@ export default function Home() {
                 name="address"
                 placeholder="Address"
                 value={address}
-                onChange={(e) => setAdress(e.target.value)}
+                onChange={(e) => setAddress(e.target.value)}
                 className="mb-2 p-2 border"
               />
 
@@ -196,10 +199,13 @@ export default function Home() {
           )}
 
           {/*Profile */}
+          {<Profile/>}
 
           {/*Formazione */}
+          {<Formazione/>}
 
           {/*Esperienza lavorativa */}
+          {<EsperienzeLavoro/>}
 
           {/*Compotenze button */}
           <Compotenze 

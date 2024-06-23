@@ -2,24 +2,31 @@ import React from "react";
 import Image from "next/image";
 
 const Card = (props) => {
+  const hasPersonalData = props.name || props.email || props.phone || props.address || props.dateBirth || props.placeBirth || props.genere || props.nationality || props.civilStatus || props.license || props.website || props.linkin;
+
+
   const datiPersonali = (image, dati) => {
     return (
-      <div className="flex flex-row gap-5 items-center mt-2 w-auto bg-gray-300">
+      <div className="flex flex-row gap-5 items-center mt-2 w-auto ">
         <div className="w-6 h-6 flex-shrink-0">{image}</div>
         <div className="flex-grow  whitespace-normal break-words w-full">
           {dati}
         </div>
       </div>
     );
-  };
+  };  
 
   return (
-    <div className="flex flex-col md:flex-row gap-20 justify-between max-w-lg">
-      <div className="w-auto border-r border-solid border-solid ">
+    <div className="flex  justify-center md:flex-row gap-5  p-10  ">
+      <div className={`w-auto  p-5  border-r border-gray-500 border-solid`}>
         <header>
-          <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-center">
-            Dati Personali
-          </h2>
+          {hasPersonalData ? (
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-center">
+              Dati Personali
+            </h2>
+          ) : (
+            ""
+          )}
           <h1>
             {props.name ? (
               <div className="">
@@ -332,13 +339,13 @@ const Card = (props) => {
           <div className="flex justify-center  flex-col max-w-lg">
             {props.compFieldList.length > 0 && (
               <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center">
-                Competenza  
+                Competenza
               </h2>
             )}
             {props.compDati ? (
               <div>
-                <h2 className="font-bold">Competenza</h2>
-                {props.compDati}
+                <h2 className="text-1xl font-semibold">Competenza</h2>
+                <h2>{props.compDati}</h2>
               </div>
             ) : (
               props.compFieldList.map((post, index) => (
@@ -363,8 +370,8 @@ const Card = (props) => {
             )}
             {props.langDati ? (
               <div>
-                <h2 className="text-1xl">Languages</h2>
-                {props.langDati}
+                <h2 className="text-1xl font-semibold">Languages</h2>
+                <h2>{props.langDati}</h2>
               </div>
             ) : (
               props.langFieldList.map((post, index) => (
@@ -381,23 +388,29 @@ const Card = (props) => {
             )}
           </div>
         </header>
+      </div>  
+
+      <div className="flex flex-col  p-5 flex-1 w-full ">
+        <section>
+           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
+              Profile
+            </h2>
+        </section>
+        <section>
+           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
+              Formazione
+            </h2>
+        </section>
+
+        <section>
+           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
+              Experience
+            </h2>
+        </section>
       </div>
 
-      <div className="flex flex-col ">
-        <section>
-          <h2>Profile</h2>
-          {/* Add your content for Profile here */}
-        </section>
-        <section>
-          <h2>Formazione</h2>
-          {/* Add your content for Formazione here */}
-        </section>
 
-        <section>
-          <h2>Esperienze lavorative</h2>
-          {/* Add your content for Esperienze lavorative here */}
-        </section>
-      </div>
+      
     </div>
   );
 };
