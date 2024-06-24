@@ -33,6 +33,7 @@ const Profile = (props) => {
     dataInizioAnno: "",
     dataFine: "",
     dataFineAnno: "",
+    content: "",
   });
   const [editindex, setEditIndex] = useState(null);
 
@@ -43,10 +44,11 @@ const Profile = (props) => {
         data: data,
         istitute: istitute,
         city: city,
-        dataInizio: editData.dataInizio,
-        dataInizioAnno: editData.dataInizioAnno,
-        dataFine: editData.dataFine,
-        dataFineAnno: editData.dataFineAnno,
+        dataInizio: dataInizio,
+        dataInizioAnno: dataInizioAnno,
+        dataFine: dataFine,
+        dataFineAnno: dataFineAnno,
+        content: content,
       },
     ]);
     setData("");
@@ -56,6 +58,7 @@ const Profile = (props) => {
     setDataFineAnno("");
     setDataFine("");
     setDataFine("");
+    setContent("");
     setShowProfile(!showProfile);
   };
 
@@ -70,9 +73,11 @@ const Profile = (props) => {
             dataInizioAnno: editData.dataInizioAnno,
             dataFine: editData.dataFine,
             dataFineAnno: editData.dataFineAnno,
+            content: editData.content,
           }
         : item
     );
+    setDataFieldList(updatedList);
     setShowProfile(!showProfile);
   };
 
@@ -136,7 +141,7 @@ const Profile = (props) => {
               </div>
             </div>
 
-            {/**DATA INIZIO */}
+            {/**DATE INIZIO */}
             <div className="flex flex-row  justify-start items-center gap-10 sm:gap-20">
               <div className="flex flex-col gap-2">
                 <label for="startMonth" className="font-semibold text-medium">
@@ -190,7 +195,7 @@ const Profile = (props) => {
                     December
                   </option>
                 </select>
-
+                 {/**DATE INIZIO Anoo */}
                 <select
                   className="py-2 px-4 ml-r rounded-md bg-gray-100"
                   id="year"
@@ -210,7 +215,7 @@ const Profile = (props) => {
                 </select>
               </div>
 
-              {/**DATA FINE */}
+              {/**DATE Fine */}
               <div className="flex flex-col gap-2">
                 <label for="startMonth" className="font-semibold text-medium">
                   End Date
@@ -264,6 +269,7 @@ const Profile = (props) => {
                   </option>
                 </select>
 
+                {/**DATE Fine ANNO */}
                 <select
                   className="py-2 px-4 ml-l rounded-md bg-gray-100"
                   id="year"
@@ -313,44 +319,264 @@ const Profile = (props) => {
               <div key={index}>
                 {editindex === index ? (
                   <div>
-                    <h2>delete</h2>
-                    <h2>Save</h2>
+                    {/*Data */}
+                    <div>
+                      <input
+                        type="text"
+                        name="data"
+                        value={editData.data}
+                        onChange={(e) =>
+                          setEditData({ ...editData, data: e.target.value })
+                        }
+                        className="mb-2 p-2 border bg-gray-100 w-full mt-2"
+                      />
+                    </div>
+
+                    {/*Istitute */}
+                    <div>
+                      <input
+                        type="text"
+                        name="istituto"
+                        value={editData.istitute}
+                        onChange={(e) =>
+                          setEditData({ ...editData, istitute: e.target.value })
+                        }
+                        className="mb-2 p-2 border bg-gray-100 w-full mt-2"
+                      />
+                    </div>
+
+                    {/*Date */}
+                    <div>
+                      {/*Date Inizio */}
+                      <div>
+                        <label
+                          for="startMonth"
+                          className="font-semibold text-medium"
+                        >
+                          Start Date
+                        </label>
+                        <select
+                          className=" py-2 px-4 ml-r rounded-xl bg-gray-100"
+                          id="startMonth"
+                          name="startMonth"
+                          value={editData.dataInizio}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataInizio: e.target.value,
+                            })
+                          }
+                        >
+                          <option className="bg-white text-gray-800" value="">
+                            {" "}
+                            Month
+                          </option>
+                          <option className="bg-white text-gray-800" value="01">
+                            January
+                          </option>
+                          <option className="bg-white text-gray-800" value="02">
+                            February
+                          </option>
+                          <option className="bg-white text-gray-800" value="03">
+                            March
+                          </option>
+                          <option className="bg-white text-gray-800" value="04">
+                            April
+                          </option>
+                          <option className="bg-white text-gray-800" value="05">
+                            May
+                          </option>
+                          <option className="bg-white text-gray-800" value="06">
+                            June
+                          </option>
+                          <option className="bg-white text-gray-800" value="07">
+                            July
+                          </option>
+                          <option className="bg-white text-gray-800" value="08">
+                            August
+                          </option>
+                          <option className="bg-white text-gray-800" value="09">
+                            September
+                          </option>
+                          <option className="bg-white text-gray-800" value="10">
+                            October
+                          </option>
+                          <option className="bg-white text-gray-800" value="11">
+                            November
+                          </option>
+                          <option className="bg-white text-gray-800" value="12">
+                            December
+                          </option>
+                        </select>
+
+                        {/*Date Inizio Anno */}
+                        <select
+                          className="py-2 px-4 ml-r rounded-md bg-gray-100"
+                          id="year"
+                          name="year"
+                          value={editData.dataInizioAnno}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataInizioAnno: e.target.value,
+                            })
+                          }
+                        >
+                          {years.map((year) => (
+                            <option
+                              key={year}
+                              value={year}
+                              className="bg-white text-gray-800"
+                            >
+                              {year}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/*Date Fine */}
+                      <div>
+                        <label
+                          for="startMonth"
+                          className="font-semibold text-medium"
+                        >
+                          End Date
+                        </label>
+                        <select
+                          className=" py-2 px-4 ml-l rounded-md bg-gray-100"
+                          id="startMonth"
+                          name="startMonth"
+                          value={editData.dataFine}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataFine: e.target.value,
+                            })
+                          }
+                        >
+                          <option className="bg-white text-gray-800" value="">
+                            {" "}
+                            Month
+                          </option>
+                          <option className="bg-white text-gray-800" value="01">
+                            January
+                          </option>
+                          <option className="bg-white text-gray-800" value="02">
+                            February
+                          </option>
+                          <option className="bg-white text-gray-800" value="03">
+                            March
+                          </option>
+                          <option className="bg-white text-gray-800" value="04">
+                            April
+                          </option>
+                          <option className="bg-white text-gray-800" value="05">
+                            May
+                          </option>
+                          <option className="bg-white text-gray-800" value="06">
+                            June
+                          </option>
+                          <option className="bg-white text-gray-800" value="07">
+                            July
+                          </option>
+                          <option className="bg-white text-gray-800" value="08">
+                            August
+                          </option>
+                          <option className="bg-white text-gray-800" value="09">
+                            September
+                          </option>
+                          <option className="bg-white text-gray-800" value="10">
+                            October
+                          </option>
+                          <option className="bg-white text-gray-800" value="11">
+                            November
+                          </option>
+                          <option className="bg-white text-gray-800" value="12">
+                            December
+                          </option>
+                        </select>
+
+                        {/**DATE Fine ANNO */}
+                        <select
+                          className="py-2 px-4 ml-l rounded-md bg-gray-100"
+                          id="year"
+                          name="year"
+                          value={editData.dataFineAnno}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataFineAnno: e.target.value,
+                            })
+                          }
+                        >
+                          {years.map((year) => (
+                            <option
+                              key={year}
+                              value={year}
+                              className="bg-white text-gray-800"
+                            >
+                              {year}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {/*Editor */}
+                    <div>
+                      <RichTextEditor
+                        content={editData.content}
+                        setContent={setEditData}
+                      />
+                    </div>
+
+                    <div>
+                      <button className="text-red-500 hover:text-red-700">
+                        Delete
+                      </button>
+
+                      <button className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400">
+                        Save
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-5 w-full ">
-                    {dataFieldList.map((item, index) => (
-                      <div
-                        key={index}
-                        className="flex justify-between items-center border border-gray-500 border-solid py-2 py-5 gap-5 mt-5"
-                      >
-                        <div className="flex flex-col gap-2  ml-4">
-                          <h2 className="font-semibold text-2xl ">
-                            {item.data}
-                          </h2>
-                          <h2 className="text-gray-500 ">
-                            {item.istitute}, {item.city}
-                          </h2>
-                        </div>
-
-                        <button
-                          className="mr-5 text-blue-500 hover:text-blue-700"
-                          onClick={() => {
-                            setEditIndex(index);
-                            setEditData({
-                              data: item.data,
-                              istitute: item.istitute,
-                              city: item.city,
-                              dataInizio: item.dataInizio,
-                              dataInizioAnno: item.dataInizioAnno,
-                              dataFine: item.dataFine,
-                              dataFineAnno: item.dataFineAnno,
-                            });
-                          }}
-                        >
-                          Edit
-                        </button>
+                    <div
+                      key={index}
+                      className="flex justify-between items-center border border-gray-500 border-solid py-2 py-5 gap-5 mt-5"
+                    >
+                      <div className="flex flex-col gap-2  ml-4">
+                        <h2 className="font-semibold text-2xl ">{item.data}</h2>
+                        <h2 className="text-gray-500 ">
+                          {item.istitute}, {item.city}
+                        </h2>
+                        <h2>Date inizio: {item.dataInizio}</h2>
+                        <h2>Date inizio anno: {item.dataInizioAnno}</h2>
+                        <h2>Date Fine: {item.dataFine}</h2>
+                        <h2>Date Fine: {item.dataFine}</h2>
+                        <h2>Content: {item.content.replace(/<[^>]+>/g, "")}</h2>
                       </div>
-                    ))}
+
+                      <button
+                        className="mr-5 text-blue-500 hover:text-blue-700"
+                        onClick={() => {
+                          setEditIndex(index);
+                          setEditData({
+                            data: item.data,
+                            istitute: item.istitute,
+                            city: item.city,
+                            dataInizio: item.dataInizio,
+                            dataInizioAnno: item.dataInizioAnno,
+                            dataFine: item.dataFine,
+                            dataFineAnno: item.dataFineAnno,
+                            content: item.content,
+                          });
+                        }}
+                      >
+                        Edit
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
