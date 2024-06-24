@@ -37,7 +37,8 @@ const Profile = (props) => {
   });
   const [editindex, setEditIndex] = useState(null);
 
-  const addPost = () => {
+ 
+ const addPost = () => {
     setDataFieldList([
       ...dataFieldList,
       {
@@ -51,15 +52,19 @@ const Profile = (props) => {
         content: content,
       },
     ]);
+    resetForm();
+    setShowProfile(!showProfile)
+  };
+
+  const resetForm = () => {
     setData("");
     setIstitute("");
     setCity("");
     setDataInizio("");
+    setDataInizioAnno("");
+    setDataFine("");
     setDataFineAnno("");
-    setDataFine("");
-    setDataFine("");
     setContent("");
-    setShowProfile(!showProfile);
   };
 
   const editPost = (index) => {
@@ -78,8 +83,32 @@ const Profile = (props) => {
         : item
     );
     setDataFieldList(updatedList);
-    setShowProfile(!showProfile);
+    setEditIndex(null);
+    resetEditData();
   };
+
+  const resetEditData = () => {
+    setEditData({
+      data: "",
+      istitute: "",
+      city: "",
+      dataInizio: "",
+      dataInizioAnno: "",
+      dataFine: "",
+      dataFineAnno: "",
+      content: "",
+    });
+  };
+
+
+
+  const deletePost = (index) =>{
+    const newList  = dataFieldList.filter((_,i) => i !== index)
+    setDataFieldList(newList)
+    setEditIndex(null);
+  }
+
+  
 
   useEffect(() => {
     // Function to generate years from current year to 1950
@@ -144,7 +173,10 @@ const Profile = (props) => {
             {/**DATE INIZIO */}
             <div className="flex flex-row  justify-start items-center gap-10 sm:gap-20">
               <div className="flex flex-col gap-2">
-                <label for="startMonth" className="font-semibold text-medium">
+                <label
+                  htmlFor="startMonth"
+                  className="font-semibold text-medium"
+                >
                   Start Date
                 </label>
                 <select
@@ -158,44 +190,44 @@ const Profile = (props) => {
                     {" "}
                     Month
                   </option>
-                  <option className="bg-white text-gray-800" value="01">
+                  <option className="bg-white text-gray-800" value="gen">
                     January
                   </option>
-                  <option className="bg-white text-gray-800" value="02">
+                  <option className="bg-white text-gray-800" value="feb">
                     February
                   </option>
-                  <option className="bg-white text-gray-800" value="03">
+                  <option className="bg-white text-gray-800" value="mar">
                     March
                   </option>
-                  <option className="bg-white text-gray-800" value="04">
+                  <option className="bg-white text-gray-800" value="apr">
                     April
                   </option>
-                  <option className="bg-white text-gray-800" value="05">
+                  <option className="bg-white text-gray-800" value="mag">
                     May
                   </option>
-                  <option className="bg-white text-gray-800" value="06">
+                  <option className="bg-white text-gray-800" value="giu">
                     June
                   </option>
-                  <option className="bg-white text-gray-800" value="07">
+                  <option className="bg-white text-gray-800" value="lug">
                     July
                   </option>
-                  <option className="bg-white text-gray-800" value="08">
+                  <option className="bg-white text-gray-800" value="ago">
                     August
                   </option>
-                  <option className="bg-white text-gray-800" value="09">
+                  <option className="bg-white text-gray-800" value="set">
                     September
                   </option>
-                  <option className="bg-white text-gray-800" value="10">
+                  <option className="bg-white text-gray-800" value="ott">
                     October
                   </option>
-                  <option className="bg-white text-gray-800" value="11">
+                  <option className="bg-white text-gray-800" value="nov">
                     November
                   </option>
-                  <option className="bg-white text-gray-800" value="12">
+                  <option className="bg-white text-gray-800" value="dec">
                     December
                   </option>
                 </select>
-                 {/**DATE INIZIO Anoo */}
+                {/**DATE INIZIO Anoo */}
                 <select
                   className="py-2 px-4 ml-r rounded-md bg-gray-100"
                   id="year"
@@ -217,7 +249,10 @@ const Profile = (props) => {
 
               {/**DATE Fine */}
               <div className="flex flex-col gap-2">
-                <label for="startMonth" className="font-semibold text-medium">
+                <label
+                  htmlFor="startMonth"
+                  className="font-semibold text-medium"
+                >
                   End Date
                 </label>
                 <select
@@ -231,40 +266,40 @@ const Profile = (props) => {
                     {" "}
                     Month
                   </option>
-                  <option className="bg-white text-gray-800" value="01">
+                    <option className="bg-white text-gray-800" value="gen">
                     January
                   </option>
-                  <option className="bg-white text-gray-800" value="02">
+                  <option className="bg-white text-gray-800" value="feb">
                     February
                   </option>
-                  <option className="bg-white text-gray-800" value="03">
+                  <option className="bg-white text-gray-800" value="mar">
                     March
                   </option>
-                  <option className="bg-white text-gray-800" value="04">
+                  <option className="bg-white text-gray-800" value="apr">
                     April
                   </option>
-                  <option className="bg-white text-gray-800" value="05">
+                  <option className="bg-white text-gray-800" value="mag">
                     May
                   </option>
-                  <option className="bg-white text-gray-800" value="06">
+                  <option className="bg-white text-gray-800" value="giu">
                     June
                   </option>
-                  <option className="bg-white text-gray-800" value="07">
+                  <option className="bg-white text-gray-800" value="lug">
                     July
                   </option>
-                  <option className="bg-white text-gray-800" value="08">
+                  <option className="bg-white text-gray-800" value="ago">
                     August
                   </option>
-                  <option className="bg-white text-gray-800" value="09">
+                  <option className="bg-white text-gray-800" value="set">
                     September
                   </option>
-                  <option className="bg-white text-gray-800" value="10">
+                  <option className="bg-white text-gray-800" value="ott">
                     October
                   </option>
-                  <option className="bg-white text-gray-800" value="11">
+                  <option className="bg-white text-gray-800" value="nov">
                     November
                   </option>
-                  <option className="bg-white text-gray-800" value="12">
+                  <option className="bg-white text-gray-800" value="dec">
                     December
                   </option>
                 </select>
@@ -314,7 +349,7 @@ const Profile = (props) => {
 
       {dataFieldList.length > 0 && (
         <>
-          <div>
+          <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg  mb-5  text-gray-800">
             {dataFieldList.map((item, index) => (
               <div key={index}>
                 {editindex === index ? (
@@ -346,11 +381,11 @@ const Profile = (props) => {
                     </div>
 
                     {/*Date */}
-                    <div>
+                    <div className="flex flex-row  justify-start items-center gap-10 sm:gap-20">
                       {/*Date Inizio */}
-                      <div>
+                      <div className="flex flex-col gap-2">
                         <label
-                          for="startMonth"
+                          htmlFor="startMonth"
                           className="font-semibold text-medium"
                         >
                           Start Date
@@ -435,9 +470,9 @@ const Profile = (props) => {
                       </div>
 
                       {/*Date Fine */}
-                      <div>
+                      <div className="flex flex-col gap-2">
                         <label
-                          for="startMonth"
+                          htmlFor="startMonth"
                           className="font-semibold text-medium"
                         >
                           End Date
@@ -523,22 +558,27 @@ const Profile = (props) => {
                     </div>
 
                     {/*Editor */}
-                    <div>
-                      <RichTextEditor
+                     <div className="flex flex-col gap-10">
+                      <div>
+                       <RichTextEditor
                         content={editData.content}
-                        setContent={setEditData}
+                        setContent={(content) =>
+                        setEditData({ ...editData, content })
+                        }
                       />
-                    </div>
+                      </div>
 
-                    <div>
-                      <button className="text-red-500 hover:text-red-700">
-                        Delete
-                      </button>
-
-                      <button className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400">
+                      <div className="flex justify-end  items-center gap-2">
+                      <button
+                        onClick={() => editPost(index)}
+                        className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400"
+                      >
                         Save
                       </button>
                     </div>
+                     </div>
+
+                  
                   </div>
                 ) : (
                   <div className="flex flex-col gap-5 w-full ">
@@ -553,10 +593,14 @@ const Profile = (props) => {
                         </h2>
                         <h2>Date inizio: {item.dataInizio}</h2>
                         <h2>Date inizio anno: {item.dataInizioAnno}</h2>
-                        <h2>Date Fine: {item.dataFine}</h2>
-                        <h2>Date Fine: {item.dataFine}</h2>
-                        <h2>Content: {item.content.replace(/<[^>]+>/g, "")}</h2>
+                       
                       </div>
+
+                       <button 
+                      onClick={() => deletePost(index)}
+                      className="text-red-500 hover:text-red-700">
+                        Delete
+                      </button>
 
                       <button
                         className="mr-5 text-blue-500 hover:text-blue-700"
