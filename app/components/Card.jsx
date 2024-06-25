@@ -17,7 +17,7 @@ const Card = (props) => {
   };  
 
   return (
-    <div className="flex  justify-center md:flex-row gap-5  p-10  ">
+    <div className="flex  justify-center md:flex-row gap-5  p-10 w-1/2 ">
       <div className={`w-auto  p-5  border-r border-gray-500 border-solid`}>
         <header>
           {hasPersonalData ? (
@@ -103,7 +103,7 @@ const Card = (props) => {
           </div>
           <div>
             {props.address
-              ? datiPersonali(
+              ? datiPersonali(  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
@@ -390,7 +390,7 @@ const Card = (props) => {
         </header>
       </div>  
 
-      <div className="flex flex-col  p-5 flex-1 w-full ">
+      <div className="flex flex-col  p-5 flex-1 w-1/2 ">
         <section>
            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
               Profile

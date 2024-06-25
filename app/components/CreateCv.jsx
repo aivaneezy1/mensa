@@ -109,8 +109,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-start flex-row  ml-5 ">
-        <form onSubmit={handleSubmit} className="flex flex-col mt-5 ">
+      <div className="flex justify-start flex-row  ml-5 h-screen ">
+        <form onSubmit={handleSubmit} className="flex flex-col mt-5 sm:w-1/2 sm:overflow-y-scroll ">
           {/*Dati Personali */}
           <DatiPersonali
             name={name}
@@ -240,7 +240,7 @@ export default function Home() {
           )}
         </form>
 
-        <div className=" sm:block hidden mx-auto  mt-10">
+        <div className=" sm:block hidden mx-auto  mt-10 w-1/2 p-5 overflow-y-scroll">
           <Card
             name={name}
             email={email}
