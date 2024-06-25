@@ -665,7 +665,7 @@ const BgProfesisonale = (props) => {
                       <div className="flex flex-col gap-2  ml-4 w-3/4">
                         <h2 className="font-semibold text-2xl ">{item.data}</h2>
                         <h2 className="text-gray-500 ">
-                          {item.istitute}, {item.city}
+                          {item.istitute}, {item.city}  
                         </h2>
                       
                       </div>

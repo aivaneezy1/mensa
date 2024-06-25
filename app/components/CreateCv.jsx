@@ -223,10 +223,6 @@ export default function Home() {
                     name={name}
                     email={email}
                     phone={phone}
-                    education={education}
-                    experience={experience}
-                    skills={skills}
-                    images={image}
                   />
                 }
                 fileName="cv.pdf"

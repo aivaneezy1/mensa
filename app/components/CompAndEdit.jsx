@@ -43,9 +43,11 @@ const CompAndEdit = (props) => {
 
   const editPost = (index) => {
     const updatedList = props.fieldList.map((item, i) =>
-      i === index ? { competenza: editData.competenza,
-                      livello: handleInputRange(editData.livello),
-                    }
+      i === index
+        ? {
+            competenza: editData.competenza,
+            livello: handleInputRange(editData.livello),
+          }
         : item
     );
     props.setFieldList(updatedList);
@@ -64,7 +66,7 @@ const CompAndEdit = (props) => {
       {showField && (
         <>
           <div className="flex flex-col p-5">
-            <div>
+            <div className="flex flex-col">
               <label htmlFor="competenze" className="text-gray-500 text-2xl">
                 {props.field}
               </label>
@@ -75,7 +77,7 @@ const CompAndEdit = (props) => {
                 value={props.dati}
                 placeholder={props.field}
                 onChange={(e) => props.setDati(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100 w-full mt-2"
+                className="mb-2 p-2 border bg-gray-100 sm:w-1/2 w-full mt-2"
               />
             </div>
 
@@ -87,12 +89,12 @@ const CompAndEdit = (props) => {
                 id="range"
                 value={range}
                 onChange={(e) => setRange(parseInt(e.target.value))}
-                className="w-md range-input"
+                className=" range-input sm:w-1/4 w-full"
               />
               <label htmlFor="range">{handleInputRange(range)}</label>
             </div>
 
-            <div className="flex justify-end items-center gap-2 w-sm mt-5">
+            <div className="flex justify-end items-center gap-2 w-full mt-5">
               <button
                 onClick={(e) => setShowField(!showField)}
                 className="text-gray-500 hover:text-gray-700"
@@ -111,20 +113,29 @@ const CompAndEdit = (props) => {
       )}
 
       {props.fieldList.length > 0 && (
-        <div className="mb-2  p-5">
+        <div className="mb-2 p-5">
           {props.fieldList.map((item, index) => (
-            <div key={index} className=" mb-2 ">
+            <div key={index} className="mb-2">
               {editIndex === index ? (
-                <div className="flex flex-col justify-center items-center">
-                  <div>
+                <div className="flex flex-col items-start w-full">
+                  <div className="flex flex-col w-full">
+                    <label
+                      htmlFor="competenze"
+                      className="text-gray-500 text-2xl"
+                    >
+                      {props.field}
+                    </label>
                     <input
                       type="text"
                       value={editData.competenza}
                       onChange={(e) =>
                         setEditData({ ...editData, competenza: e.target.value })
                       }
-                      className="mb-2 p-2 border bg-gray-100 w-full mt-2"
+                      className="mb-2 p-2 border bg-gray-100 sm:w-1/2  w-full mt-2"
                     />
+                  </div>
+
+                  <div className="flex items-center w-full">
                     <input
                       type="range"
                       id="edit"
@@ -135,24 +146,16 @@ const CompAndEdit = (props) => {
                         setEditData({
                           ...editData,
                           livello: parseInt(e.target.value),
-                          setRange: setRangeEdit(parseInt(e.target.value)),
                         })
                       }
-                      className="w-md"
+                      className="sm:w-1/4 w-full"
                     />
                     <label className="ml-2 text-center" htmlFor="edit">
                       {handleInputRange(rangeEdit)}
                     </label>
                   </div>
 
-                  <div className="flex flex-row justify-end  gap-5 ml-auto">
-                    <button
-                      onClick={() => deletePost(index)}
-                      className="text-red-500 hover:text-red-700"
-                    >
-                      Delete
-                    </button>
-
+                  <div className="flex justify-end gap-2 w-full mt-5">
                     <button
                       onClick={() => editPost(index)}
                       className="px-5 py-1 bg-green-500 text-white rounded-2xl hover:bg-green-400"
@@ -162,26 +165,34 @@ const CompAndEdit = (props) => {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-between items-center w-full border border-gray-500 border-solid p-5">
-                  <div>
-                    <h2 className="font-semibold text-1xl break-words whitespace-normal">
+                <div className="flex justify-between items-center max-w-sm border border-gray-500 border-solid p-5">
+                  <div className="">
+                    <h2 className="font-semibold text-2xl break-words whitespace-normal">
                       {item.competenza ? item.competenza : `[${props.field}]`}
                     </h2>
                     <h2 className="text-gray-500">{item.livello}</h2>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      setEditIndex(index);
-                      setEditData({
-                        competenza: item.competenza,
-                        livello: item.livello,
-                      });
-                    }}
-                    className="text-blue-500 hover:text-blue-700"
-                  >
-                    Edit
-                  </button>
+                  <div className="flex gap-5">
+                    <button
+                      onClick={() => deletePost(index)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        setEditIndex(index);
+                        setEditData({
+                          competenza: item.competenza,
+                          livello: item.livello,
+                        });
+                      }}
+                      className="text-blue-500 hover:text-blue-700"
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
