@@ -40,6 +40,46 @@ export default function Home() {
     setCompFieldList,
     langFieldList,
     setLangFieldList,
+
+    /*Formazione Dati */
+    formDati,
+    setFormDati,
+    formOrg,
+    setFormOrg,
+    formCity,
+    setFormCity,
+    formDateInizio,
+    setFormDateInizio,
+    formDateInizioAnno,
+    setFormDateInizioAnno,
+    formDateFine,
+    setFormDateFine,
+    formDateFineAnno,
+    setFormDateFineAnno,
+    formDataFieldList,
+    setFormDataFieldList,
+    formContent,
+    setFormContent,
+
+    /*Experience Dati */
+    expDati,
+    setExpDati,
+    expOrg,
+    setExpOrg,
+    expCity,
+    setExpCity,
+    exprDateInizo,
+    setExprDateInizio,
+    exprDateInizioAnno,
+    setExprDateInizioAnno,
+    exprDateFine,
+    setExprDateFine,
+    exprDateFineAnno,
+    setExprDateFineAnno,
+    exprDataFieldList,
+    setExprDataFieldList,
+    exprContent,
+    setExprContent,
   } = useContext(DatiContext);
 
   {
@@ -136,7 +176,7 @@ export default function Home() {
                 placeholder="Genere"
                 value={genere}
                 onChange={(e) => setGenere(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100" 
+                className="mb-2 p-2 border bg-gray-100"
               />
 
               <input
@@ -199,31 +239,72 @@ export default function Home() {
           )}
 
           {/*Profile */}
-          {<Profile/>}
+          {<Profile />}
 
           {/*Formazione */}
-          {<Formazione/>}
+          {
+            <Formazione
+              formDati={formDati}
+              setFormDati={setFormDati}
+              formOrg={formOrg}
+              setFormOrg={setFormOrg}
+              formCity={formCity}
+              setFormCity={setFormCity}
+              formDateInizio={formDateInizio}
+              setFormDateInizio={setFormDateInizio}
+              formDateInizioAnno={formDateInizioAnno}
+              setFormDateInizioAnno={setFormDateInizioAnno}
+              formDateFine={formDateFine}
+              setFormDateFine={setFormDateFine}
+              formDateFineAnno={formDateFineAnno}
+              setFormDateFineAnno={setFormDateFineAnno}
+              formDataFieldList={formDataFieldList}
+              setFormDataFieldList={setFormDataFieldList}
+              formContent={formContent}
+              setFormContent={setFormContent}
+            />
+          }
 
           {/*Esperienza lavorativa */}
-          {<EsperienzeLavoro/>}
+          {
+            <EsperienzeLavoro
+              expDati={expDati}
+              setExpDati={setExpDati}
+              expOrg={expOrg}
+              setExpOrg={setExpOrg}
+              expCity={expCity}
+              setExpCity={setExpCity}
+              exprDateInizo={exprDateInizo}
+              setExprDateInizio={setExprDateInizio}
+              exprDateInizioAnno={exprDateInizioAnno}
+              setExprDateInizioAnno={setExprDateInizioAnno}
+              exprDateFine={exprDateFine}
+              setExprDateFine={setExprDateFine}
+              exprDateFineAnno={exprDateFineAnno}
+              setExprDateFineAnno={setExprDateFineAnno}
+              exprDataFieldList={exprDataFieldList}
+              setExprDataFieldList={setExprDataFieldList}
+              exprContent={exprContent}
+              setExprContent={setExprContent}
+            />
+          }
 
           {/*Compotenze button */}
-          <Compotenze 
-          dati={compDati} 
-          setDati={setCompDati}
-          compFieldList={compFieldList}
-          setCompFieldList={setCompFieldList} 
+          <Compotenze
+            dati={compDati}
+            setDati={setCompDati}
+            compFieldList={compFieldList}
+            setCompFieldList={setCompFieldList}
           />
 
           {/*Language button */}
-          <Language 
-          dati={langDati} 
-          setDati={setLangDati} 
-          langFieldList={langFieldList}
-          setLangFieldList={setLangFieldList}
+          <Language
+            dati={langDati}
+            setDati={setLangDati}
+            langFieldList={langFieldList}
+            setLangFieldList={setLangFieldList}
           />
 
-          
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
           <button
@@ -276,7 +357,6 @@ export default function Home() {
             langDati={langDati}
             compFieldList={compFieldList}
             langFieldList={langFieldList}
-           
           />
         </div>
       </div>

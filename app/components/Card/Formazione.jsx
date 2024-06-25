@@ -2,22 +2,38 @@
 import React, { useState } from "react";
 import handleButton from "@/app/utils/handleButton";
 import { RichTextEditor } from "../Editor";
-const Formazione = () => {
-  const [showFormazione, setShowFormazione] = useState(false);
-   const [content, setContent] = useState("");
+import BgProfesisonale from "../BgProfesisonale";
+const Formazione = (props) => {
   return (
-    <>
-    {handleButton(showFormazione, setShowFormazione, "Formazione")}
-      {showFormazione && (
-        <>
-        <div className="flex break-words h-auto w-full max-w-sm sm:max-w-lg mb-10 ">
-        <RichTextEditor content={content} setContent={setContent}/>
-        </div>
-        </>
-      )}
-      
-  
-    </>
+    <div>
+      <BgProfesisonale
+        data={props.formDati}
+        setData={props.setFormDati}
+        istitute={props.formOrg}
+         setIstitute={props.setFormOrg}
+        city={props.formCity}
+        setCity={props.setFormCity}
+
+        dataInizio={props.formDateInizio}
+        setDataInizio={props.setFormDateInizio}
+         dataInizioAnno={props.formDateInizioAnno}
+        setDataInizioAnno={props.setFormDateInizioAnno}
+
+         dataFine={props.formDateFine}
+        setDataFine={props.setFormDateFine}
+
+        dataFineAnno={props.formDateFineAnno}
+       setDataFineAnno={props.setFormDateFineAnno}
+
+        dataFieldList={props.formDataFieldList}
+       setDataFieldList={props.setFormDataFieldList}
+        content={props.formContent}
+        setContent={props.setFormContent}
+        field={"Formazione"}
+        role={"Formazione"}
+        company={"Istituto"}
+      />
+    </div>
   );
 };
 

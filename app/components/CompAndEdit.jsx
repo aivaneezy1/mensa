@@ -4,7 +4,6 @@ import handleButton from "@/app/utils/handleButton";
 import { DatiContext } from "../context/DatiContext";
 
 const CompAndEdit = (props) => {
-  const [addField, setAddField] = useState(false);
   const [showField, setShowField] = useState(false);
   const [range, setRange] = useState(0);
   const [rangeEdit, setRangeEdit] = useState(0);

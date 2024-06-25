@@ -17,8 +17,35 @@ const DatiContextProvider = ({ children }) => {
   /*Competenze and edit field */
   const [compDati, setCompDati] = useState("");
   const [langDati, setLangDati] = useState("");
-  const[compFieldList, setCompFieldList] = useState([]);
-   const[langFieldList, setLangFieldList] = useState([]);
+  const [compFieldList, setCompFieldList] = useState([]);
+  const [langFieldList, setLangFieldList] = useState([]);
+
+  /*background professional field */
+
+  /*FormField */
+  const [formDati, setFormDati] = useState("");
+  const [formOrg, setFormOrg] = useState("");
+  const [formCity, setFormCity] = useState("");
+  const [formDateInizio, setFormDateInizio] = useState("");
+  const [formDateInizioAnno, setFormDateInizioAnno] = useState("");
+  const [formDateFine, setFormDateFine] = useState("");
+  const [formDateFineAnno, setFormDateFineAnno] = useState("");
+  const [formDataFieldList, setFormDataFieldList] = useState([]);
+  const [formContent, setFormContent] = useState("")
+
+  /*Experience Field */
+  const [expDati, setExpDati] = useState("");
+  const [expOrg, setExpOrg] = useState("");
+  const [expCity, setExpCity] = useState("");
+
+  const [exprDateInizo, setExprDateInizio] = useState("");
+  const [exprDateInizioAnno, setExprDateInizioAnno] = useState("");
+
+  const [exprDateFine, setExprDateFine] = useState("");
+  const [exprDateFineAnno, setExprDateFineAnno] = useState("");
+
+  const [exprDataFieldList, setExprDataFieldList] = useState([]);
+  const [exprContent, setExprContent] = useState("")
 
   return (
     <DatiContext.Provider
@@ -41,14 +68,57 @@ const DatiContextProvider = ({ children }) => {
         setCivilStatus,
         nationality,
         setNationality,
-        compDati, 
+
+        compDati,
         setCompDati,
-        langDati, 
+        langDati,
         setLangDati,
-        compFieldList, 
+        compFieldList,
         setCompFieldList,
-        langFieldList, 
+        langFieldList,
         setLangFieldList,
+
+        /*Formazione Dati */
+        formDati,
+        setFormDati,
+        formOrg,
+        setFormOrg,
+        formCity,
+        setFormCity,
+        formDateInizio,
+        setFormDateInizio,
+        formDateInizioAnno,
+        setFormDateInizioAnno,
+        formDateFine,
+        setFormDateFine,
+        formDateFineAnno,
+        setFormDateFineAnno,
+        formDataFieldList,
+        setFormDataFieldList,
+        formContent, 
+        setFormContent,
+
+
+
+        /*Experience Dati */
+        expDati,
+        setExpDati,
+        expOrg,
+        setExpOrg,
+        expCity,
+        setExpCity,
+        exprDateInizo,
+        setExprDateInizio,
+        exprDateInizioAnno,
+        setExprDateInizioAnno,
+        exprDateFine,
+        setExprDateFine,
+        exprDateFineAnno, 
+        setExprDateFineAnno,
+        exprDataFieldList,
+        setExprDataFieldList,
+        exprContent,  
+        setExprContent,
       }}
     >
       {children}
