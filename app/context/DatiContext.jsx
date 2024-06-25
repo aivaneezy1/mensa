@@ -4,6 +4,7 @@ import React, { createContext, useState } from "react";
 export const DatiContext = createContext({});
 
 const DatiContextProvider = ({ children }) => {
+  /*Dati Personali */
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,6 +14,11 @@ const DatiContextProvider = ({ children }) => {
   const [genere, setGenere] = useState("");
   const [civilStatus, setCivilStatus] = useState("");
   const [nationality, setNationality] = useState("");
+
+  /*Optionals for dati personali */
+   const [license, setLicense] = useState("");
+  const [website, setWebsite] = useState("");
+  const [linkin, setLinkin] = useState("");
 
   /*Competenze and edit field */
   const [compDati, setCompDati] = useState("");
@@ -68,6 +74,9 @@ const DatiContextProvider = ({ children }) => {
         setCivilStatus,
         nationality,
         setNationality,
+        license, setLicense,
+        website, setWebsite,
+        linkin, setLinkin,
 
         compDati,
         setCompDati,

@@ -109,7 +109,7 @@ const BgProfesisonale = (props) => {
       {showProfile && (
         <>
           {/*Data */}
-          <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 ">
+          <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 overflow-hidden">
             <h2 className="font-semibold text-medium">{props.role}</h2>
             <input
               type="text"
@@ -328,11 +328,11 @@ const BgProfesisonale = (props) => {
 
       {props.dataFieldList.length > 0 && (
         <>
-          <div className="flex flex-col items-center gap-5 break-words w-full w-full max-w-sm sm:max-w-lg text-gray-800">
+          <div className="flex flex-col gap-2 max-w-sm mt-10 ">
             {props.dataFieldList.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center gap-5 break-words w-full max-w-sm sm:max-w-lg    text-gray-800 mt-5"
+                className="w-full"
               >
                 {editindex === index ? (
                   <div>
@@ -657,12 +657,12 @@ const BgProfesisonale = (props) => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-5 w-md min-w-32  max-w-md overflow-hidden ">
+                  <div className="flex flex-col gap-5  max-w-sm overflow-hidden ">
                     <div
                       key={index}
-                      className="flex justify-between items-center border border-gray-500 border-solid py-2 py-5 gap-5 "
+                      className="flex justify-between items-center border border-gray-500 border-solid py-2 py-5 gap-5  "
                     >
-                      <div className="flex flex-col gap-2  ml-4">
+                      <div className="flex flex-col gap-2  ml-4 w-3/4">
                         <h2 className="font-semibold text-2xl ">{item.data}</h2>
                         <h2 className="text-gray-500 ">
                           {item.istitute}, {item.city}
@@ -670,7 +670,7 @@ const BgProfesisonale = (props) => {
                       
                       </div>
 
-                      <div className="ml-auto flex gap-5">
+                      <div className=" flex gap-5 ">
                         <button
                           onClick={() => deletePost(index)}
                           className="text-red-500 hover:text-red-700"

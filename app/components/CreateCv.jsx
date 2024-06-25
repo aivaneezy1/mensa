@@ -10,10 +10,12 @@ import { DatiContext } from "../context/DatiContext";
 import Profile from "./Card/Profile";
 import EsperienzeLavoro from "./Card/EsperienzeLavoro";
 import Formazione from "./Card/Formazione";
+import DatiPersonali from "./Card/DatiPersonali";
 
 export default function Home() {
   // Dati states
   const {
+    /*Dati personali */
     name,
     setName,
     email,
@@ -32,6 +34,16 @@ export default function Home() {
     setCivilStatus,
     nationality,
     setNationality,
+
+    /*Optionals for dati personali */
+    license,
+    setLicense,
+    website,
+    setWebsite,
+    linkin,
+    setLinkin,
+
+    /*Lingue e Compotenze */
     compDati,
     setCompDati,
     langDati,
@@ -85,20 +97,10 @@ export default function Home() {
   {
     /*OPTIONALS INPUT */
   }
-  const [license, setLicense] = useState("");
-  const [website, setWebsite] = useState("");
-  const [linkin, setLinkin] = useState("");
 
-  const [education, setEducation] = useState("");
-  const [experience, setExperience] = useState("");
-  const [skills, setSkills] = useState("");
   const [image, setImage] = useState(null);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // State to toggle optional fields
-  const [showDatiPersonali, setShowDatiPersonali] = useState(false);
-  const [showOptionalFields, setShowOptionalFields] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,136 +109,35 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-start flex-row mt-10 ml-5">
-        <form onSubmit={handleSubmit} className="flex flex-col mt-5">
-          {/*Dati Personali button */}
-          {handleButton(
-            showDatiPersonali,
-            setShowDatiPersonali,
-            "Dati Personali"
-          )}
-          {showDatiPersonali && (
-            <>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="text"
-                name="address"
-                placeholder="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="date"
-                name="dateOfBirth"
-                placeholder="Date of Birth"
-                value={dateBirth}
-                onChange={(e) => setDateBirth(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="text"
-                name="placeBirth"
-                placeholder="Place of Birth"
-                value={placeBirth}
-                onChange={(e) => setPlaceBirth(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="text"
-                name="genere"
-                placeholder="Genere"
-                value={genere}
-                onChange={(e) => setGenere(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="text"
-                name="nationality"
-                placeholder="Nationality"
-                value={nationality}
-                onChange={(e) => setNationality(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              <input
-                type="text"
-                name="civilStatus"
-                placeholder="Civil Status"
-                value={civilStatus}
-                onChange={(e) => setCivilStatus(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100"
-              />
-
-              {/* Button to toggle optional fields */}
-              {handleButton(
-                showOptionalFields,
-                setShowOptionalFields,
-                "Optionals"
-              )}
-
-              {/* Optional input fields */}
-              {showOptionalFields && (
-                <>
-                  <input
-                    type="text"
-                    name="license"
-                    placeholder="License"
-                    value={license}
-                    onChange={(e) => setLicense(e.target.value)}
-                    className="mb-2 p-2 border bg-gray-100"
-                  />
-
-                  <input
-                    type="text"
-                    name="website"
-                    placeholder="Website"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                    className="mb-2 p-2 border bg-gray-100"
-                  />
-
-                  <input
-                    type="text"
-                    name="linkin"
-                    placeholder="LinkedIn"
-                    value={linkin}
-                    onChange={(e) => setLinkin(e.target.value)}
-                    className="mb-2 p-2 border bg-gray-100"
-                  />
-                </>
-              )}
-            </>
-          )}
+      <div className="flex justify-start flex-row  ml-5 ">
+        <form onSubmit={handleSubmit} className="flex flex-col mt-5 ">
+          {/*Dati Personali */}
+          <DatiPersonali
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            address={address}
+            setAddress={setAddress}
+            dateBirth={dateBirth}
+            setDateBirth={setDateBirth}
+            placeBirth={placeBirth}
+            setPlaceBirth={setPlaceBirth}
+            genere={genere}
+            setGenere={setGenere}
+            civilStatus={civilStatus}
+            setCivilStatus={setCivilStatus}
+            nationality={nationality}
+            setNationality={setNationality}
+            license={license}
+            setLicense={setLicense}
+            website={website}
+            setWebsite={setWebsite}
+            linkin={linkin}
+            setLinkin={setLinkin}
+          />
 
           {/*Profile */}
           {<Profile />}
