@@ -20,6 +20,10 @@ const DatiContextProvider = ({ children }) => {
   const [website, setWebsite] = useState("");
   const [linkin, setLinkin] = useState("");
 
+
+  /*Profile */
+  const [profileContent, setProfileContent] = useState("")
+
   /*Competenze and edit field */
   const [compDati, setCompDati] = useState("");
   const [langDati, setLangDati] = useState("");
@@ -27,7 +31,6 @@ const DatiContextProvider = ({ children }) => {
   const [langFieldList, setLangFieldList] = useState([]);
 
   /*background professional field */
-
   /*FormField */
   const [formDati, setFormDati] = useState("");
   const [formOrg, setFormOrg] = useState("");
@@ -86,6 +89,10 @@ const DatiContextProvider = ({ children }) => {
         setCompFieldList,
         langFieldList,
         setLangFieldList,
+        
+        /*Profile Dati */
+        profileContent, 
+        setProfileContent,
 
         /*Formazione Dati */
         formDati,

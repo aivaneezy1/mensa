@@ -31,7 +31,8 @@ const Card = (props) => {
     <div className="grid grid-cols-1 md:grid-cols-2  p-10 ">
       <div
         className={` ${
-          hasPersonalData ? "border-r border-gray-500 border-solid" : ""} bg-gray-100 `}
+          hasPersonalData ? "border-r border-gray-500 border-solid" : ""
+        } bg-gray-100 `}
       >
         <header className="flex flex-col p-5 gap-5">
           {hasPersonalData ? (
@@ -41,7 +42,6 @@ const Card = (props) => {
           ) : (
             ""
           )}
-
           {props.name ? (
             <div className="whitespace-normal">
               {datiPersonali(
@@ -411,113 +411,41 @@ const Card = (props) => {
               Profilo
             </h2>
             <p className=" break-words break-all  whitespace-normal">
-              Sono un professionista con oltre 10 anni di esperienza nel settore
-              [specifica il settore, ad esempio: IT, marketing, finanza],
-              specializzato in [specifica la tua specializzazione, ad esempio:
-              sviluppo software, gestione progetti, analisi finanziaria]. Ho una
-              comprovata esperienza nel migliorare l'efficienza operativa e nel
-              guidare team verso il raggiungimento degli obiettivi aziendali. Mi
-              distingue la mia capacità di risolvere problemi complessi, di
-              comunicare efficacemente con stakeholder a tutti i livelli e di
-              implementare soluzioni innovative che migliorano i risultati
-              aziendali. Sono motivato da nuove sfide e sono sempre alla ricerca
-              di opportunità per crescere professionalmente e contribuire al
-              successo dell'organizzazione.
+              {props.profileContent?.replace(/<\/?[^>]+(>|$)/g, "")}
             </p>
           </section>
         </div>
 
-        {/*Formazione */}
+        {/* Formazione */}
         <div className="my-5">
           <section>
-            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5  text-left">
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
               Formazione
             </h2>
 
-            <div className="flex justify-between gap-5">
-              <div className="flex flex-col">
-                <h2 className="font-medium whitespace-nowrap">
-                  Senior Software Engineer
-                </h2>
-                <p className="text-gray-500 whitespace-nowrap">
-                  Tech Solutions S.p.A., Roma
-                </p>
-                <ul className="list-disc list-inside whitespace-normal">
-                  <li>
-                    Progettazione e sviluppo di soluzioni software avanzate per
-                    clienti nel settore industriale.
-                  </li>
-                  <li>
-                    Coordinamento di un team di 10 sviluppatori, garantendo il
-                    rispetto delle scadenze e degli standard di qualità.
-                  </li>
-                  <li>
-                    Implementazione di algoritmi di machine learning per
-                    l'analisi predittiva dei dati.
-                  </li>
-                </ul>
-              </div>
-              <p className="text-blue-500 whitespace-nowrap">
-                2010 set - 2012 set
-              </p>
-            </div>
-
-              <div className="flex justify-between gap-5">
-              <div className="flex flex-col">
-                <h2 className="font-medium whitespace-nowrap">
-                  Senior Software Engineer
-                </h2>
-                <p className="text-gray-500 whitespace-nowrap">
-                  Tech Solutions S.p.A., Roma
-                </p>
-                <ul className="list-disc list-inside whitespace-normal">
-                  <li>
-                    Progettazione e sviluppo di soluzioni software avanzate per
-                    clienti nel settore industriale.
-                  </li>
-                  <li>
-                    Coordinamento di un team di 10 sviluppatori, garantendo il
-                    rispetto delle scadenze e degli standard di qualità.
-                  </li>
-                  <li>
-                    Implementazione di algoritmi di machine learning per
-                    l'analisi predittiva dei dati.
-                  </li>
-                </ul>
-              </div>
-              <p className="text-blue-500 whitespace-nowrap">
-                2010 set - 2012 set
-              </p>
-            </div>
-
-
-             <div className="flex justify-between gap-5">
-              <div className="flex flex-col">
-                <h2 className="font-medium whitespace-nowrap">
-                  Senior Software Engineer
-                </h2>
-                <p className="text-gray-500 whitespace-nowrap">
-                  Tech Solutions S.p.A., Roma
-                </p>
-                <ul className="list-disc list-inside whitespace-normal">
-                  <li>
-                    Progettazione e sviluppo di soluzioni software avanzate per
-                    clienti nel settore industriale.
-                  </li>
-                  <li>
-                    Coordinamento di un team di 10 sviluppatori, garantendo il
-                    rispetto delle scadenze e degli standard di qualità.
-                  </li>
-                  <li>
-                    Implementazione di algoritmi di machine learning per
-                    l'analisi predittiva dei dati.
-                  </li>
-                </ul>
-              </div>
-              <p className="text-blue-500 whitespace-nowrap">
-                2010 set - 2012 set
-              </p>
-            </div>
+            {props.formDataFieldList.length > 0 &&
+              props.formDataFieldList.map((post, index) => (
+                <div key={index} className="flex justify-between gap-5 mb-5">
+                  <div className="flex flex-col">
+                    <h2 className="font-medium whitespace-nowrap">
+                      {post.data}
+                    </h2>
+                    <p className="text-gray-500 whitespace-nowrap">
+                      {post.istitute}, {post.city}
+                    </p>
+                    <ul className="list-disc list-inside">
+                      <li className="whitespace-pre-line">
+                        {post.content
+                          ?.replace(/<\/?[^>]+(>|$)/g, "")
+                          .replace(/\./g, ".\u200B")}
+                      </li>
+                    </ul>
+                  </div>
+                  <p className="text-blue-500 whitespace-nowrap">
+                    {post.dataInizioAnno} set - {post.dataFineAnno} set
+                  </p>
+                </div>
+              ))}
           </section>
         </div>
 
@@ -527,62 +455,25 @@ const Card = (props) => {
             <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
               Experience
             </h2>
-            <div className="flex justify-between gap-5">
-              <div className="flex flex-col">
-                <h2 className="font-medium whitespace-nowrap">
-                  Senior Software Engineer
-                </h2>
-                <p className="text-gray-500 whitespace-nowrap">
-                  Tech Solutions S.p.A., Roma
-                </p>
-                <ul className="list-disc list-inside whitespace-normal">
-                  <li>
-                    Progettazione e sviluppo di soluzioni software avanzate per
-                    clienti nel settore industriale.
-                  </li>
-                  <li>
-                    Coordinamento di un team di 10 sviluppatori, garantendo il
-                    rispetto delle scadenze e degli standard di qualità.
-                  </li>
-                  <li>
-                    Implementazione di algoritmi di machine learning per
-                    l'analisi predittiva dei dati.
-                  </li>
-                </ul>
-              </div>
-              <p className="text-blue-500 whitespace-nowrap">
-                2010 set - 2012 set
-              </p>
-            </div>
-
-
-             <div className="flex justify-between gap-5">
-              <div className="flex flex-col">
-                <h2 className="font-medium whitespace-nowrap">
-                  Senior Software Engineer
-                </h2>
-                <p className="text-gray-500 whitespace-nowrap">
-                  Tech Solutions S.p.A., Roma
-                </p>
-                <ul className="list-disc list-inside whitespace-normal">
-                  <li>
-                    Progettazione e sviluppo di soluzioni software avanzate per
-                    clienti nel settore industriale.
-                  </li>
-                  <li>
-                    Coordinamento di un team di 10 sviluppatori, garantendo il
-                    rispetto delle scadenze e degli standard di qualità.
-                  </li>
-                  <li>
-                    Implementazione di algoritmi di machine learning per
-                    l'analisi predittiva dei dati.
-                  </li>
-                </ul>
-              </div>
-              <p className="text-blue-500 whitespace-nowrap">
-                2010 set - 2012 set
-              </p>
-            </div>
+            {props.exprDataFieldList.length > 0 &&
+              props.exprDataFieldList.map((post, index) => (
+                <div key={index} className="flex justify-between  gap-5 mb-5">
+                  <div className="flex flex-col ">
+                    <h2 className="font-medium whitespace-nowrap">
+                      {post.data}
+                    </h2>
+                    <p className="text-gray-500 whitespace-nowrap">
+                      {post.istitute}, {post.city}
+                    </p>
+                    <ul className="list-disc list-inside whitespace-normal">
+                      <li>{post.content?.replace(/<\/?[^>]+(>|$)/g, "")}</li>
+                    </ul>
+                  </div>
+                  <p className="text-blue-500 whitespace-nowrap">
+                    {post.dataInizioAnno} set - {post.dataFineAnno} set
+                  </p>
+                </div>
+              ))}
           </section>
         </div>
       </div>

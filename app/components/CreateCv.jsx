@@ -13,6 +13,7 @@ import Formazione from "./Card/Formazione";
 import DatiPersonali from "./Card/DatiPersonali";
 
 export default function Home() {
+  
   // Dati states
   const {
     /*Dati personali */
@@ -42,6 +43,10 @@ export default function Home() {
     setWebsite,
     linkin,
     setLinkin,
+
+    /*Profile */
+  profileContent, 
+  setProfileContent,
 
     /*Lingue e Compotenze */
     compDati,
@@ -141,7 +146,10 @@ export default function Home() {
           />
 
           {/*Profile */}
-          {<Profile />}
+          {<Profile 
+          
+          content={profileContent}
+          setContent={setProfileContent}/>}
 
           {/*Formazione */}
           {
@@ -260,6 +268,10 @@ export default function Home() {
             langDati={langDati}
             compFieldList={compFieldList}
             langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
+
           />
         </div>
       </div>

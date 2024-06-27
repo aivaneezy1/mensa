@@ -103,6 +103,8 @@ const BgProfesisonale = (props) => {
     setYears(generateYears());
   }, []);
 
+  console.log("form", props.dataFieldList)
+
   return (
     <>
       {handleButton(showProfile, setShowProfile, props.field)}
