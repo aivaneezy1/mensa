@@ -9,7 +9,7 @@ const DatiP = (props) => {
       {/*Dati Personali button */}
       {handleButton(showDatiPersonali, setShowDatiPersonali, "Dati Personali")}
 
-      <div className="flex flex-col mt-5 gap-2 nax-w-sm min-w-sm">
+      <div className="flex flex-col  gap-2 nax-w-sm min-w-sm  ">
         {showDatiPersonali && (
           <>
             <input

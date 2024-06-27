@@ -2,58 +2,71 @@ import React from "react";
 import Image from "next/image";
 
 const Card = (props) => {
-  const hasPersonalData = props.name || props.email || props.phone || props.address || props.dateBirth || props.placeBirth || props.genere || props.nationality || props.civilStatus || props.license || props.website || props.linkin;
-
+  const hasPersonalData =
+    props.name ||
+    props.email ||
+    props.phone ||
+    props.address ||
+    props.dateBirth ||
+    props.placeBirth ||
+    props.genere ||
+    props.nationality ||
+    props.civilStatus ||
+    props.license ||
+    props.website ||
+    props.linkin;
 
   const datiPersonali = (image, dati) => {
     return (
-      <div className="flex flex-row gap-5 items-center mt-2 w-auto ">
+      <div className="flex flex-row gap-5 items-center  w-sm ">
         <div className="w-6 h-6 flex-shrink-0">{image}</div>
-        <div className="flex-grow  whitespace-normal break-words w-full">
+        <div className=" flex-grow break-words break-all  whitespace-normal w-sm">
           {dati}
         </div>
       </div>
     );
-  };  
+  };
 
   return (
-    <div className="flex  justify-center md:flex-row gap-5  p-10 w-1/2 ">
-      <div className={`w-auto  p-5  border-r border-gray-500 border-solid`}>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-10 ">
+      <div
+        className={` p-5  ${
+          hasPersonalData ? "border-r border-gray-500 border-solid" : ""
+        } bg-gray-100 `}
+      >
         <header>
           {hasPersonalData ? (
-            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-center">
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-nowrap text-center">
               Dati Personali
             </h2>
           ) : (
             ""
           )}
-          <h1>
-            {props.name ? (
-              <div className="">
-                {datiPersonali(
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#00abfb"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                  </svg>,
-                  props.name
-                )}
-              </div>
-            ) : (
-              ""
-            )}
-          </h1>
+          {props.name ? (
+            <div className="whitespace-normal">
+              {datiPersonali(
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#00abfb"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>,
+                props.name
+              )}
+            </div>
+          ) : (
+            ""
+          )}
           {props.email ? (
             <div className="">
               {datiPersonali(
@@ -103,7 +116,7 @@ const Card = (props) => {
           </div>
           <div>
             {props.address
-              ? datiPersonali(  
+              ? datiPersonali(
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-user w-full h-full mr-2"
@@ -388,29 +401,133 @@ const Card = (props) => {
             )}
           </div>
         </header>
-      </div>  
-
-      <div className="flex flex-col  p-5 flex-1 w-1/2 ">
-        <section>
-           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
-              Profile
-            </h2>
-        </section>
-        <section>
-           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
-              Formazione
-            </h2>
-        </section>
-
-        <section>
-           <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-normal text-left">
-              Experience
-            </h2>
-        </section>
       </div>
 
+      <div className="p-5">
+        {/*Profilo */}
+        <div>
+          <section>
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
+              Profilo
+            </h2>
+            <p className=" break-words break-all  whitespace-normal">
+              Sono un professionista con oltre 10 anni di esperienza nel settore
+              [specifica il settore, ad esempio: IT, marketing, finanza],
+              specializzato in [specifica la tua specializzazione, ad esempio:
+              sviluppo software, gestione progetti, analisi finanziaria]. Ho una
+              comprovata esperienza nel migliorare l'efficienza operativa e nel
+              guidare team verso il raggiungimento degli obiettivi aziendali. Mi
+              distingue la mia capacità di risolvere problemi complessi, di
+              comunicare efficacemente con stakeholder a tutti i livelli e di
+              implementare soluzioni innovative che migliorano i risultati
+              aziendali. Sono motivato da nuove sfide e sono sempre alla ricerca
+              di opportunità per crescere professionalmente e contribuire al
+              successo dell'organizzazione.
+            </p>
+          </section>
+        </div>
 
-      
+        {/*Formazione */}
+        <div className="my-5">
+          <section>
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5  text-left">
+              Formazione
+            </h2>
+
+            <div className="flex justify-between gap-5">
+              <div className="flex flex-col">
+                <h2 className="font-medium whitespace-nowrap">
+                  Senior Software Engineer
+                </h2>
+                <p className="text-gray-500 whitespace-nowrap">
+                  Tech Solutions S.p.A., Roma
+                </p>
+                <ul className="list-disc list-inside whitespace-normal">
+                  <li>
+                    Progettazione e sviluppo di soluzioni software avanzate per
+                    clienti nel settore industriale.
+                  </li>
+                  <li>
+                    Coordinamento di un team di 10 sviluppatori, garantendo il
+                    rispetto delle scadenze e degli standard di qualità.
+                  </li>
+                  <li>
+                    Implementazione di algoritmi di machine learning per
+                    l'analisi predittiva dei dati.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-blue-500 whitespace-nowrap">
+                2010 set - 2012 set
+              </p>
+            </div>
+
+              <div className="flex justify-between gap-5">
+              <div className="flex flex-col">
+                <h2 className="font-medium whitespace-nowrap">
+                  Senior Software Engineer
+                </h2>
+                <p className="text-gray-500 whitespace-nowrap">
+                  Tech Solutions S.p.A., Roma
+                </p>
+                <ul className="list-disc list-inside whitespace-normal">
+                  <li>
+                    Progettazione e sviluppo di soluzioni software avanzate per
+                    clienti nel settore industriale.
+                  </li>
+                  <li>
+                    Coordinamento di un team di 10 sviluppatori, garantendo il
+                    rispetto delle scadenze e degli standard di qualità.
+                  </li>
+                  <li>
+                    Implementazione di algoritmi di machine learning per
+                    l'analisi predittiva dei dati.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-blue-500 whitespace-nowrap">
+                2010 set - 2012 set
+              </p>
+            </div>
+          </section>
+        </div>
+
+        {/*Experience */}
+        <div className="my-5">
+          <section>
+            <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
+              Experience
+            </h2>
+            <div className="flex justify-between gap-5">
+              <div className="flex flex-col">
+                <h2 className="font-medium whitespace-nowrap">
+                  Senior Software Engineer
+                </h2>
+                <p className="text-gray-500 whitespace-nowrap">
+                  Tech Solutions S.p.A., Roma
+                </p>
+                <ul className="list-disc list-inside whitespace-normal">
+                  <li>
+                    Progettazione e sviluppo di soluzioni software avanzate per
+                    clienti nel settore industriale.
+                  </li>
+                  <li>
+                    Coordinamento di un team di 10 sviluppatori, garantendo il
+                    rispetto delle scadenze e degli standard di qualità.
+                  </li>
+                  <li>
+                    Implementazione di algoritmi di machine learning per
+                    l'analisi predittiva dei dati.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-blue-500 whitespace-nowrap">
+                2010 set - 2012 set
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   );
 };

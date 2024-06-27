@@ -109,8 +109,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-start flex-row  ml-5 h-screen ">
-        <form onSubmit={handleSubmit} className="flex flex-col mt-5 sm:w-1/2 sm:overflow-y-scroll ">
+      <div className="flex justify-center mx-auto  min-h-screen py-10  flex-row  lg:justify-between lg:ml-5  ">
+          <div className="flex flex-col gap-10 lg:gap-5 mt-5  lg:w-4/12 lg:overflow-y-scroll">
+          <form onSubmit={handleSubmit} className=" ">
           {/*Dati Personali */}
           <DatiPersonali
             name={name}
@@ -206,6 +207,8 @@ export default function Home() {
             setLangFieldList={setLangFieldList}
           />
 
+
+
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
           <button
@@ -214,6 +217,7 @@ export default function Home() {
           >
             Generate CV
           </button>
+      
 
           {isSubmitted && (
             <div className="justify-center flex items-center">
@@ -236,7 +240,9 @@ export default function Home() {
           )}
         </form>
 
-        <div className=" sm:block hidden mx-auto  mt-10 w-1/2 p-5 overflow-y-scroll">
+        </div>
+
+        <div className=" lg:block hidden mx-auto    lg:w-8/12 p-5 lg:overflow-y-scroll">
           <Card
             name={name}
             email={email}

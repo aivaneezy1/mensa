@@ -148,7 +148,7 @@ const CompAndEdit = (props) => {
                           livello: parseInt(e.target.value),
                         })
                       }
-                      className="sm:w-1/4 w-full"
+                      className="sm:w-1/4   w-full"
                     />
                     <label className="ml-2 text-center" htmlFor="edit">
                       {handleInputRange(rangeEdit)}

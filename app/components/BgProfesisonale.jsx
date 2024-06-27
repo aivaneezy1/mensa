@@ -337,6 +337,7 @@ const BgProfesisonale = (props) => {
                 {editindex === index ? (
                   <div>
                     {/*Data */}
+                    <h2 className="font-semibold text-medium">{props.role}</h2>
                     <div>
                       <input
                         type="text"
