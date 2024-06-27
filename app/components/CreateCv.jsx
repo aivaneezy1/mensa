@@ -114,8 +114,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center mx-auto  min-h-screen py-10  flex-row  lg:justify-between lg:ml-5  ">
-          <div className="flex flex-col gap-10 lg:gap-5 mt-5   lg:w-5/12 lg:overflow-y-scroll">
+      <div className="flex justify-center mx-auto  h-screen py-10  flex-row  lg:justify-between lg:ml-5  ">
+          <div className="flex flex-col gap-10 lg:gap-5 mt-5   lg:w-5/12 overflow-y-scroll">
           <form onSubmit={handleSubmit} className=" ">
           {/*Dati Personali */}
           <DatiPersonali
@@ -250,7 +250,7 @@ export default function Home() {
 
         </div>
 
-        <div className=" lg:block hidden mx-auto    lg:w-7/12 p-5 lg:overflow-y-scroll">
+        <div className=" lg:block hidden mx-auto   h-screen lg:w-7/12 p-5 overflow-y-scroll ">
           <Card
             name={name}
             email={email}

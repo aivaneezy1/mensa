@@ -113,7 +113,7 @@ const CompAndEdit = (props) => {
       )}
 
       {props.fieldList.length > 0 && (
-        <div className="mb-2 p-5">
+        <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 overflow-hidden">
           {props.fieldList.map((item, index) => (
             <div key={index} className="mb-2">
               {editIndex === index ? (
@@ -165,7 +165,7 @@ const CompAndEdit = (props) => {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-between items-center max-w-sm border border-gray-500 border-solid p-5">
+                <div className="flex justify-between items-center max-w-sm border border-gray-500 border-solid p-5 rounded-md">
                   <div className="">
                     <h2 className="font-semibold text-2xl break-words whitespace-normal">
                       {item.competenza ? item.competenza : `[${props.field}]`}
