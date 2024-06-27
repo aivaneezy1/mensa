@@ -28,13 +28,12 @@ const Card = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-10 ">
+    <div className="grid grid-cols-1 md:grid-cols-2  p-10 ">
       <div
-        className={` p-5  ${
-          hasPersonalData ? "border-r border-gray-500 border-solid" : ""
-        } bg-gray-100 `}
+        className={` ${
+          hasPersonalData ? "border-r border-gray-500 border-solid" : ""} bg-gray-100 `}
       >
-        <header>
+        <header className="flex flex-col p-5 gap-5">
           {hasPersonalData ? (
             <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-nowrap text-center">
               Dati Personali
@@ -42,6 +41,7 @@ const Card = (props) => {
           ) : (
             ""
           )}
+
           {props.name ? (
             <div className="whitespace-normal">
               {datiPersonali(
@@ -489,6 +489,35 @@ const Card = (props) => {
                 2010 set - 2012 set
               </p>
             </div>
+
+
+             <div className="flex justify-between gap-5">
+              <div className="flex flex-col">
+                <h2 className="font-medium whitespace-nowrap">
+                  Senior Software Engineer
+                </h2>
+                <p className="text-gray-500 whitespace-nowrap">
+                  Tech Solutions S.p.A., Roma
+                </p>
+                <ul className="list-disc list-inside whitespace-normal">
+                  <li>
+                    Progettazione e sviluppo di soluzioni software avanzate per
+                    clienti nel settore industriale.
+                  </li>
+                  <li>
+                    Coordinamento di un team di 10 sviluppatori, garantendo il
+                    rispetto delle scadenze e degli standard di qualità.
+                  </li>
+                  <li>
+                    Implementazione di algoritmi di machine learning per
+                    l'analisi predittiva dei dati.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-blue-500 whitespace-nowrap">
+                2010 set - 2012 set
+              </p>
+            </div>
           </section>
         </div>
 
@@ -499,6 +528,35 @@ const Card = (props) => {
               Experience
             </h2>
             <div className="flex justify-between gap-5">
+              <div className="flex flex-col">
+                <h2 className="font-medium whitespace-nowrap">
+                  Senior Software Engineer
+                </h2>
+                <p className="text-gray-500 whitespace-nowrap">
+                  Tech Solutions S.p.A., Roma
+                </p>
+                <ul className="list-disc list-inside whitespace-normal">
+                  <li>
+                    Progettazione e sviluppo di soluzioni software avanzate per
+                    clienti nel settore industriale.
+                  </li>
+                  <li>
+                    Coordinamento di un team di 10 sviluppatori, garantendo il
+                    rispetto delle scadenze e degli standard di qualità.
+                  </li>
+                  <li>
+                    Implementazione di algoritmi di machine learning per
+                    l'analisi predittiva dei dati.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-blue-500 whitespace-nowrap">
+                2010 set - 2012 set
+              </p>
+            </div>
+
+
+             <div className="flex justify-between gap-5">
               <div className="flex flex-col">
                 <h2 className="font-medium whitespace-nowrap">
                   Senior Software Engineer
