@@ -5,10 +5,14 @@ export const DatiContext = createContext({});
 
 const DatiContextProvider = ({ children }) => {
   /*Dati Personali */
+  const [profilePicture, setProfilePicture] = useState([]);
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("")
   const [dateBirth, setDateBirth] = useState("");
   const [placeBirth, setPlaceBirth] = useState("");
   const [genere, setGenere] = useState("");
@@ -59,14 +63,23 @@ const DatiContextProvider = ({ children }) => {
   return (
     <DatiContext.Provider
       value={{
+        profilePicture, 
+        setProfilePicture,
         name,
         setName,
+        lastName, 
+        setLastName,
         email,
+
         setEmail,
         phone,
         setPhone,
         address,
         setAddress,
+        postalCode, 
+        setPostalCode,
+        city, 
+        setCity,
         dateBirth,
         setDateBirth,
         placeBirth,

@@ -17,14 +17,23 @@ export default function Home() {
   // Dati states
   const {
     /*Dati personali */
+    profilePicture, 
+    setProfilePicture,
     name,
     setName,
+   lastName, 
+   setLastName,
     email,
     setEmail,
     phone,
     setPhone,
     address,
     setAddress,
+    postalCode, 
+    setPostalCode,
+    city, 
+    setCity,
+
     dateBirth,
     setDateBirth,
     placeBirth,
@@ -115,18 +124,26 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center mx-auto  h-screen py-10  flex-row  lg:justify-between lg:ml-5  ">
-          <div className="flex flex-col gap-10 lg:gap-5 mt-5   lg:w-5/12 overflow-y-scroll">
+          <div className="flex flex-col gap-10 lg:gap-5 mt-5 lg:w-5/12 lg:overflow-y-scroll">
           <form onSubmit={handleSubmit} className=" ">
           {/*Dati Personali */}
           <DatiPersonali
+            profilePicture={profilePicture}
+            setProfilePicture={setProfilePicture}
             name={name}
             setName={setName}
+            lastName={lastName}
+            setLastName={setLastName}
             email={email}
             setEmail={setEmail}
             phone={phone}
             setPhone={setPhone}
             address={address}
             setAddress={setAddress}
+            postalCode={postalCode}
+            setPostalCode={setPostalCode}
+            city={city}
+            setCity={setCity}
             dateBirth={dateBirth}
             setDateBirth={setDateBirth}
             placeBirth={placeBirth}
@@ -250,12 +267,15 @@ export default function Home() {
 
         </div>
 
-        <div className=" lg:block hidden mx-auto   h-screen lg:w-7/12 p-5 overflow-y-scroll ">
+        <div className=" lg:block hidden mx-auto   h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
           <Card
             name={name}
+            lastName={lastName}
             email={email}
             phone={phone}
             address={address}
+            postalCode={postalCode}
+            city={city}
             dateBirth={dateBirth}
             placeBirth={placeBirth}
             genere={genere}

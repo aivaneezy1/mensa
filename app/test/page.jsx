@@ -1,75 +1,43 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+// pages/upload.js
+"use client";
+import { useState } from "react";
 
-const CvPage = () => {
-  const [htmlContent, setHtmlContent] = useState('');
-  const [userData, setUserData] = useState({
-    name: 'John Doe',
-    address: '123 Main St, Anytown, USA',
-    email: 'johndoe@example.com',
-    phone: '123-456-7890',
-    // Add more fields as necessary
-  });
+export default function UploadPage() {
+  const [file, setFile] = useState(null);
 
-  useEffect(() => {
-    const fetchTemplate = async () => {
-      try{
-        const res = await fetch('/api/template');
-      const data = await res.json();
-      setHtmlContent(data.html);
-      }catch(err){
-        console.log("err in fetching", err)
-      }
-  
-    };
-
-    fetchTemplate();
-  }, []);
-
-  const replacePlaceholders = (html) => {
-    let replacedHtml = html;
-    for (const [key, value] of Object.entries(userData)) {
-      const placeholder = `{{${key}}}`;
-      replacedHtml = replacedHtml.replace(new RegExp(placeholder, 'g'), value);
-    }
-    return replacedHtml;
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
   };
+
+  const handleUpload = async () => {
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("file", file);
+  console.log("file",formData.get("file")); // Check if file is correctly appended
+
+  try {
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   return (
     <div>
-      <h1>Create Your CV</h1>
-      <form>
-        <input
-          type="text"
-          name="name"
-          value={userData.name}
-          onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-        />
-        <input
-          type="text"
-          name="address"
-          value={userData.address}
-          onChange={(e) => setUserData({ ...userData, address: e.target.value })}
-        />
-        <input
-          type="email"
-          name="email"
-          value={userData.email}
-          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-        />
-        <input
-          type="tel"
-          name="phone"
-          value={userData.phone}
-          onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
-        />
-        {/* Add more input fields as necessary */}
-      </form>
-      <div
-        dangerouslySetInnerHTML={{ __html: replacePlaceholders(htmlContent) }}
-      />
+      <h1>Upload a file</h1>
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleUpload}>Upload</button>
     </div>
   );
-};
-
-export default CvPage;
+}

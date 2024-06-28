@@ -28,12 +28,26 @@ const Card = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2  p-10 ">
+
+  
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr]  p-10 ">
+    {/*LEFT SIDE DIV */}
       <div
-        className={` ${
+        className={`bg-gray-100 h-screen  ${
           hasPersonalData ? "border-r border-gray-500 border-solid" : ""
-        } bg-gray-100 `}
+        } `}
       >
+        {/*Profile Image */}
+        <div className="flex justify-center items-center mt-5">
+          <Image 
+        src="/jjk1.jpg" 
+        alt="profile" 
+        width={150} 
+        height={150}
+        className="rounded-full"/>
+        </div>
+
+        
         <header className="flex flex-col p-5 gap-5">
           {hasPersonalData ? (
             <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-nowrap text-center">
@@ -402,6 +416,10 @@ const Card = (props) => {
           </div>
         </header>
       </div>
+
+
+
+      {/*RIGHT SIDE DIV */}
 
       <div className="p-5">
         {/*Profilo */}
