@@ -15,6 +15,7 @@
     "@tiptap/pm": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "formidable": "^3.5.1",
     "fs": "^0.0.1-security",
     "image-downloader": "^4.3.0",
     "mammoth": "^1.8.0",
