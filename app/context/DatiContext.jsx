@@ -5,7 +5,7 @@ export const DatiContext = createContext({});
 
 const DatiContextProvider = ({ children }) => {
   /*Dati Personali */
-  const [profilePicture, setProfilePicture] = useState([]);
+  const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("");
@@ -63,14 +63,13 @@ const DatiContextProvider = ({ children }) => {
   return (
     <DatiContext.Provider
       value={{
-        profilePicture, 
-        setProfilePicture,
+       selectedImage, 
+       setSelectedImage,
         name,
         setName,
         lastName, 
         setLastName,
         email,
-
         setEmail,
         phone,
         setPhone,

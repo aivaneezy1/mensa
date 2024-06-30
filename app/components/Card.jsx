@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const Card = (props) => {
   const hasPersonalData =
+    props.selectedImage ||
     props.name ||
     props.email ||
     props.phone ||
@@ -28,27 +29,30 @@ const Card = (props) => {
   };
 
   return (
-
-  
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr]  p-10 ">
-    {/*LEFT SIDE DIV */}
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] p-10 ">
+      {/*LEFT SIDE DIV */}
       <div
-        className={`bg-gray-100 h-screen  ${
-          hasPersonalData ? "border-r border-gray-500 border-solid" : ""
+        className={`${
+          hasPersonalData
+            ? " bg-gray-100 border-r border-gray-500 border-md border-solid"
+            : "bg-gray-100 h-screen"
         } `}
       >
-        {/*Profile Image */}
-        <div className="flex justify-center items-center mt-5">
-          <Image 
-        src="/jjk1.jpg" 
-        alt="profile" 
-        width={150} 
-        height={150}
-        className="rounded-full"/>
-        </div>
-
-        
-        <header className="flex flex-col p-5 gap-5">
+        {/* Top Profile Image Background */}
+        {props.selectedImage && (
+          <div className="relative bg-third rounded-b-full flex justify-center items-center h-40 w-full">
+            <div className="absolute bottom-0 transform translate-y-1/2">
+              <Image
+                src={props.selectedImage}
+                alt="profile"
+                width={150}
+                height={150}
+                className="rounded-full border bg-white"
+              />
+            </div>
+          </div>
+        )}
+        <header className="flex flex-col p-5 gap-5 mt-20  ">
           {hasPersonalData ? (
             <h2 className="text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 whitespace-nowrap text-center">
               Dati Personali
@@ -415,9 +419,19 @@ const Card = (props) => {
             )}
           </div>
         </header>
+
+        {/*Bottom background color */}
+        {hasPersonalData && (
+          <div className="relative">
+            <div className="bg-third overflow-hidden h-10">
+              {/* Use an absolute positioned pseudo-element for the curved top */}
+              <div className="absolute top-0 left-0 w-full h-full bg-third transform "></div>
+            </div>
+          </div>
+        )}
+
+
       </div>
-
-
 
       {/*RIGHT SIDE DIV */}
 

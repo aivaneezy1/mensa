@@ -103,7 +103,7 @@ const BgProfesisonale = (props) => {
     setYears(generateYears());
   }, []);
 
-  console.log("form", props.dataFieldList);
+
 
   return (
     <>

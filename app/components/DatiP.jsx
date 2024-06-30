@@ -6,13 +6,7 @@ const DatiP = (props) => {
   const [showDatiPersonali, setShowDatiPersonali] = useState(false);
   const [showOptionalFields, setShowOptionalFields] = useState(false);
 
-
-  
-  const [selectedImage, setSelectedImage] = useState("");
-  const [selectedFile, setSelectedFile] = useState("")
-
-  
-  return (  
+  return (
     <>
       {/*Dati Personali button */}
       {handleButton(showDatiPersonali, setShowDatiPersonali, "Dati Personali")}
@@ -21,14 +15,11 @@ const DatiP = (props) => {
         {showDatiPersonali && (
           <>
             <div className=" flex flex-col gap-5 lg:flex-row lg:flex">
-
-
-                {/*Upload Component */}
-                <Upload 
-                selectedImage={selectedImage} 
-                setSelectedImage={setSelectedImage}
-                selectedFile={selectedFile}
-                setSelectedFile={setSelectedFile}/>
+              {/*Upload Component */}
+              <Upload
+                selectedImage={props.selectedImage}
+                setSelectedImage={props.setSelectedImage}
+              />
 
               <div className="lg:flex lg:flex-col gap-2 ">
                 <div className="lg:flex lg:flex-row gap-2">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 const Upload = (props) => {
-  const [selectedImage, setSelectedImage] = useState("");
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -9,12 +8,8 @@ const Upload = (props) => {
       const imageUrl = URL.createObjectURL(file);
       props.setSelectedImage(imageUrl);
     }
-  };
+  }; 
 
-    
-  useEffect(() =>{
-
-  },[])
 
 
   return (

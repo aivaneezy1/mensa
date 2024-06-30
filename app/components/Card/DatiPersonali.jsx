@@ -4,6 +4,8 @@ const DatiPersonali = (props) => {
   return (
     <div>
       <DatiP
+       selectedImage={props.selectedImage} 
+        setSelectedImage={props.setSelectedImage}
         profilePicture={props.profilePicture}
         setProfilePicture={props.setProfilePicture}
         name={props.name}
