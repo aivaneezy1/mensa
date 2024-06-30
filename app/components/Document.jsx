@@ -1,5 +1,5 @@
-"use client"
-import React,{useEffect, useState} from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Page,
   Text,
@@ -14,18 +14,30 @@ import {
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#3f4181",
     padding: 20,
+    marginTop: 50,
   },
+  title: {
+    fontWeight: 600,
+    textAlign: "center",
+    borderBottom: 1,
+    color: "#3b82f6",
+  },
+
+  livello: {
+    color: "#6b7280",
+  },
+
   section: {
     marginBottom: 10,
   },
   heading: {
-    color: "#ffffff",
+    flexDirection: "row",
+
     marginBottom: 5,
   },
   text: {
-    color: "#ffffff",
+    color: "black",
   },
   image: {
     width: 150,
@@ -38,62 +50,78 @@ const MyDocument = (props) => (
   <Document>
     <Page style={styles.page}>
       <View style={styles.section}>
-        <Text style={styles.heading}>Name:</Text>
-        <Text style={styles.text}>{props.name}</Text>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.heading}>Email:</Text>
+        <Image style={styles.image} src={props.selectedImage} />
+        <Text style={styles.title}>Dati Personali</Text>
+        <Text style={styles.text}>
+          {props.name} {props.lastName}
+        </Text>
+
         <Text style={styles.text}>{props.email}</Text>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.heading}>Phone:</Text>
-        <Text style={styles.text}>{props.phone}</Text>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.heading}>Education:</Text>
-        <Text style={styles.text}>{props.education}</Text>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.heading}>Experience:</Text>
-        <Text style={styles.text}>{props.experience}</Text>
+        <Text style={styles.text}>{props.address}</Text>
+        <Text style={styles.text}>{props.postalCode}</Text>
+        <Text style={styles.text}>{props.city}</Text>
+        <Text style={styles.text}>{props.dateBirth}</Text>
+        <Text style={styles.text}>{props.placeBirth}</Text>
+        <Text style={styles.text}>{props.genere}</Text>
+        <Text style={styles.text}>{props.nationality}</Text>
+        <Text style={styles.text}>{props.civilStatus}</Text>
+        <Text style={styles.text}>{props.license}</Text>
+        <Text style={styles.text}>{props.website}</Text>
+        <Text style={styles.text}>{props.linkin}</Text>
+
+        {/*Compotenza */}
+        <Text style={styles.title}>Compotenza</Text>
+        {props.compFieldList?.length > 0 &&
+          props.compFieldList.map((post) => (
+            <>
+              <Text style={styles.text}>{post.competenza}</Text>
+              <Text style={styles.livello}>{post.livello}</Text>
+            </>
+          ))}
+
+        {/*Lingue */}
+        <Text style={styles.title}>Lingue</Text>
+        {props.langFieldList?.length > 0 &&
+          props.langFieldList.map((post) => (
+            <>
+              <Text style={styles.text}>{post.competenza}</Text>
+              <Text style={styles.livello}>{post.livello}</Text>
+            </>
+          ))}
       </View>
 
-        <View style={styles.section}>
-        <Text style={styles.heading}>Test</Text>
-        <Text style={styles.text}>{props.experience}</Text>
+      <View>
+        {/*Profile */}
+        <Text style={styles.title}>Profile</Text>
+        <Text style={styles.text}>{props.profileContent}</Text>
       </View>
 
-      
-      <View style={styles.section}>
-        <Text style={styles.heading}>Skills:</Text>
-        <Text style={styles.text}>{props.skills}</Text>
+          <View>
+        {/*Formazione */}
+        <Text style={styles.title}>Formazione</Text>
+        {props.formDataFieldList.length > 0 && props.formDataFieldList.map((post) =>(
+          <>
+            <Text style={styles.text}>{post.competenza}</Text>
+          </>
+        ))}
       </View>
 
-      
-      {props.images && (
-        <View style={styles.section}>
-          <Text style={styles.heading}>Photo:</Text>
-          <Image src={URL.createObjectURL(props.images)} style={styles.image} />
-        </View>
-      )}
+
     </Page>
-
-    
   </Document>
 );
 
 export const PDFView = () => {
-    const [client,setClient] = useState(false);
+  const [client, setClient] = useState(false);
 
-    useEffect(() =>{
-        setClient(true);
-    },[])
-    return(
-        <PDFViewer>
-        <MyDocument/>
-        </PDFViewer>
-    )
-
-}
+  useEffect(() => {
+    setClient(true);
+  }, []);
+  return (
+    <PDFViewer>
+      <MyDocument />
+    </PDFViewer>
+  );
+};
 
 export default MyDocument;

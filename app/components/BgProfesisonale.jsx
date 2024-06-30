@@ -94,7 +94,7 @@ const BgProfesisonale = (props) => {
       const currentYear = new Date().getFullYear();
       const yearsArray = [];
       for (let year = currentYear; year >= 1950; year--) {
-        yearsArray.push(year);
+        yearsArray.push(year);``
       }
       return yearsArray;
     };
@@ -102,8 +102,6 @@ const BgProfesisonale = (props) => {
     // Set state with generated years on component mount
     setYears(generateYears());
   }, []);
-
-
 
   return (
     <>
@@ -384,6 +382,237 @@ const BgProfesisonale = (props) => {
                       </div>
                     </div>
 
+                    {/**DATE INIZIO */}
+                    <div className="flex flex-row  justify-between sm:justify-start items-center gap-10 sm:gap-20">
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="startMonth"
+                          className="font-semibold text-medium"
+                        >
+                          Start Date
+                        </label>
+                        <select
+                          className=" py-2 px-4 ml-r rounded-xl bg-gray-100"
+                          id="startMonth"
+                          name="startMonth"
+                          value={editData.dataInizio}
+                          onChange={(e) => setEditData({...editData, dataInizio: e.target.value})}
+                        >
+                          <option className="bg-white text-gray-800" value="">
+                            {" "}
+                            Month
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="gen"
+                          >
+                            January
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="feb"
+                          >
+                            February
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="mar"
+                          >
+                            March
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="apr"
+                          >
+                            April
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="mag"
+                          >
+                            May
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="giu"
+                          >
+                            June
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="lug"
+                          >
+                            July
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="ago"
+                          >
+                            August
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="set"
+                          >
+                            September
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="ott"
+                          >
+                            October
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="nov"
+                          >
+                            November
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="dec"
+                          >
+                            December
+                          </option>
+                        </select>
+                        {/**DATE INIZIO Anno */}
+                        <select
+                          className="py-2 px-4 ml-r rounded-md bg-gray-100"
+                          id="year"
+                          name="year"
+                          value={editData.dataInizioAnno}
+                          onChange={(e) =>
+                            setEditData({...editData, dataInizioAnno: e.target.value})
+                          }
+                        >
+                          {years.map((year) => (
+                            <option
+                              key={year}
+                              value={year}
+                              className="bg-white text-gray-800"
+                            >
+                              {year}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/**DATE Fine */}
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="startMonth"
+                          className="font-semibold text-medium"
+                        >
+                          End Date
+                        </label>
+                        <select
+                          className=" py-2 px-4 ml-l rounded-md bg-gray-100"
+                          id="startMonth"
+                          name="startMonth"
+                          value={editData.dataFine}
+                          onChange={(e) => setEditData({...editData, dataFine: e.target.value})}
+                        >
+                          <option className="bg-white text-gray-800" value="">
+                            {" "}
+                            Month
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="gen"
+                          >
+                            January
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="feb"
+                          >
+                            February
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="mar"
+                          >
+                            March
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="apr"
+                          >
+                            April
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="mag"
+                          >
+                            May
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="giu"
+                          >
+                            June
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="lug"
+                          >
+                            July
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="ago"
+                          >
+                            August
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="set"
+                          >
+                            September
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="ott"
+                          >
+                            October
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="nov"
+                          >
+                            November
+                          </option>
+                          <option
+                            className="bg-white text-gray-800"
+                            value="dec"
+                          >
+                            December
+                          </option>
+                        </select>
+
+                        {/**DATE Fine ANNO */}
+                        <select
+                          className="py-2 px-4 ml-l rounded-md bg-gray-100"
+                          id="year"
+                          name="year"
+                          value={editData.dataFineAnno}
+                          onChange={(e) =>
+                            setEditData({...editData, dataFineAnno: e.target.value})
+                          }
+                        >
+                          {years.map((year) => (
+                            <option
+                              key={year}
+                              value={year}
+                              className="bg-white text-gray-800"
+                            >
+                              {year}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
                     {/* Rich Text Editor */}
                     <div className="flex flex-col gap-10">
                       <div>
@@ -399,7 +628,7 @@ const BgProfesisonale = (props) => {
                       <div className="flex justify-end items-center gap-2">
                         <button
                           className="text-gray-500 hover:text-gray-700"
-                          onClick={(e) =>setEditIndex(null)}
+                          onClick={(e) => setEditIndex(null)}
                         >
                           Cancel
                         </button>
