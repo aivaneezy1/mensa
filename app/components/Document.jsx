@@ -93,20 +93,58 @@ const MyDocument = (props) => (
       <View>
         {/*Profile */}
         <Text style={styles.title}>Profile</Text>
-        <Text style={styles.text}>{props.profileContent}</Text>
+        <Text style={styles.text}>
+          {props.profileContent
+            .replace(/<\/?[^>]+(>|$)/g, "")
+            .replace(/\./g, ".\u200B")}
+        </Text>
       </View>
 
-          <View>
+      <View>
         {/*Formazione */}
         <Text style={styles.title}>Formazione</Text>
-        {props.formDataFieldList.length > 0 && props.formDataFieldList.map((post) =>(
-          <>
-            <Text style={styles.text}>{post.competenza}</Text>
-          </>
-        ))}
+        {props.formDataFieldList.length > 0 &&
+          props.formDataFieldList.map((post) => (
+            <>
+              <Text style={styles.text}>{post.data}</Text>
+              <Text style={styles.text}>{post.istitute}</Text>
+              <Text style={styles.text}>{post.city}</Text>
+              <Text style={styles.text}>
+                {post.content
+                  .replace(/<\/?[^>]+(>|$)/g, "")
+                  .replace(/\./g, ".\u200B")}
+              </Text>
+
+              <Text>
+                {post.dataInizioAnno} {post.dataInizio} - {post.dataFineAnno}{" "}
+                {post.dataFine}
+              </Text>
+            </>
+          ))}
       </View>
 
+      {/*Expereince Data */}
+      <Text style={styles.title}>Experience</Text>
+      <Text>
+        {props.exprDataFieldList.length > 0 &&
+          props.exprDataFieldList.map((post) => (
+            <>
+              <Text style={styles.text}>{post.data}</Text>
+              <Text style={styles.text}>{post.istitute}</Text>
+              <Text style={styles.text}>{post.city}</Text>
+              <Text style={styles.text}>
+                {post.content
+                  ?.replace(/<\/?[^>]+(>|$)/g, "")
+                  .replace(/\./g, ".\u200B")}
+              </Text>
 
+              <Text>
+                {post.dataInizioAnno} {post.dataInizio} - {post.dataFineAnno}{" "}
+                {post.dataFine}
+              </Text>
+            </>
+          ))}
+      </Text>
     </Page>
   </Document>
 );

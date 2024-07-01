@@ -16,7 +16,7 @@ const EsperienzeLavoro = (props) => {
 
         dataInizio={props.exprDateInizo}
         setDataInizio={props.setExprDateInizio}
-        dataInizioAnno={props.exprDateInizioAnno}
+       dataInizioAnno={props.exprDateInizioAnno}
         setDataInizioAnno={props.setExprDateInizioAnno}
 
         dataFine={props.exprDateFine}

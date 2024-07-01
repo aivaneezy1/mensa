@@ -17,13 +17,19 @@ const Card = (props) => {
     props.website ||
     props.linkin;
 
+  let currentYear = new Date().getFullYear();
+
   const datiPersonali = (image, dati, dati2, dati3, dati4) => {
     return (
       <div className="flex flex-row gap-5 items-center  w-sm ">
         <div className="w-6 h-6 flex-shrink-0">{image}</div>
         <div className=" flex-grow break-words break-all  whitespace-normal w-sm">
-          <p className="block">{dati} {dati2}</p>
-          <p>{dati3} {dati4}</p>
+          <p className="block">
+            {dati} {dati2}
+          </p>
+          <p>
+            {dati3} {dati4}
+          </p>
         </div>
       </div>
     );
@@ -80,7 +86,8 @@ const Card = (props) => {
                   <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                   <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>,
-                props.name, props.lastName
+                props.name,
+                props.lastName
               )}
             </div>
           ) : (
@@ -153,7 +160,9 @@ const Card = (props) => {
                     <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                     <path d="M10 12h4v4h-4z" />
                   </svg>,
-                  props.address, props.postalCode, props.city
+                  props.address,
+                  props.postalCode,
+                  props.city
                 )
               : " "}
           </div>
@@ -430,12 +439,9 @@ const Card = (props) => {
             </div>
           </div>
         )}
-
-
       </div>
 
       {/*RIGHT SIDE DIV */}
-
       <div className="p-5 ">
         {/*Profilo */}
         <div>
@@ -466,15 +472,17 @@ const Card = (props) => {
                     <p className="text-gray-500 whitespace-nowrap">
                       {post.istitute}, {post.city}
                     </p>
-                      <p className="break-word whitespace-normal">
-                        {post.content
-                          ?.replace(/<\/?[^>]+(>|$)/g, "")
-                          .replace(/\./g, ".\u200B")}
-                      </p>
-                  
+                    <p className="break-word whitespace-normal">
+                      {post.content
+                        ?.replace(/<\/?[^>]+(>|$)/g, "")
+                        .replace(/\./g, ".\u200B")}
+                    </p>
                   </div>
                   <p className="text-blue-500 whitespace-nowrap">
-                    {post.dataInizioAnno} {post.dataInizio} - {post.dataFineAnno} {post.dataFine}
+                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                    {post.dataInizio} -{" "}
+                    {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                    {post.dataFine}
                   </p>
                 </div>
               ))}
@@ -489,7 +497,7 @@ const Card = (props) => {
             </h2>
             {props.exprDataFieldList.length > 0 &&
               props.exprDataFieldList.map((post, index) => (
-               <div key={index} className="flex justify-between gap-5 mb-5">
+                <div key={index} className="flex justify-between gap-5 mb-5">
                   <div className="flex flex-col">
                     <h2 className="font-medium whitespace-nowrap">
                       {post.data}
@@ -497,14 +505,17 @@ const Card = (props) => {
                     <p className="text-gray-500 whitespace-nowrap">
                       {post.istitute}, {post.city}
                     </p>
-                     <p className="break-all   whitespace-normal">
-                        {post.content
-                          ?.replace(/<\/?[^>]+(>|$)/g, "")
-                          .replace(/\./g, ".\u200B")}
-                      </p>
+                    <p className="break-all   whitespace-normal">
+                      {post.content
+                        ?.replace(/<\/?[^>]+(>|$)/g, "")
+                        .replace(/\./g, ".\u200B")}
+                    </p>
                   </div>
                   <p className="text-blue-500 whitespace-nowrap">
-                    {post.dataInizioAnno} {post.dataInzio} - {post.dataFineAnno} {post.dataFine}
+                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                    {post.dataInizio} -{" "}
+                    {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                    {post.dataFine}
                   </p>
                 </div>
               ))}

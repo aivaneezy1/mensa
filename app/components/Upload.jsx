@@ -15,7 +15,7 @@ const Upload = (props) => {
   return (
     <div>
       <div className="flex flex-col bg-transparent border py-10 mt-2 rounded-md">
-        <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer ">
+        <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer whitespace-nowrap ">
           {props.selectedImage ? (
             <Image
               className="w-full h-auto  object-cover"

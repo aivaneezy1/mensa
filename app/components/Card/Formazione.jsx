@@ -16,6 +16,7 @@ const Formazione = (props) => {
 
         dataInizio={props.formDateInizio}
         setDataInizio={props.setFormDateInizio}
+        
          dataInizioAnno={props.formDateInizioAnno}
         setDataInizioAnno={props.setFormDateInizioAnno}
 

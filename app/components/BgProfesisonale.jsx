@@ -94,7 +94,8 @@ const BgProfesisonale = (props) => {
       const currentYear = new Date().getFullYear();
       const yearsArray = [];
       for (let year = currentYear; year >= 1950; year--) {
-        yearsArray.push(year);``
+        yearsArray.push(year);
+        ``;
       }
       return yearsArray;
     };
@@ -103,6 +104,7 @@ const BgProfesisonale = (props) => {
     setYears(generateYears());
   }, []);
 
+  console.log("Field", props.dataFieldList);
   return (
     <>
       {handleButton(showProfile, setShowProfile, props.field)}
@@ -203,13 +205,15 @@ const BgProfesisonale = (props) => {
                     December
                   </option>
                 </select>
-                {/**DATE INIZIO Anoo */}
+                {/**DATE INIZIO Anno */}
                 <select
                   className="py-2 px-4 ml-r rounded-md bg-gray-100"
                   id="year"
                   name="year"
                   value={props.dataInizioAnno}
-                  onChange={(e) => props.setDataInizioAnno(e.target.value)}
+                  onChange={(e) => {
+                    props.setDataInizioAnno(e.target.value);
+                  }}
                 >
                   {years.map((year) => (
                     <option
@@ -286,7 +290,9 @@ const BgProfesisonale = (props) => {
                   id="year"
                   name="year"
                   value={props.dataFineAnno}
-                  onChange={(e) => props.setDataFineAnno(e.target.value)}
+                  onChange={(e) => {
+                    props.setDataFineAnno(e.target.value);
+                  }}
                 >
                   {years.map((year) => (
                     <option
@@ -396,12 +402,25 @@ const BgProfesisonale = (props) => {
                           id="startMonth"
                           name="startMonth"
                           value={editData.dataInizio}
-                          onChange={(e) => setEditData({...editData, dataInizio: e.target.value})}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataInizio: e.target.value,
+                            })
+                          }
                         >
-                          <option className="bg-white text-gray-800" value="">
-                            {" "}
-                            Month
-                          </option>
+                          {props.dataFieldList.length > 0 ? (
+                            props.dataFieldList.map((item, index) => (
+                              <option className="bg-white text-gray-800">
+                                {item.dataInizio}
+                              </option>
+                            ))
+                          ) : (
+                            <option className="bg-white text-gray-800" value="">
+                              Months
+                            </option>
+                          )}
+
                           <option
                             className="bg-white text-gray-800"
                             value="gen"
@@ -482,10 +501,13 @@ const BgProfesisonale = (props) => {
                           name="year"
                           value={editData.dataInizioAnno}
                           onChange={(e) =>
-                            setEditData({...editData, dataInizioAnno: e.target.value})
+                            setEditData({
+                              ...editData,
+                              dataInizioAnno: e.target.value,
+                            })
                           }
                         >
-                          {years.map((year) => (
+                           {years.map((year) => (
                             <option
                               key={year}
                               value={year}
@@ -510,12 +532,25 @@ const BgProfesisonale = (props) => {
                           id="startMonth"
                           name="startMonth"
                           value={editData.dataFine}
-                          onChange={(e) => setEditData({...editData, dataFine: e.target.value})}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              dataFine: e.target.value,
+                            })
+                          }
                         >
-                          <option className="bg-white text-gray-800" value="">
-                            {" "}
-                            Month
-                          </option>
+                            {props.dataFieldList.length > 0 ? (
+                            props.dataFieldList.map((item, index) => (
+                              <option className="bg-white text-gray-800">
+                                {item.dataFine}
+                              </option>
+                            ))
+                          ) : (
+                            <option className="bg-white text-gray-800" value="">
+                              Months
+                            </option>
+                          )}
+
                           <option
                             className="bg-white text-gray-800"
                             value="gen"
@@ -597,7 +632,10 @@ const BgProfesisonale = (props) => {
                           name="year"
                           value={editData.dataFineAnno}
                           onChange={(e) =>
-                            setEditData({...editData, dataFineAnno: e.target.value})
+                            setEditData({
+                              ...editData,
+                              dataFineAnno: e.target.value,
+                            })
                           }
                         >
                           {years.map((year) => (

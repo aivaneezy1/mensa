@@ -9,7 +9,7 @@ const Compotenze = (props) => {
       setDati={props.setDati}
       fieldList={props.compFieldList}
       setFieldList={props.setCompFieldList} 
-      field={"Competenzaa"}
+      field={"Competenza"}
     />
   );
 };
