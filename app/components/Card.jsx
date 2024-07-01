@@ -16,8 +16,7 @@ const Card = (props) => {
     props.license ||
     props.website ||
     props.linkin;
-
-  let currentYear = new Date().getFullYear();
+ let currentYear = new Date().getFullYear();
 
   const datiPersonali = (image, dati, dati2, dati3, dati4) => {
     return (
