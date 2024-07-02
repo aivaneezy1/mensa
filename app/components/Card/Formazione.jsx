@@ -30,8 +30,8 @@ const Formazione = (props) => {
        setDataFieldList={props.setFormDataFieldList}
         content={props.formContent}
         setContent={props.setFormContent}
-        field={"Formazione"}
-        role={"Formazione"}
+        field={"Istruzione"}
+        role={"Istruzione"}
         company={"Istituto"}
       />
     </div>

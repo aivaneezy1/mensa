@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import handleButton from "../utils/handleButton";
+import OptionalButton from "../utils/OptionalButton";
 import Upload from "./Upload";
+import { DatiContext } from "../context/DatiContext";
 const DatiP = (props) => {
   // State to toggle optional fields
-  const [showDatiPersonali, setShowDatiPersonali] = useState(false);
+ 
   const [showOptionalFields, setShowOptionalFields] = useState(false);
-
+  const {showProfile} = useContext(DatiContext)
   return (
     <>
       {/*Dati Personali button */}
-      {handleButton(showDatiPersonali, setShowDatiPersonali, "Dati Personali")}
-
+      {handleButton("DatiPersonali","Dati Personali")}
       <div className="flex flex-col  gap-2  min-w-sm  ">
-        {showDatiPersonali && (
+        {showProfile === "DatiPersonali" && (
           <>
             <div className=" flex flex-col gap-5 lg:flex-row lg:flex">
               {/*Upload Component */}
@@ -151,11 +152,7 @@ const DatiP = (props) => {
             />
 
             {/* Button to toggle optional fields */}
-            {handleButton(
-              showOptionalFields,
-              setShowOptionalFields,
-              "Optionals"
-            )}
+            {OptionalButton(showOptionalFields, setShowOptionalFields, "Opzionali")}
 
             {/* Optional input fields */}
             {showOptionalFields && (

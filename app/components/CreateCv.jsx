@@ -120,7 +120,7 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center mx-auto  min-h-screen py-10  h-screen flex-row  lg:justify-between lg:ml-5  ">
-          <div className="flex flex-col gap-10 lg:gap-5 mt-5 lg:w-5/12 lg:overflow-y-scroll">
+          <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
           <form onSubmit={handleSubmit} className=" ">
           {/*Dati Personali */}
           <DatiPersonali
@@ -234,7 +234,7 @@ export default function Home() {
 
           <button
             type="submit"
-            className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-2 "
+            className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
           >
             Generate CV
           </button>

@@ -267,7 +267,7 @@ const MyDocument = (props) => (
         </Text>
 
         {/* Formazione */}
-        <Text style={[styles.rightTitle]}>Formazione</Text>
+        <Text style={[styles.rightTitle]}>Istruzione</Text>
         {props.formDataFieldList.length > 0 &&
           props.formDataFieldList.map((post, index) => (
             <View key={index} style={styles.dateContainer}>

@@ -1,21 +1,12 @@
-import { useContext } from "react";
-import { DatiContext } from "../context/DatiContext";
- 
- const handleButton = (showSection, field) => {
-    const {showProfile, setShowProfile} = useContext(DatiContext)
-     const toggleButton = () =>{
-      if(showProfile != showSection){
-         setShowProfile(showSection)
-      }else{
-        setShowProfile(null)
-      }
-  }
-    return (
-      <>
+import React from 'react'
+
+const OptionalButton = (data, setData, field) => {
+  return (
+   <>
         <div className="flex items-center justify-between mt-5 ">
           <button
             type="button"
-            onClick={toggleButton}
+            onClick={() => setData(!data)}
             className="border-2 border-solid p-2 rounded-2xl mb-2 w-auto flex items-center justify-center shadow-md hover:border-blue-300 hover:bg-blue-100"
           >
             <svg
@@ -39,8 +30,7 @@ import { DatiContext } from "../context/DatiContext";
           </button>
         </div>
       </>
-    );
-  };
+  )
+}
 
-
-  export default handleButton
+export default OptionalButton

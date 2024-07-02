@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { RichTextEditor } from "./Editor";
+import { DatiContext } from "../context/DatiContext";
 
 import handleButton from "../utils/handleButton";
 const BgProfesisonale = (props) => {
-  const [showProfile, setShowProfile] = useState(false);
+  const {showProfile, setShowProfile} = useContext(DatiContext)
   const [editindex, setEditIndex] = useState(null);
   /*Time State */
   const [years, setYears] = useState([]);
+  
 
   /* Edit State*/
   const [editData, setEditData] = useState({
@@ -35,7 +37,7 @@ const BgProfesisonale = (props) => {
       },
     ]);
     resetForm();
-    setShowProfile(!showProfile);
+    setShowProfile(null);
   };
 
   const resetForm = () => {
@@ -107,12 +109,12 @@ const BgProfesisonale = (props) => {
 
   return (
     <>
-      {handleButton(showProfile, setShowProfile, props.field)}
-      {showProfile && (
+      {handleButton(props.field, props.field)}
+      {showProfile === props.field && (
         <>
           {/*Data */}
           <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 overflow-hidden">
-            <h2 className="font-semibold text-medium">{props.role}</h2>
+            <h2 className="font-semibold text-medium mt-2">{props.role}</h2>
             <input
               type="text"
               name="data"
@@ -155,7 +157,7 @@ const BgProfesisonale = (props) => {
                   htmlFor="startMonth"
                   className="font-semibold text-medium"
                 >
-                  Start Date
+                  Data Inizio
                 </label>
                 <select
                   className=" py-2 px-4 ml-r rounded-xl bg-gray-100"
@@ -233,7 +235,7 @@ const BgProfesisonale = (props) => {
                   htmlFor="startMonth"
                   className="font-semibold text-medium"
                 >
-                  End Date
+                  Data Fine
                 </label>
                 <select
                   className=" py-2 px-4 ml-l rounded-md bg-gray-100"
@@ -395,7 +397,7 @@ const BgProfesisonale = (props) => {
                           htmlFor="startMonth"
                           className="font-semibold text-medium"
                         >
-                          Start Date
+                          Data Inizio
                         </label>
                         <select
                           className=" py-2 px-4 ml-r rounded-xl bg-gray-100"
@@ -525,7 +527,7 @@ const BgProfesisonale = (props) => {
                           htmlFor="startMonth"
                           className="font-semibold text-medium"
                         >
-                          End Date
+                          Data Fine
                         </label>
                         <select
                           className=" py-2 px-4 ml-l rounded-md bg-gray-100"

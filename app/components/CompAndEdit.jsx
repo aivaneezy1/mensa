@@ -4,9 +4,9 @@ import handleButton from "@/app/utils/handleButton";
 import { DatiContext } from "../context/DatiContext";
 
 const CompAndEdit = (props) => {
-  const [showField, setShowField] = useState(false);
+
+   const {showProfile, setShowProfile} = useContext(DatiContext)
   const [range, setRange] = useState(0);
-  const [rangeEdit, setRangeEdit] = useState(0);
   const [editIndex, setEditIndex] = useState(null);
   const [editData, setEditData] = useState({
     competenza: "",
@@ -38,7 +38,7 @@ const CompAndEdit = (props) => {
     ]);
     props.setDati("");
     setRange(0);
-    setShowField(!showField);
+    setShowProfile(null)
   };
 
   const editPost = (index) => {
@@ -62,8 +62,8 @@ const CompAndEdit = (props) => {
 
   return (
     <>
-      {handleButton(showField, setShowField, props.field)}
-      {showField && (
+      {handleButton(props.field, props.field)}
+      {showProfile === props.field && (
         <>
           <div className="flex flex-col p-5">
             <div className="flex flex-col">
@@ -151,7 +151,7 @@ const CompAndEdit = (props) => {
                       className="sm:w-1/4   w-full"
                     />
                     <label className="ml-2 text-center" htmlFor="edit">
-                      {handleInputRange(rangeEdit)}
+                      {handleInputRange(editData.livello)}
                     </label>
                   </div>
 

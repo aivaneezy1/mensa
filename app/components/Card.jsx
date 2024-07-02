@@ -313,7 +313,7 @@ const Card = (props) => {
         <div className="my-5">
           <section>
             <h2 className="font-semibold text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
-              Formazione
+              Istruzione
             </h2>
 
             {props.formDataFieldList.length > 0 &&

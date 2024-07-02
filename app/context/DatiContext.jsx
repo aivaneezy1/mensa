@@ -4,6 +4,10 @@ import React, { createContext, useState } from "react";
 export const DatiContext = createContext({});
 
 const DatiContextProvider = ({ children }) => {
+
+  /*Show button */
+  const [showProfile, setShowProfile] = useState(null);
+
   /*Dati Personali */
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
@@ -63,6 +67,9 @@ const DatiContextProvider = ({ children }) => {
   return (
     <DatiContext.Provider
       value={{
+      showProfile, 
+      setShowProfile,
+
        selectedImage, 
        setSelectedImage,
         name,
