@@ -23,10 +23,10 @@ const Card = (props) => {
       <div className="flex flex-row gap-5 items-center  w-sm ">
         <div className="w-6 h-6 flex-shrink-0">{image}</div>
         <div className=" flex-grow break-words break-all  whitespace-normal w-sm">
-          <p className="block">
+          <p className="block break-words whitespace-normal">
             {dati} {dati2}
           </p>
-          <p>
+          <p className="break-words whitespace-normal">
             {dati3} {dati4}
           </p>
         </div>
@@ -46,7 +46,7 @@ const Card = (props) => {
       >
         {/* Top Profile Image Background */}
         {props.selectedImage && (
-          <div className="relative bg-third rounded-b-full flex justify-center items-center h-40 w-full">
+          <div className="relative bg-third rounded-b-full flex top-0 left-0 right-0 justify-center items-center h-40 w-full">
             <div className="absolute bottom-0 transform translate-y-1/2">
               <Image
                 src={props.selectedImage}
@@ -289,7 +289,7 @@ const Card = (props) => {
           <div className="relative mt-5">
             <div className="bg-third overflow-hidden h-10">
               {/* Use an absolute positioned pseudo-element for the curved top */}
-              <div className="absolute top-0 left-0 w-full h-full bg-third transform "></div>
+              <div className="absolute top-0 left-0  bottom-0 w-full h-full bg-third transform "></div>
             </div>
           </div>
         )}
@@ -331,7 +331,7 @@ const Card = (props) => {
                   <p className="text-gray-500 whitespace-nowrap">
                     {post.istitute}, {post.city}
                   </p>
-                  <p className="break-all   whitespace-normal">
+                  <p className="break-words   whitespace-normal">
                     {post.content
                       ?.replace(/<\/?[^>]+(>|$)/g, "")
                       .replace(/\./g, ".\u200B")}

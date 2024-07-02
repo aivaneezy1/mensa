@@ -15,14 +15,12 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: "row",
     padding: 20,
-    marginTop: 50,
   },
 
   leftColumn: {
     flexDirection: "column",
     flex: 0.4, // Adjusted flex to make it smaller
-    padding: 10,
-    borderRight: 1,
+    borderRightWidth: 1,
     backgroundColor: "#f3f4f6",
   },
 
@@ -34,33 +32,61 @@ const styles = StyleSheet.create({
 
   // Left div style
   LeftTitle: {
-    fontWeight: 600,
+    fontWeight: "bold",
     textAlign: "center",
     borderBottom: 1,
     color: "#3b82f6",
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: 30,
+    marginTop: 30,
     fontSize: 24,
     textAlign: "center",
+    
   },
 
+  imageContainer: {
+    position: "relative",
+    backgroundColor: "#395a86",
+    borderBottomLeftRadius: 75, 
+    borderBottomRightRadius: 75, 
+    alignItems: "center",
+    justifyContent: "center",
+    height: 140, 
+    top: 0,
+    left: 0,
+    right: 0,
+    marginBottom:30,
+  },
+
+  imageWrapper: {
+    position: "absolute",
+    bottom: 10,
+    transform: "translateY(50%)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   image: {
-    width: 150,
-    height: 150,
-    marginBottom: 10,
-    borderRadius: 75,
+    width: 120,
+    height: 120,
+    borderRadius: 75, // Rounded-full
+    backgroundColor: "white",
+   
   },
 
   // Personal Data
   datiPersonaliContainer: {
     flexDirection: "row",
-    marginTop:2,
-    marginBottom:2,
+    marginTop: 2,
+    marginBottom: 2,
+
   },
   datiPersonaliImage: {
     width: 20,
     height: 20,
     marginRight: 10, // Space between image and text
+    marginLeft: 10, // Space between image and text
+    flexDirection: "row",
+    alignItems:"center",
+    alignContent:"center"
   },
 
   textContainer: {
@@ -71,25 +97,29 @@ const styles = StyleSheet.create({
   personalData: {
     color: "black",
     fontSize: 14,
+    alignItems:"center",
+    alignContent:"center"
   },
 
   // lingue e compotenze livello
   compLingText: {
     fontSize: 14,
+    marginLeft: 10, 
   },
   livello: {
     color: "#6b7280",
     fontSize: 14,
     marginTop: 2,
+    marginLeft: 10, 
   },
 
   // right div style
   rightTitle: {
-    fontWeight: 600,
+    fontWeight: "bold",
     borderBottom: 1,
     color: "#3b82f6",
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: 20,
+    marginTop: 20,
     fontSize: 24,
     textAlign: "left",
   },
@@ -108,7 +138,7 @@ const styles = StyleSheet.create({
   // bgData
   bgData: {
     fontSize: 14,
-    fontWeight: 500,
+    fontWeight: "medium",
     marginTop: 5,
     marginBottom: 5,
   },
@@ -126,6 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 2,
     marginBottom: 2,
+    color: "#6b7280",
   },
 
   // bg content text
@@ -133,6 +164,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
     marginBottom: 5,
+    flexWrap: "wrap",
+    width: "100%",
   },
 });
 
@@ -163,67 +196,64 @@ const MyDocument = (props) => (
     <Page style={styles.page}>
       {/* Left Column */}
       <View style={styles.leftColumn}>
-        <Image style={styles.image} src={props.selectedImage} />
-        <Text style={styles.LeftTitle}>Dati Personali</Text>
-
-
-        {/*Personal Data */}
-        {datiPersonali("/images/user.png", props.name, props.lastName)}
-        {datiPersonali("/images/email.png", props.email)}
-   
-        {datiPersonali("/images/phone.png", props.phone)}
-        {datiPersonali(
-          "/images/house.png",
-          props.address,
-          props.postalCode,
-          props.city
+        {props.selectedImage && (
+          <View style={styles.imageContainer}>
+            <View style={styles.imageWrapper}>
+              <Image style={styles.image} src={props.selectedImage} />
+            </View>
+          </View>
         )}
-        {datiPersonali("/images/calendar.png", props.dateBirth)}
-        {datiPersonali("/images/location.png", props.placeBirth)}
-        {datiPersonali("/images/gender.png", props.genere)}
-        {datiPersonali("/images/flag.png", props.nationality)}
-        {datiPersonali("/images/civil.png", props.civilStatus)}
-        {datiPersonali("/images/car.png", props.license)}
-        {datiPersonali("/images/globe.png", props.website)}
-        {datiPersonali("/images/linkedin.png", props.linkin)}
-
-        {/* <View style={styles.datiPersonaliContainer}>
-        <Text style={styles.personalData}>
-          {props.name} {props.lastName}
-        </Text>
-        <Text style={styles.personalData}>{props.email}</Text>
-        <Text style={styles.personalData}>{props.address}</Text>
-        <Text style={styles.personalData}>{props.postalCode}</Text>
-        <Text style={styles.personalData}>{props.city}</Text>
-        <Text style={styles.personalData}>{props.dateBirth}</Text>
-        <Text style={styles.personalData}>{props.placeBirth}</Text>
-        <Text style={styles.personalData}>{props.genere}</Text>
-        <Text style={styles.personalData}>{props.nationality}</Text>
-        <Text style={styles.personalData}>{props.civilStatus}</Text>
-        <Text style={styles.personalData}>{props.license}</Text>
-        <Text style={styles.personalData}>{props.website}</Text>
-        <Text style={styles.personalData}>{props.linkin}</Text>
-        </View> */}
+        <Text style={styles.LeftTitle}>Dati Personali</Text>
+        {/*Personal Data */}
+        {(props.name || props.lastName) &&
+          datiPersonali("/images/user.png", props.name, props.lastName)}
+        {props.email && datiPersonali("/images/email.png", props.email)}
+        {props.phone && datiPersonali("/images/phone.png", props.phone)}
+        {(props.address || props.postalCode || props.city) &&
+          datiPersonali(
+            "/images/house.png",
+            props.address,
+            props.postalCode,
+            props.city
+          )}
+        {props.dateBirth &&
+          datiPersonali("/images/calendar.png", props.dateBirth)}
+        {props.placeBirth &&
+          datiPersonali("/images/location.png", props.placeBirth)}
+        {props.genere && datiPersonali("/images/gender.png", props.genere)}
+        {props.nationality &&
+          datiPersonali("/images/flag.png", props.nationality)}
+        {props.civilStatus &&
+          datiPersonali("/images/civil.png", props.civilStatus)}
+        {props.license && datiPersonali("/images/car.png", props.license)}
+        {props.website && datiPersonali("/images/globe.png", props.website)}
+        {props.linkin && datiPersonali("/images/linkedin.png", props.linkin)}
 
         {/* Competenza */}
-        <Text style={styles.LeftTitle}>Competenza</Text>
-        {props.compFieldList?.length > 0 &&
-          props.compFieldList.map((post, index) => (
-            <View key={index}>
-              <Text style={styles.compLingText}>{post.competenza}</Text>
-              <Text style={styles.livello}>{post.livello}</Text>
-            </View>
-          ))}
+        {props.compFieldList?.length > 0 && (
+          <>
+            <Text style={styles.LeftTitle}>Compotenza</Text>
+            {props.compFieldList.map((post, index) => (
+              <View key={index}>
+                <Text style={styles.compLingText}>{post.competenza}</Text>
+                <Text style={styles.livello}>{post.livello}</Text>
+              </View>
+            ))}
+          </>
+        )}
 
         {/* Lingue */}
-        <Text style={styles.LeftTitle}>Lingue</Text>
-        {props.langFieldList?.length > 0 &&
-          props.langFieldList.map((post, index) => (
-            <View key={index}>
-              <Text style={styles.compLingText}>{post.competenza}</Text>
-              <Text style={styles.livello}>{post.livello}</Text>
-            </View>
-          ))}
+        {props.langFieldList?.length > 0 && (
+          <>
+            <Text style={styles.LeftTitle}>Lingue</Text>
+            {props.langFieldList.map((post, index) => (
+              <View key={index}>
+                <Text style={styles.compLingText}>{post.competenza}</Text>
+                <Text style={styles.livello}>{post.livello}</Text>
+              </View>
+            ))}
+          </>
+        )}
       </View>
 
       {/* Right Column */}
