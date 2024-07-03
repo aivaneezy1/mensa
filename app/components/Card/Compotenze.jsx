@@ -10,6 +10,8 @@ const Compotenze = (props) => {
       fieldList={props.compFieldList}
       setFieldList={props.setCompFieldList} 
       field={"Competenza"}
+      range={props.range}
+      setRange={props.setRange}
     />
   );
 };

@@ -9,7 +9,7 @@ const page = () => {
       </div>
 
       <div className='w-1/2'>
-        <BlueDakiModel/>
+   
       </div>
     </div>
   )

@@ -5,10 +5,11 @@ import Slider from "@mui/material/Slider";
 import { useContext, useState } from "react";
 import handleButton from "@/app/utils/handleButton";
 import { DatiContext } from "../context/DatiContext";
+import handleInputRange from "../utils/handleInputRange";
 
 const CompAndEdit = (props) => {
   const { showProfile, setShowProfile } = useContext(DatiContext);
-  const [range, setRange] = useState(0);
+ 
   const [editIndex, setEditIndex] = useState(null);
   const [editData, setEditData] = useState({
     competenza: "",
@@ -16,30 +17,15 @@ const CompAndEdit = (props) => {
     setRange: 0,
   });
 
-  const handleInputRange = (value) => {
-    switch (value) {
-      case 1:
-        return "Principiante";
-      case 2:
-        return "Elementare";
-      case 3:
-        return "Buono";
-      case 4:
-        return "Eccellente";
-      case 5:
-        return "Fluente";
-      default:
-        return "Choose";
-    }
-  };
+
 
   const addPost = () => {
     props.setFieldList([
       ...props.fieldList,
-      { competenza: props.dati, livello: handleInputRange(range) },
+      { competenza: props.dati, livello: handleInputRange(props.range) },
     ]);
     props.setDati("");
-    setRange(0);
+    props.setRange(0);
     setShowProfile(null);
   };
 
@@ -87,14 +73,14 @@ const CompAndEdit = (props) => {
               <Box sx={{ width: 270 }}>
                 <Slider
                   id="range"
-                  value={range}
+                  value={props.range}
                   color="primary"
                   min={0}
                   max={5}
                   step={1}
-                  onChange={(e, value) => setRange(value)}
+                  onChange={(e, value) => props.setRange(value)}
                 />
-                <label htmlFor="range">{handleInputRange(range)}</label>
+                <label htmlFor="range">{handleInputRange(props.range)}</label>
               </Box>
             </div>
 

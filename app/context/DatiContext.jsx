@@ -37,6 +37,8 @@ const DatiContextProvider = ({ children }) => {
   const [langDati, setLangDati] = useState("");
   const [compFieldList, setCompFieldList] = useState([]);
   const [langFieldList, setLangFieldList] = useState([]);
+  // slider range
+  const [range, setRange] = useState(0);
 
   /*background professional field */
   /*FormField */
@@ -108,6 +110,8 @@ const DatiContextProvider = ({ children }) => {
         setCompFieldList,
         langFieldList,
         setLangFieldList,
+        range, 
+        setRange,
         
         /*Profile Dati */
         profileContent, 

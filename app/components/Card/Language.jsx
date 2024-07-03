@@ -8,7 +8,10 @@ const Language = (props) => {
       setDati={props.setDati}
       fieldList={props.langFieldList}
       setFieldList={props.setLangFieldList}
-      field={"Languages"}/>
+      field={"Languages"}
+      range={props.range}
+      setRange={props.setRange}/>
+      
     </div>
   )
 }
