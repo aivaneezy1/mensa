@@ -11,6 +11,7 @@ import Profile from "./Card/Profile";
 import EsperienzeLavoro from "./Card/EsperienzeLavoro";
 import Formazione from "./Card/Formazione";
 import DatiPersonali from "./Card/DatiPersonali";
+import BlueDakiModel from "./CardModels/BlueDaki";
 
 export default function Home() {
   
@@ -294,7 +295,7 @@ export default function Home() {
         </div>
 
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          <Card
+          {/* <Card
             selectedImage={selectedImage}
             name={name}
             lastName={lastName}
@@ -318,8 +319,34 @@ export default function Home() {
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
+          /> */}
 
+          <BlueDakiModel
+           selectedImage={selectedImage}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            nationality={nationality}
+            civilStatus={civilStatus}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compDati={compDati}
+            langDati={langDati}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
           />
+         
         </div>
       </div>
     </>

@@ -1,9 +1,16 @@
 import React from 'react'
+import BlueDakiModel from '../components/CardModels/BlueDaki'
 
 const page = () => {
   return (
-    <div className='flex justify-center items-center min-h-screen mx-auto text-4xl font-bold'>
-      This a testing area
+    <div className='flex h-screen'>
+      <div className='w-1/2 bg-blue-500 flex flex-col'>
+        test
+      </div>
+
+      <div className='w-1/2'>
+        <BlueDakiModel/>
+      </div>
     </div>
   )
 }
