@@ -1,15 +1,30 @@
-import React, { useState, useEffect } from "react";
+"use client"
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Cropper from "react-easy-crop";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import Modal from "@mui/material/Modal";
 const Upload = (props) => {
+  const inputRef = useRef();
+    
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       props.setSelectedImage(imageUrl);
+      // Reset the input value to null to allow the same file to be selected again
+      if (inputRef.current) {
+        inputRef.current.value = null;
+      }
     }
-  }; 
+  };
 
+  const selectedFilePopup = () => {
+    inputRef.current.click();
+  };
 
 
   return (
@@ -17,13 +32,23 @@ const Upload = (props) => {
       <div className="flex flex-col bg-transparent border py-10 mt-2 rounded-md">
         <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer whitespace-nowrap ">
           {props.selectedImage ? (
-            <Image
-              className="w-full h-auto  object-cover"
-              src={props.selectedImage}
-              alt="p"
-              width={150}
-              height={150}
-            />
+            <>
+              <input
+                type="file"
+                className="hidden"
+                ref={inputRef}
+                onChange={handleImageChange}
+              />
+              <button onClick={selectedFilePopup}>
+              <Image
+                className="w-full h-auto  object-cover"
+                src={props.selectedImage}
+                alt="p"
+                width={150}
+                height={150}
+              />
+              </button>
+            </>
           ) : (
             <>
               <input

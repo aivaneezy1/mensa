@@ -120,7 +120,7 @@ const BgProfesisonale = (props) => {
               name="data"
               value={props.data}
               onChange={(ev) => props.setData(ev.target.value)}
-              className="mb-2 p-2 border bg-gray-100 rounded-md"
+              className="mb-2 p-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             {/*Istute o Azienda */}
@@ -132,7 +132,7 @@ const BgProfesisonale = (props) => {
                   name="data"
                   value={props.istitute}
                   onChange={(ev) => props.setIstitute(ev.target.value)}
-                  className="mb-2 p-2 border bg-gray-100 rounded-md"
+                  className="mb-2 p-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -145,7 +145,7 @@ const BgProfesisonale = (props) => {
                   placeholder="Citta'"
                   value={props.city}
                   onChange={(ev) => props.setCity(ev.target.value)}
-                  className="mb-2 p-2 border bg-gray-100 rounded-md mr-5"
+                  className="mb-2 p-2 border bg-gray-100 rounded-md mr-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -351,7 +351,7 @@ const BgProfesisonale = (props) => {
                         onChange={(e) =>
                           setEditData({ ...editData, data: e.target.value })
                         }
-                        className="mb-2 p-2 border bg-gray-100 w-full mt-2 rounded-md"
+                        className="mb-2 p-2 border bg-gray-100 w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
 
@@ -371,7 +371,7 @@ const BgProfesisonale = (props) => {
                               istitute: e.target.value,
                             })
                           }
-                          className="mb-2 p-2 border bg-gray-100 rounded-md w-full"
+                          className="mb-2 p-2 border bg-gray-100 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
 
@@ -385,7 +385,7 @@ const BgProfesisonale = (props) => {
                           onChange={(e) =>
                             setEditData({ ...editData, city: e.target.value })
                           }
-                          className="mb-2 p-2 border bg-gray-100 rounded-md w-full"
+                          className="mb-2 p-2 border bg-gray-100 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
                     </div>

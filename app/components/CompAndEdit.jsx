@@ -1,11 +1,13 @@
 "use client";
-import React, { useContext, useState } from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import { useContext, useState } from "react";
 import handleButton from "@/app/utils/handleButton";
 import { DatiContext } from "../context/DatiContext";
 
 const CompAndEdit = (props) => {
-
-   const {showProfile, setShowProfile} = useContext(DatiContext)
+  const { showProfile, setShowProfile } = useContext(DatiContext);
   const [range, setRange] = useState(0);
   const [editIndex, setEditIndex] = useState(null);
   const [editData, setEditData] = useState({
@@ -38,7 +40,7 @@ const CompAndEdit = (props) => {
     ]);
     props.setDati("");
     setRange(0);
-    setShowProfile(null)
+    setShowProfile(null);
   };
 
   const editPost = (index) => {
@@ -77,21 +79,23 @@ const CompAndEdit = (props) => {
                 value={props.dati}
                 placeholder={props.field}
                 onChange={(e) => props.setDati(e.target.value)}
-                className="mb-2 p-2 border bg-gray-100 sm:w-1/2 w-full mt-2"
+                className=" flex flex-grow mb-2 p-2 border bg-gray-100 lg:w-1/2 w-full mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div className="flex flex-row gap-2 mx-2">
-              <input
-                type="range"
-                min="0"
-                max="5"
-                id="range"
-                value={range}
-                onChange={(e) => setRange(parseInt(e.target.value))}
-                className=" range-input sm:w-1/4 w-full"
-              />
-              <label htmlFor="range">{handleInputRange(range)}</label>
+              <Box sx={{ width: 270 }}>
+                <Slider
+                  id="range"
+                  value={range}
+                  color="primary"
+                  min={0}
+                  max={5}
+                  step={1}
+                  onChange={(e, value) => setRange(value)}
+                />
+                <label htmlFor="range">{handleInputRange(range)}</label>
+              </Box>
             </div>
 
             <div className="flex justify-end items-center gap-2 w-full mt-5">
@@ -113,11 +117,11 @@ const CompAndEdit = (props) => {
       )}
 
       {props.fieldList.length > 0 && (
-        <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 overflow-hidden">
+        <div className="flex flex-col gap-5 break-words w-full  text-gray-800 overflow-hidden">
           {props.fieldList.map((item, index) => (
             <div key={index} className="mb-2">
               {editIndex === index ? (
-                <div className="flex flex-col items-start w-full">
+                <div className="flex flex-col p-5 w-full">
                   <div className="flex flex-col w-full">
                     <label
                       htmlFor="competenze"
@@ -131,28 +135,30 @@ const CompAndEdit = (props) => {
                       onChange={(e) =>
                         setEditData({ ...editData, competenza: e.target.value })
                       }
-                      className="mb-2 p-2 border bg-gray-100 sm:w-1/2  w-full mt-2"
+                      className="mb-2 p-2 border bg-gray-100 lg:w-1/2  w-full mt-2"
                     />
                   </div>
 
-                  <div className="flex items-center w-full">
-                    <input
-                      type="range"
-                      id="edit"
-                      min="0"
-                      max="5"
-                      value={editData.livello}
-                      onChange={(e) =>
-                        setEditData({
-                          ...editData,
-                          livello: parseInt(e.target.value),
-                        })
-                      }
-                      className="sm:w-1/4   w-full"
-                    />
-                    <label className="ml-2 text-center" htmlFor="edit">
-                      {handleInputRange(editData.livello)}
-                    </label>
+                  <div className="flex flex-row gap-2 mx-2">
+                    <Box sx={{ width: 270 }}>
+                      <Slider
+                        id="edit"
+                        value={editData.livello}
+                        color="primary"
+                        min={0}
+                        max={5}
+                        step={1}
+                        onChange={(e,value) =>
+                          setEditData({
+                            ...editData,
+                            livello: value,
+                          })
+                        }
+                      />
+                      <label htmlFor="edit">
+                        {handleInputRange(editData.livello)}
+                      </label>
+                    </Box>
                   </div>
 
                   <div className="flex justify-end gap-2 w-full mt-5">

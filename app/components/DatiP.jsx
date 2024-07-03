@@ -8,6 +8,8 @@ const DatiP = (props) => {
  
   const [showOptionalFields, setShowOptionalFields] = useState(false);
   const {showProfile} = useContext(DatiContext)
+
+
   return (
     <>
       {/*Dati Personali button */}
@@ -32,7 +34,7 @@ const DatiP = (props) => {
                       id="name"
                       value={props.name}
                       onChange={(e) => props.setName(e.target.value)}
-                      className="mb-2 p-2 border bg-gray-100"
+                      className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -43,7 +45,7 @@ const DatiP = (props) => {
                       id="lastName"
                       value={props.lastName}
                       onChange={(e) => props.setLastName(e.target.value)}
-                      className="mb-2 p-2 border bg-gray-100"
+                      className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                 </div>
@@ -56,7 +58,7 @@ const DatiP = (props) => {
                     id="email"
                     value={props.email}
                     onChange={(e) => props.setEmail(e.target.value)}
-                    className="mb-2 p-2 border bg-gray-100"
+                    className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -69,7 +71,7 @@ const DatiP = (props) => {
               id="phone number"
               value={props.phone}
               onChange={(e) => props.setPhone(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="address">Indirizzo</label>
@@ -79,7 +81,7 @@ const DatiP = (props) => {
               id="address"
               value={props.address}
               onChange={(e) => props.setAddress(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="postalCode">Codice Postale</label>
@@ -89,7 +91,7 @@ const DatiP = (props) => {
               id="postal code"
               value={props.postalCode}
               onChange={(e) => props.setPostalCode(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="city">Città</label>
@@ -98,7 +100,7 @@ const DatiP = (props) => {
               name="city"
               value={props.city}
               onChange={(e) => props.setCity(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="dateofBirth">Data di Nascita</label>
@@ -108,7 +110,7 @@ const DatiP = (props) => {
               id="dateofBirth"
               value={props.dateBirth}
               onChange={(e) => props.setDateBirth(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="placeBirth">Luogo di Nascita</label>
@@ -118,7 +120,7 @@ const DatiP = (props) => {
               id="placeBirth"
               value={props.placeBirth}
               onChange={(e) => props.setPlaceBirth(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="genere">Genere</label>
@@ -128,7 +130,7 @@ const DatiP = (props) => {
               id="genere"
               value={props.genere}
               onChange={(e) => props.setGenere(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="nationality">Nazionalità</label>
@@ -138,7 +140,7 @@ const DatiP = (props) => {
               id="nationality"
               value={props.nationality}
               onChange={(e) => props.setNationality(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <label htmlFor="civilStatus">Stato Civile</label>
@@ -148,7 +150,7 @@ const DatiP = (props) => {
               id="civilStatus"
               value={props.civilStatus}
               onChange={(e) => props.setCivilStatus(e.target.value)}
-              className="mb-2 p-2 border bg-gray-100"
+              className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             {/* Button to toggle optional fields */}
@@ -164,7 +166,7 @@ const DatiP = (props) => {
                   id="license"
                   value={props.license}
                   onChange={(e) => props.setLicense(e.target.value)}
-                  className="mb-2 p-2 border bg-gray-100"
+                  className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
 
                 <label htmlFor="website">Sito Web</label>
@@ -174,7 +176,7 @@ const DatiP = (props) => {
                   id="website"
                   value={props.website}
                   onChange={(e) => props.setWebsite(e.target.value)}
-                  className="mb-2 p-2 border bg-gray-100"
+                  className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
 
                 <label htmlFor="linkin">Linkendln</label>
@@ -184,7 +186,7 @@ const DatiP = (props) => {
                   id="linkin"
                   value={props.linkin}
                   onChange={(e) => props.setLinkin(e.target.value)}
-                  className="mb-2 p-2 border bg-gray-100"
+                  className="mb-2 p-2 border bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </>
             )}

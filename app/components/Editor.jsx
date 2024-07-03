@@ -45,7 +45,7 @@ export const RichTextEditor = (props) => {
         value={props.content}
         onChange={(value) => props.setContent(value)}
          style={{ minHeight: "400px" }} // Adjust minHeight as needed
-        className="react-quill break-words whitespace-pre-wrap sm:w-full h-48 mb-10 mr-10 rounded-md"
+        className="react-quill break-words whitespace-pre-wrap sm:w-full h-48 mb-10 mr-10 rounded-md w-100"
       />
     </div>
   );

@@ -10,6 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.21",
     "@react-pdf/renderer": "^3.4.4",
     "@tiptap/extension-bold": "^2.4.0",
     "@tiptap/pm": "^2.4.0",
@@ -28,6 +31,7 @@
     "promisify": "^0.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-easy-crop": "^5.0.7",
     "react-quill": "^2.0.0"
   },
   "devDependencies": {
