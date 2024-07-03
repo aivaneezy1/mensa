@@ -9,7 +9,7 @@ const DatiContextProvider = ({ children }) => {
   const [showProfile, setShowProfile] = useState(null);
 
   /*Dati Personali */
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("");
