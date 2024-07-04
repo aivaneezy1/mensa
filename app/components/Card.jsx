@@ -323,9 +323,9 @@ const Card = (props) => {
                     {post.data}
                   </h2>
                   <p className="text-blue-500 whitespace-nowrap text-sm">
-                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
-                    {post.dataInizio} -{" "}
-                    {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}
+                    {post.dataInizio} -
+                    {post.dataFineAnno ? post.dataFineAnno : currentYear}
                     {post.dataFine}
                   </p>
                   <p className="text-gray-500 whitespace-nowrap">

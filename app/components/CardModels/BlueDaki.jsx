@@ -3,6 +3,8 @@ import Image from "next/image";
 import handleInputRange from "@/app/utils/handleInputRange";
 
 const BlueDakiModel = (props) => {
+  let currentYear = new Date().getFullYear();
+
   const handlePersonalData = (data, data2, data3, data4) => {
     return (
       <div className="flex-col justify-start">
@@ -20,8 +22,7 @@ const BlueDakiModel = (props) => {
     return (
       <div>
         {data.map((post, index) => (
-          <div 
-          key={index}>
+          <div key={index}>
             <p className="font-medium text-center">{post.competenza}</p>
             <p className="text-gray-500 text-center">{post.livello}</p>
           </div>
@@ -29,7 +30,45 @@ const BlueDakiModel = (props) => {
       </div>
     );
   };
-  console.log("field", props.compFieldList)
+
+  const handleProfile = (data) => {
+    return (
+      <div>
+        <p className="break-all   whitespace-normal">
+        {data?.replace(/<\/?[^>]+(>|$)/g, "")}
+        </p>
+      </div>
+    );
+  };
+
+  const handleBgData = (data) => {
+    return (
+      <div>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <div key={index}>
+              <p className="font-bold">{post.data}</p>
+              <p className="text-blue-500 font-semibold whitespace-nowrap">
+                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                {post.dataInizio} -{" "}
+                {post.dataFineAnno ? post.dataFineAnno : currentYear}
+                {""} {post.dataFine}
+              </p>
+              <p className="text-gray-500 font-semibold whitespace-nowrap">
+                {post.istitute} | {post.city}
+              </p>
+
+              <p className="mt-2 break-words   whitespace-normal">
+                {post.content
+                  ?.replace(/<\/?[^>]+(>|$)/g, "")
+                  .replace(/\./g, ".\u200B")}
+              </p>
+            </div>
+          ))}
+      </div>
+    );
+  };
+
   return (
     <div className="grid md:grid-cols-[2fr_3fr] p-10 h-screen">
       {/*LEFT SIDE DIV */}
@@ -96,14 +135,15 @@ const BlueDakiModel = (props) => {
               <p className="text-gray-500">{handleInputRange(props.range)}</p>
             </>
           ) : (
-             props.compFieldList.length > 0 && handleCompAndLang(props.compFieldList)
+            props.compFieldList.length > 0 &&
+            handleCompAndLang(props.compFieldList)
           )}
         </div>
 
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 
         {/*Lingue */}
-       <div className="flex flex-col justify-start  items-center">
+        <div className="flex flex-col justify-start  items-center">
           <h2 className="text-4xl mb-3">Lingue</h2>
           {props.langDati ? (
             <>
@@ -111,13 +151,12 @@ const BlueDakiModel = (props) => {
               <p className="text-gray-500">{handleInputRange(props.range)}</p>
             </>
           ) : (
-             props.langFieldList.length > 0 && handleCompAndLang(props.langFieldList)
+            props.langFieldList.length > 0 &&
+            handleCompAndLang(props.langFieldList)
           )}
         </div>
-          <hr className="border border-b border-orange-500 w-1/2 my-4" />
+        <hr className="border border-b border-orange-500 w-1/2 my-4" />
       </div>
-
-
 
       {/*RIGHT DIV */}
       <div className="ml-10 flex flex-col mt-10">
@@ -133,33 +172,14 @@ const BlueDakiModel = (props) => {
         {/*Profile */}
         <div className="mb-2">
           <h2 className="text-4xl mb-3">Profilo</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum
-          </p>
+          <p>{props.profileContent}</p>
         </div>
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 
         {/*Istruzione */}
         <div className="mb-2">
           <h2 className="text-4xl mb-3">Istruzione</h2>
-          <p className="font-bold">Bachelors of Science in Nursing</p>
-          <p className="text-blue-500 font-semibold">2023 Gen- 2012 Nov</p>
-          <p className="text-gray-500 font-semibold">
-            Universita di Pisa | Pisa
-          </p>
-
-          <p className="mt-2">
-            Relevant coursework: Anatomy and physiology, pharmacology, nursing
-            ethics, and patient care management.{" "}
-          </p>
+          {handleBgData(props.formDataFieldList)}
         </div>
 
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
@@ -167,19 +187,10 @@ const BlueDakiModel = (props) => {
         {/*Experience */}
         <div className="mb-2">
           <h2 className="text-4xl mb-3">Esperienze Lavorative</h2>
-          <p className="font-bold">Bachelors of Science in Nursing</p>
-          <p className="text-blue-500 font-semibold">2023 Gen- 2012 Nov</p>
-          <p className="text-gray-500 font-semibold">
-            Universita di Pisa | Pisa
-          </p>
-
-          <p className="mt-2">
-            Relevant coursework: Anatomy and physiology, pharmacology, nursing
-            ethics, and patient care management.{" "}
-          </p>
+          {handleBgData(props.exprDataFieldList)}
         </div>
 
-          <hr className="border border-b border-orange-500 w-1/2 my-4" />
+        <hr className="border border-b border-orange-500 w-1/2 my-4" />
       </div>
     </div>
   );

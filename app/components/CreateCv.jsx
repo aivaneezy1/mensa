@@ -12,6 +12,7 @@ import EsperienzeLavoro from "./Card/EsperienzeLavoro";
 import Formazione from "./Card/Formazione";
 import DatiPersonali from "./Card/DatiPersonali";
 import BlueDakiModel from "./CardModels/BlueDaki";
+import DocumentDaki from "./Documents/DocumentDaki";
 
 export default function Home() {
   // Dati states
@@ -247,7 +248,35 @@ export default function Home() {
               <div className="justify-center flex items-center">
                 <PDFDownloadLink
                   document={
-                    <MyDocument
+                    // <MyDocument
+                    //   //Personal Data
+                    //   selectedImage={selectedImage}
+                    //   name={name}
+                    //   lastName={lastName}
+                    //   email={email}
+                    //   phone={phone}
+                    //   address={address}
+                    //   postalCode={postalCode}
+                    //   city={city}
+                    //   dateBirth={dateBirth}
+                    //   placeBirth={placeBirth}
+                    //   genere={genere}
+                    //   civilStatus={civilStatus}
+                    //   nationality={nationality}
+                    //   license={license}
+                    //   website={website}
+                    //   linkin={linkin}
+                    //   /*Lingue e Compotenze */
+                    //   compFieldList={compFieldList}
+                    //   langFieldList={langFieldList}
+                    //   //Profile  Data
+                    //   profileContent={profileContent}
+                    //   //Formazione Data
+                    //   formDataFieldList={formDataFieldList}
+                    //   // Experience Data
+                    //   exprDataFieldList={exprDataFieldList}
+                    // />
+                    <DocumentDaki
                       //Personal Data
                       selectedImage={selectedImage}
                       name={name}
@@ -288,6 +317,7 @@ export default function Home() {
           </form>
         </div>
 
+        {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
           {/* <Card
             selectedImage={selectedImage}
