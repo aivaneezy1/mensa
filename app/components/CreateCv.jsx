@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import MyDocument from "./Document";
-import Card from "./Card";
+import Card from "./CardModels/Card";
 import handleButton from "../utils/handleButton";
 import Compotenze from "./Card/Compotenze";
 import Language from "./Card/Language";
@@ -319,7 +319,7 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          {/* <Card
+          <Card
             selectedImage={selectedImage}
             name={name}
             lastName={lastName}
@@ -343,9 +343,9 @@ export default function Home() {
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
-          /> */}
+          />
 
-          <BlueDakiModel
+          {/* <BlueDakiModel
             selectedImage={selectedImage}
             name={name}
             lastName={lastName}
@@ -370,7 +370,7 @@ export default function Home() {
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
             range={range}
-          />
+          /> */}
         </div>
       </div>
     </>

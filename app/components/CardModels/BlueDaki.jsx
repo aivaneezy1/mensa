@@ -43,53 +43,44 @@ const BlueDakiModel = (props) => {
 
   const handleProfile = (data) => {
     return (
-      <div>
-        <p className="break-all   whitespace-normal">
-          {data?.replace(/<\/?[^>]+(>|$)/g, "")}
-        </p>
+      <div className="mt-2 break-all whitespace-pre-line">
+        <div
+          className="break-words"
+          dangerouslySetInnerHTML={{ __html: data }}
+        />
       </div>
     );
   };
 
   const handleBgData = (data) => {
-  return (
-    <div>
-      {data.length > 0 &&
-        data.map((post, index) => (
-          <div key={index}>
-            <p className="font-bold">{post.data}</p>
-            <p className="text-blue-500 font-semibold whitespace-nowrap">
-              {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
-              {post.dataInizio} -{" "}
-              {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
-              {post.dataFine}
-            </p>
-            {(post.istitute || post.city) && (
-              <p className="text-gray-500 font-semibold whitespace-nowrap">
-                {post.istitute} | {post.city}
+    return (
+      <div>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <div key={index}>
+              <p className="font-bold">{post.data}</p>
+              <p className="text-blue-500 font-semibold whitespace-nowrap">
+                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                {post.dataInizio} -{" "}
+                {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                {post.dataFine}
               </p>
-            )}
-            <div className="mt-2 break-all whitespace-pre-line">
-              <p className="break-words">
-                {/* Replace newline characters with <br> tags */}
-                {post.content
-                  ?.replace(/<\/?[^>]+(>|$)/g, "")
-                  .replace(/\./g, ".\u200B")
-                  .split('\n')
-                  .map((line, lineIndex) => (
-                    <React.Fragment key={lineIndex}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-              </p>
+              {(post.istitute || post.city) && (
+                <p className="text-gray-500 font-semibold whitespace-nowrap">
+                  {post.istitute} | {post.city}
+                </p>
+              )}
+              <div className="mt-2 break-all whitespace-pre-line">
+                <div
+                  className="break-words"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              </div>
             </div>
-          </div>
-        ))}
-    </div>
-  );
-};
-
+          ))}
+      </div>
+    );
+  };
 
   return (
     <div className="grid md:grid-cols-[2fr_3fr] p-10 h-screen">

@@ -34,6 +34,65 @@ const Card = (props) => {
     );
   };
 
+  const compAndLang = (data) => {
+    return (
+      <>
+        {data.map((post, index) => (
+          <div
+            className="max-w-sm break-words whitespace-normal mt-2"
+            key={index}
+          >
+            <h2 className=" text-1xl">{post.competenza}</h2>
+            <h2 className="text-gray-500">{post.livello}</h2>
+          </div>
+        ))}
+      </>
+    );
+  };
+
+ const handleProfile = (data) => {
+    return (
+      <div className="mt-2 break-all whitespace-pre-line">
+        <div
+          className="break-words"
+          dangerouslySetInnerHTML={{ __html: data }}
+        />
+      </div>
+    );
+  };
+
+  const handleBgData = (data) => {
+    return (
+      <>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <div key={index} className="flex flex-col gap-2 ">
+              <h2 className=" break-words font-medium whitespace-normal">
+                {post.data}
+              </h2>
+              <p className="text-blue-500 whitespace-nowrap text-sm">
+                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                {post.dataInizio} -{" "}
+                {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                {post.dataFine}
+              </p>
+              {(post.istitute || post.city) && (
+                 <p className="text-gray-500 whitespace-nowrap">
+                {post.istitute}, {post.city}
+              </p>
+              )}
+             <div className="mt-2 break-all whitespace-pre-line">
+                <div
+                  className="break-words"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              </div>
+            </div>
+          ))}
+      </>
+    );
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] p-10 ">
       {/*LEFT SIDE DIV */}
@@ -243,17 +302,7 @@ const Card = (props) => {
                 <h2>{props.compDati}</h2>
               </div>
             ) : (
-              props.compFieldList.map((post, index) => (
-                <>
-                  <div
-                    className="max-w-sm break-words whitespace-normal mt-2"
-                    key={index}
-                  >
-                    <h2 className=" text-1xl">{post.competenza}</h2>
-                    <h2 className="text-gray-500">{post.livello}</h2>
-                  </div>
-                </>
-              ))
+              compAndLang(props.compFieldList)
             )}
           </div>
           {/*Language */}
@@ -269,17 +318,7 @@ const Card = (props) => {
                 <h2>{props.langDati}</h2>
               </div>
             ) : (
-              props.langFieldList.map((post, index) => (
-                <>
-                  <div
-                    key={index}
-                    className="max-w-sm break-words whitespace-normal mt-2"
-                  >
-                    <h2 className=" text-1xl">{post.competenza}</h2>
-                    <h2 className="text-gray-500">{post.livello}</h2>
-                  </div>
-                </>
-              ))
+              compAndLang(props.langFieldList)
             )}
           </div>
         </header>
@@ -303,9 +342,7 @@ const Card = (props) => {
             <h2 className="font-semibold text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
               Profilo
             </h2>
-            <p className=" break-all   whitespace-normal">
-              {props.profileContent?.replace(/<\/?[^>]+(>|$)/g, "")}
-            </p>
+            {handleProfile(props.profileContent)}
           </section>
         </div>
 
@@ -317,27 +354,7 @@ const Card = (props) => {
             </h2>
 
             {props.formDataFieldList.length > 0 &&
-              props.formDataFieldList.map((post, index) => (
-                <div key={index} className="flex flex-col gap-2 ">
-                  <h2 className=" break-words font-medium whitespace-normal">
-                    {post.data}
-                  </h2>
-                  <p className="text-blue-500 whitespace-nowrap text-sm">
-                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}
-                    {post.dataInizio} -
-                    {post.dataFineAnno ? post.dataFineAnno : currentYear}
-                    {post.dataFine}
-                  </p>
-                  <p className="text-gray-500 whitespace-nowrap">
-                    {post.istitute}, {post.city}
-                  </p>
-                  <p className="break-words   whitespace-normal">
-                    {post.content
-                      ?.replace(/<\/?[^>]+(>|$)/g, "")
-                      .replace(/\./g, ".\u200B")}
-                  </p>
-                </div>
-              ))}
+              handleBgData(props.formDataFieldList)}
           </section>
         </div>
 
@@ -347,28 +364,9 @@ const Card = (props) => {
             <h2 className="font-semibold text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
               Experience
             </h2>
+
             {props.exprDataFieldList.length > 0 &&
-              props.exprDataFieldList.map((post, index) => (
-                <div key={index} className="flex flex-col gap-2 ">
-                  <h2 className=" break-words font-medium whitespace-normal">
-                    {post.data}
-                  </h2>
-                  <p className="text-blue-500 whitespace-nowrap text-sm">
-                    {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
-                    {post.dataInizio} -{" "}
-                    {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
-                    {post.dataFine}
-                  </p>
-                  <p className="text-gray-500 whitespace-nowrap">
-                    {post.istitute}, {post.city}
-                  </p>
-                  <p className="break-all   whitespace-normal">
-                    {post.content
-                      ?.replace(/<\/?[^>]+(>|$)/g, "")
-                      .replace(/\./g, ".\u200B")}
-                  </p>
-                </div>
-              ))}
+              handleBgData(props.exprDataFieldList)}
           </section>
         </div>
       </div>
