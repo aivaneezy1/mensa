@@ -261,9 +261,7 @@ const MyDocument = (props) => (
         {/* Profile */}
         <Text style={[styles.rightTitle]}>Profile</Text>
         <Text style={styles.textProfile}>
-          {props.profileContent
-            .replace(/<\/?[^>]+(>|$)/g, "")
-            .replace(/\./g, ".\u200B")}
+          {props.profileContent?.replace(/<\/?[^>]+(>|$)/g, "").replace(/\./g, ".\u200B")}
         </Text>
 
         {/* Formazione */}

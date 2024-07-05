@@ -5,6 +5,16 @@ import handleInputRange from "@/app/utils/handleInputRange";
 const BlueDakiModel = (props) => {
   let currentYear = new Date().getFullYear();
 
+  const nl2br = (str) => {
+    if (!str) return null;
+    return str.split("\n").map((line, index) => (
+      <span key={index}>
+        {line}
+        {index !== str.split("\n").length - 1 && <br />}
+      </span>
+    ));
+  };
+
   const handlePersonalData = (data, data2, data3, data4) => {
     return (
       <div className="flex-col justify-start">
@@ -12,7 +22,7 @@ const BlueDakiModel = (props) => {
           <p className="font-medium break-all">
             {data} {data2}
           </p>
-          <p className="break-all">{data3}</p>
+          <p className="break-all text-gray-500">{data3}</p>
         </div>
       </div>
     );
@@ -35,39 +45,51 @@ const BlueDakiModel = (props) => {
     return (
       <div>
         <p className="break-all   whitespace-normal">
-        {data?.replace(/<\/?[^>]+(>|$)/g, "")}
+          {data?.replace(/<\/?[^>]+(>|$)/g, "")}
         </p>
       </div>
     );
   };
 
   const handleBgData = (data) => {
-    return (
-      <div>
-        {data.length > 0 &&
-          data.map((post, index) => (
-            <div key={index}>
-              <p className="font-bold">{post.data}</p>
-              <p className="text-blue-500 font-semibold whitespace-nowrap">
-                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
-                {post.dataInizio} -{" "}
-                {post.dataFineAnno ? post.dataFineAnno : currentYear}
-                {""} {post.dataFine}
-              </p>
+  return (
+    <div>
+      {data.length > 0 &&
+        data.map((post, index) => (
+          <div key={index}>
+            <p className="font-bold">{post.data}</p>
+            <p className="text-blue-500 font-semibold whitespace-nowrap">
+              {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+              {post.dataInizio} -{" "}
+              {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+              {post.dataFine}
+            </p>
+            {(post.istitute || post.city) && (
               <p className="text-gray-500 font-semibold whitespace-nowrap">
                 {post.istitute} | {post.city}
               </p>
-
-              <p className="mt-2 break-words   whitespace-normal">
+            )}
+            <div className="mt-2 break-all whitespace-pre-line">
+              <p className="break-words">
+                {/* Replace newline characters with <br> tags */}
                 {post.content
                   ?.replace(/<\/?[^>]+(>|$)/g, "")
-                  .replace(/\./g, ".\u200B")}
+                  .replace(/\./g, ".\u200B")
+                  .split('\n')
+                  .map((line, lineIndex) => (
+                    <React.Fragment key={lineIndex}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
               </p>
             </div>
-          ))}
-      </div>
-    );
-  };
+          </div>
+        ))}
+    </div>
+  );
+};
+
 
   return (
     <div className="grid md:grid-cols-[2fr_3fr] p-10 h-screen">
@@ -87,7 +109,7 @@ const BlueDakiModel = (props) => {
         {/*Personal Data */}
         <div className="">
           <div className="">
-            <h2 className="text-4xl whitespace-nowrap">Dati Personali</h2>
+            <h2 className="text-4xl whitespace-nowrap">Dati </h2>
           </div>
           {/*Name and Lastname */}
           {(props.name || props.lastName) &&
@@ -172,7 +194,7 @@ const BlueDakiModel = (props) => {
         {/*Profile */}
         <div className="mb-2">
           <h2 className="text-4xl mb-3">Profilo</h2>
-          <p>{props.profileContent}</p>
+          <p>{handleProfile(props.profileContent)}</p>
         </div>
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 
@@ -186,7 +208,7 @@ const BlueDakiModel = (props) => {
 
         {/*Experience */}
         <div className="mb-2">
-          <h2 className="text-4xl mb-3">Esperienze Lavorative</h2>
+          <h2 className="text-4xl mb-3">Esperienze </h2>
           {handleBgData(props.exprDataFieldList)}
         </div>
 
