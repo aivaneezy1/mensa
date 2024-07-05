@@ -1,116 +1,98 @@
 import React from 'react'
-
+import Image from 'next/image'
 const CardDaki = () => {
    return (
-    <div className='grid md:grid-cols-2 p-10 h-screen'>
+   <div className='grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md'>
+  {/* LEFT SIDE DIV */}
+  <div className='bg-blueDaki gap-2 flex flex-col justify-center items-center max-w-xs'>
 
-
-    {/*LEFT SIDE DIV */}
-    <div className='bg-blueDaki gap-5 flex flex-col justify-center items-center'>
-
-    <div className='border border-orange-400 p-2 mt-5'>
-    <Image src="/randon.jpg" alt="pic" width={150} height={150}/>
+    <div className='border border-orange-400 p-0.5 mt-2'>
+      <Image src="/randon.jpg" alt="pic" width={60} height={60} />
     </div>
 
-    {/*Personal Data */}
+    {/* Personal Data */}
     <div className=''>
-    <div> <h2 className='text-4xl '>Personal Dati</h2></div>
-    <div className='mt-5 flex gap-2 flex-col justify-start'>
-    <p className='font-medium'>Aivaneezy Enguio</p>
-    <p className='font-medium'>aivaneezy@gmail.com</p>
-    <p className='font-medium'>324621299</p>
-    <p className='font-medium'>25-06-199</p>
-    <p className='font-medium'>Spain</p>
-    <p className='font-medium'>Los Pollos Hermanos</p>
-    <p className='font-medium'>Male</p>
-    <p className='font-medium'>African</p>
-    <p className='font-medium'>Single</p>
-    <p className='font-medium'>A2 A3</p>
-    <p className='font-medium'>https://daki123.com</p>
-    <p className='font-medium'>aivaneezy@gmail.com</p>
-    </div>
-    </div>
-    
-     <hr className='border border-b border-orange-500 w-1/2 my-4'/>
-
-    {/*Competence */}
-    <div className='flex flex-col justify-start  items-center'>
-    <h2 className='text-4xl mb-3'>Compotenza</h2>
-     <p className='font-medium'>Tirocinante</p>
-    <p className='text-gray-500'>Eccelente</p>
+      <div><h2 className='text-xs font-bold'>Personal Dati</h2></div>
+      <div className='mt-2 flex gap-0.5 flex-col justify-start'>
+        <p className='font-medium text-xs'>Aivaneezy Enguio</p>
+        <p className='font-medium text-xs'>aivaneezy@gmail.com</p>
+        <p className='font-medium text-xs'>324621299</p>
+        <p className='font-medium text-xs'>25-06-199</p>
+        <p className='font-medium text-xs'>Spain</p>
+        <p className='font-medium text-xs'>Los Pollos Hermanos</p>
+        <p className='font-medium text-xs'>Male</p>
+        <p className='font-medium text-xs'>African</p>
+        <p className='font-medium text-xs'>Single</p>
+        <p className='font-medium text-xs'>A2 A3</p>
+        <p className='font-medium text-xs'>https://daki123.com</p>
+        <p className='font-medium text-xs'>aivaneezy@gmail.com</p>
+      </div>
     </div>
 
-     <hr className='border border-b border-orange-500 w-1/2 my-4'/>
-     {/*Competence */}
-    <div  className='flex flex-col  justify-start items-center'>
-    <h2 className='text-4xl mb-3'>Lingue</h2>
-    <p className='font-medium'>Tirocinante</p>
-    <p className='text-gray-500'>Eccelente</p>
+    <hr className='border border-b border-orange-500 w-1/6 my-1' />
+
+    {/* Competence */}
+    <div className='flex flex-col justify-start items-center'>
+      <h2 className='text-xs font-bold'>Compotenza</h2>
+      <p className='font-medium text-xs'>Tirocinante</p>
+      <p className='text-gray-500 text-xs'>Eccelente</p>
     </div>
 
+    <hr className='border border-b border-orange-500 w-1/6 my-1' />
 
-     <hr className='border border-b border-orange-500 w-1/2 my-4'/>
-     {/*Competence */}
-    <div  className='flex flex-col  justify-start items-center'>
-    <h2 className='text-4xl mb-3'>Lingue</h2>
-    <p className='font-medium'>Tirocinante</p>
-    <p className='text-gray-500'>Eccelente</p>
+    {/* Languages */}
+    <div className='flex flex-col justify-start items-center'>
+      <h2 className='text-xs font-bold'>Lingue</h2>
+      <p className='font-medium text-xs'>Tirocinante</p>
+      <p className='text-gray-500 text-xs'>Eccelente</p>
     </div>
 
+    <hr className='border border-b border-orange-500 w-1/6 my-1' />
+  </div>
 
-   
+  {/* RIGHT DIV */}
+  <div className='flex flex-col mt-2 ml-2 mb-2 max-w-xs'>
 
+    {/* Name */}
+    <div className='mb-1'>
+      <h2 className='text-xs font-semibold'>Aivan Jim</h2>
+      <h2 className='text-xs text-gray-500 mt-1 font-semibold'>Enguio</h2>
     </div>
 
-    {/*RIGHT DIV */}
-    <div className='ml-10 flex flex-col mt-10'>
+    <hr className='border border-b border-orange-500 w-1/2 my-1' />
 
-    {/*Name */}
-    <div className='mb-2'>
-    <h2 className='text-5xl'>Aivan Jim</h2>
-    <h2 className='text-5xl text-gray-500 mt-2'>Enguio</h2>
-    </div>
-     <hr className='border border-b border-orange-500 w-1/2 my-4'/>
-
-    {/*Profile */}
-    <div className='mb-2' >
-    <h2 className='text-4xl mb-3'>Profile</h2>
-    <p>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-    </p>
-    </div>
-   <hr className='border border-b border-orange-500 w-1/2 my-4'/>
-
-
-    {/*Istruzione */}
-    <div className='mb-2'>
-    <h2 className='text-4xl mb-3'>Istruzione</h2>
-    <p className='font-bold'>Bachelors of Science in Nursing</p>
-    <p className='text-blue-500 font-semibold'>2023 Gen- 2012 Nov</p>
-    <p className='text-gray-500 font-semibold'>Universita di Pisa | Pisa</p>
-  
-    <p className='mt-2'>Relevant coursework: Anatomy and physiology, pharmacology, nursing ethics, and patient care management. </p>
+    {/* Profile */}
+    <div className='mb-1'>
+      <h2 className='text-xs font-bold'>Profile</h2>
+      <p className='text-xs'>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+      </p>
     </div>
 
-      <hr className='border border-b border-orange-500 w-1/2 my-4'/>
- 
-    {/*Experience */}
-    <div className='mb-2'>
-    <h2 className='text-4xl mb-3'>Experience</h2>
-    <p className='font-bold'>Bachelors of Science in Nursing</p>
-    <p className='text-blue-500 font-semibold'>2023 Gen- 2012 Nov</p>
-    <p className='text-gray-500 font-semibold'>Universita di Pisa | Pisa</p>
-  
-    <p className='mt-2'>Relevant coursework: Anatomy and physiology, pharmacology, nursing ethics, and patient care management. </p>
+    <hr className='border border-b border-orange-500 w-1/2 my-1' />
+
+    {/* Istruzione */}
+    <div className='mb-1'>
+      <h2 className='text-xs font-bold'>Istruzione</h2>
+      <p className='font-bold text-xs'>Bachelors of Science in Nursing</p>
+      <p className='text-blue-500 font-semibold text-xs'>2023 Gen- 2012 Nov</p>
+      <p className='text-gray-500 font-semibold text-xs'>Universita di Pisa | Pisa</p>
+      <p className='mt-1 text-xs'>Relevant coursework: Anatomy and physiology, pharmacology, nursing ethics, and patient care management.</p>
     </div>
 
+    <hr className='border border-b border-orange-500 w-1/2 my-1' />
 
-
-
-
+    {/* Experience */}
+    <div className='mb-1'>
+      <h2 className='mb-1 text-xs font-bold'>Experience</h2>
+      <p className='font-bold text-xs'>Bachelors of Science in Nursing</p>
+      <p className='text-blue-500 font-semibold text-xs'>2023 Gen- 2012 Nov</p>
+      <p className='text-gray-500 font-semibold text-xs'>Universita di Pisa | Pisa</p>
+      <p className='mt-1 text-xs'>Relevant coursework: Anatomy and physiology, pharmacology, nursing ethics, and patient care management.</p>
     </div>
-      
-    </div>
+  </div>
+</div>
+
   )
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import DOMPurify from "dompurify";
 
 const Card = (props) => {
   const hasPersonalData =
@@ -55,7 +56,7 @@ const Card = (props) => {
       <div className="mt-2 break-all whitespace-pre-line">
         <div
           className="break-words"
-          dangerouslySetInnerHTML={{ __html: data }}
+          dangerouslySetInnerHTML={{ __html:DOMPurify.sanitize(data)  }}
         />
       </div>
     );
@@ -84,7 +85,7 @@ const Card = (props) => {
              <div className="mt-2 break-all whitespace-pre-line">
                 <div
                   className="break-words"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
                 />
               </div>
             </div>

@@ -18,6 +18,8 @@
     "@tiptap/pm": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "dompurify": "^3.1.6",
+    "flowbite-react": "^0.10.1",
     "formidable": "^3.5.1",
     "fs": "^0.0.1-security",
     "image-downloader": "^4.3.0",

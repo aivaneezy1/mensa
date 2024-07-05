@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8,
     textAlign: "left",
-    fontSize:"16"
+    fontSize: "16",
   },
 
   //LEFT SIDE DIV STYLING
@@ -101,7 +101,7 @@ const handlePersonalData = (data, data2, data3) => {
       </View>
       {data3 && (
         <View style={{ textAlign: "center", marginTop: "8" }}>
-          <Text style={{ color: "grey", fontSize:"16" }}>{data3}</Text>
+          <Text style={{ color: "grey", fontSize: "16" }}>{data3}</Text>
         </View>
       )}
     </>
@@ -114,10 +114,14 @@ const handleCompAndLang = (data) => {
       {data.map((post, index) => (
         <View wrap={false} key={index} style={styles.sectionData}>
           <View style={{ textAlign: "center" }}>
-            <Text style={{ fontWeight: "medium",fontSize:"16" }}>{post.competenza}</Text>
+            <Text style={{ fontWeight: "medium", fontSize: "16" }}>
+              {post.competenza}
+            </Text>
           </View>
           <View style={{ textAlign: "center" }}>
-            <Text style={{ color: "grey",fontSize:"16" }}>{post.livello}</Text>
+            <Text style={{ color: "grey", fontSize: "16" }}>
+              {post.livello}
+            </Text>
           </View>
         </View>
       ))}
@@ -129,7 +133,7 @@ const handleProfile = (data) => {
   return (
     <>
       <Text style={styles.sectionRightTitle}>Profilo</Text>
-      <Text style={{ marginBottom: 5, fontSize:"14" }}>
+      <Text style={{ marginBottom: 5, fontSize: "14" }}>
         {data.replace(/<\/?[^>]+(>|$)/g, "")}
       </Text>
     </>
@@ -142,21 +146,31 @@ const handleBgData = (data) => {
       {data.length > 0 &&
         data.map((post, index) => (
           <View key={index} style={{ marginBottom: "4" }}>
-            <Text style={{ fontWeight: "bold", fontSize:"16" }}>{post.data}</Text>
+            <Text style={{ fontWeight: "bold", fontSize: "16" }}>
+              {post.data}
+            </Text>
             <Text
-              style={{ color: "blue", fontWeight: "semibold", fontSize:"12" }}
+              style={{ color: "blue", fontWeight: "semibold", fontSize: "12" }}
             >
               {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
               {post.dataInizio} -{" "}
               {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
               {post.dataFine}
             </Text>
-            <Text
-              style={{ color: "grey", fontWeight: "semibold", marginTop: "5", fontSize:"12 " }}
-            >
-              {post.istitute} | {post.city}
-            </Text>
-            <Text style={{ marginTop: "5",fontSize:"16" }}>
+            {(post.istitute || post.cit) && (
+              <Text
+                style={{
+                  color: "grey",
+                  fontWeight: "semibold",
+                  marginTop: "5",
+                  fontSize: "12 ",
+                }}
+              >
+                {post.istitute} | {post.city}
+              </Text>
+            )}
+
+            <Text style={{ marginTop: "5", fontSize: "16" }}>
               {post.content
                 ?.replace(/<\/?[^>]+(>|$)/g, "")
                 .replace(/\./g, ".\u200B")}
@@ -211,7 +225,7 @@ const DocumentDaki = (props) => {
 
           <View style={styles.section} wrap={false}>
             <Text style={styles.sectionLeftTitle}>Lingue</Text>
-             {handleCompAndLang(props.langFieldList)}
+            {handleCompAndLang(props.langFieldList)}
           </View>
 
           <View style={styles.hrLeftSection} />
@@ -239,12 +253,10 @@ const DocumentDaki = (props) => {
           </View>
           <View style={styles.hrRightSection} />
 
-          
           {/*Esperienze lavorativa */}
           <View wrap={false}>
             <Text
               style={[styles.sectionRightTitle, { flexGrow: "1" }]}
-           
               numberOfLines={1}
             >
               Esperienze

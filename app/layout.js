@@ -3,6 +3,7 @@ import "./style.css"
 import Provider from "./context/provier";
 import Navbar from "./components/Navbar";
 import DatiContextProvider from "./context/DatiContext";
+import { Footer } from "./components/Footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <main>{children}</main>
+            <Footer/>
           </div>
         </Provider>
         </DatiContextProvider>

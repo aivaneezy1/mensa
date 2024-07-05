@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import handleInputRange from "@/app/utils/handleInputRange";
-
+import DOMPurify from 'dompurify';
 const BlueDakiModel = (props) => {
   let currentYear = new Date().getFullYear();
 
@@ -46,7 +46,7 @@ const BlueDakiModel = (props) => {
       <div className="mt-2 break-all whitespace-pre-line">
         <div
           className="break-words"
-          dangerouslySetInnerHTML={{ __html: data }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data )}}
         />
       </div>
     );
@@ -73,7 +73,7 @@ const BlueDakiModel = (props) => {
               <div className="mt-2 break-all whitespace-pre-line">
                 <div
                   className="break-words"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
                 />
               </div>
             </div>
