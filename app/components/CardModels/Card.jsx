@@ -43,7 +43,7 @@ const Card = (props) => {
             className="max-w-sm break-words whitespace-normal mt-2"
             key={index}
           >
-            <h2 className=" text-1xl">{post.competenza}</h2>
+            <h2 className="font-medium text-1xl">{post.competenza}</h2>
             <h2 className="text-gray-500">{post.livello}</h2>
           </div>
         ))}
@@ -67,19 +67,19 @@ const Card = (props) => {
       <>
         {data.length > 0 &&
           data.map((post, index) => (
-            <div key={index} className="flex flex-col gap-2 ">
-              <h2 className=" break-words font-medium whitespace-normal">
+            <div key={index} className="flex flex-col  ">
+              <h2 className=" break-words font-bold  whitespace-normal">
                 {post.data}
               </h2>
-              <p className="text-blue-500 whitespace-nowrap text-sm">
+              <p className="text-blue-500 whitespace-nowrap font-semibold text-sm">
                 {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
                 {post.dataInizio} -{" "}
                 {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
                 {post.dataFine}
               </p>
               {(post.istitute || post.city) && (
-                 <p className="text-gray-500 whitespace-nowrap">
-                {post.istitute}, {post.city}
+                 <p className="text-gray-500 whitespace-nowrap font-semibold">
+                {post.istitute} | {post.city}
               </p>
               )}
              <div className="mt-2 break-all whitespace-pre-line">
@@ -106,7 +106,7 @@ const Card = (props) => {
       >
         {/* Top Profile Image Background */}
         {props.selectedImage && (
-          <div className="relative bg-third rounded-b-full flex top-0 left-0 right-0 justify-center items-center h-40 w-full">
+          <div className="relative  rounded-b-full flex   justify-center items-center h-40 w-65" style={{backgroundColor:props.cardBlueColor}}>
             <div className="absolute bottom-0 transform translate-y-1/2">
               <Image
                 src={props.selectedImage}
@@ -293,13 +293,13 @@ const Card = (props) => {
           {/*Competenze */}
           <div className="flex justify-center  flex-col max-w-lg">
             {props.compFieldList.length > 0 && (
-              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center">
+              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center font-semibold">
                 Competenza
               </h2>
             )}
             {props.compDati ? (
               <div>
-                <h2 className="text-1xl font-semibold">Competenza</h2>
+                <h2 className="text-1xl font-bold">Competenza</h2>
                 <h2>{props.compDati}</h2>
               </div>
             ) : (
@@ -309,13 +309,13 @@ const Card = (props) => {
           {/*Language */}
           <div className="flex justify-center  flex-col">
             {props.langFieldList.length > 0 && (
-              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center">
+              <h2 className="text-blue-500 text-2xl m-5 whitespace-normal w-auto border-b border-gray-500 border-solid text-center font-semibold">
                 Languages
               </h2>
             )}
             {props.langDati ? (
               <div>
-                <h2 className="text-1xl font-semibold">Languages</h2>
+                <h2 className="text-1xl font-bold">Languages</h2>
                 <h2>{props.langDati}</h2>
               </div>
             ) : (
@@ -323,16 +323,16 @@ const Card = (props) => {
             )}
           </div>
         </header>
-
-        {/*Bottom background color */}
+{/* 
+        Bottom background color 
         {hasPersonalData && (
           <div className="relative mt-5">
             <div className="bg-third overflow-hidden h-10">
-              {/* Use an absolute positioned pseudo-element for the curved top */}
+              { Use an absolute positioned pseudo-element for the curved top 
               <div className="absolute top-0 left-0  bottom-0 w-full h-full bg-third transform "></div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       {/*RIGHT SIDE DIV */}
@@ -340,7 +340,7 @@ const Card = (props) => {
         {/*Profilo */}
         <div>
           <section>
-            <h2 className="font-semibold text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
+            <h2 className="font-semibold  text-blue-500 border-b border-gray-500 border-solid text-2xl mb-5 text-left">
               Profilo
             </h2>
             {handleProfile(props.profileContent)}

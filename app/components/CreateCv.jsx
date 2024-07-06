@@ -110,6 +110,8 @@ export default function Home() {
 
       /*BackGround Color */
     cardColors, 
+    cardBlueColor, 
+    setCardBlueColor,
    
   } = useContext(DatiContext);
 
@@ -254,6 +256,7 @@ export default function Home() {
                   document={
                     // <MyDocument
                     //   //Personal Data
+                    //cardBlueColor={cardBlueColor}
                     //   selectedImage={selectedImage}
                     //   name={name}
                     //   lastName={lastName}
@@ -326,6 +329,7 @@ export default function Home() {
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
           <Card
             selectedImage={selectedImage}
+            cardBlueColor={cardBlueColor}
             name={name}
             lastName={lastName}
             email={email}

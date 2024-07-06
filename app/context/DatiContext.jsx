@@ -70,7 +70,7 @@ const DatiContextProvider = ({ children }) => {
 
   /*Background color */
    const [cardColors, setCardColors] = useState('');
-
+   const [cardBlueColor, setCardBlueColor] = useState('')
   return (
     <DatiContext.Provider
       value={{
@@ -168,6 +168,8 @@ const DatiContextProvider = ({ children }) => {
         /*BackGround Color */
         cardColors, 
         setCardColors,
+        cardBlueColor, 
+        setCardBlueColor,
       }}
     >
       {children}

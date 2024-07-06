@@ -4,13 +4,23 @@ import CardDaki from "../CardDisplay/CardDaki";
 import CardBlue from "../CardDisplay/CardBlue";
 import { DatiContext } from "@/app/context/DatiContext";
 import Link from "next/link";
-
+import Image from "next/image";
 const Hero = () => {
-  const { cardColors, setCardColors } = useContext(DatiContext);
+  const { 
+    cardColors, 
+    setCardColors, 
+    cardBlueColor, 
+    setCardBlueColor } = useContext(DatiContext);
 
   const handleColorChange = (color) => {
     setCardColors(color);
+   
   };
+
+  const handleColorChangeCardBlue = (color) =>{
+    setCardBlueColor(color)
+  }
+
 
   return (
     <>
@@ -23,6 +33,7 @@ const Hero = () => {
             Choose the best models for your curriculum
           </h2>
         </div>
+       
       </div>
 
       {/* Cards */}
@@ -42,9 +53,12 @@ const Hero = () => {
           </div>
         </div>
 
-        <div  className="flex flex-col h-full">
-          <CardBlue
-          className="flex-1" />
+        <div className="flex flex-col h-full">
+          <CardBlue 
+            selectedColor={cardBlueColor}
+            handleColorChange={ handleColorChangeCardBlue}
+          className="flex-1" 
+          />
           <div className="flex justify-center items-center mt-2">
             <Link href="/create-cv">
               <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">

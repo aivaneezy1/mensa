@@ -1,44 +1,85 @@
-"use client"
-import React, {useState} from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+
 const CardDaki = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const datiPersonali = (dati, dati2, dati3, dati4) => {
+    return (
+      <div className="flex flex-row gap-2  items-center  w-sm ">
+        <div className=" font-medium text-xs">
+          <p className="font-medium text-xs">
+            {dati} {dati2}
+          </p>
+          <p className="font-medium text-xs">
+            {dati3} {dati4}
+          </p>
+        </div>
+      </div>
+    );
+  };
 
-  // white,pink, greenish,bl
-  const colors = ["#FFFFFF", "#ffcccc", "#ccffcc", "#F5F5DC", "#ccccff", "#FFDAB9"]; // Example colors
+  const colors = [
+    "#FFFFFF",
+    "#ffcccc",
+    "#ccffcc",
+    "#F5F5DC",
+    "#ccccff",
+    "#FFDAB9",
+  ];
   return (
     <div
       className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-
     >
       {/* LEFT SIDE DIV */}
-      <div className={`gap-2 flex flex-col justify-start items-center mt-5  max-w-xs`} style={{ backgroundColor: props.selectedColor }}>
+      <div
+        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs`}
+        style={{ backgroundColor: props.selectedColor }}
+      >
         <div className="border border-orange-400 p-0.5 mt-2">
-          <Image src="/randon.jpg" alt="pic" width={60} height={60} className="h-auto w-auto" />
+          <Image
+            src="/randon.jpg"
+            alt="pic"
+            width={60}
+            height={60}
+            className="h-auto w-auto"
+          />
         </div>
 
         {/* Personal Data */}
         <div className="">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-xs font-bold">Personal Dati</h2>
-              <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
+            <h2 className="text-s font-bold">Personal Dati</h2>
+            <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
-            <p className="font-medium text-xs">Aivaneezy Enguio</p>
-            <p className="font-medium text-xs">aivaneezy@gmail.com</p>
-            <p className="font-medium text-xs">324621299</p>
-            <p className="font-medium text-xs">25-06-199</p>
-            <p className="font-medium text-xs">Spain</p>
-            <p className="font-medium text-xs">Los Pollos Hermanos</p>
-            <p className="font-medium text-xs">Male</p>
-            <p className="font-medium text-xs">African</p>
-            <p className="font-medium text-xs">Single</p>
-            <p className="font-medium text-xs">A2 A3</p>
-            <p className="font-medium text-xs">https://daki123.com</p>
-            <p className="font-medium text-xs">aivaneezy@gmail.com</p>
+            {/*Name */}
+            {datiPersonali("Mario", "Rossi")}
+            {/*Email */}
+            {datiPersonali("mario.rossi@gmail.com")}
+            {/*Phone Number */}
+            {datiPersonali("324621299")}
+            {/*Address */}
+            {datiPersonali("Via delle Rose 123, ", "56124", "Pisa")}
+            {/*Date of birth */}
+            {datiPersonali("04-02-2001")}
+            {/*Place of birth */}
+            {datiPersonali("Italia")}
+            {/*Gender */}
+            {datiPersonali("Maschio")}
+            {/*Nazionalita' */}
+            {datiPersonali("Italiano")}
+            {/*Civil Status */}
+            {datiPersonali("Studente")}
+            {/*Licnese */}
+            {datiPersonali("A1,A2,B")}
+            {/*WEbsite */}
+            {datiPersonali("www.mario-rossi.com")}
+            {/*Linkin */}
+            {datiPersonali("linkedin.com/in/mariorossi")}
           </div>
         </div>
 
@@ -46,18 +87,25 @@ const CardDaki = (props) => {
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
-          <h2 className="text-xs font-bold">Compotenza</h2>
-          <p className="font-medium text-xs">Tirocinante</p>
+          <h2 className="text-s font-bold">Compotenza</h2>
+          <p className="font-medium text-xs">Sicurezza Informatica</p>
           <p className="text-gray-500 text-xs">Eccelente</p>
+
+          <p className="font-medium text-xs">Sviluppo Software</p>
+          <p className="text-gray-500 text-xs">Buono</p>
         </div>
 
         <hr className="border border-b border-orange-500 w-1/6 my-1" />
 
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
-          <h2 className="text-xs font-bold">Lingue</h2>
-          <p className="font-medium text-xs">Tirocinante</p>
+          <h2 className="text-s font-bold">Lingue</h2>
+          <p className="font-medium text-xs">Inglese</p>
           <p className="text-gray-500 text-xs">Eccelente</p>
+          <p className="font-medium text-xs">Italiano</p>
+          <p className="text-gray-500 text-xs">Fluente</p>
+          <p className="font-medium text-xs">Spagnolo</p>
+          <p className="text-gray-500 text-xs">Elementare</p>
         </div>
 
         <hr className="border border-b border-orange-500 w-1/6 my-1" />
@@ -94,7 +142,9 @@ const CardDaki = (props) => {
         {/* Istruzione */}
         <div className="mb-1">
           <h2 className="text-xs font-bold">Istruzione</h2>
-          <p className="font-bold text-xs">Bachelors of Science in Nursing</p>
+           <p className="font-bold text-xs mt-2">
+            Laurea Magistrale in Informatica
+          </p>
           <p className="text-blue-500 font-semibold text-xs">
             2023 Gen- 2012 Nov
           </p>
@@ -102,8 +152,24 @@ const CardDaki = (props) => {
             Universita di Pisa | Pisa
           </p>
           <p className="mt-1 text-xs">
-            Relevant coursework: Anatomy and physiology, pharmacology, nursing
-            ethics, and patient care management.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
+          </p>
+
+          <p className="font-bold text-xs mt-2">
+            Diploma di Maturità Scientifica
+          </p>
+          <p className="text-blue-500 font-semibold text-xs">
+            2023 Gen- 2012 Nov
+          </p>
+          <p className="text-gray-500 font-semibold text-xs">
+            Liceo Scientifico | Pisa
+          </p>
+          <p className="mt-1 text-xs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
           </p>
         </div>
 
@@ -112,7 +178,7 @@ const CardDaki = (props) => {
         {/* Experience */}
         <div className="mb-1">
           <h2 className="mb-1 text-xs font-bold">Experience</h2>
-          <p className="font-bold text-xs">Bachelors of Science in Nursing</p>
+         <p className="font-bold text-xs">Senior IT Consultant</p>
           <p className="text-blue-500 font-semibold text-xs">
             2023 Gen- 2012 Nov
           </p>
@@ -120,8 +186,9 @@ const CardDaki = (props) => {
             Universita di Pisa | Pisa
           </p>
           <p className="mt-1 text-xs">
-            Relevant coursework: Anatomy and physiology, pharmacology, nursing
-            ethics, and patient care management.
+            Gestione progetti IT complessi per clienti aziendali, inclusa la
+            pianificazione, l'implementazione e il monitoraggio delle soluzioni
+            informatiche.
           </p>
         </div>
       </div>
@@ -141,8 +208,6 @@ const CardDaki = (props) => {
           </div>
         </div>
       )}
-
-      
     </div>
   );
 };
