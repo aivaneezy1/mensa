@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <main>{children}</main>
-            <Footer/>
+         
           </div>
         </Provider>
         </DatiContextProvider>

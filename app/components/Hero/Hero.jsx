@@ -1,19 +1,16 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useContext, useState } from "react";
 import CardDaki from "../CardDisplay/CardDaki";
+import CardBlue from "../CardDisplay/CardBlue";
+import { DatiContext } from "@/app/context/DatiContext";
+import Link from "next/link";
 
 const Hero = () => {
-  const [cardColors, setCardColors] = useState(['']); // Initial colors for each card
+  const { cardColors, setCardColors } = useContext(DatiContext);
 
- 
-
-  const handleColorChange = (index, color) => {
-    const updatedColors = [...cardColors];
-    updatedColors[index] = color;
-    setCardColors(updatedColors);
+  const handleColorChange = (color) => {
+    setCardColors(color);
   };
-
-
 
   return (
     <>
@@ -29,21 +26,33 @@ const Hero = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-20 ml-5 mr-5 h-full min-h-screen mb-20">
-        {cardColors.map((color, index) => (
-          <div key={index}>
-            <CardDaki
-              index={index}
-              selectedColor={color}
-              handleColorChange={handleColorChange}
-            />
-            <div className="flex justify-center items-center mt-2">
-            <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">Usa Questa Modello</button>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 ml-5 mr-5  min-h-screen mb-20">
+        <div className="flex flex-col h-full">
+          <CardDaki
+            selectedColor={cardColors}
+            handleColorChange={handleColorChange}
+            className="flex-1"
+          />
+          <div className="flex justify-center items-center mt-2">
+            <Link href="/create-cv">
+              <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
+                Usa Questa Modello
+              </button>
+            </Link>
           </div>
-          
-        ))}
-    
+        </div>
+
+        <div  className="flex flex-col h-full">
+          <CardBlue
+          className="flex-1" />
+          <div className="flex justify-center items-center mt-2">
+            <Link href="/create-cv">
+              <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
+                Usa Questa Modello
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

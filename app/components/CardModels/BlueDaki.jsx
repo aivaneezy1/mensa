@@ -2,18 +2,9 @@ import React from "react";
 import Image from "next/image";
 import handleInputRange from "@/app/utils/handleInputRange";
 import DOMPurify from 'dompurify';
+
 const BlueDakiModel = (props) => {
   let currentYear = new Date().getFullYear();
-
-  const nl2br = (str) => {
-    if (!str) return null;
-    return str.split("\n").map((line, index) => (
-      <span key={index}>
-        {line}
-        {index !== str.split("\n").length - 1 && <br />}
-      </span>
-    ));
-  };
 
   const handlePersonalData = (data, data2, data3, data4) => {
     return (
@@ -46,7 +37,7 @@ const BlueDakiModel = (props) => {
       <div className="mt-2 break-all whitespace-pre-line">
         <div
           className="break-words"
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data )}}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data) }}
         />
       </div>
     );
@@ -82,10 +73,11 @@ const BlueDakiModel = (props) => {
     );
   };
 
+
   return (
     <div className="grid md:grid-cols-[2fr_3fr] p-10 h-screen">
       {/*LEFT SIDE DIV */}
-      <div className="bg-blueDaki gap-5 flex flex-col justify-center items-center ">
+      <div className="gap-5 flex flex-col justify-center items-center" style={{ backgroundColor: props.cardColors }}>
         {props.selectedImage && (
           <div className="border border-orange-400 p-2 mt-5 ">
             <Image
@@ -98,9 +90,9 @@ const BlueDakiModel = (props) => {
         )}
 
         {/*Personal Data */}
-        <div className="">
-          <div className="">
-            <h2 className="text-4xl whitespace-nowrap">Dati </h2>
+        <div>
+          <div>
+            <h2 className="text-4xl whitespace-nowrap">Dati</h2>
           </div>
           {/*Name and Lastname */}
           {(props.name || props.lastName) &&
@@ -140,7 +132,7 @@ const BlueDakiModel = (props) => {
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 
         {/*Competence */}
-        <div className="flex flex-col justify-start  items-center">
+        <div className="flex flex-col justify-start items-center">
           <h2 className="text-4xl mb-3">Compotenze</h2>
           {props.compDati ? (
             <>
@@ -156,7 +148,7 @@ const BlueDakiModel = (props) => {
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 
         {/*Lingue */}
-        <div className="flex flex-col justify-start  items-center">
+        <div className="flex flex-col justify-start items-center">
           <h2 className="text-4xl mb-3">Lingue</h2>
           {props.langDati ? (
             <>
@@ -185,7 +177,7 @@ const BlueDakiModel = (props) => {
         {/*Profile */}
         <div className="mb-2">
           <h2 className="text-4xl mb-3">Profilo</h2>
-          <p>{handleProfile(props.profileContent)}</p>
+          {handleProfile(props.profileContent)}
         </div>
         <hr className="border border-b border-orange-500 w-1/2 my-4" />
 

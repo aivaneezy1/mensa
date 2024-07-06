@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
 
   leftColumn: {
     flex: 1,
-    backgroundColor: "#dee4eb",
     flexDirection: "column",
     alignItems: "items",
     padding: 20,
@@ -188,11 +187,15 @@ const DocumentDaki = (props) => {
     <Document>
       <Page style={styles.page}>
         {/*Left Column */}
-        <View style={styles.leftColumn}>
+        <View
+          style={[styles.leftColumn, { backgroundColor: props.cardColors }]}
+        >
           <View style={styles.section}>
             <Text style={styles.sectionLeftTitle}>Dati</Text>
             <View>
-              <Image style={styles.image} src={props.selectedImage} />
+              {props.selectedImage && (
+                <Image style={styles.image} src={props.selectedImage} />
+              )}
             </View>
             {/*Personal Data */}
             {(props.name || props.lastName) &&

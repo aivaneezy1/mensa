@@ -14,15 +14,16 @@ const DatiP = (props) => {
     <>
       {/*Dati Personali button */}
       {handleButton("DatiPersonali","Dati Personali")}
-      <div className="flex flex-col  gap-2  min-w-sm  ">
+      <div className="flex flex-col  gap-2  min-w-sm   ">
         {showProfile === "DatiPersonali" && (
           <>
             <div className=" flex flex-col gap-5 lg:flex-row lg:flex ">
               {/*Upload Component */}
-              <div className="flex flex-grow">
+              <div className="flex  ">
                <Upload
                 selectedImage={props.selectedImage}
                 setSelectedImage={props.setSelectedImage}
+                className="w-24 h-24 sm:w-16 sm:h-16"
               />
               </div>
 

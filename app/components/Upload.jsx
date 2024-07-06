@@ -29,7 +29,6 @@ const Upload = (props) => {
   //       inputRef.current.value = null;
   //     }
   //   }
-  // };
 
   const selectedFilePopup = () => {
     inputRef.current.click();
@@ -110,7 +109,7 @@ const Upload = (props) => {
 
   return (
     <div>
-      <div className="flex flex-col bg-transparent border py-10 mt-2 rounded-md hover:border-blue-500 h-full w-full ">
+      <div className=" relative flex flex-col bg-transparent border mt-2 py-5 rounded-md hover:border-blue-500 h-full w-full ">
         <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer whitespace-nowrap ">
           {props.selectedImage ? (
             <>
@@ -122,11 +121,11 @@ const Upload = (props) => {
               />
               <button onClick={selectedFilePopup}  className="h-full w-full">
               <Image
-                className="object-cover rounded-md w-full h-full "
+                className="object-cover rounded-md "
                 src={props.selectedImage}
                 alt="p"
-                width={500}  // Adjust these values as needed
-                height={500} // Adjust these values as needed
+                width={150}  // Adjust these values as needed
+                height={150} // Adjust these values as needed
               />
               </button>
             </>
@@ -161,6 +160,8 @@ const Upload = (props) => {
           )}
         </label>
       </div>
+
+
        <Modal open={open} onClose={handleClose}>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 rounded-md shadow-lg">
           {image && (

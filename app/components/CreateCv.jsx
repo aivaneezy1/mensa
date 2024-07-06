@@ -107,6 +107,10 @@ export default function Home() {
     setExprDataFieldList,
     exprContent,
     setExprContent,
+
+      /*BackGround Color */
+    cardColors, 
+   
   } = useContext(DatiContext);
 
   {
@@ -278,6 +282,7 @@ export default function Home() {
                     // />
                     <DocumentDaki
                       //Personal Data
+                      cardColors={cardColors}
                       selectedImage={selectedImage}
                       name={name}
                       lastName={lastName}
@@ -346,6 +351,7 @@ export default function Home() {
           />
 
           {/* <BlueDakiModel
+            cardColors={cardColors}
             selectedImage={selectedImage}
             name={name}
             lastName={lastName}

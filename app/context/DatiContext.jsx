@@ -66,6 +66,11 @@ const DatiContextProvider = ({ children }) => {
   const [exprDataFieldList, setExprDataFieldList] = useState([]);
   const [exprContent, setExprContent] = useState("")
 
+
+
+  /*Background color */
+   const [cardColors, setCardColors] = useState('');
+
   return (
     <DatiContext.Provider
       value={{
@@ -158,6 +163,11 @@ const DatiContextProvider = ({ children }) => {
         setExprDataFieldList,
         exprContent,  
         setExprContent,
+
+
+        /*BackGround Color */
+        cardColors, 
+        setCardColors,
       }}
     >
       {children}

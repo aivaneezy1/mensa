@@ -1,34 +1,89 @@
-"use client"
-import React, {useState} from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-const CardDaki = (props) => {
+const CardBlue = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const datiPersonali = (image, dati, dati2, dati3, dati4) => {
+    return (
+      <div className="flex flex-row gap-2  items-center  w-sm ">
+        <div className="">{image}</div>
+        <div className=" font-medium text-xs">
+          <p className="font-medium text-xs">
+            {dati} {dati2}
+          </p>
+          <p className="font-medium text-xs">
+            {dati3} {dati4}
+          </p>
+        </div>
+      </div>
+    );
+  };
 
   // white,pink, greenish,bl
-  const colors = ["#FFFFFF", "#ffcccc", "#ccffcc", "#F5F5DC", "#ccccff", "#FFDAB9"]; // Example colors
+  const colors = [
+    "#FFFFFF",
+    "#ffcccc",
+    "#ccffcc",
+    "#F5F5DC",
+    "#ccccff",
+    "#FFDAB9",
+  ]; // Example colors
   return (
     <div
       className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-
     >
       {/* LEFT SIDE DIV */}
-      <div className={`gap-2 flex flex-col justify-start items-center mt-5  max-w-xs`} style={{ backgroundColor: props.selectedColor }}>
-        <div className="border border-orange-400 p-0.5 mt-2">
-          <Image src="/randon.jpg" alt="pic" width={60} height={60} className="h-auto w-auto" />
+      <div
+        className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs bg-gray-100 border-r border-gray-500 border-md border-solid`}
+        style={{ backgroundColor: props.selectedColor }}
+      >
+        <div className="  mt-2">
+          <Image
+            src="/randon.jpg"
+            alt="pic"
+            width={60}
+            height={60}
+            className="rounded-full border bg-white"
+          />
         </div>
 
         {/* Personal Data */}
-        <div className="">
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="text-xs font-bold">Personal Dati</h2>
-              <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
+        <div className="flex justify-start flex-col">
+          <div>
+            <h2 className="text-xs font-bold  border-b border-gray-500 border-solid text-center">Personal Dati</h2>
           </div>
-          <div className="mt-2 flex gap-0.5 flex-col justify-start">
-            <p className="font-medium text-xs">Aivaneezy Enguio</p>
-            <p className="font-medium text-xs">aivaneezy@gmail.com</p>
+          {/*Name and Lastname */}
+          <div className="mt-2 flex gap-0.5 flex-col justify-start items-start ">
+            {datiPersonali(
+              <svg 
+              xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 448 512"
+               className="w-3 h-3">
+                <path
+                  fill="#74C0FC"
+                  d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+                />
+              </svg>,
+              "Aivan Jim",
+              "Enguio"
+            )}
+            {/*Email */}
+            {datiPersonali(
+                <svg 
+                xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 512 512"
+                 className="w-3 h-3">
+                  <path
+                    fill="#74C0FC"
+                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+                  />
+                </svg>,
+                "aivaneezy@gmail.com"
+              )}
+            {/*Phone number */}
             <p className="font-medium text-xs">324621299</p>
             <p className="font-medium text-xs">25-06-199</p>
             <p className="font-medium text-xs">Spain</p>
@@ -64,12 +119,9 @@ const CardDaki = (props) => {
       </div>
 
       {/* RIGHT DIV */}
-      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
+      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs mt-5">
         {/* Name */}
-        <div className="mb-1 mt-5  ">
-          <h2 className="text-xs font-semibold">Aivan Jim</h2>
-          <h2 className="text-xs text-gray-500 mt-1 font-semibold">Enguio</h2>
-        </div>
+      
 
         <hr className="border border-b border-orange-500 w-1/2 my-1" />
 
@@ -135,16 +187,14 @@ const CardDaki = (props) => {
                 key={idx}
                 className="w-6 h-6 rounded-full  cursor-pointer border mr-1"
                 style={{ backgroundColor: color }}
-                onClick={() => props.handleColorChange(color)}
+                onClick={() => props.handleColorChange(props.index, color)}
               />
             ))}
           </div>
         </div>
       )}
-
-      
     </div>
   );
 };
 
-export default CardDaki;
+export default CardBlue;
