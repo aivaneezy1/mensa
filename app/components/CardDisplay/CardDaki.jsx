@@ -52,7 +52,7 @@ const CardDaki = (props) => {
         {/* Personal Data */}
         <div className="">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-s font-bold">Personal Dati</h2>
+            <h2 className="text-s font-bold">Dati Personali</h2>
             <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
@@ -87,7 +87,7 @@ const CardDaki = (props) => {
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
-          <h2 className="text-s font-bold">Compotenza</h2>
+          <h2 className="text-s font-bold">Competenze</h2>
           <p className="font-medium text-xs">Sicurezza Informatica</p>
           <p className="text-gray-500 text-xs">Eccelente</p>
 
@@ -115,15 +115,15 @@ const CardDaki = (props) => {
       <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
         {/* Name */}
         <div className="mb-1 mt-5  ">
-          <h2 className="text-xs font-semibold">Aivan Jim</h2>
-          <h2 className="text-xs text-gray-500 mt-1 font-semibold">Enguio</h2>
+          <h2 className="text-xs font-semibold">Mario</h2>
+          <h2 className="text-xs text-gray-500 mt-1 font-semibold">Rossi</h2>
         </div>
 
         <hr className="border border-b border-orange-500 w-1/2 my-1" />
 
         {/* Profile */}
         <div className="mb-1">
-          <h2 className="text-xs font-bold">Profile</h2>
+          <h2 className="text-xs font-bold">Profilo</h2>
           <p className="text-xs">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -177,7 +177,7 @@ const CardDaki = (props) => {
 
         {/* Experience */}
         <div className="mb-1">
-          <h2 className="mb-1 text-xs font-bold">Experience</h2>
+          <h2 className="mb-1 text-xs font-bold">Esperienze</h2>
          <p className="font-bold text-xs">Senior IT Consultant</p>
           <p className="text-blue-500 font-semibold text-xs">
             2023 Gen- 2012 Nov

@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="sm:block hidden">
         <Link href="create-cv">
           <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
-            Create CV
+            Crea CV
           </button>
         </Link>
       </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
           onClick={handleOpen}>
             <Link href="create-cv">
               <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
-                Create CV
+                Crea CV
               </button>
             </Link>
           </div>

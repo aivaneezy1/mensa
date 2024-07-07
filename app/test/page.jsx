@@ -1,6 +1,6 @@
 import React from 'react'
 import BlueDakiModel from '../components/CardModels/BlueDaki'
-
+import CardMarilyn from '../components/CardDisplay/CardMarilyn'
 const page = () => {
   return (
     <div className='flex h-screen'>
@@ -9,8 +9,8 @@ const page = () => {
       </div>
 
       <div className='w-1/2'>
-   
-      </div>
+        <CardMarilyn/>
+         </div>
     </div>
   )
 }

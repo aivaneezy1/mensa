@@ -14,6 +14,7 @@ import DatiPersonali from "./Card/DatiPersonali";
 import BlueDakiModel from "./CardModels/BlueDaki";
 import DocumentDaki from "./Documents/DocumentDaki";
 
+
 export default function Home() {
   // Dati states
   const {
@@ -111,7 +112,8 @@ export default function Home() {
       /*BackGround Color */
     cardColors, 
     cardBlueColor, 
-    setCardBlueColor,
+    cardMarilynColor, 
+ 
    
   } = useContext(DatiContext);
 
