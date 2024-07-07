@@ -1,19 +1,25 @@
 "use client";
 import React, { useState, useContext } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "./Document";
-import Card from "./CardModels/Card";
+import { DatiContext } from "../context/DatiContext";
 import handleButton from "../utils/handleButton";
+
+{/*Components */}
 import Compotenze from "./Card/Compotenze";
 import Language from "./Card/Language";
-import { DatiContext } from "../context/DatiContext";
 import Profile from "./Card/Profile";
 import EsperienzeLavoro from "./Card/EsperienzeLavoro";
 import Formazione from "./Card/Formazione";
 import DatiPersonali from "./Card/DatiPersonali";
-import BlueDakiModel from "./CardModels/BlueDaki";
-import DocumentDaki from "./Documents/DocumentDaki";
 
+{/*Document */}
+import DocumentDaki from "./Documents/DocumentDaki";
+import MyDocument from "./Document";
+import DocumentMarilyn from "./Documents/DocumentMarilyn";
+{/*CARD */}
+import BlueDakiModel from "./CardModels/BlueDaki";
+import Card from "./CardModels/Card";
+import MarilynModel from "./CardModels/Marilyn";
 
 export default function Home() {
   // Dati states
@@ -113,6 +119,7 @@ export default function Home() {
     cardColors, 
     cardBlueColor, 
     cardMarilynColor, 
+     setCardMarilynColor
  
    
   } = useContext(DatiContext);
@@ -285,35 +292,39 @@ export default function Home() {
                     //   // Experience Data
                     //   exprDataFieldList={exprDataFieldList}
                     // />
-                    <DocumentDaki
-                      //Personal Data
-                      cardColors={cardColors}
-                      selectedImage={selectedImage}
-                      name={name}
-                      lastName={lastName}
-                      email={email}
-                      phone={phone}
-                      address={address}
-                      postalCode={postalCode}
-                      city={city}
-                      dateBirth={dateBirth}
-                      placeBirth={placeBirth}
-                      genere={genere}
-                      civilStatus={civilStatus}
-                      nationality={nationality}
-                      license={license}
-                      website={website}
-                      linkin={linkin}
-                      /*Lingue e Compotenze */
-                      compFieldList={compFieldList}
-                      langFieldList={langFieldList}
-                      //Profile  Data
-                      profileContent={profileContent}
-                      //Formazione Data
-                      formDataFieldList={formDataFieldList}
-                      // Experience Data
-                      exprDataFieldList={exprDataFieldList}
-                    />
+                    // <DocumentDaki
+                    //   //Personal Data
+                    //   cardColors={cardColors}
+                    //   selectedImage={selectedImage}
+                    //   name={name}
+                    //   lastName={lastName}
+                    //   email={email}
+                    //   phone={phone}
+                    //   address={address}
+                    //   postalCode={postalCode}
+                    //   city={city}
+                    //   dateBirth={dateBirth}
+                    //   placeBirth={placeBirth}
+                    //   genere={genere}
+                    //   civilStatus={civilStatus}
+                    //   nationality={nationality}
+                    //   license={license}
+                    //   website={website}
+                    //   linkin={linkin}
+                    //   /*Lingue e Compotenze */
+                    //   compFieldList={compFieldList}
+                    //   langFieldList={langFieldList}
+                    //   //Profile  Data
+                    //   profileContent={profileContent}
+                    //   //Formazione Data
+                    //   formDataFieldList={formDataFieldList}
+                    //   // Experience Data
+                    //   exprDataFieldList={exprDataFieldList}
+                    // />
+
+                    <DocumentMarilyn/>
+
+
                   }
                   fileName="cv.pdf"
                   className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
@@ -329,7 +340,7 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          <Card
+          {/* <Card
             selectedImage={selectedImage}
             cardBlueColor={cardBlueColor}
             name={name}
@@ -354,7 +365,7 @@ export default function Home() {
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
-          />
+          /> */}
 
           {/* <BlueDakiModel
             cardColors={cardColors}
@@ -383,6 +394,34 @@ export default function Home() {
             exprDataFieldList={exprDataFieldList}
             range={range}
           /> */}
+
+          <MarilynModel
+            cardColors={cardMarilynColor}
+            setCardColors={setCardMarilynColor}
+            selectedImage={selectedImage}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            nationality={nationality}
+            civilStatus={civilStatus}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compDati={compDati}
+            langDati={langDati}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
+            range={range}/>
         </div>
       </div>
     </>

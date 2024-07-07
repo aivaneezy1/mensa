@@ -36,7 +36,7 @@ const CardDaki = (props) => {
     >
       {/* LEFT SIDE DIV */}
       <div
-        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs`}
+        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border`}
         style={{ backgroundColor: props.selectedColor }}
       >
         <div className="border border-orange-400 p-0.5 mt-2">
