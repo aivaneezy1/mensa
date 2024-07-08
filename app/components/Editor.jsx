@@ -7,16 +7,11 @@ import "react-quill/dist/quill.core.css";
 export const RichTextEditor = (props) => {
   const modules = {
     toolbar: [
-      [{font:[]}],
-      [{ header: [1, 2,3, false] }],
+      [{ header: [false] }],
       ["bold", "italic", "underline",],
       [
-        { list: "ordered" },
         { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
       ],
-      [{ color: ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff"] }], 
     ],
   };
 
@@ -30,8 +25,6 @@ export const RichTextEditor = (props) => {
     "list",
     "bullet",
     "indent",
-    "color", // Added color
-
      "font"
   ];
 

@@ -47,14 +47,23 @@ const MarilynModel = (props) => {
     )
   }
 
-  const handelProfile = (data) =>{
+  const handleProfile = (data) =>{
+     // Configure DOMPurify to allow list elements
+  const cleanHTML = DOMPurify.sanitize(data, {
+    ALLOWED_TAGS: ['b', 'i', 'u', 'ol', 'ul', 'li', 'p', 'br', 'strong', 'em'],
+    ALLOWED_ATTR: []
+  });
     return (
-      <div className="mt-2 break-all whitespace-pre-line">
+      <>
+      {data ? (
+        <div className="mt-2 break-all whitespace-pre-line">
         <div
           className="break-words text-xs" 
-          dangerouslySetInnerHTML={{ __html:DOMPurify.sanitize(data)  }}
+          dangerouslySetInnerHTML={{ __html:cleanHTML }}
         />
       </div>
+      ): <></>}
+      </>
     );
   }
 
@@ -81,7 +90,10 @@ const MarilynModel = (props) => {
              <div className="mt-2 break-all whitespace-pre-line text-sm">
                 <div
                   className="break-words"
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content, {
+    ALLOWED_TAGS: ['b', 'i', 'u', 'ol', 'ul', 'li', 'p', 'br', 'strong', 'em'],
+    ALLOWED_ATTR: []
+  }) }}
                 />
               </div>
             </div>
@@ -101,6 +113,7 @@ const MarilynModel = (props) => {
   ]; // Example colors
 
 
+  console.log("profile", props.profileContent)
   return (
     <div
       className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
@@ -109,7 +122,7 @@ const MarilynModel = (props) => {
     >
       {/* LEFT SIDE DIV */}
       <div
-        className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs bg-gray-100 border-r border-gray-500 border-md border-solid`}
+        className={`gap-2 flex flex-col justify-start items-center mt-5 bg-gray-100 border-r border-gray-500 border-md border-solid`}
       >
         {props.selectedImage && (
            <div className="">
@@ -377,7 +390,9 @@ const MarilynModel = (props) => {
           >
             Profilo
           </h2>
-          {handelProfile(props.profileContent)}
+          {props.profileContent && (
+             handleProfile(props.profileContent)
+          )}
         </div>
 
         {/* Istruzione */}

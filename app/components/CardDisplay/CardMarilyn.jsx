@@ -32,7 +32,7 @@ const CardMarilyn = (props) => {
   ]; // Example colors
   return (
     <div
-      className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
+      className="grid grid-cols-2  sm:p-2  mx-auto shadow-md relative h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

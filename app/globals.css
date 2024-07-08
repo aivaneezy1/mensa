@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+ol {
+  list-style: initial !important; /* Reset list style */
+  color: inherit; /* Inherit color from parent */
+}
+
+
+ul {
+  list-style: initial !important; /* Reset list style */
+  color: inherit; /* Inherit color from parent */
+  margin-left: 15px
+}
+

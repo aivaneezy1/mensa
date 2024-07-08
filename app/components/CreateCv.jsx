@@ -322,8 +322,36 @@ export default function Home() {
                     //   exprDataFieldList={exprDataFieldList}
                     // />
 
-                    <DocumentMarilyn/>
-
+                    <DocumentMarilyn
+                      cardColors={cardMarilynColor}
+                      selectedImage={selectedImage}
+                      name={name}
+                      lastName={lastName}
+                      email={email}
+                      phone={phone}
+                      address={address}
+                      postalCode={postalCode}
+                      city={city}
+                      dateBirth={dateBirth}
+                      placeBirth={placeBirth}
+                      genere={genere}
+                      civilStatus={civilStatus}
+                      nationality={nationality}
+                      license={license}
+                      website={website}
+                      linkin={linkin}
+                      /*Lingue e Compotenze */
+                      compFieldList={compFieldList}
+                      langFieldList={langFieldList}
+                      //Profile  Data
+                      profileContent={profileContent}
+                      //Formazione Data
+                      formDataFieldList={formDataFieldList}
+                      // Experience Data
+                      exprDataFieldList={exprDataFieldList}
+                    
+                    />
+                    
 
                   }
                   fileName="cv.pdf"
