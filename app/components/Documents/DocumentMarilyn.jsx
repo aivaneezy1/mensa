@@ -7,18 +7,54 @@ import {
   Document,
   StyleSheet,
   Image,
+  Font,
 } from "@react-pdf/renderer";
-import DOMPurify from "dompurify";
-import HtmlToReact from 'html-to-react';
 
+Font.register({
+  family: "Open Sans",
+  fonts: [
+    {
+      src: "https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/fonts/open-sans-regular.ttf",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/open-sans-all@0.1.3/fonts/open-sans-600.ttf",
+      fontWeight: 800,
+    },
+  ],
+});
 
-const HtmlToReactParser = HtmlToReact.Parser;
- const parser = new HtmlToReactParser();
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: "Open Sans",
+    fontSize: 20,
+    fontWeight: 600,
+    borderBottom: 1,
+    borderBottomColor: "grey",
+    borderBottomWidth: 1,
+    textAlign: "center",
+    marginTop: 5,
+  },
+
+  titleRight: {
+    fontFamily: "Open Sans",
+    fontSize: 20,
+    fontWeight: 600,
+    borderBottom: 1,
+    borderBottomColor: "grey",
+    borderBottomWidth: 1,
+    textAlign: "left",
+    marginTop: 5,
+  },
+
+  data:{
+    fontFamily: "Open Sans",
+    fontWeight: 600,
+    fontSize:12
+  }
+});
 
 const DocumentMarilyn = (props) => {
   let currentYear = new Date().getFullYear();
-
 
   const datiPersonali = (image, dati, dati2) => {
     return (
@@ -46,22 +82,20 @@ const DocumentMarilyn = (props) => {
     return (
       <>
         {data.map((post, index) => (
-          <View key={index}>
+          <View key={index} style={{dispaly:"flex", justifyContent:"center", alignItems:"center"}}>
             <Text
-              style={{
-                fontSize: 10,
-                fontWeight: "medium",
+              style={[styles.data,{
                 whiteSpace: "normal",
                 wordWrap: "break-word",
                 marginTop: 3,
                 textAlign: "center",
-              }}
+              }]}
             >
               {post.competenza}
             </Text>
             <Text
               style={{
-                color: "gray",
+                color: "grey",
                 fontSize: "10",
                 whiteSpace: "normal",
                 wordWrap: "break-word",
@@ -76,40 +110,68 @@ const DocumentMarilyn = (props) => {
       </>
     );
   };
-const handleProfile = (data) => {
-  // Sanitize the HTML data
-  const sanitizedData = DOMPurify.sanitize(data, {
-    ALLOWED_TAGS: ['b', 'i', 'u', 'ol', 'ul', 'li', 'p', 'br', 'strong', 'em'],
-    ALLOWED_ATTR: []
-  });
 
-  // Convert HTML to React components
-  const reactElement = parser.parse(sanitizedData);
+  const handleProfile = (data) => {
+    // Replace <p> tags with new lines
+    const formattedText = data.replace(/<p>(.*?)<\/p>/gs, "$1\n");
 
-  // Function to recursively render React elements into PDF Text components
-  const renderHtmlToPdf = (element) => {
-    if (Array.isArray(element)) {
-      return element.map((el, index) => renderHtmlToPdf(el));
-    } else if (typeof element === 'object') {
-      if (element.type === 'text') {
-        return (
-          <Text key={element.key || Math.random()}>
-            {element.content}
+    // Split the formatted text into lines
+    const lines = formattedText.split("\n");
+
+    // Render each line using Text components
+    return (
+      <>
+        {lines.map((line, index) => (
+          <Text
+            key={index}
+            style={{ marginTop: 2, marginBottom: 2, fontSize: 14 }}
+          >
+            {line}
           </Text>
-        );
-      } else if (element.type === 'tag') {
-        return (
-          <Text key={element.key || Math.random()}>
-            {renderHtmlToPdf(element.children)}
-          </Text>
-        );
-      }
-    }
-    return null;
+        ))}
+      </>
+    );
   };
 
-  return <View>{renderHtmlToPdf(reactElement)}</View>;
-};
+  const handleBgData = (data) => {
+    return (
+      <>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Text style={[styles.data, {marginTop:5}]}>{post.data}</Text>
+              <Text
+                style={{
+                  color: "grey",
+                  fontSize: 10,
+                  whiteSpace: "normal",
+                  wordWrap: "break-word",
+                }}
+              >
+                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+                {post.dataInizio} -{" "}
+                {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+                {post.dataFine}
+              </Text>
+              {(post.istitute || post.city) && (
+                <Text
+                  style={{
+                    color: "grey",
+                    fontSize: 10,
+                    whiteSpace: "normal",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  {post.istitute} | {post.city}
+                </Text>
+              )}
+              {/* Render profile content using handleProfile */}
+              {handleProfile(post.content)}
+            </View>
+          ))}
+      </>
+    );
+  };
 
   return (
     <Document>
@@ -159,18 +221,7 @@ const handleProfile = (data) => {
                   alignItems: "center",
                 }}
               >
-                <Text
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 14,
-                    borderBottom: 1,
-                    borderBottomColor: "gray",
-                    borderBottomWidth: 1,
-                    textAlign: "center",
-                    color: props.cardColors,
-                    marginTop: 10,
-                  }}
-                >
+                <Text style={[styles.title, { color: props.cardColors }]}>
                   Dati Personali
                 </Text>
               </View>
@@ -285,18 +336,7 @@ const handleProfile = (data) => {
                 alignItems: "center",
               }}
             >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  borderBottom: 1,
-                  borderBottomColor: "gray",
-                  borderBottomWidth: 1,
-                  textAlign: "center",
-                  color: props.cardColors,
-                  marginTop: 10,
-                }}
-              >
+              <Text style={[styles.title, { color: props.cardColors }]}>
                 Competenze
               </Text>
 
@@ -313,18 +353,7 @@ const handleProfile = (data) => {
                 alignItems: "center",
               }}
             >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  borderBottom: 1,
-                  borderBottomColor: "gray",
-                  borderBottomWidth: 1,
-                  textAlign: "center",
-                  color: props.cardColors,
-                  marginTop: 10,
-                }}
-              >
+              <Text style={[styles.title, { color: props.cardColors }]}>
                 Lingue
               </Text>
 
@@ -341,6 +370,7 @@ const handleProfile = (data) => {
               display: "flex",
               justifyContent: "start",
               alignItems: "start",
+              marginLeft:5
             }}
           >
             {/*Profile */}
@@ -351,26 +381,39 @@ const handleProfile = (data) => {
                 alignItems: "start",
               }}
             >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  borderBottom: 1,
-                  borderBottomColor: "gray",
-                  borderBottomWidth: 1 / 2,
-                  textAlign: "left",
-                  color: props.cardColors,
-                  marginTop: 10,
-                }}
-              >
+              <Text style={[styles.titleRight, { color: props.cardColors }]}>
                 Profilo
               </Text>
-              {props.profileContent && (handleProfile(props.profileContent)) }
-              <Text>{props.profileContent}</Text>
+              {handleProfile(props.profileContent)}
             </View>
 
             {/*Istruzione */}
-            <View></View>
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "start",
+              }}
+            >
+              <Text style={[styles.titleRight, { color: props.cardColors }]}>
+                Istruzione
+              </Text>
+              {handleBgData(props.formDataFieldList)}
+            </View>
+
+            {/*Esperienze */}
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "start",
+              }}
+            >
+              <Text style={[styles.titleRight, { color: props.cardColors }]}>
+                Esperienze
+              </Text>
+              {handleBgData(props.exprDataFieldList)}
+            </View>
           </View>
         </View>
       </Page>

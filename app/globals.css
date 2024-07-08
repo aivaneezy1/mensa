@@ -5,6 +5,7 @@
 ol {
   list-style: initial !important; /* Reset list style */
   color: inherit; /* Inherit color from parent */
+  margin-left: 15px
 }
 
 
@@ -13,4 +14,12 @@ ul {
   color: inherit; /* Inherit color from parent */
   margin-left: 15px
 }
+
+
+h1,h2,h3{
+   list-style: initial !important; /* Reset list style */
+  color: inherit; /* Inherit color from parent */
+ 
+}
+
 

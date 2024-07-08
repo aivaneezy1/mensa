@@ -3,15 +3,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.core.css";
 
-
 export const RichTextEditor = (props) => {
   const modules = {
     toolbar: [
-      [{ header: [false] }],
-      ["bold", "italic", "underline",],
-      [
-        { list: "bullet" },
-      ],
+      [{ header: [false] }], 
     ],
   };
 
@@ -20,12 +15,8 @@ export const RichTextEditor = (props) => {
     "bold",
     "italic",
     "underline",
-    "strike",
-    "blockquote",
     "list",
-    "bullet",
-    "indent",
-     "font"
+    "font",
   ];
 
   return (
@@ -37,7 +28,7 @@ export const RichTextEditor = (props) => {
         formats={formats}
         value={props.content}
         onChange={(value) => props.setContent(value)}
-         style={{ minHeight: "400px" }} // Adjust minHeight as needed
+        style={{ minHeight: "400px" }} // Adjust minHeight as needed
         className="react-quill break-words whitespace-pre-wrap sm:w-full h-48 mb-10 mr-10 rounded-md w-100"
       />
     </div>
