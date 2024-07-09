@@ -380,7 +380,7 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          {cardOneSelected && (
+         
             <CardOneModel
             selectedImage={selectedImage}
             cardColors={cardOneColor}
@@ -408,9 +408,9 @@ export default function Home() {
             exprDataFieldList={exprDataFieldList}
             range={range}
           />
-          )}
+        
 
-          {cardTwoSelected && (
+          {/* {cardTwoSelected && (
             <CardTwoModel
             selectedImage={selectedImage}
             cardColors={cardTwoColor}
@@ -468,10 +468,10 @@ export default function Home() {
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
             range={range}/> 
-          )}
+          )} */}
 
           {/*Default card to choice if user didnt select any card at the home page */}
-         {(!cardOneSelected && !cardTwoSelected && !cardThreeSelected) && (<CardChoices/>)}
+         {/* {(!cardOneSelected && !cardTwoSelected && !cardThreeSelected) && (<CardChoices/>)} */}
         </div>
       </div>
     </>

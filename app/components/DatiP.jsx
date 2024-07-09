@@ -1,30 +1,72 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import handleButton from "../utils/handleButton";
 import OptionalButton from "../utils/OptionalButton";
 import Upload from "./Upload";
 import { DatiContext } from "../context/DatiContext";
 const DatiP = (props) => {
   // State to toggle optional fields
- 
-  const [showOptionalFields, setShowOptionalFields] = useState(false);
-  const {showProfile} = useContext(DatiContext)
 
+  const [showOptionalFields, setShowOptionalFields] = useState(false);
+  const { showProfile } = useContext(DatiContext);
+
+
+  // Setting value to the localStorage
+  const setLocalStorageItem = (key, value) => {
+    if (value !== undefined) {
+      localStorage.setItem(key, value);
+    }
+  };
+
+  // Update localStorage whenever the state changes
+  useEffect(() => {
+    setLocalStorageItem("name", props.name);
+    setLocalStorageItem("lastName", props.lastName);
+    setLocalStorageItem("emailAdress", props.email);
+    setLocalStorageItem("phone", props.phone);
+    setLocalStorageItem("address", props.address);
+    setLocalStorageItem("postalCode", props.postalCode);
+    setLocalStorageItem("city", props.city);
+    setLocalStorageItem("dateBirth", props.dateBirth);
+    setLocalStorageItem("placeBirth", props.placeBirth);
+    setLocalStorageItem("gender", props.genere);
+    setLocalStorageItem("civilStatus", props.civilStatus);
+    setLocalStorageItem("nationality", props.nationality);
+    setLocalStorageItem("license", props.license);
+    setLocalStorageItem("website", props.website);
+    setLocalStorageItem("linkin", props.linkin);
+  }, [
+    props.name,
+    props.lastName,
+    props.email,
+    props.phone,
+    props.address,
+    props.postalCode,
+    props.city,
+    props.dateBirth,
+    props.placeBirth,
+    props.genere,
+    props.civilStatus,
+    props.nationality,
+    props.license,
+    props.website,
+    props.linkin,
+  ]);
 
   return (
     <>
       {/*Dati Personali button */}
-      {handleButton("DatiPersonali","Dati Personali")}
+      {handleButton("DatiPersonali", "Dati Personali")}
       <div className="flex flex-col  gap-2  min-w-sm   ">
         {showProfile === "DatiPersonali" && (
           <>
             <div className=" flex flex-col gap-5 lg:flex-row lg:flex ">
               {/*Upload Component */}
               <div className="flex  ">
-               <Upload
-                selectedImage={props.selectedImage}
-                setSelectedImage={props.setSelectedImage}
-                className="w-24 h-24 sm:w-16 sm:h-16"
-              />
+                <Upload
+                  selectedImage={props.selectedImage}
+                  setSelectedImage={props.setSelectedImage}
+                  className="w-24 h-24 sm:w-16 sm:h-16"
+                />
               </div>
 
               <div className="lg:flex lg:flex-col gap-2 ">
@@ -157,7 +199,11 @@ const DatiP = (props) => {
             />
 
             {/* Button to toggle optional fields */}
-            {OptionalButton(showOptionalFields, setShowOptionalFields, "Informazioni aggiuntive (facoltative)")}
+            {OptionalButton(
+              showOptionalFields,
+              setShowOptionalFields,
+              "Informazioni aggiuntive (facoltative)"
+            )}
 
             {/* Optional input fields */}
             {showOptionalFields && (

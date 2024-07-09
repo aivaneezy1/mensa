@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import Image from "next/image";
 import DOMPurify from "dompurify";
 import { DatiContext } from "@/app/context/DatiContext";
@@ -21,6 +21,9 @@ const CardOneModel = (props) => {
     props.license ||
     props.website ||
     props.linkin;
+
+
+   
 
   const handleChangeColor = (color) => {
     setCardOneColor(color);

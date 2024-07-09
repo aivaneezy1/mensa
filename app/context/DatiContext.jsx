@@ -9,23 +9,71 @@ const DatiContextProvider = ({ children }) => {
 
   /*Dati Personali */
   const [selectedImage, setSelectedImage] = useState(null);
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [city, setCity] = useState("");
-  const [dateBirth, setDateBirth] = useState("");
-  const [placeBirth, setPlaceBirth] = useState("");
-  const [genere, setGenere] = useState("");
-  const [civilStatus, setCivilStatus] = useState("");
-  const [nationality, setNationality] = useState("");
+
+  const [name, setName] = useState(() => {
+    const savedValue = localStorage.getItem("name");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [lastName, setLastName] = useState(() => {
+    const savedValue = localStorage.getItem("lastName");
+    return savedValue !== null ? savedValue : "";
+  });
+
+    const [email, setEmail] = useState(() => {
+    const savedValue = localStorage.getItem("email");
+    return savedValue !== null ? savedValue : "";
+  });
+ 
+  const [phone, setPhone] = useState(() => {
+    const savedValue = localStorage.getItem("phone");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [address, setAddress] = useState(() => {
+    const savedValue = localStorage.getItem("address");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [postalCode, setPostalCode] = useState(() => {
+    const savedValue = localStorage.getItem("postalCode");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [city, setCity] = useState(() => {
+    const savedValue = localStorage.getItem("city");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [dateBirth, setDateBirth] = useState(() => {
+    const savedValue = localStorage.getItem("dateBirth");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [placeBirth, setPlaceBirth] = useState(() => {
+    const savedValue = localStorage.getItem("placeBirth");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [genere, setGenere] = useState(() => {
+    const savedValue = localStorage.getItem("gender");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [civilStatus, setCivilStatus] = useState(() => {
+    const savedValue = localStorage.getItem("civilStatus");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [nationality, setNationality] = useState(() => {
+    const savedValue = localStorage.getItem("nationality");
+    return savedValue !== null ? savedValue : "";
+  });
 
   /*Optionals for dati personali */
-  const [license, setLicense] = useState("");
-  const [website, setWebsite] = useState("");
-  const [linkin, setLinkin] = useState("");
+  const [license, setLicense] = useState(() => {
+    const savedValue = localStorage.getItem("license");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [website, setWebsite] = useState(() => {
+    const savedValue = localStorage.getItem("website");
+    return savedValue !== null ? savedValue : "";
+  });
+  const [linkin, setLinkin] = useState(() => {
+    const savedValue = localStorage.getItem("linkin");
+    return savedValue !== null ? savedValue : "";
+  });
 
   /*Profile */
   const [profileContent, setProfileContent] = useState("");
