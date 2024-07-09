@@ -18,7 +18,8 @@ import DatiPersonali from "./Card/DatiPersonali";
   /*Document */
 }
 import DocumentDaki from "./Documents/DocumentDaki";
-import MyDocument from "./Document";
+
+import CardOneDocument from "./Documents/CardOneDocument";
 import CardThreeDocument from "./Documents/CardThreeDocument";
 {
   /*CARD */
@@ -27,6 +28,8 @@ import BlueDakiModel from "./CardModels/BlueDaki";
 import CardOneModel from "./CardModels/CardOneModel";
 import CardThreeModel from "./CardModels/CardThreeModel";
 import CardTwoModel from "./CardModels/CardTwoModel";
+import Hero from "./Hero/Hero"; // default cards to choice 
+import CardChoices from "./CardChoices";
 
 export default function Home() {
   // Dati states
@@ -129,6 +132,11 @@ export default function Home() {
     setCardTwoColor,
     cardThreeColor,
     setCardThreeColor,
+
+    /*Model Choices */
+    cardOneSelected,
+    cardTwoSelected,
+    cardThreeSelected,
   } = useContext(DatiContext);
 
   {
@@ -270,35 +278,35 @@ export default function Home() {
               <div className="justify-center flex items-center">
                 <PDFDownloadLink
                   document={
-                    // <MyDocument
-                    //   //Personal Data
-                    //cardBlueColor={cardBlueColor}
-                    //   selectedImage={selectedImage}
-                    //   name={name}
-                    //   lastName={lastName}
-                    //   email={email}
-                    //   phone={phone}
-                    //   address={address}
-                    //   postalCode={postalCode}
-                    //   city={city}
-                    //   dateBirth={dateBirth}
-                    //   placeBirth={placeBirth}
-                    //   genere={genere}
-                    //   civilStatus={civilStatus}
-                    //   nationality={nationality}
-                    //   license={license}
-                    //   website={website}
-                    //   linkin={linkin}
-                    //   /*Lingue e Compotenze */
-                    //   compFieldList={compFieldList}
-                    //   langFieldList={langFieldList}
-                    //   //Profile  Data
-                    //   profileContent={profileContent}
-                    //   //Formazione Data
-                    //   formDataFieldList={formDataFieldList}
-                    //   // Experience Data
-                    //   exprDataFieldList={exprDataFieldList}
-                    // />
+                    <CardOneDocument
+                      cardColors={cardOneColor}
+                      selectedImage={selectedImage}
+                      name={name}
+                      lastName={lastName}
+                      email={email}
+                      phone={phone}
+                      address={address}
+                      postalCode={postalCode}
+                      city={city}
+                      dateBirth={dateBirth}
+                      placeBirth={placeBirth}
+                      genere={genere}
+                      civilStatus={civilStatus}
+                      nationality={nationality}
+                      license={license}
+                      website={website}
+                      linkin={linkin}
+                      /*Lingue e Compotenze */
+                      compFieldList={compFieldList}
+                      langFieldList={langFieldList}
+                      //Profile  Data
+                      profileContent={profileContent}
+                      //Formazione Data
+                      formDataFieldList={formDataFieldList}
+                      // Experience Data
+                      exprDataFieldList={exprDataFieldList}
+                    />
+
                     // <DocumentDaki
                     //   //Personal Data
                     //   cardColors={cardColors}
@@ -329,34 +337,34 @@ export default function Home() {
                     //   exprDataFieldList={exprDataFieldList}
                     // />
 
-                    <CardThreeDocument
-                      cardColors={cardThreeColor}
-                      selectedImage={selectedImage}
-                      name={name}
-                      lastName={lastName}
-                      email={email}
-                      phone={phone}
-                      address={address}
-                      postalCode={postalCode}
-                      city={city}
-                      dateBirth={dateBirth}
-                      placeBirth={placeBirth}
-                      genere={genere}
-                      civilStatus={civilStatus}
-                      nationality={nationality}
-                      license={license}
-                      website={website}
-                      linkin={linkin}
-                      /*Lingue e Compotenze */
-                      compFieldList={compFieldList}
-                      langFieldList={langFieldList}
-                      //Profile  Data
-                      profileContent={profileContent}
-                      //Formazione Data
-                      formDataFieldList={formDataFieldList}
-                      // Experience Data
-                      exprDataFieldList={exprDataFieldList}
-                    />
+                    // <CardThreeDocument
+                    //   cardColors={cardThreeColor}
+                    //   selectedImage={selectedImage}
+                    //   name={name}
+                    //   lastName={lastName}
+                    //   email={email}
+                    //   phone={phone}
+                    //   address={address}
+                    //   postalCode={postalCode}
+                    //   city={city}
+                    //   dateBirth={dateBirth}
+                    //   placeBirth={placeBirth}
+                    //   genere={genere}
+                    //   civilStatus={civilStatus}
+                    //   nationality={nationality}
+                    //   license={license}
+                    //   website={website}
+                    //   linkin={linkin}
+                    //   /*Lingue e Compotenze */
+                    //   compFieldList={compFieldList}
+                    //   langFieldList={langFieldList}
+                    //   //Profile  Data
+                    //   profileContent={profileContent}
+                    //   //Formazione Data
+                    //   formDataFieldList={formDataFieldList}
+                    //   // Experience Data
+                    //   exprDataFieldList={exprDataFieldList}
+                    // />
                   }
                   fileName="cv.pdf"
                   className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
@@ -372,7 +380,8 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          <CardOneModel
+          {cardOneSelected && (
+            <CardOneModel
             selectedImage={selectedImage}
             cardColors={cardOneColor}
             name={name}
@@ -399,9 +408,11 @@ export default function Home() {
             exprDataFieldList={exprDataFieldList}
             range={range}
           />
+          )}
 
-          {/* <CardTwoModel
-           selectedImage={selectedImage}
+          {cardTwoSelected && (
+            <CardTwoModel
+            selectedImage={selectedImage}
             cardColors={cardTwoColor}
             name={name}
             lastName={lastName}
@@ -424,9 +435,13 @@ export default function Home() {
             langFieldList={langFieldList}
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
-            exprDataFieldList={exprDataFieldList}/> */}
+            exprDataFieldList={exprDataFieldList}
+            range={range}
+          />
+          )}
 
-          {/* <CardThreeModel
+          {cardThreeSelected && (
+            <CardThreeModel
             cardColors={cardThreeColor}
             setCardColors={setCardThreeColor}
             selectedImage={selectedImage}
@@ -452,7 +467,11 @@ export default function Home() {
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
-            range={range}/> */}
+            range={range}/> 
+          )}
+
+          {/*Default card to choice if user didnt select any card at the home page */}
+         {(!cardOneSelected && !cardTwoSelected && !cardThreeSelected) && (<CardChoices/>)}
         </div>
       </div>
     </>

@@ -1,13 +1,13 @@
 "use client";
 import React, { useContext, useState } from "react";
-import CardOneDisplay from "../CardDisplay/CardOneDisplay";
-import CardTwoDisplay from "../CardDisplay/CardTwoDisplay";
-import CardThreeDisplay from "../CardDisplay/CardThreeDisplay";
-import { DatiContext } from "@/app/context/DatiContext";
+import CardOneDisplay from "./CardDisplay/CardOneDisplay";
+import CardTwoDisplay from "./CardDisplay/CardTwoDisplay";
+import CardThreeDisplay from "./CardDisplay/CardThreeDisplay";
+import { DatiContext } from "../context/DatiContext";
 import Link from "next/link";
-import Image from "next/image";
-const Hero = () => {
-  const {
+
+const CardChoices = () => {
+   const {
     cardOneColor,
     setCardOneColor,
     cardTwoColor,
@@ -38,17 +38,14 @@ const Hero = () => {
     if (event.button === 0) {
       // Left-click
       if (card === "cardOne") {
- 
         setCardOneSelected(!cardOneSelected);
         setCardTwoSelected(false);
         setCardThreeSelected(false);
       } else if (card === "cardTwo") {
-           
         setCardTwoSelected(!cardTwoSelected);
         setCardOneSelected(false);
         setCardThreeSelected(false);
       } else if (card === "cardThree") {
-   
         setCardThreeSelected(!cardThreeSelected);
         setCardOneSelected(false);
         setCardTwoSelected(false);
@@ -61,7 +58,7 @@ const Hero = () => {
      
 
       {/* Cards */}
-      <div className={`grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 ml-5 mr-5  min-h-screen mb-20`}>
+      <div className="grid grid-cols-1  gap-10 mt-10 ml-5 mr-5  min-h-screen mb-20">
         <div className="flex flex-col h-full">
           <CardOneDisplay
             selectedColor={cardOneColor}
@@ -118,6 +115,6 @@ const Hero = () => {
       </div>
     </>
   );
-};
+}
 
-export default Hero;
+export default CardChoices

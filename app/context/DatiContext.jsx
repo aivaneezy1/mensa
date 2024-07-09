@@ -4,19 +4,18 @@ import React, { createContext, useState } from "react";
 export const DatiContext = createContext({});
 
 const DatiContextProvider = ({ children }) => {
-
   /*Show button */
   const [showProfile, setShowProfile] = useState(null);
 
   /*Dati Personali */
   const [selectedImage, setSelectedImage] = useState(null);
   const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("")
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [city, setCity] = useState("")
+  const [city, setCity] = useState("");
   const [dateBirth, setDateBirth] = useState("");
   const [placeBirth, setPlaceBirth] = useState("");
   const [genere, setGenere] = useState("");
@@ -24,13 +23,12 @@ const DatiContextProvider = ({ children }) => {
   const [nationality, setNationality] = useState("");
 
   /*Optionals for dati personali */
-   const [license, setLicense] = useState("");
+  const [license, setLicense] = useState("");
   const [website, setWebsite] = useState("");
   const [linkin, setLinkin] = useState("");
 
-
   /*Profile */
-  const [profileContent, setProfileContent] = useState("")
+  const [profileContent, setProfileContent] = useState("");
 
   /*Competenze and edit field */
   const [compDati, setCompDati] = useState("");
@@ -50,7 +48,7 @@ const DatiContextProvider = ({ children }) => {
   const [formDateFine, setFormDateFine] = useState("");
   const [formDateFineAnno, setFormDateFineAnno] = useState("");
   const [formDataFieldList, setFormDataFieldList] = useState([]);
-  const [formContent, setFormContent] = useState("")
+  const [formContent, setFormContent] = useState("");
 
   /*Experience Field */
   const [expDati, setExpDati] = useState("");
@@ -64,25 +62,28 @@ const DatiContextProvider = ({ children }) => {
   const [exprDateFineAnno, setExprDateFineAnno] = useState("");
 
   const [exprDataFieldList, setExprDataFieldList] = useState([]);
-  const [exprContent, setExprContent] = useState("")
-
-
+  const [exprContent, setExprContent] = useState("");
 
   /*Background color */
-   const [cardOneColor, setCardOneColor] = useState('');
-   const [cardTwoColor, setCardTwoColor] = useState('')
-   const [cardThreeColor, setCardThreeColor] = useState('')
+  const [cardOneColor, setCardOneColor] = useState("");
+  const [cardTwoColor, setCardTwoColor] = useState("");
+  const [cardThreeColor, setCardThreeColor] = useState("");
+
+  /*Card model choices */
+  const [cardOneSelected, setCardOneSelected] = useState(false);
+  const [cardTwoSelected, setCardTwoSelected] = useState(false);
+  const [cardThreeSelected, setCardThreeSelected] = useState(false);
   return (
     <DatiContext.Provider
       value={{
-      showProfile, 
-      setShowProfile,
+        showProfile,
+        setShowProfile,
 
-       selectedImage, 
-       setSelectedImage,
+        selectedImage,
+        setSelectedImage,
         name,
         setName,
-        lastName, 
+        lastName,
         setLastName,
         email,
         setEmail,
@@ -90,9 +91,9 @@ const DatiContextProvider = ({ children }) => {
         setPhone,
         address,
         setAddress,
-        postalCode, 
+        postalCode,
         setPostalCode,
-        city, 
+        city,
         setCity,
         dateBirth,
         setDateBirth,
@@ -104,9 +105,12 @@ const DatiContextProvider = ({ children }) => {
         setCivilStatus,
         nationality,
         setNationality,
-        license, setLicense,
-        website, setWebsite,
-        linkin, setLinkin,
+        license,
+        setLicense,
+        website,
+        setWebsite,
+        linkin,
+        setLinkin,
 
         compDati,
         setCompDati,
@@ -116,11 +120,11 @@ const DatiContextProvider = ({ children }) => {
         setCompFieldList,
         langFieldList,
         setLangFieldList,
-        range, 
+        range,
         setRange,
-        
+
         /*Profile Dati */
-        profileContent, 
+        profileContent,
         setProfileContent,
 
         /*Formazione Dati */
@@ -140,10 +144,8 @@ const DatiContextProvider = ({ children }) => {
         setFormDateFineAnno,
         formDataFieldList,
         setFormDataFieldList,
-        formContent, 
+        formContent,
         setFormContent,
-
-
 
         /*Experience Dati */
         expDati,
@@ -158,18 +160,28 @@ const DatiContextProvider = ({ children }) => {
         setExprDateInizioAnno,
         exprDateFine,
         setExprDateFine,
-        exprDateFineAnno, 
+        exprDateFineAnno,
         setExprDateFineAnno,
         exprDataFieldList,
         setExprDataFieldList,
-        exprContent,  
+        exprContent,
         setExprContent,
 
-
         /*BackGround Color */
-        cardOneColor, setCardOneColor,
-        cardTwoColor, setCardTwoColor,
-        cardThreeColor, setCardThreeColor,
+        cardOneColor,
+        setCardOneColor,
+        cardTwoColor,
+        setCardTwoColor,
+        cardThreeColor,
+        setCardThreeColor,
+
+        /*Card Model choices */
+        cardOneSelected,
+        setCardOneSelected,
+        cardTwoSelected,
+        setCardTwoSelected,
+        cardThreeSelected,
+        setCardThreeSelected,
       }}
     >
       {children}

@@ -114,13 +114,12 @@ const CardOneModel = (props) => {
 
   const colors = [
     "#FFFFFF",
-    "#ffcccc",
-    "#ccffcc",
-    "#F5F5DC",
-    "#ccccff",
-    "#FFDAB9",
+    "#F5F5F5",
+    "#EEE8AA",
+    "#FAFAD2",
+    "#FFF5EE",
+    "#E6E6FA ",
   ];
-
   return (
     <div
       className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"

@@ -136,7 +136,7 @@ const CardThreeModel = (props) => {
           <div>
             <h2
               className="text-s  font-bold  border-b border-gray-500 border-solid text-center"
-              style={{ color: cardMarilynColor }}
+              style={{ color: props.cardColors }}
             >
               Dati Personali
             </h2>
@@ -340,7 +340,7 @@ const CardThreeModel = (props) => {
         <div className="flex flex-col justify-start items-center">
           <h2
             className="text-s  font-bold border-b border-gray-500 border-solid w-auto "
-            style={{ color: cardMarilynColor }}
+            style={{ color: props.cardColors }}
           >
             Competenza
           </h2>
@@ -351,7 +351,7 @@ const CardThreeModel = (props) => {
         <div className="flex flex-col justify-start items-center">
           <h2
             className="text-s  font-bold border-b border-gray-500 border-solid "
-            style={{ color: cardMarilynColor }}
+            style={{ color: props.cardColors }}
           >
             Lingue
           </h2>
@@ -367,7 +367,7 @@ const CardThreeModel = (props) => {
         <div className="mb-1">
           <h2
             className="text-s  font-bold border-b border-gray-500 border-solid "
-            style={{ color: cardMarilynColor }}
+            style={{ color: props.cardColors }}
           >
             Profilo
           </h2>
@@ -378,7 +378,7 @@ const CardThreeModel = (props) => {
         <div className="mb-1">
           <h2
             className="text-s font-bold border-b border-gray-500 border-solid "
-            style={{ color: cardMarilynColor }}
+            style={{ color: props.cardColors }}
           >
             Istruzione
           </h2>
@@ -390,7 +390,7 @@ const CardThreeModel = (props) => {
         <div className="mb-1">
           <h2
             className="mb-1 text-s  font-bold border-b border-gray-500 border-solid  "
-            style={{ color: cardMarilynColor }}
+            style={{ color: props.cardColors }}
           >
             Esperienze
           </h2>

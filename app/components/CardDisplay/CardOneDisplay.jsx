@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
+import { DatiContext } from "@/app/context/DatiContext";
 
 const CardOneDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-
+ 
   const datiPersonali = (dati, dati2, dati3, dati4) => {
     return (
       <div className="flex flex-row gap-2  items-center  w-sm ">
@@ -22,11 +23,11 @@ const CardOneDisplay = (props) => {
 
   const colors = [
     "#FFFFFF",
-    "#ffcccc",
-    "#ccffcc",
-    "#F5F5DC",
-    "#ccccff",
-    "#FFDAB9",
+    "#F5F5F5",
+    "#EEE8AA",
+    "#FAFAD2",
+    "#FFF5EE",
+    "#E6E6FA ",
   ];
   return (
     <div
@@ -39,7 +40,7 @@ const CardOneDisplay = (props) => {
         className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border`}
         style={{ backgroundColor: props.selectedColor }}
       >
-        <div className="border border-orange-400 p-0.5 mt-2">
+        <div className=" mt-2">
           <Image
             src="/randon.jpg"
             alt="pic"
@@ -53,7 +54,7 @@ const CardOneDisplay = (props) => {
         <div className="">
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-s font-bold">Dati Personali</h2>
-            <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
+            <hr className="border border-b border-blue-500 w-1/2 my-1  mt-2" />
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
             {/*Name */}
@@ -83,7 +84,7 @@ const CardOneDisplay = (props) => {
           </div>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/6 my-1" />
+        <hr className="border border-b border-blue-500 w-1/6 my-1" />
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
@@ -95,7 +96,7 @@ const CardOneDisplay = (props) => {
           <p className="text-gray-500 text-xs">Buono</p>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/6 my-1" />
+        <hr className="border border-b border-blue-500 w-1/6 my-1" />
 
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
@@ -108,7 +109,7 @@ const CardOneDisplay = (props) => {
           <p className="text-gray-500 text-xs">Elementare</p>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/6 my-1" />
+        <hr className="border border-b border-blue-500 w-1/6 my-1" />
       </div>
 
       {/* RIGHT DIV */}
@@ -119,11 +120,11 @@ const CardOneDisplay = (props) => {
           <h2 className="text-xs text-gray-500 mt-1 font-semibold">Rossi</h2>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/2 my-1" />
+        <hr className="border border-b border-blue-500 w-1/2 my-1" />
 
         {/* Profile */}
         <div className="mb-1">
-          <h2 className="text-xs font-bold">Profilo</h2>
+          <h2 className="text-s font-bold">Profilo</h2>
           <p className="text-xs">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -137,11 +138,11 @@ const CardOneDisplay = (props) => {
           </p>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/2 my-1" />
+        <hr className="border border-b border-blue-500 w-1/2 my-1" />
 
         {/* Istruzione */}
         <div className="mb-1">
-          <h2 className="text-xs font-bold">Istruzione</h2>
+          <h2 className="text-s font-bold">Istruzione</h2>
            <p className="font-bold text-xs mt-2">
             Laurea Magistrale in Informatica
           </p>
@@ -173,11 +174,11 @@ const CardOneDisplay = (props) => {
           </p>
         </div>
 
-        <hr className="border border-b border-orange-500 w-1/2 my-1" />
+        <hr className="border border-b border-blue-500 w-1/2 my-1" />
 
         {/* Experience */}
         <div className="mb-1">
-          <h2 className="mb-1 text-xs font-bold">Esperienze</h2>
+          <h2 className="mb-1 text-s font-bold">Esperienze</h2>
          <p className="font-bold text-xs">Senior IT Consultant</p>
           <p className="text-blue-500 font-semibold text-xs">
             2023 Gen- 2012 Nov
