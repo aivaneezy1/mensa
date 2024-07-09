@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
 
       <div className="ml-auto sm:block hidden">
-        <Link href="/sign">
+        <Link href="auth">
           <h2 className="text-white font-semibold">Log in</h2>
         </Link>
       </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className="absolute top-20 right-0  bg-white shadow-lg flex flex-col items-center gap-5 p-5 sm:hidden">
           <div 
           onClick={handleOpen}>
-            <Link href="/sign">
+            <Link href="auth">
               <h2 className="text-black font-semibold">Log in</h2>
             </Link>
           </div>

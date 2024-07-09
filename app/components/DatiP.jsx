@@ -17,40 +17,40 @@ const DatiP = (props) => {
     }
   };
 
-  // Update localStorage whenever the state changes
-  useEffect(() => {
-    setLocalStorageItem("name", props.name);
-    setLocalStorageItem("lastName", props.lastName);
-    setLocalStorageItem("emailAdress", props.email);
-    setLocalStorageItem("phone", props.phone);
-    setLocalStorageItem("address", props.address);
-    setLocalStorageItem("postalCode", props.postalCode);
-    setLocalStorageItem("city", props.city);
-    setLocalStorageItem("dateBirth", props.dateBirth);
-    setLocalStorageItem("placeBirth", props.placeBirth);
-    setLocalStorageItem("gender", props.genere);
-    setLocalStorageItem("civilStatus", props.civilStatus);
-    setLocalStorageItem("nationality", props.nationality);
-    setLocalStorageItem("license", props.license);
-    setLocalStorageItem("website", props.website);
-    setLocalStorageItem("linkin", props.linkin);
-  }, [
-    props.name,
-    props.lastName,
-    props.email,
-    props.phone,
-    props.address,
-    props.postalCode,
-    props.city,
-    props.dateBirth,
-    props.placeBirth,
-    props.genere,
-    props.civilStatus,
-    props.nationality,
-    props.license,
-    props.website,
-    props.linkin,
-  ]);
+  // // Update localStorage whenever the state changes
+  // useEffect(() => {
+  //   setLocalStorageItem("name", props.name);
+  //   setLocalStorageItem("lastName", props.lastName);
+  //   setLocalStorageItem("email", props.email);
+  //   setLocalStorageItem("phone", props.phone);
+  //   setLocalStorageItem("address", props.address);
+  //   setLocalStorageItem("postalCode", props.postalCode);
+  //   setLocalStorageItem("city", props.city);
+  //   setLocalStorageItem("dateBirth", props.dateBirth);
+  //   setLocalStorageItem("placeBirth", props.placeBirth);
+  //   setLocalStorageItem("gender", props.genere);
+  //   setLocalStorageItem("civilStatus", props.civilStatus);
+  //   setLocalStorageItem("nationality", props.nationality);
+  //   setLocalStorageItem("license", props.license);
+  //   setLocalStorageItem("website", props.website);
+  //   setLocalStorageItem("linkin", props.linkin);
+  // }, [
+  //   props.name,
+  //   props.lastName,
+  //   props.email,
+  //   props.phone,
+  //   props.address,
+  //   props.postalCode,
+  //   props.city,
+  //   props.dateBirth,
+  //   props.placeBirth,
+  //   props.genere,
+  //   props.civilStatus,
+  //   props.nationality,
+  //   props.license,
+  //   props.website,
+  //   props.linkin,
+  // ]);
 
   return (
     <>

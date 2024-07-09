@@ -10,13 +10,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       <DatiContextProvider>
-        <Provider>
+ 
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <main>{children}</main>
          
           </div>
-        </Provider>
+     
         </DatiContextProvider>
       </body>
     </html>
