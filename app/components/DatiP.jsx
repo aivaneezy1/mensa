@@ -157,7 +157,7 @@ const DatiP = (props) => {
             />
 
             {/* Button to toggle optional fields */}
-            {OptionalButton(showOptionalFields, setShowOptionalFields, "Opzionali")}
+            {OptionalButton(showOptionalFields, setShowOptionalFields, "Informazioni aggiuntive (facoltative)")}
 
             {/* Optional input fields */}
             {showOptionalFields && (

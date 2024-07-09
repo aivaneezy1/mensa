@@ -389,13 +389,7 @@ const CardTwoModel = (props) => {
           >
             Competenza
           </h2>
-          {props.compDati ? (
-            <div>
-              <p>{props.compDati}</p>
-            </div>
-          ) : (
-            compAndLang(props.compFieldList)
-          )}
+            { compAndLang(props.compFieldList)}
         </div>
 
         {/* Languages */}
@@ -406,13 +400,7 @@ const CardTwoModel = (props) => {
           >
             Lingue
           </h2>
-          {props.langDati ? (
-            <div>
-              <p>{props.langDati}</p>
-            </div>
-          ) : (
-            compAndLang(props.langFieldList)
-          )}
+          { compAndLang(props.langFieldList)}
         </div>
       </div>
 

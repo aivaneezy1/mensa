@@ -49,7 +49,7 @@ const CardThreeModel = (props) => {
   const handleProfile = (data) => {
     // Configure DOMPurify to allow specific tags
     const cleanHTML = DOMPurify.sanitize(data);
-    console.log("clean", cleanHTML)
+
     return (
       <>
         {data ? (
@@ -344,13 +344,7 @@ const CardThreeModel = (props) => {
           >
             Competenza
           </h2>
-          {props.compDati ? (
-            <div>
-              <p>{props.compDati}</p>
-            </div>
-          ) : (
-            compAndLang(props.compFieldList)
-          )}
+          {compAndLang(props.compFieldList)}
         </div>
 
         {/* Languages */}
@@ -361,13 +355,7 @@ const CardThreeModel = (props) => {
           >
             Lingue
           </h2>
-          {props.langDati ? (
-            <div>
-              <p>{props.langDati}</p>
-            </div>
-          ) : (
-            compAndLang(props.langFieldList)
-          )}
+          {compAndLang(props.langFieldList)}
         </div>
       </div>
 

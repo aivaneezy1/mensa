@@ -33,7 +33,7 @@ const Hero = () => {
             Crea il tuo curriculum in pochi minuti e scaricalo gratuitamente!
           </h2>
           <h2 className="text-2xl text-gray-500 mt-5 text-center">
-            Scegli tra i migliori modelli e personalizza i colori con facilità
+            Scegli tra i migliori modelli e personalizza <span className="text-yellow-500 text-2xl font-medium">i colori</span> con facilità
           </h2>
         </div>
       </div>

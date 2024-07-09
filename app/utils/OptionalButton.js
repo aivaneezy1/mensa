@@ -26,7 +26,7 @@ const OptionalButton = (data, setData, field) => {
               />
             </svg>
 
-            <span className="whitespace-nowrap ">{field}</span>
+            <span className="whitespace-nowrap font-medium text-sm">{field}</span>
           </button>
         </div>
       </>

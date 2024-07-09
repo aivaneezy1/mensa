@@ -35,7 +35,7 @@ import { DatiContext } from "../context/DatiContext";
               />
             </svg>
 
-            <span className="whitespace-nowrap ">{field}</span>
+            <span className="whitespace-nowrap font-sm text-xl">{field}</span>
           </button>
         </div>
       </>
