@@ -410,7 +410,7 @@ export default function Home() {
           />
         
 
-          {/* {cardTwoSelected && (
+          {cardTwoSelected && (
             <CardTwoModel
             selectedImage={selectedImage}
             cardColors={cardTwoColor}
@@ -468,7 +468,7 @@ export default function Home() {
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
             range={range}/> 
-          )} */}
+          )}
 
           {/*Default card to choice if user didnt select any card at the home page */}
          {/* {(!cardOneSelected && !cardTwoSelected && !cardThreeSelected) && (<CardChoices/>)} */}
