@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const DocumentMarilyn = (props) => {
+const CardThreeDocument = (props) => {
   let currentYear = new Date().getFullYear();
 
   const datiPersonali = (image, dati, dati2) => {
@@ -421,4 +421,4 @@ const DocumentMarilyn = (props) => {
   );
 };
 
-export default DocumentMarilyn;
+export default CardThreeDocument;

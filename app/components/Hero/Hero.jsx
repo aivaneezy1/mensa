@@ -1,31 +1,28 @@
 "use client";
 import React, { useContext, useState } from "react";
-import CardDaki from "../CardDisplay/CardDaki";
-import CardBlue from "../CardDisplay/CardBlue";
-import CardMarilyn from "../CardDisplay/CardMarilyn";
+import CardOneDisplay from "../CardDisplay/CardOneDisplay";
+import CardTwoDisplay from "../CardDisplay/CardTwoDisplay";
+import CardThreeDisplay from "../CardDisplay/CardThreeDisplay";
 import { DatiContext } from "@/app/context/DatiContext";
 import Link from "next/link";
 import Image from "next/image";
 const Hero = () => {
   const {
-    cardColors,
-    setCardColors,
-    cardBlueColor,
-    setCardBlueColor,
-    cardMarilynColor,
-    setCardMarilynColor,
+     cardOneColor, setCardOneColor,
+     cardTwoColor, setCardTwoColor,
+     cardThreeColor, setCardThreeColor,
   } = useContext(DatiContext);
 
-  const handleColorChange = (color) => {
-    setCardColors(color);
+  const handleColorCardOne = (color) => {
+    setCardOneColor(color);
   };
 
-  const handleColorChangeCardBlue = (color) => {
-    setCardBlueColor(color);
+  const handleColorCardTwo = (color) => {
+    setCardTwoColor(color)
   };
 
-  const handleColorChangeCardMarilyn = (color) => {
-    setCardMarilynColor(color);
+  const handleColorCardThree = (color) => {
+    setCardThreeColor(color);
   };
 
   return (
@@ -44,9 +41,9 @@ const Hero = () => {
       {/* Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 ml-5 mr-5  min-h-screen mb-20">
         <div className="flex flex-col h-full">
-          <CardDaki
-            selectedColor={cardColors}
-            handleColorChange={handleColorChange}
+          <CardOneDisplay
+            selectedColor={ cardOneColor}
+            handleColorChange={handleColorCardOne}
             className="flex-1"
           />
           <div className="flex justify-center items-center mt-2">
@@ -59,9 +56,9 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col h-full">
-          <CardBlue
-            selectedColor={cardBlueColor}
-            handleColorChange={handleColorChangeCardBlue}
+          <CardTwoDisplay
+            selectedColor={ cardTwoColor}
+            handleColorChange={handleColorCardTwo}
             className="flex-1"
           />
           <div className="flex justify-center items-center mt-2">
@@ -74,9 +71,9 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col h-full">
-          <CardMarilyn
-            selectedColor={cardMarilynColor}
-            handleColorChange={handleColorChangeCardMarilyn}
+          <CardThreeDisplay
+            selectedColor={cardThreeColor}
+            handleColorChange={handleColorCardThree}
             className="flex-1"
           />
           <div className="flex justify-center items-center mt-2">

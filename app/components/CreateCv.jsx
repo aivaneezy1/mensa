@@ -4,7 +4,9 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
 import handleButton from "../utils/handleButton";
 
-{/*Components */}
+{
+  /*Components */
+}
 import Compotenze from "./Card/Compotenze";
 import Language from "./Card/Language";
 import Profile from "./Card/Profile";
@@ -12,14 +14,19 @@ import EsperienzeLavoro from "./Card/EsperienzeLavoro";
 import Formazione from "./Card/Formazione";
 import DatiPersonali from "./Card/DatiPersonali";
 
-{/*Document */}
+{
+  /*Document */
+}
 import DocumentDaki from "./Documents/DocumentDaki";
 import MyDocument from "./Document";
-import DocumentMarilyn from "./Documents/DocumentMarilyn";
-{/*CARD */}
+import CardThreeDocument from "./Documents/CardThreeDocument";
+{
+  /*CARD */
+}
 import BlueDakiModel from "./CardModels/BlueDaki";
-import Card from "./CardModels/Card";
-import MarilynModel from "./CardModels/Marilyn";
+import CardOneModel from "./CardModels/CardOneModel";
+import CardThreeModel from "./CardModels/CardThreeModel";
+import CardTwoModel from "./CardModels/CardTwoModel";
 
 export default function Home() {
   // Dati states
@@ -115,13 +122,13 @@ export default function Home() {
     exprContent,
     setExprContent,
 
-      /*BackGround Color */
-    cardColors, 
-    cardBlueColor, 
-    cardMarilynColor, 
-     setCardMarilynColor
- 
-   
+    /*BackGround Color */
+    cardOneColor,
+    setCardOneColor,
+    cardTwoColor,
+    setCardTwoColor,
+    cardThreeColor,
+    setCardThreeColor,
   } = useContext(DatiContext);
 
   {
@@ -322,8 +329,8 @@ export default function Home() {
                     //   exprDataFieldList={exprDataFieldList}
                     // />
 
-                    <DocumentMarilyn
-                      cardColors={cardMarilynColor}
+                    <CardThreeDocument
+                      cardColors={cardThreeColor}
                       selectedImage={selectedImage}
                       name={name}
                       lastName={lastName}
@@ -349,10 +356,7 @@ export default function Home() {
                       formDataFieldList={formDataFieldList}
                       // Experience Data
                       exprDataFieldList={exprDataFieldList}
-                    
                     />
-                    
-
                   }
                   fileName="cv.pdf"
                   className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
@@ -368,36 +372,9 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-          {/* <Card
+          <CardOneModel
             selectedImage={selectedImage}
-            cardBlueColor={cardBlueColor}
-            name={name}
-            lastName={lastName}
-            email={email}
-            phone={phone}
-            address={address}
-            postalCode={postalCode}
-            city={city}
-            dateBirth={dateBirth}
-            placeBirth={placeBirth}
-            genere={genere}
-            nationality={nationality}
-            civilStatus={civilStatus}
-            license={license}
-            website={website}
-            linkin={linkin}
-            compDati={compDati}
-            langDati={langDati}
-            compFieldList={compFieldList}
-            langFieldList={langFieldList}
-            profileContent={profileContent}
-            formDataFieldList={formDataFieldList}
-            exprDataFieldList={exprDataFieldList}
-          /> */}
-
-          {/* <BlueDakiModel
-            cardColors={cardColors}
-            selectedImage={selectedImage}
+            cardColors={cardOneColor}
             name={name}
             lastName={lastName}
             email={email}
@@ -421,11 +398,37 @@ export default function Home() {
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
             range={range}
-          /> */}
+          />
 
-          <MarilynModel
-            cardColors={cardMarilynColor}
-            setCardColors={setCardMarilynColor}
+          {/* <CardTwoModel
+           selectedImage={selectedImage}
+            cardColors={cardTwoColor}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            nationality={nationality}
+            civilStatus={civilStatus}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compDati={compDati}
+            langDati={langDati}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}/> */}
+
+          {/* <CardThreeModel
+            cardColors={cardThreeColor}
+            setCardColors={setCardThreeColor}
             selectedImage={selectedImage}
             name={name}
             lastName={lastName}
@@ -449,7 +452,7 @@ export default function Home() {
             profileContent={profileContent}
             formDataFieldList={formDataFieldList}
             exprDataFieldList={exprDataFieldList}
-            range={range}/>
+            range={range}/> */}
         </div>
       </div>
     </>

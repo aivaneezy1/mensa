@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const CardDaki = (props) => {
+const CardOneDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const datiPersonali = (dati, dati2, dati3, dati4) => {
@@ -212,4 +212,4 @@ const CardDaki = (props) => {
   );
 };
 
-export default CardDaki;
+export default CardOneDisplay

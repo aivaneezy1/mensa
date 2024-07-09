@@ -1,6 +1,6 @@
 import React from 'react'
 import BlueDakiModel from '../components/CardModels/BlueDaki'
-import CardMarilyn from '../components/CardDisplay/CardMarilyn'
+import CardMarilyn from '../components/CardDisplay/CardThreeDisplay'
 const page = () => {
   return (
     <div className='flex h-screen'>
