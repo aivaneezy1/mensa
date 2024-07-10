@@ -2,6 +2,8 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 import { DatiContext } from "@/app/context/DatiContext";
+import DOMPurify from "dompurify";
+
 
 const CardTwoModel = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -74,7 +76,7 @@ const CardTwoModel = (props) => {
               <p className=" text-xs break-words font-bold  whitespace-normal mt-2">
                 {post.data}
               </p>
-              <p className="text-xs text-gray-500 whitespace-nowrap font-semibold text-sm">
+              <p className="text-xs text-blue-500 whitespace-nowrap font-semibold text-sm">
                 {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
                 {post.dataInizio} -{" "}
                 {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}

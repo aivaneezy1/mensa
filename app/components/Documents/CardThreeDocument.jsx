@@ -46,100 +46,122 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  data:{
+  data: {
     fontFamily: "Open Sans",
     fontWeight: 600,
-    fontSize:12
-  }
+    fontSize: 12,
+  },
 });
+let currentYear = new Date().getFullYear();
 
-const CardThreeDocument = (props) => {
-  let currentYear = new Date().getFullYear();
-
-  const datiPersonali = (image, dati, dati2) => {
-    return (
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginVertical: 3,
-        }}
-      >
-        <View style={{ marginRight: 3 }}>
-          <Image style={{ width: "8", height: "8" }} src={image}></Image>
-        </View>
-        <View>
-          <Text style={{ fontWeight: "medium", fontSize: 10, marginLeft: 3 }}>
-            {dati} {dati2}
-          </Text>
-        </View>
+const datiPersonali = (image, dati, dati2) => {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignContent: "center",
+        justifyContent: "flex-start",
+        marginVertical: 3,
+      }}
+    >
+      <View style={{ marginRight: 3 }}>
+        <Image style={{ width: "8", height: "8" }} src={image}></Image>
       </View>
-    );
-  };
+      <View>
+        <Text style={{ fontWeight: "medium", fontSize: 10, marginLeft: 3 }}>
+          {dati} {dati2}
+        </Text>
+      </View>
+    </View>
+  );
+};
 
-  const handleCompAndLang = (data) => {
-    return (
-      <>
-        {data.map((post, index) => (
-          <View key={index} style={{dispaly:"flex", justifyContent:"center", alignItems:"center"}}>
-            <Text
-              style={[styles.data,{
+const handleCompAndLang = (data) => {
+  return (
+    <>
+      {data.map((post, index) => (
+        <View
+          key={index}
+          style={{
+            dispaly: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={[
+              styles.data,
+              {
                 whiteSpace: "normal",
                 wordWrap: "break-word",
                 marginTop: 3,
                 textAlign: "center",
-              }]}
-            >
-              {post.competenza}
-            </Text>
+              },
+            ]}
+          >
+            {post.competenza}
+          </Text>
+          <Text
+            style={{
+              color: "grey",
+              fontSize: "10",
+              whiteSpace: "normal",
+              wordWrap: "break-word",
+              marginTop: 3,
+              textAlign: "center",
+            }}
+          >
+            {post.livello}
+          </Text>
+        </View>
+      ))}
+    </>
+  );
+};
+
+const handleProfile = (data) => {
+  // Replace <p> tags with new lines
+  const formattedText = data.replace(/<p>(.*?)<\/p>/gs, "$1\n");
+
+  // Split the formatted text into lines
+  const lines = formattedText.split("\n");
+
+  // Render each line using Text components
+  return (
+    <>
+      {lines.map((line, index) => (
+        <Text
+          key={index}
+          style={{ marginTop: 2, marginBottom: 2, fontSize: 14 }}
+        >
+          {line}
+        </Text>
+      ))}
+    </>
+  );
+};
+
+const handleBgData = (data) => {
+  return (
+    <>
+      {data.length > 0 &&
+        data.map((post, index) => (
+          <View style={{ display: "flex", flexDirection: "column" }}>
+            <Text style={[styles.data, { marginTop: 5 }]}>{post.data}</Text>
             <Text
               style={{
                 color: "grey",
-                fontSize: "10",
+                fontSize: 10,
                 whiteSpace: "normal",
                 wordWrap: "break-word",
-                marginTop: 3,
-                textAlign: "center",
               }}
             >
-              {post.livello}
+              {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
+              {post.dataInizio} -{" "}
+              {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
+              {post.dataFine}
             </Text>
-          </View>
-        ))}
-      </>
-    );
-  };
-
-  const handleProfile = (data) => {
-    // Replace <p> tags with new lines
-    const formattedText = data.replace(/<p>(.*?)<\/p>/gs, "$1\n");
-
-    // Split the formatted text into lines
-    const lines = formattedText.split("\n");
-
-    // Render each line using Text components
-    return (
-      <>
-        {lines.map((line, index) => (
-          <Text
-            key={index}
-            style={{ marginTop: 2, marginBottom: 2, fontSize: 14 }}
-          >
-            {line}
-          </Text>
-        ))}
-      </>
-    );
-  };
-
-  const handleBgData = (data) => {
-    return (
-      <>
-        {data.length > 0 &&
-          data.map((post, index) => (
-            <View style={{ display: "flex", flexDirection: "column" }}>
-              <Text style={[styles.data, {marginTop:5}]}>{post.data}</Text>
+            {(post.istitute || post.city) && (
               <Text
                 style={{
                   color: "grey",
@@ -148,31 +170,18 @@ const CardThreeDocument = (props) => {
                   wordWrap: "break-word",
                 }}
               >
-                {post.dataInizioAnno ? post.dataInizioAnno : currentYear}{" "}
-                {post.dataInizio} -{" "}
-                {post.dataFineAnno ? post.dataFineAnno : currentYear}{" "}
-                {post.dataFine}
+                {post.istitute} | {post.city}
               </Text>
-              {(post.istitute || post.city) && (
-                <Text
-                  style={{
-                    color: "grey",
-                    fontSize: 10,
-                    whiteSpace: "normal",
-                    wordWrap: "break-word",
-                  }}
-                >
-                  {post.istitute} | {post.city}
-                </Text>
-              )}
-              {/* Render profile content using handleProfile */}
-              {handleProfile(post.content)}
-            </View>
-          ))}
-      </>
-    );
-  };
+            )}
+            {/* Render profile content using handleProfile */}
+            {handleProfile(post.content)}
+          </View>
+        ))}
+    </>
+  );
+};
 
+const CardThreeDocument = (props) => {
   return (
     <Document>
       <Page>
@@ -230,103 +239,142 @@ const CardThreeDocument = (props) => {
                 style={{
                   marginTop: 2,
                   flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignContent: "center",
+                  display: "flex",
+                  alignItems: "flex-start", // Changed from justifyContent to alignItems
+                  marginLeft: 5,
                 }}
               >
                 {/*name and lastname */}
-                {(props.name || props.lastName) && (
-                  <>
-                    {datiPersonali(
-                      "/marilyn/user.png",
-                      props.name,
-                      props.lastName
-                    )}
-                  </>
-                )}
-                {/*email */}
-                {props.email && (
-                  <>{datiPersonali("/marilyn/email.png", props.email)}</>
-                )}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "start",
+                    marginTop: 2,
+                  }}
+                >
+                  {(props.name || props.lastName) && (
+                    <>
+                      {datiPersonali(
+                        "/marilyn/user.png",
+                        props.name,
+                        props.lastName
+                      )}
+                    </>
+                  )}
+                </View>
 
+                {/*email */}
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {props.email && (
+                    <>{datiPersonali("/marilyn/email.png", props.email)}</>
+                  )}
+                </View>
                 {/*phone */}
-                {props.phone && (
-                  <>{datiPersonali("/marilyn/phone.png", props.phone)}</>
-                )}
+                <View>
+                  {props.phone && (
+                    <>{datiPersonali("/marilyn/phone.png", props.phone)}</>
+                  )}
+                </View>
 
                 {/*Address */}
-                {(props.address || props.postalCode || props.city) && (
-                  <>
-                    {datiPersonali(
-                      "/marilyn/house.png",
-                      props.address,
-                      props.postalCode,
-                      props.city
-                    )}
-                  </>
-                )}
-                {props.city && (
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Text
+                <View>
+                  {(props.address || props.postalCode || props.city) && (
+                    <>
+                      {datiPersonali(
+                        "/marilyn/house.png",
+                        props.address,
+                        props.postalCode,
+                        props.city
+                      )}
+                    </>
+                  )}
+                </View>
+                {/*City */}
+                <View>
+                  {props.city && (
+                    <View
                       style={{
-                        fontWeight: "medium",
-                        fontSize: 10,
-                        marginTop: 3,
+                        display: "flex",
+                        flexDirection: "center",
+                        alignItems: "center",
                       }}
                     >
-                      {props.city}
-                    </Text>
-                  </View>
-                )}
-
+                      <Text
+                        style={{
+                          fontWeight: "medium",
+                          fontSize: 10,
+                          marginTop: 3,
+                          marginLeft: 15,
+                        }}
+                      >
+                        {props.city}
+                      </Text>
+                    </View>
+                  )}
+                </View>
                 {/*Date of birth */}
-                {props.dateBirth && (
-                  <>{datiPersonali("/marilyn/calendar.png", props.dateBirth)}</>
-                )}
+                <View>
+                  {props.dateBirth && (
+                    <>
+                      {datiPersonali("/marilyn/calendar.png", props.dateBirth)}
+                    </>
+                  )}
+                </View>
 
                 {/*Place of birth */}
-                {props.placeBirth && (
-                  <>
-                    {datiPersonali("/marilyn/location.png", props.placeBirth)}
-                  </>
-                )}
+                <View>
+                  {props.placeBirth && (
+                    <>
+                      {datiPersonali("/marilyn/location.png", props.placeBirth)}
+                    </>
+                  )}
+                </View>
 
                 {/*Gender */}
-                {props.genere && (
-                  <>{datiPersonali("/marilyn/gender.png", props.genere)}</>
-                )}
+                <View>
+                  {props.genere && (
+                    <>{datiPersonali("/marilyn/gender.png", props.genere)}</>
+                  )}
+                </View>
 
                 {/*Nazionalita' */}
-                {props.nationality && (
-                  <>{datiPersonali("/marilyn/flag.png", props.nationality)}</>
-                )}
+                <View>
+                  {props.nationality && (
+                    <>{datiPersonali("/marilyn/flag.png", props.nationality)}</>
+                  )}
+                </View>
 
                 {/*Civil Status */}
-                {props.civilStatus && (
-                  <>{datiPersonali("/marilyn/users.png", props.civilStatus)}</>
-                )}
-
+                <View>
+                  {props.civilStatus && (
+                    <>
+                      {datiPersonali("/marilyn/users.png", props.civilStatus)}
+                    </>
+                  )}
+                </View>
                 {/*Licnese */}
-                {props.license && (
-                  <>{datiPersonali("/marilyn/car.png", props.license)}</>
-                )}
-                {/*Website */}
-                {props.website && (
-                  <>{datiPersonali("/marilyn/globe.png", props.website)}</>
-                )}
+                <View>
+                  {props.license && (
+                    <>{datiPersonali("/marilyn/car.png", props.license)}</>
+                  )}
+                </View>
 
-                {props.linkin && (
-                  <>{datiPersonali("/marilyn/linkedin.png", props.linkin)}</>
-                )}
+                {/*Website */}
+                <View>
+                  {props.website && (
+                    <>{datiPersonali("/marilyn/globe.png", props.website)}</>
+                  )}
+                </View>
+
+                {/*lINKDN */}
+                <View>
+                  {props.linkin && (
+                    <>{datiPersonali("/marilyn/linkedin.png", props.linkin)}</>
+                  )}
+                </View>
               </View>
             </View>
-
             {/*Competenze */}
             <View
               style={{
@@ -370,7 +418,7 @@ const CardThreeDocument = (props) => {
               display: "flex",
               justifyContent: "start",
               alignItems: "start",
-              marginLeft:5
+              marginLeft: 5,
             }}
           >
             {/*Profile */}

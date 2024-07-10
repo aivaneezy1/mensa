@@ -151,7 +151,7 @@ const CardOneModel = (props) => {
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-s font-bold">Dati Personali</h2>
             {hasPersonalData && (
-              <hr className="border border-b border-orange-500 w-1/2 my-1  mt-2" />
+              <hr className="border border-b border-blue-500 w-1/2 my-1  mt-2" />
             )}
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
@@ -188,7 +188,7 @@ const CardOneModel = (props) => {
         </div>
 
         {hasPersonalData && (
-          <hr className="border border-b border-orange-500 w-1/6 my-1" />
+          <hr className="border border-b border-blue-500 w-1/6 my-1" />
         )}
 
         {/* Competence */}
@@ -198,7 +198,7 @@ const CardOneModel = (props) => {
         </div>
 
         {props.compFieldList.length > 0 && (
-          <hr className="border border-b border-orange-500 w-1/6 my-1" />
+          <hr className="border border-b border-blue-500 w-1/6 my-1" />
         )}
 
         {/* Languages */}
@@ -208,7 +208,7 @@ const CardOneModel = (props) => {
         </div>
 
         {props.compFieldList.length > 0 && (
-          <hr className="border border-b border-orange-500 w-1/6 my-1" />
+          <hr className="border border-b border-blue-500 w-1/6 my-1" />
         )}
       </div>
 
@@ -223,7 +223,7 @@ const CardOneModel = (props) => {
         </div>
 
         {(props.name || props.lastName) && (
-          <hr className="border border-b border-orange-500 w-1/2 my-1" />
+          <hr className="border border-b border-blue-500 w-1/2 my-1" />
         )}
 
         {/* Profile */}
@@ -233,7 +233,7 @@ const CardOneModel = (props) => {
         </div>
 
         {props.profileContent && (
-          <hr className="border border-b border-orange-500 w-1/2 my-1" />
+          <hr className="border border-b border-blue-500 w-1/2 my-1" />
         )}
 
 
@@ -246,7 +246,7 @@ const CardOneModel = (props) => {
         </div>
 
         {(props.formDataFieldList.length  || props.langFieldList.length > 0) && (
-          <hr className="border border-b border-orange-500 w-1/2 my-1" />
+          <hr className="border border-b border-blue-500 w-1/2 my-1" />
         )}
 
         {/* Experience */}
