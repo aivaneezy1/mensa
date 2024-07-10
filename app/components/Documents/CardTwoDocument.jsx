@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     position: "relative",
-    backgroundColor: "#395a86",
+
     borderBottomLeftRadius: 75,
     borderBottomRightRadius: 75,
     alignItems: "center",
@@ -151,8 +151,11 @@ const handleCompAndLang = (data) => {
 };
 
 const handleProfile = (data) => {
+  // Remove <br> tags
+  let formattedText = data.replace(/<br\s*\/?>/gi, "");
+
   // Replace <p> tags with new lines
-  const formattedText = data.replace(/<p>(.*?)<\/p>/gs, "$1\n");
+  formattedText = formattedText.replace(/<p>(.*?)<\/p>/gs, "$1\n");
 
   // Split the formatted text into lines
   const lines = formattedText.split("\n");
@@ -230,13 +233,18 @@ const CardTwoDocument = (props) => {
               height: "100%",
             }}
           >
-            {props.selectedImage && (
-              <View style={styles.imageContainer}>
-                <View style={styles.imageWrapper}>
-                  <Image style={styles.image} src={props.selectedImage} />
-                </View>
+              <View
+                style={[
+                  styles.imageContainer,
+                  { backgroundColor: props.cardColors },
+                ]}
+              >
+                {props.selectedImage && (
+                  <View style={styles.imageWrapper}>
+                    <Image style={styles.image} src={props.selectedImage} />
+                  </View>
+                )}
               </View>
-            )}
 
             {/*Personal Data */}
             <View
@@ -265,7 +273,6 @@ const CardTwoDocument = (props) => {
                   display: "flex",
                   alignItems: "flex-start", // Changed from justifyContent to alignItems
                   marginLeft: 5,
-
                 }}
               >
                 {/*name and lastname */}
@@ -274,7 +281,7 @@ const CardTwoDocument = (props) => {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "start",
-                    marginTop:2,
+                    marginTop: 2,
                   }}
                 >
                   {(props.name || props.lastName) && (
@@ -329,7 +336,7 @@ const CardTwoDocument = (props) => {
                           fontWeight: "medium",
                           fontSize: 10,
                           marginTop: 3,
-                          marginLeft:15,
+                          marginLeft: 15,
                         }}
                       >
                         {props.city}
@@ -372,9 +379,7 @@ const CardTwoDocument = (props) => {
                 {/*Civil Status */}
                 <View>
                   {props.civilStatus && (
-                    <>
-                      {datiPersonali("/images/civil.png", props.civilStatus)}
-                    </>
+                    <>{datiPersonali("/images/civil.png", props.civilStatus)}</>
                   )}
                 </View>
                 {/*Licnese */}

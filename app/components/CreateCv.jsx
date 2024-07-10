@@ -17,19 +17,16 @@ import DatiPersonali from "./Card/DatiPersonali";
 {
   /*Document */
 }
-import DocumentDaki from "./Documents/DocumentDaki";
-
 import CardOneDocument from "./Documents/CardOneDocument";
 import CardTwoDocument from "./Documents/CardTwoDocument";
 import CardThreeDocument from "./Documents/CardThreeDocument";
 {
   /*CARD */
 }
-import BlueDakiModel from "./CardModels/BlueDaki";
+
 import CardOneModel from "./CardModels/CardOneModel";
 import CardThreeModel from "./CardModels/CardThreeModel";
 import CardTwoModel from "./CardModels/CardTwoModel";
-import Hero from "./Hero/Hero"; // default cards to choice
 import CardChoices from "./CardChoices";
 
 export default function Home() {

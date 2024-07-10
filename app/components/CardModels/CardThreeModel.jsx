@@ -34,10 +34,10 @@ const CardThreeModel = (props) => {
       <>
         {data.map((post, index) => (
           <div key={index}>
-            <p className="font-medium text-xs break-words whitespace-normal">
+            <p className="font-medium text-xs break-words whitespace-normal text-center">
               {post.competenza}
             </p>
-            <p className="text-gray-500 text-xs break-words whitespace-normal">
+            <p className="text-gray-500 text-xs break-words whitespace-normal text-center">
               {post.livello}
             </p>
           </div>
@@ -111,13 +111,13 @@ const CardThreeModel = (props) => {
 
   return (
     <div
-      className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
+      className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-screen h-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* LEFT SIDE DIV */}
       <div
-        className={`gap-2 flex flex-col justify-start items-center mt-5 bg-gray-100 border-r border-gray-500 border-md border-solid`}
+        className={`gap-2 flex flex-col justify-start items-center mt-5 bg-gray-100 border-r border-gray-500 border-md border-solid h-full`}
       >
         {props.selectedImage && (
           <div className="">
@@ -338,29 +338,33 @@ const CardThreeModel = (props) => {
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
+          <div>
           <h2
             className="text-s  font-bold border-b border-gray-500 border-solid w-auto "
             style={{ color: props.cardColors }}
           >
             Competenza
           </h2>
-          {compAndLang(props.compFieldList)}
+          </div>
+          <div>{compAndLang(props.compFieldList)}</div>
         </div>
 
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
-          <h2
+          <div>
+             <h2
             className="text-s  font-bold border-b border-gray-500 border-solid "
             style={{ color: props.cardColors }}
           >
             Lingue
           </h2>
-          {compAndLang(props.langFieldList)}
+          </div>
+          <div>{compAndLang(props.langFieldList)}</div>
         </div>
       </div>
 
       {/* RIGHT DIV */}
-      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs mt-5">
+      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs mt-5 h-full">
         {/* Name */}
 
         {/* Profile */}

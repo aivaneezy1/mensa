@@ -22,6 +22,9 @@ const BgProfesisonale = (props) => {
     content: "",
   });
 
+
+  console.log("edit data", editData)
+
   const addPost = () => {
     props.setDataFieldList([
       ...props.dataFieldList,
@@ -39,6 +42,8 @@ const BgProfesisonale = (props) => {
     resetForm();
     setShowProfile(null);
   };
+
+  console.log("data field list", props.dataFieldList)
 
   const resetForm = () => {
     props.setData("");
@@ -68,7 +73,7 @@ const BgProfesisonale = (props) => {
     );
     props.setDataFieldList(updatedList);
     setEditIndex(null);
-    resetEditData();
+    //resetEditData();
   };
 
   const resetEditData = () => {
@@ -512,10 +517,10 @@ const BgProfesisonale = (props) => {
                            {years.map((year) => (
                             <option
                               key={year}
-                              value={year}
+                              value={ year}
                               className="bg-white text-gray-800"
                             >
-                              {year}
+                              { year}
                             </option>
                           ))}
                         </select>
@@ -710,6 +715,10 @@ const BgProfesisonale = (props) => {
                               istitute: item.istitute,
                               city: item.city,
                               content: item.content,
+                              dataInizio:item.dataInizio,
+                              dataInizioAnno:item.dataInizioAnno,
+                              dataFine: item.dataFine,
+                              dataFineAnno: item.dataFineAnno,
                             });
                           }}
                         >

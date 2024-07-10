@@ -120,8 +120,11 @@ const handleCompAndLang = (data) => {
 };
 
 const handleProfile = (data) => {
+  // Remove <br> tags
+  let formattedText = data.replace(/<br\s*\/?>/gi, "");
+
   // Replace <p> tags with new lines
-  const formattedText = data.replace(/<p>(.*?)<\/p>/gs, "$1\n");
+  formattedText = formattedText.replace(/<p>(.*?)<\/p>/gs, "$1\n");
 
   // Split the formatted text into lines
   const lines = formattedText.split("\n");
@@ -140,6 +143,7 @@ const handleProfile = (data) => {
     </>
   );
 };
+
 
 const handleBgData = (data) => {
   return (
