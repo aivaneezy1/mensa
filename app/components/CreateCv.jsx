@@ -20,6 +20,7 @@ import DatiPersonali from "./Card/DatiPersonali";
 import DocumentDaki from "./Documents/DocumentDaki";
 
 import CardOneDocument from "./Documents/CardOneDocument";
+import CardTwoDocument from "./Documents/CardTwoDocument";
 import CardThreeDocument from "./Documents/CardThreeDocument";
 {
   /*CARD */
@@ -28,7 +29,7 @@ import BlueDakiModel from "./CardModels/BlueDaki";
 import CardOneModel from "./CardModels/CardOneModel";
 import CardThreeModel from "./CardModels/CardThreeModel";
 import CardTwoModel from "./CardModels/CardTwoModel";
-import Hero from "./Hero/Hero"; // default cards to choice 
+import Hero from "./Hero/Hero"; // default cards to choice
 import CardChoices from "./CardChoices";
 
 export default function Home() {
@@ -278,93 +279,94 @@ export default function Home() {
               <div className="justify-center flex items-center">
                 <PDFDownloadLink
                   document={
-                    <CardOneDocument
-                      cardColors={cardOneColor}
-                      selectedImage={selectedImage}
-                      name={name}
-                      lastName={lastName}
-                      email={email}
-                      phone={phone}
-                      address={address}
-                      postalCode={postalCode}
-                      city={city}
-                      dateBirth={dateBirth}
-                      placeBirth={placeBirth}
-                      genere={genere}
-                      civilStatus={civilStatus}
-                      nationality={nationality}
-                      license={license}
-                      website={website}
-                      linkin={linkin}
-                      /*Lingue e Compotenze */
-                      compFieldList={compFieldList}
-                      langFieldList={langFieldList}
-                      //Profile  Data
-                      profileContent={profileContent}
-                      //Formazione Data
-                      formDataFieldList={formDataFieldList}
-                      // Experience Data
-                      exprDataFieldList={exprDataFieldList}
-                    />
-
-                    // <DocumentDaki
-                    //   //Personal Data
-                    //   cardColors={cardColors}
-                    //   selectedImage={selectedImage}
-                    //   name={name}
-                    //   lastName={lastName}
-                    //   email={email}
-                    //   phone={phone}
-                    //   address={address}
-                    //   postalCode={postalCode}
-                    //   city={city}
-                    //   dateBirth={dateBirth}
-                    //   placeBirth={placeBirth}
-                    //   genere={genere}
-                    //   civilStatus={civilStatus}
-                    //   nationality={nationality}
-                    //   license={license}
-                    //   website={website}
-                    //   linkin={linkin}
-                    //   /*Lingue e Compotenze */
-                    //   compFieldList={compFieldList}
-                    //   langFieldList={langFieldList}
-                    //   //Profile  Data
-                    //   profileContent={profileContent}
-                    //   //Formazione Data
-                    //   formDataFieldList={formDataFieldList}
-                    //   // Experience Data
-                    //   exprDataFieldList={exprDataFieldList}
-                    // />
-
-                    // <CardThreeDocument
-                    //   cardColors={cardThreeColor}
-                    //   selectedImage={selectedImage}
-                    //   name={name}
-                    //   lastName={lastName}
-                    //   email={email}
-                    //   phone={phone}
-                    //   address={address}
-                    //   postalCode={postalCode}
-                    //   city={city}
-                    //   dateBirth={dateBirth}
-                    //   placeBirth={placeBirth}
-                    //   genere={genere}
-                    //   civilStatus={civilStatus}
-                    //   nationality={nationality}
-                    //   license={license}
-                    //   website={website}
-                    //   linkin={linkin}
-                    //   /*Lingue e Compotenze */
-                    //   compFieldList={compFieldList}
-                    //   langFieldList={langFieldList}
-                    //   //Profile  Data
-                    //   profileContent={profileContent}
-                    //   //Formazione Data
-                    //   formDataFieldList={formDataFieldList}
-                    //   // Experience Data
-                    //   exprDataFieldList={exprDataFieldList}
-                    // />
+                    cardOneSelected ? (
+                      <CardOneDocument
+                        cardColors={cardOneColor}
+                        selectedImage={selectedImage}
+                        name={name}
+                        lastName={lastName}
+                        email={email}
+                        phone={phone}
+                        address={address}
+                        postalCode={postalCode}
+                        city={city}
+                        dateBirth={dateBirth}
+                        placeBirth={placeBirth}
+                        genere={genere}
+                        civilStatus={civilStatus}
+                        nationality={nationality}
+                        license={license}
+                        website={website}
+                        linkin={linkin}
+                        /* Lingue e Competenze */
+                        compFieldList={compFieldList}
+                        langFieldList={langFieldList}
+                        // Profile Data
+                        profileContent={profileContent}
+                        // Formazione Data
+                        formDataFieldList={formDataFieldList}
+                        // Experience Data
+                        exprDataFieldList={exprDataFieldList}
+                      />
+                    ) : cardTwoSelected ? (
+                      <CardTwoDocument
+                        cardColors={cardTwoColor}
+                        selectedImage={selectedImage}
+                        name={name}
+                        lastName={lastName}
+                        email={email}
+                        phone={phone}
+                        address={address}
+                        postalCode={postalCode}
+                        city={city}
+                        dateBirth={dateBirth}
+                        placeBirth={placeBirth}
+                        genere={genere}
+                        civilStatus={civilStatus}
+                        nationality={nationality}
+                        license={license}
+                        website={website}
+                        linkin={linkin}
+                        /* Lingue e Competenze */
+                        compFieldList={compFieldList}
+                        langFieldList={langFieldList}
+                        // Profile Data
+                        profileContent={profileContent}
+                        // Formazione Data
+                        formDataFieldList={formDataFieldList}
+                        // Experience Data
+                        exprDataFieldList={exprDataFieldList}
+                      />
+                    ) : cardThreeSelected ? (
+                      <CardThreeDocument
+                        cardColors={cardThreeColor}
+                        selectedImage={selectedImage}
+                        name={name}
+                        lastName={lastName}
+                        email={email}
+                        phone={phone}
+                        address={address}
+                        postalCode={postalCode}
+                        city={city}
+                        dateBirth={dateBirth}
+                        placeBirth={placeBirth}
+                        genere={genere}
+                        civilStatus={civilStatus}
+                        nationality={nationality}
+                        license={license}
+                        website={website}
+                        linkin={linkin}
+                        /* Lingue e Competenze */
+                        compFieldList={compFieldList}
+                        langFieldList={langFieldList}
+                        // Profile Data
+                        profileContent={profileContent}
+                        // Formazione Data
+                        formDataFieldList={formDataFieldList}
+                        // Experience Data
+                        exprDataFieldList={exprDataFieldList}
+                      />
+                    ) : null
                   }
                   fileName="cv.pdf"
                   className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
@@ -380,38 +382,38 @@ export default function Home() {
 
         {/*Left side div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
-         
+          {cardOneSelected && (
             <CardOneModel
-            selectedImage={selectedImage}
-            cardColors={cardOneColor}
-            name={name}
-            lastName={lastName}
-            email={email}
-            phone={phone}
-            address={address}
-            postalCode={postalCode}
-            city={city}
-            dateBirth={dateBirth}
-            placeBirth={placeBirth}
-            genere={genere}
-            nationality={nationality}
-            civilStatus={civilStatus}
-            license={license}
-            website={website}
-            linkin={linkin}
-            compDati={compDati}
-            langDati={langDati}
-            compFieldList={compFieldList}
-            langFieldList={langFieldList}
-            profileContent={profileContent}
-            formDataFieldList={formDataFieldList}
-            exprDataFieldList={exprDataFieldList}
-            range={range}
-          />
-        
+              selectedImage={selectedImage}
+              cardColors={cardOneColor}
+              name={name}
+              lastName={lastName}
+              email={email}
+              phone={phone}
+              address={address}
+              postalCode={postalCode}
+              city={city}
+              dateBirth={dateBirth}
+              placeBirth={placeBirth}
+              genere={genere}
+              nationality={nationality}
+              civilStatus={civilStatus}
+              license={license}
+              website={website}
+              linkin={linkin}
+              compDati={compDati}
+              langDati={langDati}
+              compFieldList={compFieldList}
+              langFieldList={langFieldList}
+              profileContent={profileContent}
+              formDataFieldList={formDataFieldList}
+              exprDataFieldList={exprDataFieldList}
+              range={range}
+            />
+          )}
 
           {cardTwoSelected && (
-            <CardTwoModel
+            < CardTwoModel
             selectedImage={selectedImage}
             cardColors={cardTwoColor}
             name={name}
@@ -438,40 +440,44 @@ export default function Home() {
             exprDataFieldList={exprDataFieldList}
             range={range}
           />
-          )}
 
+          )}
+        
           {cardThreeSelected && (
             <CardThreeModel
-            cardColors={cardThreeColor}
-            setCardColors={setCardThreeColor}
-            selectedImage={selectedImage}
-            name={name}
-            lastName={lastName}
-            email={email}
-            phone={phone}
-            address={address}
-            postalCode={postalCode}
-            city={city}
-            dateBirth={dateBirth}
-            placeBirth={placeBirth}
-            genere={genere}
-            nationality={nationality}
-            civilStatus={civilStatus}
-            license={license}
-            website={website}
-            linkin={linkin}
-            compDati={compDati}
-            langDati={langDati}
-            compFieldList={compFieldList}
-            langFieldList={langFieldList}
-            profileContent={profileContent}
-            formDataFieldList={formDataFieldList}
-            exprDataFieldList={exprDataFieldList}
-            range={range}/> 
+              cardColors={cardThreeColor}
+              setCardColors={setCardThreeColor}
+              selectedImage={selectedImage}
+              name={name}
+              lastName={lastName}
+              email={email}
+              phone={phone}
+              address={address}
+              postalCode={postalCode}
+              city={city}
+              dateBirth={dateBirth}
+              placeBirth={placeBirth}
+              genere={genere}
+              nationality={nationality}
+              civilStatus={civilStatus}
+              license={license}
+              website={website}
+              linkin={linkin}
+              compDati={compDati}
+              langDati={langDati}
+              compFieldList={compFieldList}
+              langFieldList={langFieldList}
+              profileContent={profileContent}
+              formDataFieldList={formDataFieldList}
+              exprDataFieldList={exprDataFieldList}
+              range={range}
+            />
           )}
 
           {/*Default card to choice if user didnt select any card at the home page */}
-         {/* {(!cardOneSelected && !cardTwoSelected && !cardThreeSelected) && (<CardChoices/>)} */}
+          {!cardOneSelected && !cardTwoSelected && !cardThreeSelected && (
+            <CardChoices />
+          )}
         </div>
       </div>
     </>
