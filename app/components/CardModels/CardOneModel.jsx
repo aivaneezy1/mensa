@@ -125,13 +125,13 @@ const CardOneModel = (props) => {
   ];
   return (
     <div
-      className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-full"
+      className="grid grid-cols-2  sm:p-2 max-w-screen-sm mx-auto shadow-md relative h-screen h-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* LEFT SIDE DIV */}
       <div
-        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border`}
+        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border h-full`}
         style={{ backgroundColor: props.cardColors }}
       >
         {props.selectedImage && (
@@ -193,8 +193,12 @@ const CardOneModel = (props) => {
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
+         <div>
           <h2 className="text-s font-bold">Competenze</h2>
+         </div>
+          <div>
           {props.compFieldList.length > 0 && compAndLang(props.compFieldList)}
+          </div>
         </div>
 
         {props.compFieldList.length > 0 && (
@@ -203,8 +207,12 @@ const CardOneModel = (props) => {
 
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
+          <div>
           <h2 className="text-s font-bold">Lingue</h2>
+          </div>
+          <div>
           {props.langFieldList.length > 0 && compAndLang(props.langFieldList)}
+          </div>
         </div>
 
         {props.compFieldList.length > 0 && (
@@ -213,7 +221,7 @@ const CardOneModel = (props) => {
       </div>
 
       {/* RIGHT DIV */}
-      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
+      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs h-full">
         {/* Name */}
         <div className="mb-1 mt-5  ">
           <h2 className="text-sm font-semibold">{props.name}</h2>
