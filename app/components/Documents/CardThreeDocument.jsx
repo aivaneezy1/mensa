@@ -65,7 +65,7 @@ const datiPersonali = (image, dati, dati2) => {
       }}
     >
       <View style={{ marginRight: 3 }}>
-        <Image style={{ width: "8", height: "8" }} src={image}></Image>
+        <Image style={{ width: "8", height: "8" }} src={image} alt={"logo picture"}></Image>
       </View>
       <View>
         <Text style={{ fontWeight: "medium", fontSize: 10, marginLeft: 3 }}>
@@ -217,6 +217,7 @@ const CardThreeDocument = (props) => {
                 <Image
                   style={{ width: 120, height: 120 }}
                   src={props.selectedImage}
+                  alt={"profile picture"}
                 ></Image>
               </View>
             )}
