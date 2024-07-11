@@ -2,6 +2,7 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 import { DatiContext } from "@/app/context/DatiContext";
+import randonImage from "../../assets/images/randon.jpg"
 
 const CardOneDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -20,6 +21,9 @@ const CardOneDisplay = (props) => {
       </div>
     );
   };
+
+
+
 
   const colors = [
     "#FFFFFF",
@@ -42,7 +46,7 @@ const CardOneDisplay = (props) => {
       >
         <div className=" mt-2">
           <Image
-            src="/images/randon.jpg"
+            src={randonImage}
             alt="pic"
             width={60}
             height={60}
