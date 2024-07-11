@@ -42,7 +42,7 @@ const CardOneDisplay = (props) => {
       >
         <div className=" mt-2">
           <Image
-            src="/randon.jpg"
+            src="/images/randon.jpg"
             alt="pic"
             width={60}
             height={60}
