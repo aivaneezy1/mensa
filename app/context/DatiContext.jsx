@@ -3,32 +3,43 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const DatiContext = createContext({});
 
+// Getting value to the localStorage
+const getLocalStorageItem = (key) => {
+  const savedValue = localStorage.getItem(key);
+  return savedValue !== null ? savedValue : "";
+};
+
 const DatiContextProvider = ({ children }) => {
   /*Show button */
   const [showProfile, setShowProfile] = useState(null);
 
-   /* Dati Personali */
+  /* Dati Personali */
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [city, setCity] = useState("");
-  const [dateBirth, setDateBirth] = useState("");
-  const [placeBirth, setPlaceBirth] = useState("");
-  const [genere, setGenere] = useState("");
-  const [civilStatus, setCivilStatus] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [license, setLicense] = useState("");
-  const [website, setWebsite] = useState("");
-  const [linkin, setLinkin] = useState("");
+  const [name, setName] = useState(getLocalStorageItem("name"));
 
-  
-
-
+  const [lastName, setLastName] = useState(getLocalStorageItem("lastName"));
+  const [email, setEmail] = useState(getLocalStorageItem("email"));
+  const [phone, setPhone] = useState(getLocalStorageItem("phone"));
+  const [address, setAddress] = useState(getLocalStorageItem("address"));
+  const [postalCode, setPostalCode] = useState(
+    getLocalStorageItem("postalCode")
+  );
+  const [city, setCity] = useState(getLocalStorageItem("city"));
+  const [dateBirth, setDateBirth] = useState(getLocalStorageItem("dateBirth"));
+  const [placeBirth, setPlaceBirth] = useState(
+    getLocalStorageItem("placeBirth")
+  );
+  const [genere, setGenere] = useState(getLocalStorageItem("gender"));
+  const [civilStatus, setCivilStatus] = useState(
+    getLocalStorageItem("civilStatus")
+  );
+  const [nationality, setNationality] = useState(
+    getLocalStorageItem("nationality")
+  );
+  const [license, setLicense] = useState(getLocalStorageItem("license"));
+  const [website, setWebsite] = useState(getLocalStorageItem("website"));
+  const [linkin, setLinkin] = useState(getLocalStorageItem("linkin"));
 
   /*Profile */
   const [profileContent, setProfileContent] = useState("");
@@ -66,6 +77,10 @@ const DatiContextProvider = ({ children }) => {
 
   const [exprDataFieldList, setExprDataFieldList] = useState([]);
   const [exprContent, setExprContent] = useState("");
+
+  /*Edit and delete state for the Bg prof component */
+  const [editState, setEditState] = useState(false);
+  const [deleteState, setDeleteState] = useState(false);
 
   /*Background color */
   const [cardOneColor, setCardOneColor] = useState("");
@@ -169,6 +184,11 @@ const DatiContextProvider = ({ children }) => {
         setExprDataFieldList,
         exprContent,
         setExprContent,
+        /*Edit and Delete State for BG component */
+        editState,
+        setEditState,
+        deleteState,
+        setDeleteState,
 
         /*BackGround Color */
         cardOneColor,
