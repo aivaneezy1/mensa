@@ -127,7 +127,7 @@ export default function Home() {
     /*Edit and Delete State for BG component */
     editState,
     setEditState,
-    deleteState, 
+    deleteState,
     setDeleteState,
 
     /*BackGround Color */
@@ -159,7 +159,6 @@ export default function Home() {
   useEffect(() => {
     if (editState) {
       const timer = setTimeout(() => {
-      
         setEditState(false);
       }, 3000); // 2000 milliseconds = 2 seconds
 
@@ -167,7 +166,7 @@ export default function Home() {
     }
   }, [editState, setEditState]);
 
-    // Edit and Delete state
+  // Edit and Delete state
   useEffect(() => {
     if (deleteState) {
       const timer = setTimeout(() => {
@@ -178,19 +177,148 @@ export default function Home() {
     }
   }, [deleteState, setDeleteState]);
 
+  /*Document rendering */
+
+  const [isClient, setIsClient] = useState(false);
+  const [selectedDocument, setSelectedDocument] = useState(null);
+
+  useEffect(() => {
+    setIsClient(true); // This will be true after component mounts on the client
+  }, []);
+
+  useEffect(() => {
+    const handleSelectedDocument = () => {
+      if (cardOneSelected) {
+        return (
+          <CardOneDocument
+            cardColors={cardOneColor}
+            selectedImage={selectedImage}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            civilStatus={civilStatus}
+            nationality={nationality}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
+          />
+        );
+      } else if (cardTwoSelected) {
+        return (
+          <CardTwoDocument
+            cardColors={cardTwoColor}
+            selectedImage={selectedImage}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            civilStatus={civilStatus}
+            nationality={nationality}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
+          />
+        );
+      } else if (cardThreeSelected) {
+        return (
+          <CardThreeDocument
+            cardColors={cardThreeColor}
+            selectedImage={selectedImage}
+            name={name}
+            lastName={lastName}
+            email={email}
+            phone={phone}
+            address={address}
+            postalCode={postalCode}
+            city={city}
+            dateBirth={dateBirth}
+            placeBirth={placeBirth}
+            genere={genere}
+            civilStatus={civilStatus}
+            nationality={nationality}
+            license={license}
+            website={website}
+            linkin={linkin}
+            compFieldList={compFieldList}
+            langFieldList={langFieldList}
+            profileContent={profileContent}
+            formDataFieldList={formDataFieldList}
+            exprDataFieldList={exprDataFieldList}
+          />
+        );
+      }
+    };
+
+    // Set the selected document
+    if (cardOneSelected || cardTwoSelected || cardThreeSelected) {
+      setSelectedDocument(handleSelectedDocument());
+    }
+  }, [
+    cardOneSelected,
+    cardTwoSelected,
+    cardThreeSelected,
+    cardOneColor,
+    cardTwoColor,
+    cardThreeColor,
+    selectedImage,
+    name,
+    lastName,
+    email,
+    phone,
+    address,
+    postalCode,
+    city,
+    dateBirth,
+    placeBirth,
+    genere,
+    civilStatus,
+    nationality,
+    license,
+    website,
+    linkin,
+    compFieldList,
+    langFieldList,
+    profileContent,
+    formDataFieldList,
+    exprDataFieldList,
+  ]);
+
 
   return (
     <>
       <div className="flex justify-center mx-auto  min-h-screen py-10  h-screen flex-row  lg:justify-between lg:ml-5  ">
         {editState && (
           <div className="absolute top-20 right-50">
-          <BasicAlerts/>
+            <BasicAlerts />
           </div>
         )}
 
-         {deleteState && (
+        {deleteState && (
           <div className="absolute top-20 right-50">
-          <DeleteAlert/>
+            <DeleteAlert />
           </div>
         )}
         <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
@@ -316,104 +444,17 @@ export default function Home() {
 
             {isSubmitted && (
               <div className="justify-center flex items-center">
-                <PDFDownloadLink
-                  document={
-                    cardOneSelected ? (
-                      <CardOneDocument
-                        cardColors={cardOneColor}
-                        selectedImage={selectedImage}
-                        name={name}
-                        lastName={lastName}
-                        email={email}
-                        phone={phone}
-                        address={address}
-                        postalCode={postalCode}
-                        city={city}
-                        dateBirth={dateBirth}
-                        placeBirth={placeBirth}
-                        genere={genere}
-                        civilStatus={civilStatus}
-                        nationality={nationality}
-                        license={license}
-                        website={website}
-                        linkin={linkin}
-                        /* Lingue e Competenze */
-                        compFieldList={compFieldList}
-                        langFieldList={langFieldList}
-                        // Profile Data
-                        profileContent={profileContent}
-                        // Formazione Data
-                        formDataFieldList={formDataFieldList}
-                        // Experience Data
-                        exprDataFieldList={exprDataFieldList}
-                      />
-                    ) : cardTwoSelected ? (
-                      <CardTwoDocument
-                        cardColors={cardTwoColor}
-                        selectedImage={selectedImage}
-                        name={name}
-                        lastName={lastName}
-                        email={email}
-                        phone={phone}
-                        address={address}
-                        postalCode={postalCode}
-                        city={city}
-                        dateBirth={dateBirth}
-                        placeBirth={placeBirth}
-                        genere={genere}
-                        civilStatus={civilStatus}
-                        nationality={nationality}
-                        license={license}
-                        website={website}
-                        linkin={linkin}
-                        /* Lingue e Competenze */
-                        compFieldList={compFieldList}
-                        langFieldList={langFieldList}
-                        // Profile Data
-                        profileContent={profileContent}
-                        // Formazione Data
-                        formDataFieldList={formDataFieldList}
-                        // Experience Data
-                        exprDataFieldList={exprDataFieldList}
-                      />
-                    ) : cardThreeSelected ? (
-                      <CardThreeDocument
-                        cardColors={cardThreeColor}
-                        selectedImage={selectedImage}
-                        name={name}
-                        lastName={lastName}
-                        email={email}
-                        phone={phone}
-                        address={address}
-                        postalCode={postalCode}
-                        city={city}
-                        dateBirth={dateBirth}
-                        placeBirth={placeBirth}
-                        genere={genere}
-                        civilStatus={civilStatus}
-                        nationality={nationality}
-                        license={license}
-                        website={website}
-                        linkin={linkin}
-                        /* Lingue e Competenze */
-                        compFieldList={compFieldList}
-                        langFieldList={langFieldList}
-                        // Profile Data
-                        profileContent={profileContent}
-                        // Formazione Data
-                        formDataFieldList={formDataFieldList}
-                        // Experience Data
-                        exprDataFieldList={exprDataFieldList}
-                      />
-                    ) : null
-                  }
-                  fileName="cv.pdf"
-                  className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
-                >
-                  {({ blob, url, loading, error }) =>
-                    loading ? "Loading document..." : "Download CV"
-                  }
-                </PDFDownloadLink>
+                {isClient && (
+                  <PDFDownloadLink
+                    document={selectedDocument}
+                    fileName="cv.pdf"
+                    className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
+                  >
+                    {({ blob, url, loading, error }) =>
+                      loading ? "Loading document..." : "Download CV"
+                    }
+                  </PDFDownloadLink>
+                )}
               </div>
             )}
           </form>
