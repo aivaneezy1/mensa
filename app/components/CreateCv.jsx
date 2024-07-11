@@ -444,7 +444,7 @@ export default function Home() {
 
             {isSubmitted && (
               <div className="justify-center flex items-center">
-                {isClient && (
+                {isClient && selectedDocument && (
                   <PDFDownloadLink
                     document={selectedDocument}
                     fileName="cv.pdf"
