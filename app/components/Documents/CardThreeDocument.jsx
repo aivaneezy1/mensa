@@ -150,7 +150,9 @@ const handleBgData = (data) => {
     <>
       {data.length > 0 &&
         data.map((post, index) => (
-          <View style={{ display: "flex", flexDirection: "column" }}>
+          <View 
+          style={{ display: "flex", flexDirection: "column" }}
+          key={index}>
             <Text style={[styles.data, { marginTop: 5 }]}>{post.data}</Text>
             <Text
               style={{

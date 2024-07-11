@@ -301,7 +301,7 @@ const CardThreeDisplay = (props) => {
           </p>
           <p className="mt-1 text-xs">
             Gestione progetti IT complessi per clienti aziendali, inclusa la
-            pianificazione, l'implementazione e il monitoraggio delle soluzioni
+            pianificazione, ll&#39;implementazione e il monitoraggio delle soluzioni
             informatiche.
           </p>
         </div>
