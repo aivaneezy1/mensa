@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
 import handleButton from "../utils/handleButton";
+import BasicAlerts from "../utils/Successful";
+import DeleteAlert from "../utils/Delete";
 
 {
   /*Components */
@@ -123,6 +125,12 @@ export default function Home() {
     exprContent,
     setExprContent,
 
+    /*Edit and Delete State for BG component */
+    editState,
+    setEditState,
+    deleteState, 
+    setDeleteState,
+
     /*BackGround Color */
     cardOneColor,
     setCardOneColor,
@@ -148,9 +156,44 @@ export default function Home() {
     setIsSubmitted(true);
   };
 
+  // Edit and Delete state
+  useEffect(() => {
+    if (editState) {
+      const timer = setTimeout(() => {
+      
+        setEditState(false);
+      }, 3000); // 2000 milliseconds = 2 seconds
+
+      return () => clearTimeout(timer); // Cleanup the timeout if the component unmounts or editState changes
+    }
+  }, [editState]);
+
+    // Edit and Delete state
+  useEffect(() => {
+    if (deleteState) {
+      const timer = setTimeout(() => {
+        setDeleteState(false);
+      }, 3000); // 2000 milliseconds = 2 seconds
+
+      return () => clearTimeout(timer); // Cleanup the timeout if the component unmounts or editState changes
+    }
+  }, [deleteState]);
+
+
   return (
     <>
       <div className="flex justify-center mx-auto  min-h-screen py-10  h-screen flex-row  lg:justify-between lg:ml-5  ">
+        {editState && (
+          <div className="absolute top-20 right-50">
+          <BasicAlerts/>
+          </div>
+        )}
+
+         {deleteState && (
+          <div className="absolute top-20 right-50">
+          <DeleteAlert/>
+          </div>
+        )}
         <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
           <form onSubmit={handleSubmit} className=" ">
             {/*Dati Personali */}
@@ -410,36 +453,35 @@ export default function Home() {
           )}
 
           {cardTwoSelected && (
-            < CardTwoModel
-            selectedImage={selectedImage}
-            cardColors={cardTwoColor}
-            name={name}
-            lastName={lastName}
-            email={email}
-            phone={phone}
-            address={address}
-            postalCode={postalCode}
-            city={city}
-            dateBirth={dateBirth}
-            placeBirth={placeBirth}
-            genere={genere}
-            nationality={nationality}
-            civilStatus={civilStatus}
-            license={license}
-            website={website}
-            linkin={linkin}
-            compDati={compDati}
-            langDati={langDati}
-            compFieldList={compFieldList}
-            langFieldList={langFieldList}
-            profileContent={profileContent}
-            formDataFieldList={formDataFieldList}
-            exprDataFieldList={exprDataFieldList}
-            range={range}
-          />
-
+            <CardTwoModel
+              selectedImage={selectedImage}
+              cardColors={cardTwoColor}
+              name={name}
+              lastName={lastName}
+              email={email}
+              phone={phone}
+              address={address}
+              postalCode={postalCode}
+              city={city}
+              dateBirth={dateBirth}
+              placeBirth={placeBirth}
+              genere={genere}
+              nationality={nationality}
+              civilStatus={civilStatus}
+              license={license}
+              website={website}
+              linkin={linkin}
+              compDati={compDati}
+              langDati={langDati}
+              compFieldList={compFieldList}
+              langFieldList={langFieldList}
+              profileContent={profileContent}
+              formDataFieldList={formDataFieldList}
+              exprDataFieldList={exprDataFieldList}
+              range={range}
+            />
           )}
-        
+
           {cardThreeSelected && (
             <CardThreeModel
               cardColors={cardThreeColor}

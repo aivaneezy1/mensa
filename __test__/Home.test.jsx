@@ -13,9 +13,9 @@ describe("Page", () => {
   it("render heading with subtitle", () => {
     render(<Home />);
 
-    const subHeading = screen.getByRole("heading", {
+    const subHeading = screen.getAllByRole("heading", {
       level: 2,
-      name: /Scegli tra i migliori modelli e personalizza/i,
+      name: /Scegli tra i migliori modelli e personalizza/i
     });
 
     expect(subHeading).toBeInTheDocument();

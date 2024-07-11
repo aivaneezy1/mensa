@@ -135,7 +135,7 @@ const CardOneModel = (props) => {
         style={{ backgroundColor: props.cardColors }}
       >
         {props.selectedImage && (
-          <div className="border border-orange-400 p-2 mt-2">
+          <div className="border border-blue-400 p-2 mt-2">
             <Image
               src={props.selectedImage}
               alt="pic"

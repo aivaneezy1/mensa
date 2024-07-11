@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { RichTextEditor } from "./Editor";
 import { DatiContext } from "../context/DatiContext";
+import BasicAlerts from "../utils/Successful";
 
 import handleButton from "../utils/handleButton";
 const BgProfesisonale = (props) => {
-  const {showProfile, setShowProfile} = useContext(DatiContext)
+  const {showProfile, setShowProfile, setEditState, setDeleteState,} = useContext(DatiContext)
   const [editindex, setEditIndex] = useState(null);
   /*Time State */
   const [years, setYears] = useState([]);
@@ -23,7 +24,7 @@ const BgProfesisonale = (props) => {
   });
 
 
-  console.log("edit data", editData)
+
 
   const addPost = () => {
     props.setDataFieldList([
@@ -43,7 +44,7 @@ const BgProfesisonale = (props) => {
     setShowProfile(null);
   };
 
-  console.log("data field list", props.dataFieldList)
+ 
 
   const resetForm = () => {
     props.setData("");
@@ -74,6 +75,8 @@ const BgProfesisonale = (props) => {
     props.setDataFieldList(updatedList);
     setEditIndex(null);
     //resetEditData();
+    setEditState(true)
+   
   };
 
   const resetEditData = () => {
@@ -93,6 +96,7 @@ const BgProfesisonale = (props) => {
     const newList = props.dataFieldList.filter((_, i) => i !== index);
     props.setDataFieldList(newList);
     setEditIndex(null);
+    setDeleteState(true)
   };
 
   useEffect(() => {
@@ -117,6 +121,8 @@ const BgProfesisonale = (props) => {
       {handleButton(props.field, props.field)}
       {showProfile === props.field && (
         <>
+     
+
           {/*Data */}
           <div className="flex flex-col gap-5 break-words w-full max-w-sm sm:max-w-lg text-gray-800 overflow-hidden">
             <h2 className="font-semibold text-medium mt-2">{props.role}</h2>
