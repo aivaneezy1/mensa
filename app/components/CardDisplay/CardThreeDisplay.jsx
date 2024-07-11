@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+
 const CardThreeDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -42,7 +43,7 @@ const CardThreeDisplay = (props) => {
       >
         <div className="">
           <Image
-            src="/images/randon.png"
+            src="/Images/randon.png"
             alt="profile"
             width={60}
             height={60}
