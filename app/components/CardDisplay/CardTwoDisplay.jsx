@@ -20,7 +20,6 @@ const CardTwoDisplay = (props) => {
     );
   };
 
-
   const colors = [
     "#395a86",
     "#191970",
@@ -50,7 +49,12 @@ const CardTwoDisplay = (props) => {
               alt="profile"
               width={60}
               height={60}
-              style={{ borderRadius: '50%', width: '50px', height: '50px', overflow: 'hidden' }}
+              style={{
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                overflow: "hidden",
+              }}
             />
           </div>
         </div>
@@ -58,7 +62,10 @@ const CardTwoDisplay = (props) => {
         {/* Personal Data */}
         <div className="flex justify-start flex-col mt-5">
           <div>
-            <h2 className="text-s  font-bold  border-b border-gray-500 border-solid text-center  " style={{color:  props.selectedColor}}>
+            <h2
+              className="text-s  font-bold  border-b border-gray-500 border-solid text-center  "
+              style={{ color: props.selectedColor }}
+            >
               Dati Personali
             </h2>
           </div>
@@ -246,7 +253,10 @@ const CardTwoDisplay = (props) => {
 
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
-          <h2 className="text-s  font-bold border-b border-gray-500 border-solid w-auto " style={{color:  props.selectedColor}}>
+          <h2
+            className="text-s  font-bold border-b border-gray-500 border-solid w-auto "
+            style={{ color: props.selectedColor }}
+          >
             Competenze
           </h2>
           <p className="font-medium text-xs">Sicurezza Informatica</p>
@@ -258,7 +268,10 @@ const CardTwoDisplay = (props) => {
 
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
-          <h2 className="text-s  font-bold border-b border-gray-500 border-solid" style={{color:  props.selectedColor}}>
+          <h2
+            className="text-s  font-bold border-b border-gray-500 border-solid"
+            style={{ color: props.selectedColor }}
+          >
             Lingue
           </h2>
           <p className="font-medium text-xs">Inglese</p>
@@ -276,25 +289,31 @@ const CardTwoDisplay = (props) => {
 
         {/* Profile */}
         <div className="mb-1">
-          <h2 className="text-s  font-bold border-b border-gray-500 border-solid"style={{color:  props.selectedColor}} >
+          <h2
+            className="text-s  font-bold border-b border-gray-500 border-solid"
+            style={{ color: props.selectedColor }}
+          >
             Profilo
           </h2>
           <p className="text-xs">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum
+            industry. Lorem Ipsum has been the industry&apos;s standard dummy
+            text ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book. It has survived
+            not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum
           </p>
         </div>
 
         {/* Istruzione */}
         <div className="mb-1">
-          <h2 className="text-s font-bold border-b border-gray-500 border-solid" style={{color:  props.selectedColor}}>
+          <h2
+            className="text-s font-bold border-b border-gray-500 border-solid"
+            style={{ color: props.selectedColor }}
+          >
             Istruzione
           </h2>
           <p className="font-bold text-xs mt-2">
@@ -330,7 +349,10 @@ const CardTwoDisplay = (props) => {
 
         {/* Experience */}
         <div className="mb-1">
-          <h2 className="mb-1 text-s  font-bold border-b border-gray-500 border-solid  " style={{color:  props.selectedColor}}>
+          <h2
+            className="mb-1 text-s  font-bold border-b border-gray-500 border-solid  "
+            style={{ color: props.selectedColor }}
+          >
             Esperienze
           </h2>
           <p className="font-bold text-xs">Senior IT Consultant</p>
@@ -342,8 +364,8 @@ const CardTwoDisplay = (props) => {
           </p>
           <p className="mt-1 text-xs">
             Gestione progetti IT complessi per clienti aziendali, inclusa la
-            pianificazione, ll&#39;implementazione e il monitoraggio delle soluzioni
-            informatiche.
+            pianificazione, ll&#39;implementazione e il monitoraggio delle
+            soluzioni informatiche.
           </p>
         </div>
       </div>
@@ -367,4 +389,4 @@ const CardTwoDisplay = (props) => {
   );
 };
 
-export default CardTwoDisplay
+export default CardTwoDisplay;

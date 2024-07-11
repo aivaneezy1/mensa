@@ -387,7 +387,7 @@ const BgProfesisonale = (props) => {
                       </div>
 
                       <div className="flex flex-col">
-                        <h2 className="font-semibold text-medium">Citta'</h2>
+                        <h2 className="font-semibold text-medium">Citta</h2>
                         <input
                           type="text"
                           name="data"
@@ -424,7 +424,7 @@ const BgProfesisonale = (props) => {
                         >
                           {props.dataFieldList.length > 0 ? (
                             props.dataFieldList.map((item, index) => (
-                              <option className="bg-white text-gray-800">
+                              <option key={index} className="bg-white text-gray-800">
                                 {item.dataInizio}
                               </option>
                             ))
@@ -554,7 +554,7 @@ const BgProfesisonale = (props) => {
                         >
                             {props.dataFieldList.length > 0 ? (
                             props.dataFieldList.map((item, index) => (
-                              <option className="bg-white text-gray-800">
+                              <option key={index} className="bg-white text-gray-800">
                                 {item.dataFine}
                               </option>
                             ))
