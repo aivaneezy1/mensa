@@ -45,7 +45,7 @@ const CardTwoDisplay = (props) => {
         >
           <div className="absolute bottom-0 transform translate-y-1/2">
             <Image
-              src="/images/randon.png"
+              src="/Images/randon.png"
               alt="profile"
               width={60}
               height={60}
