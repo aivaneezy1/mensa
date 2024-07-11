@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+import React, {useState} from "react";
 import Image from "next/image";
 const CardTwoDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -328,7 +328,7 @@ const CardTwoDisplay = (props) => {
           </p>
           <p className="mt-1 text-xs">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
+            industry. Lorem Ipsum has been the  standard dummy text
             ever since the 1500s.
           </p>
 
