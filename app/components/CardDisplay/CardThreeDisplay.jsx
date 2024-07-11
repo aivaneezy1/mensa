@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import randonImage from "../../assets/images/randon.jpg"
+
 const CardThreeDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -42,7 +42,7 @@ const CardThreeDisplay = (props) => {
       >
         <div className="">
           <Image
-            src={randonImage}
+            src="/images/randon.png"
             alt="profile"
             width={60}
             height={60}
