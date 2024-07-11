@@ -42,7 +42,7 @@ const CardThreeDisplay = (props) => {
       >
         <div className="">
           <Image
-            src="/randon.jpg"
+            src="/images/randon.jpg"
             alt="profile"
             width={60}
             height={60}
