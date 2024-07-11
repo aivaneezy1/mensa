@@ -149,11 +149,11 @@ const BgProfesisonale = (props) => {
 
               {/*Citta */}
               <div className="flex flex-col  ">
-                <h2 className="font-semibold text-medium">Citta'</h2>
+                <h2 className="font-semibold text-medium">Citta</h2>
                 <input
                   type="text"
                   name="data"
-                  placeholder="Citta'"
+                  placeholder="Citta"
                   value={props.city}
                   onChange={(ev) => props.setCity(ev.target.value)}
                   className="mb-2 p-2 border bg-gray-100 rounded-md mr-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -391,7 +391,7 @@ const BgProfesisonale = (props) => {
                         <input
                           type="text"
                           name="data"
-                          placeholder="Citta'"
+                          placeholder="Citta"
                           value={editData.city}
                           onChange={(e) =>
                             setEditData({ ...editData, city: e.target.value })
