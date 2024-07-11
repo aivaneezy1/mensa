@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { DatiContext } from "../context/DatiContext";
  
- const handleButton = (showSection, field) => {
+ const HandleButton = ( props) => {
     const {showProfile, setShowProfile} = useContext(DatiContext)
      const toggleButton = () =>{
-      if(showProfile != showSection){
-         setShowProfile(showSection)
+      if(showProfile != props.showSection){
+         setShowProfile(props.showSection)
       }else{
         setShowProfile(null)
       }
@@ -35,7 +35,7 @@ import { DatiContext } from "../context/DatiContext";
               />
             </svg>
 
-            <span className="whitespace-nowrap font-sm text-xl">{field}</span>
+            <span className="whitespace-nowrap font-sm text-xl">{props.field}</span>
           </button>
         </div>
       </>
@@ -43,4 +43,4 @@ import { DatiContext } from "../context/DatiContext";
   };
 
 
-  export default handleButton
+  export default HandleButton

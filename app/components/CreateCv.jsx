@@ -2,7 +2,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
-import handleButton from "../utils/handleButton";
 import BasicAlerts from "../utils/Successful";
 import DeleteAlert from "../utils/Delete";
 

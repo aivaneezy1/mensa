@@ -3,7 +3,9 @@ import { RichTextEditor } from "./Editor";
 import { DatiContext } from "../context/DatiContext";
 import BasicAlerts from "../utils/Successful";
 
-import handleButton from "../utils/handleButton";
+
+
+import HandleButton from "../utils/handleButton";
 const BgProfesisonale = (props) => {
   const {showProfile, setShowProfile, setEditState, setDeleteState,} = useContext(DatiContext)
   const [editindex, setEditIndex] = useState(null);
@@ -118,7 +120,8 @@ const BgProfesisonale = (props) => {
 
   return (
     <>
-      {handleButton(props.field, props.field)}
+
+      <HandleButton showSection={props.field} field={props.field} />
       {showProfile === props.field && (
         <>
      

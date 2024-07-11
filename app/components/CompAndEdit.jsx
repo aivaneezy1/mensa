@@ -3,9 +3,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { useContext, useState } from "react";
-import handleButton from "@/app/utils/handleButton";
+
 import { DatiContext } from "../context/DatiContext";
 import handleInputRange from "../utils/handleInputRange";
+import HandleButton from "@/app/utils/handleButton";
 
 const CompAndEdit = (props) => {
   const { showProfile, setShowProfile } = useContext(DatiContext);
@@ -50,7 +51,8 @@ const CompAndEdit = (props) => {
 
   return (
     <>
-      {handleButton(props.field, props.field)}
+     
+      <HandleButton showSection={props.field} field={props.field}/>
       {showProfile === props.field && (
         <>
           <div className="flex flex-col p-5">
