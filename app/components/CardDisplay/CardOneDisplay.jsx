@@ -5,7 +5,7 @@ import { DatiContext } from "@/app/context/DatiContext";
 
 const CardOneDisplay = (props) => {
   const [isHovered, setIsHovered] = useState(false);
- 
+
   const datiPersonali = (dati, dati2, dati3, dati4) => {
     return (
       <div className="flex flex-row gap-2  items-center  w-sm ">
@@ -126,15 +126,16 @@ const CardOneDisplay = (props) => {
         <div className="mb-1">
           <h2 className="text-s font-bold">Profilo</h2>
           <p className="text-xs">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of type
-    and scrambled it to make a type specimen book. It has survived not
-    only five centuries, but also the leap into electronic typesetting,
-    remaining essentially unchanged. It was popularised in the 1960s
-    with the release of Letraset sheets containing Lorem Ipsum passages,
-    and more recently with desktop publishing software like Aldus
-    PageMaker including versions of Lorem Ipsum
+             Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum this long but without
+            any apostrtophe
           </p>
         </div>
 
@@ -143,7 +144,7 @@ const CardOneDisplay = (props) => {
         {/* Istruzione */}
         <div className="mb-1">
           <h2 className="text-s font-bold">Istruzione</h2>
-           <p className="font-bold text-xs mt-2">
+          <p className="font-bold text-xs mt-2">
             Laurea Magistrale in Informatica
           </p>
           <p className="text-blue-500 font-semibold text-xs">
@@ -154,7 +155,7 @@ const CardOneDisplay = (props) => {
           </p>
           <p className="mt-1 text-xs">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
+            industry. Lorem Ipsum has been the industrys standard dummy text
             ever since the 1500s.
           </p>
 
@@ -179,7 +180,7 @@ const CardOneDisplay = (props) => {
         {/* Experience */}
         <div className="mb-1">
           <h2 className="mb-1 text-s font-bold">Esperienze</h2>
-         <p className="font-bold text-xs">Senior IT Consultant</p>
+          <p className="font-bold text-xs">Senior IT Consultant</p>
           <p className="text-blue-500 font-semibold text-xs">
             2023 Gen- 2012 Nov
           </p>
@@ -188,8 +189,8 @@ const CardOneDisplay = (props) => {
           </p>
           <p className="mt-1 text-xs">
             Gestione progetti IT complessi per clienti aziendali, inclusa la
-            pianificazione, l&#39;implementazione e il monitoraggio delle soluzioni
-            informatiche.
+            pianificazione, l&#39;implementazione e il monitoraggio delle
+            soluzioni informatiche.
           </p>
         </div>
       </div>
@@ -213,4 +214,4 @@ const CardOneDisplay = (props) => {
   );
 };
 
-export default CardOneDisplay
+export default CardOneDisplay;

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import handleButton from "../utils/handleButton";
+import HandleButton from "../utils/handleButton";
 import OptionalButton from "../utils/OptionalButton";
 import Upload from "./Upload";
 import { DatiContext } from "../context/DatiContext";
@@ -57,7 +57,8 @@ const DatiP = (props) => {
   return (
     <>
       {/*Dati Personali button */}
-      {handleButton("DatiPersonali", "Dati Personali")}
+      {<HandleButton showSection={"DatiPersonali"} field={ "Dati Personali"}/>}
+    
       <div className="flex flex-col  gap-2  min-w-sm   ">
         {showProfile === "DatiPersonali" && (
           <>
