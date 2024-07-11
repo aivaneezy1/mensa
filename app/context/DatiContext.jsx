@@ -3,10 +3,13 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const DatiContext = createContext({});
 
-// Getting value to the localStorage
+// Function to safely access localStorage
 const getLocalStorageItem = (key) => {
-  const savedValue = localStorage.getItem(key);
-  return savedValue !== null ? savedValue : "";
+  if (typeof window !== "undefined") {
+    const savedValue = localStorage.getItem(key);
+    return savedValue !== null ? savedValue : "";
+  }
+  return "";
 };
 
 const DatiContextProvider = ({ children }) => {
@@ -16,30 +19,42 @@ const DatiContextProvider = ({ children }) => {
   /* Dati Personali */
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const [name, setName] = useState(getLocalStorageItem("name"));
+  // Initialize states with values from localStorage, but only on the client-side
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+  const [dateBirth, setDateBirth] = useState("");
+  const [placeBirth, setPlaceBirth] = useState("");
+  const [genere, setGenere] = useState("");
+  const [civilStatus, setCivilStatus] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [license, setLicense] = useState("");
+  const [website, setWebsite] = useState("");
+  const [linkin, setLinkin] = useState("");
 
-  const [lastName, setLastName] = useState(getLocalStorageItem("lastName"));
-  const [email, setEmail] = useState(getLocalStorageItem("email"));
-  const [phone, setPhone] = useState(getLocalStorageItem("phone"));
-  const [address, setAddress] = useState(getLocalStorageItem("address"));
-  const [postalCode, setPostalCode] = useState(
-    getLocalStorageItem("postalCode")
-  );
-  const [city, setCity] = useState(getLocalStorageItem("city"));
-  const [dateBirth, setDateBirth] = useState(getLocalStorageItem("dateBirth"));
-  const [placeBirth, setPlaceBirth] = useState(
-    getLocalStorageItem("placeBirth")
-  );
-  const [genere, setGenere] = useState(getLocalStorageItem("gender"));
-  const [civilStatus, setCivilStatus] = useState(
-    getLocalStorageItem("civilStatus")
-  );
-  const [nationality, setNationality] = useState(
-    getLocalStorageItem("nationality")
-  );
-  const [license, setLicense] = useState(getLocalStorageItem("license"));
-  const [website, setWebsite] = useState(getLocalStorageItem("website"));
-  const [linkin, setLinkin] = useState(getLocalStorageItem("linkin"));
+  useEffect(() => {
+    setName(getLocalStorageItem("name"));
+    setLastName(getLocalStorageItem("lastName"));
+    setEmail(getLocalStorageItem("email"));
+    setPhone(getLocalStorageItem("phone"));
+    setAddress(getLocalStorageItem("address"));
+    setPostalCode(getLocalStorageItem("postalCode"));
+    setCity(getLocalStorageItem("city"));
+    setDateBirth(getLocalStorageItem("dateBirth"));
+    setPlaceBirth(getLocalStorageItem("placeBirth"));
+    setGenere(getLocalStorageItem("gender"));
+    setCivilStatus(getLocalStorageItem("civilStatus"));
+    setNationality(getLocalStorageItem("nationality"));
+    setLicense(getLocalStorageItem("license"));
+    setWebsite(getLocalStorageItem("website"));
+    setLinkin(getLocalStorageItem("linkin"));
+  }, []);
+
+
 
   /*Profile */
   const [profileContent, setProfileContent] = useState("");
