@@ -166,7 +166,7 @@ export default function Home() {
 
       return () => clearTimeout(timer); // Cleanup the timeout if the component unmounts or editState changes
     }
-  }, [editState]);
+  }, [editState, setEditState]);
 
     // Edit and Delete state
   useEffect(() => {
@@ -177,7 +177,7 @@ export default function Home() {
 
       return () => clearTimeout(timer); // Cleanup the timeout if the component unmounts or editState changes
     }
-  }, [deleteState]);
+  }, [deleteState, setDeleteState]);
 
 
   return (

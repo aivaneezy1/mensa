@@ -234,6 +234,7 @@ const CardOneDocument = (props) => {
                 <Image
                   style={{ width: 120, height: 120 }}
                   src={props.selectedImage}
+                  alt={"profile picture"}
                 ></Image>
               </View>
             )}
