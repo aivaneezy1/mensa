@@ -43,7 +43,7 @@ const CardThreeDisplay = (props) => {
       >
         <div className="">
           <Image
-            src="/Images/randon.png"
+            src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
             alt="profile"
             width={60}
             height={60}
