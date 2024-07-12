@@ -96,9 +96,11 @@ const datiPersonali = (image, dati, dati2) => {
       }}
     >
       <View style={{ marginRight: 3 }}>
-        <Image 
-        style={{ width: "8", height: "8" }} src={image}
-        alt={"logo picture"}></Image>
+        <Image
+          style={{ width: "8", height: "8" }}
+          src={image}
+          alt={"logo picture"}
+        ></Image>
       </View>
       <View>
         <Text style={{ fontWeight: "medium", fontSize: 10, marginLeft: 3 }}>
@@ -182,9 +184,10 @@ const handleBgData = (data) => {
     <>
       {data.length > 0 &&
         data.map((post, index) => (
-          <View 
-          style={{ display: "flex", flexDirection: "column" }}
-          key={index}>
+          <View
+            style={{ display: "flex", flexDirection: "column" }}
+            key={index}
+          >
             <Text style={[styles.data, { marginTop: 5 }]}>{post.data}</Text>
             <Text
               style={{
@@ -237,20 +240,22 @@ const CardTwoDocument = (props) => {
               height: "100%",
             }}
           >
-              <View
-                style={[
-                  styles.imageContainer,
-                  { backgroundColor: props.cardColors },
-                ]}
-              >
-                {props.selectedImage && (
-                  <View style={styles.imageWrapper}>
-                    <Image style={styles.image} 
+            <View
+              style={[
+                styles.imageContainer,
+                { backgroundColor: props.cardColors },
+              ]}
+            >
+              {props.selectedImage && (
+                <View style={styles.imageWrapper}>
+                  <Image
+                    style={styles.image}
                     src={props.selectedImage}
-                      alt={"profile picture"} />
-                  </View>
-                )}
-              </View>
+                    alt={"profile picture"}
+                  />
+                </View>
+              )}
+            </View>
 
             {/*Personal Data */}
             <View
@@ -293,7 +298,7 @@ const CardTwoDocument = (props) => {
                   {(props.name || props.lastName) && (
                     <>
                       {datiPersonali(
-                        "/images/user.png",
+                       "/Images/user.png",
                         props.name,
                         props.lastName
                       )}
@@ -304,13 +309,23 @@ const CardTwoDocument = (props) => {
                 {/*email */}
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   {props.email && (
-                    <>{datiPersonali("/images/email.png", props.email)}</>
+                    <>
+                      {datiPersonali(
+                        "/Images/email.png",
+                        props.email
+                      )}
+                    </>
                   )}
                 </View>
                 {/*phone */}
                 <View>
                   {props.phone && (
-                    <>{datiPersonali("/images/phone.png", props.phone)}</>
+                    <>
+                      {datiPersonali(
+                       "/Images/phone.png",
+                        props.phone
+                      )}
+                    </>
                   )}
                 </View>
 
@@ -319,7 +334,7 @@ const CardTwoDocument = (props) => {
                   {(props.address || props.postalCode || props.city) && (
                     <>
                       {datiPersonali(
-                        "/images/house.png",
+                        "/Images/house.png",
                         props.address,
                         props.postalCode,
                         props.city
@@ -354,7 +369,7 @@ const CardTwoDocument = (props) => {
                 <View>
                   {props.dateBirth && (
                     <>
-                      {datiPersonali("/images/calendar.png", props.dateBirth)}
+                      {datiPersonali("/Images/calendar.png", props.dateBirth)}
                     </>
                   )}
                 </View>
@@ -363,7 +378,7 @@ const CardTwoDocument = (props) => {
                 <View>
                   {props.placeBirth && (
                     <>
-                      {datiPersonali("/images/location.png", props.placeBirth)}
+                      {datiPersonali("/Images/location.png", props.placeBirth)}
                     </>
                   )}
                 </View>
@@ -371,41 +386,41 @@ const CardTwoDocument = (props) => {
                 {/*Gender */}
                 <View>
                   {props.genere && (
-                    <>{datiPersonali("/images/gender.png", props.genere)}</>
+                    <>{datiPersonali("/Images/gender.png", props.genere)}</>
                   )}
                 </View>
 
                 {/*Nazionalita' */}
                 <View>
                   {props.nationality && (
-                    <>{datiPersonali("/images/flag.png", props.nationality)}</>
+                    <>{datiPersonali("/Images/flag.png", props.nationality)}</>
                   )}
                 </View>
 
                 {/*Civil Status */}
                 <View>
                   {props.civilStatus && (
-                    <>{datiPersonali("/images/civil.png", props.civilStatus)}</>
+                    <>{datiPersonali("/Images/civil.png", props.civilStatus)}</>
                   )}
                 </View>
                 {/*Licnese */}
                 <View>
                   {props.license && (
-                    <>{datiPersonali("/images/car.png", props.license)}</>
+                    <>{datiPersonali("/Images/car.png", props.license)}</>
                   )}
                 </View>
 
                 {/*Website */}
                 <View>
                   {props.website && (
-                    <>{datiPersonali("/images/globe.png", props.website)}</>
+                    <>{datiPersonali("/Images/globe.png", props.website)}</>
                   )}
                 </View>
 
                 {/*lINKDN */}
                 <View>
                   {props.linkin && (
-                    <>{datiPersonali("/images/linkedin.png", props.linkin)}</>
+                    <>{datiPersonali("/Images/linkedin.png", props.linkin)}</>
                   )}
                 </View>
               </View>
