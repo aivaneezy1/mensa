@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [menuOpen, dropdownOpen]);
 
   return (
-    <div className="flex justify-start items-center bg-primary gap-5 p-4  shadow-md ">
+    <div className="flex justify-start items-center bg-primary gap-4 p-4  shadow-md ">
       <div className="mr-auto">
         <Link href="/">
           <h2 className="text-white text-2xl font-bold">Logo</h2>
@@ -58,26 +58,22 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* <div className="relative">
-            <button onClick={handleDropdownToggle}>
-              <ImageAvatars image={image} />
-            </button>
-            {dropdownOpen && (
-              <div className="profile-dropdown absolute right-0 bg-white shadow-lg flex flex-col items-center gap-5 p-5">
-                <Link href="/api/auth/signout?callbackUrl=/">
-                  <h2 className="text-black font-semibold">Sign Out</h2>
-                </Link>
-              </div>
-            )}
-          </div> */}
-
+          {/*DropDown menu */}
           <div className="sm:block hidden">
             <DropDownMenu image={image} />
           </div>
         </>
       ) : (
         <>
-          <div className="ml-auto sm:block hidden">
+          <div className=" ml-auto sm:block hidden">
+            <Link href="create-cv">
+              <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
+                Crea CV
+              </button>
+            </Link>
+          </div>
+
+          <div className=" sm:block hidden">
             <Link href="/api/auth/signin">
               <h2 className="text-white font-semibold">Login</h2>
             </Link>
@@ -110,16 +106,25 @@ const Navbar = () => {
       </div>
 
       {menuOpen && (
-        <div className="mobile-menu absolute top-20 right-0  bg-white shadow-lg flex flex-col items-center gap-5 p-5 sm:hidden">
+        <div className="mobile-menu absolute top-20 right-0  bg-white shadow-lg flex flex-col items-center gap-2 p-5 sm:hidden rounded-xl">
           <div onClick={handleOpen}>
             <Link href="create-cv">
-              <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
+              <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white hover:rounded-xl">
                 Crea CV
               </button>
             </Link>
           </div>
+
+          {session && status == "authenticated" && (
+            <div onClick={handleOpen} className="hover:bg-gray-200 px-4 py-1">
+              <Link href="">
+                <h2 className="text-black font-semibold">Profilo</h2>
+              </Link>
+            </div>
+          )}
+
           {session && status == "authenticated" ? (
-            <div onClick={handleOpen}>
+            <div onClick={handleOpen} className="hover:bg-gray-200 px-4 py-1 ">
               <Link href="/api/auth/signout?callbackUrl=/">
                 <h2 className="text-black font-semibold">Logout</h2>
               </Link>

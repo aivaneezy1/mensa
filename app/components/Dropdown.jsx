@@ -45,7 +45,7 @@ export default function DropDownMenu(props) {
   }, [open]);
 
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row">
       <div>
         <Button
           ref={anchorRef}
@@ -84,7 +84,6 @@ export default function DropDownMenu(props) {
                   >
                     <MenuItem onClick={handleClose}>Profilo</MenuItem>
                     <MenuItem onClick={handleClose}>
-                      {" "}
                       <Link href="/api/auth/signout?callbackUrl=/">
                         <h2 className="text-black font-semibold">Logout</h2>
                       </Link>

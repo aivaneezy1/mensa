@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect,  } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
 import BasicAlerts from "../utils/Successful";
 import DeleteAlert from "../utils/Delete";
+import { useSession } from "next-auth/react";
 
 {
   /*Components */
@@ -29,6 +30,8 @@ import CardOneModel from "./CardModels/CardOneModel";
 import CardThreeModel from "./CardModels/CardThreeModel";
 import CardTwoModel from "./CardModels/CardTwoModel";
 import CardChoices from "./CardChoices";
+
+import ModalDownloadDocument from "./ModalDownloadDocument";
 
 export default function Home() {
   // Dati states
@@ -144,12 +147,9 @@ export default function Home() {
     cardThreeSelected,
   } = useContext(DatiContext);
 
-  {
-    /*OPTIONALS INPUT */
-  }
-
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const { data: session, status } = useSession();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
@@ -435,14 +435,17 @@ export default function Home() {
               setRange={setRange}
             />
 
-            <button
+            {session && status == "authenticated" ? (
+              <button
               type="submit"
               className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
             >
               Generate CV
             </button>
+            ) : <ModalDownloadDocument/>}
+          </form>
 
-            {isSubmitted && (
+           {session && status == "authenticated"  && (
               <div className="justify-center flex items-center">
                 {isClient && selectedDocument && (
                   <PDFDownloadLink
@@ -457,7 +460,6 @@ export default function Home() {
                 )}
               </div>
             )}
-          </form>
         </div>
 
         {/*Left side div */}
