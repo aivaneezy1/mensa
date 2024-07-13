@@ -15,7 +15,7 @@ const page = () => {
 
     <div className='flex justify-center items-center  min-h-screen'>
     <div className='text-4xl font-bold'>
-      <h2>This is a test directory nothing special here</h2>
+      <h2>This is a test directory nothing special here adas</h2>
     </div>
     </div>
   )
