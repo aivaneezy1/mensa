@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  images:{
+    domains:['mir-s3-cdn-cf.behance.net', 'fontawesome.com']
+  }
+  
+};
 
 export default nextConfig;
