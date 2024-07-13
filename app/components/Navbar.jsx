@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const { data: session, status } = useSession();
   const handleOpen = () => {
     setMenuOpen(!menuOpen);
   };
@@ -16,9 +17,19 @@ const Navbar = () => {
       </div>
 
       <div className="ml-auto sm:block hidden">
-        <Link href="auth">
-          <h2 className="text-white font-semibold">Log in</h2>
-        </Link>
+        {session && status === "authenticated" ? (
+          <>
+            <Link href="/api/auth/signout?callbackUrl=/">
+              <h2 className="text-white font-semibold">Sign out</h2>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/api/auth/signin">
+              <h2 className="text-white font-semibold">Log in</h2>
+            </Link>
+          </>
+        )}
       </div>
 
       <div className="sm:block hidden">
@@ -51,15 +62,21 @@ const Navbar = () => {
 
       {menuOpen && (
         <div className="absolute top-20 right-0  bg-white shadow-lg flex flex-col items-center gap-5 p-5 sm:hidden">
-          <div 
-          onClick={handleOpen}>
-            <Link href="auth">
-              <h2 className="text-black font-semibold">Log in</h2>
-            </Link>
-          </div>
+          {session && status == "authenticated" ? (
+            <div onClick={handleOpen}>
+              <Link href="/api/auth/signout?callbackUrl=/">
+                <h2 className="text-black font-semibold">Sign Out</h2>
+              </Link>
+            </div>
+          ) : (
+            <div onClick={handleOpen}>
+              <Link href="/api/auth/signin">
+                <h2 className="text-black font-semibold">Log in</h2>
+              </Link>
+            </div>
+          )}
 
-          <div 
-          onClick={handleOpen}>
+          <div onClick={handleOpen}>
             <Link href="create-cv">
               <button className="rounded-xl px-10 py-2 bg-green-500 font-semibold hover:bg-green-700 hover:text-white">
                 Crea CV

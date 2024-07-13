@@ -10,6 +10,8 @@ import {
   Font,
 } from "@react-pdf/renderer";
 
+
+
 Font.register({
   family: "Open Sans",
   fonts: [
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 });
+
 
 let currentYear = new Date().getFullYear();
 
