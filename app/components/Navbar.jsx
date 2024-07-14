@@ -117,7 +117,7 @@ const Navbar = () => {
 
           {session && status == "authenticated" && (
             <div onClick={handleOpen} className="hover:bg-gray-200 px-4 py-1">
-              <Link href="">
+              <Link href="profile">
                 <h2 className="text-black font-semibold">Profilo</h2>
               </Link>
             </div>

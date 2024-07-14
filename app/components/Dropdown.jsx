@@ -82,7 +82,12 @@ export default function DropDownMenu(props) {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profilo</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      {" "}
+                      <Link href="/profile">
+                        <h2 className="text-black font-semibold">Profilo</h2>
+                      </Link>
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Link href="/api/auth/signout?callbackUrl=/">
                         <h2 className="text-black font-semibold">Logout</h2>
