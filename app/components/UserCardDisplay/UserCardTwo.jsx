@@ -1,9 +1,8 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+import React, {useState} from "react";
 import Image from "next/image";
-const UserCardOne = () => {
+const UserCardTwo = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
   const datiPersonali = (dati, dati2, dati3, dati4) => {
     return (
       <div className="flex flex-row gap-2  items-center  w-sm ">
@@ -21,26 +20,10 @@ const UserCardOne = () => {
 
   return (
     <div
-      className={`grid grid-cols-2  sm:p-2 min-w-sm h-auto mx-auto shadow-md relative  ${
-        isHovered ? "bg-blue-100 bg-opacity-100" : ""
-      }  ${isZoomed ? "scale-150" : ""}`}
+      className={`grid grid-cols-2  sm:p-2 min-w-sm h-auto mx-auto shadow-md relative h-full ${isHovered ? "bg-gray-100" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute top-2 right-2 cursor-pointer z-20">
-        <button onClick={() => setIsZoomed(!isZoomed)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            className="w-6 h-6"
-          >
-            <path
-              fill="#63E6BE"
-              d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-            />
-          </svg>
-        </button>
-      </div>
       {/*Left side div */}
       <div
         className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border`}
@@ -142,6 +125,43 @@ const UserCardOne = () => {
             PageMaker including versions of Lorem Ipsum this long but without
             any apostrtophe
           </p>
+
+            <p className="text-xxs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum this long but without
+            any apostrtophe
+          </p>
+            <p className="text-xxs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum this long but without
+            any apostrtophe
+          </p>
+            <p className="text-xxs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum this long but without
+            any apostrtophe
+          </p>
         </div>
 
         <hr className="border border-b border-blue-500 w-1/2 my-1" />
@@ -201,22 +221,22 @@ const UserCardOne = () => {
       </div>
 
       {isHovered && (
-        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10">
-          <div className="rounded-lg flex flex-col items-center">
-            <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
-              Modifica
-            </button>
-            <button className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition">
-              Scarica
-            </button>
-            <button className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition">
-              Delete
-            </button>
+        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+          <div className="bg-white border border-2 rounded-lg flex px-4 py-2 shadow-lg">
+            Modfica
+          </div>
+          <div>
+          Scarica
+          </div>
+          <div>
+          Delete
           </div>
         </div>
       )}
     </div>
+
+    
   );
 };
 
-export default UserCardOne;
+export default UserCardTwo;
