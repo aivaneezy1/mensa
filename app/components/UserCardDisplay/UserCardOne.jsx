@@ -1,13 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-const UserCardOne = () => {
+import UserCardOneZoomed from "./UserCardOneZoomed";
+
+const UserCardOne = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
+
   const datiPersonali = (dati, dati2, dati3, dati4) => {
     return (
-      <div className="flex flex-row gap-2  items-center  w-sm ">
-        <div className=" font-medium text-xxs">
+      <div className="flex flex-row gap-2 items-center w-sm">
+        <div className="font-medium text-xxs">
           <p className="font-medium text-xxs">
             {dati} {dati2}
           </p>
@@ -19,16 +22,17 @@ const UserCardOne = () => {
     );
   };
 
+
   return (
     <div
-      className={`grid grid-cols-2  sm:p-2 min-w-sm h-auto mx-auto shadow-md relative  ${
-        isHovered ? "bg-blue-100 bg-opacity-100" : ""
-      }  ${isZoomed ? "scale-150" : ""}`}
+      className={`grid grid-cols-2 sm:p-2 min-w-sm h-auto mx-auto shadow-md relative ${
+        isHovered ? "bg-gray-100 0" : ""
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="absolute top-2 right-2 cursor-pointer z-20">
-        <button onClick={() => setIsZoomed(!isZoomed)}>
+        <button onClick={() => setIsZoomed(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -41,11 +45,12 @@ const UserCardOne = () => {
           </svg>
         </button>
       </div>
-      {/*Left side div */}
+
+      {/* Left side div */}
       <div
-        className={`gap-2  flex flex-col justify-start items-center mt-5  max-w-xs shadow-md border`}
+        className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs shadow-md border`}
       >
-        <div className=" mt-2">
+        <div className="mt-2">
           <Image
             src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
             alt="pic"
@@ -59,32 +64,32 @@ const UserCardOne = () => {
         <div className="">
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-title font-bold">Dati Personali</h2>
-            <hr className="border border-b border-blue-500 w-1/2 my-1  mt-2" />
+            <hr className="border border-b border-blue-500 w-1/2 my-1 mt-2" />
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
-            {/*Name */}
+            {/* Name */}
             {datiPersonali("Mario", "Rossi")}
-            {/*Email */}
+            {/* Email */}
             {datiPersonali("mario.rossi@gmail.com")}
-            {/*Phone Number */}
+            {/* Phone Number */}
             {datiPersonali("324621299")}
-            {/*Address */}
+            {/* Address */}
             {datiPersonali("Via delle Rose 123, ", "56124", "Pisa")}
-            {/*Date of birth */}
+            {/* Date of birth */}
             {datiPersonali("04-02-2001")}
-            {/*Place of birth */}
+            {/* Place of birth */}
             {datiPersonali("Italia")}
-            {/*Gender */}
+            {/* Gender */}
             {datiPersonali("Maschio")}
-            {/*Nazionalita' */}
+            {/* Nazionalita' */}
             {datiPersonali("Italiano")}
-            {/*Civil Status */}
+            {/* Civil Status */}
             {datiPersonali("Studente")}
-            {/*Licnese */}
+            {/* Licnese */}
             {datiPersonali("A1,A2,B")}
-            {/*WEbsite */}
+            {/* WEbsite */}
             {datiPersonali("www.mario-rossi.com")}
-            {/*Linkin */}
+            {/* Linkin */}
             {datiPersonali("linkedin.com/in/mariorossi")}
           </div>
         </div>
@@ -120,7 +125,7 @@ const UserCardOne = () => {
       {/* RIGHT DIV */}
       <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
         {/* Name */}
-        <div className="mb-1 mt-5  ">
+        <div className="mb-1 mt-5">
           <h2 className="text-xxs font-semibold">Mario</h2>
           <h2 className="text-xxs text-gray-500 mt-1 font-semibold">Rossi</h2>
         </div>
@@ -215,6 +220,9 @@ const UserCardOne = () => {
           </div>
         </div>
       )}
+
+      {/* Modal for zoomed content */}
+      <UserCardOneZoomed isZoomed={ isZoomed} setIsZoomed={setIsZoomed}/>
     </div>
   );
 };
