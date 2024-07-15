@@ -316,7 +316,7 @@ export default function Home() {
       color = cardTwoColor;
     } else if (cardThreeSelected) {
       selectedCard = "CardThree";
-      color = cardTwoColor;
+      color = cardThreeColor;
     }
 
     compFieldList.map((item) => ({
