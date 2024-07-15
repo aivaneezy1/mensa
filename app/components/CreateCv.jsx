@@ -33,6 +33,7 @@ import CardChoices from "./CardChoices";
 
 import ModalDownloadDocument from "./ModalDownloadDocument";
 
+
 export default function Home() {
   // Dati states
   const {
@@ -149,8 +150,6 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
-
-
 
   // Edit and Delete state
   useEffect(() => {
@@ -306,6 +305,27 @@ export default function Home() {
   // handle API post
   const handleCreatePost = async (e) => {
     e.preventDefault();
+    // Determine which card is selected
+    let selectedCard = "";
+    let color = ""
+    if (cardOneSelected) {
+      selectedCard = "CardOne";
+      color = cardOneColor;
+    } else if (cardTwoSelected) {
+      selectedCard = "CardTwo";
+      color = cardTwoColor;
+    } else if (cardThreeSelected) {
+      selectedCard = "CardThree";
+      color = cardTwoColor;
+    }
+ // Extract all competenza and livello from compFieldList
+  const compData = compFieldList.map(data => data.competenza);
+
+
+  // Extract all competenza and livello from langFieldList
+  const esprData = langFieldList.map(data => data.competenza);
+  console.log("comp", compFieldList)
+  console.log("lang", langFieldList)    
     try {
       const res = await fetch("/api/post", {
         method: "POST",
@@ -313,9 +333,15 @@ export default function Home() {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          postOwner:{
-            userId: session?.user.id
+          postOwner: {
+            userId: session?.user.id,
           },
+
+          cardModel: {
+            model: selectedCard,
+            color : color
+          },
+
           datiPersonali: {
             image: selectedImage,
             nome: name,
@@ -335,13 +361,12 @@ export default function Home() {
             linkin: linkin,
           },
           compAndLang: {
-            competenza: compDati,
-            livello: range,
-            lingua: langDati,
-            range: range,
+            competenza:"",
+            lingua: "",
+       
           },
 
-          prole: {
+          profile: {
             data: profileContent,
           },
 
@@ -369,11 +394,11 @@ export default function Home() {
         }),
       });
 
-      if(res.ok){
+      if (res.ok) {
         setIsSubmitted(true);
         router.push("/profile");
-      }else{
-        console.error("Failed to create post")
+      } else {
+        console.error("Failed to create post");
       }
     } catch (err) {
       console.log(err);

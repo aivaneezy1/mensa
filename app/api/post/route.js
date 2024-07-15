@@ -4,14 +4,15 @@ import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   if (request.method === "POST") {
-    const { postOwner, datiPersonali, compAndLang, profile, bgProfessional } =
+    const { postOwner,cardModel, datiPersonali, compAndLang, profile, bgProfessional } =
       await request.json();
 
-    console.log("postOwner", postOwner, datiPersonali, compAndLang, profile, bgProfessional)
+
     try {
       await connectDB();
        const newCurriculum = await CurriculumModel.create({
         postOwner,
+        cardModel,
         datiPersonali,
         compAndLang,
         profile,

@@ -215,7 +215,6 @@ const CardOneDocument = (props) => {
               flexDirection: "column",
               justifyContent: "flex-start",
               alignContent: "flex-start",
-              backgroundColor: "#ffffff",
               border: "1px solid #ccc",
               padding: 10,
               height: "100%",

@@ -12,7 +12,7 @@ const UserProfile = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const { data: session, status } = useSession();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +24,7 @@ const UserProfile = () => {
         }
         const data = await res.json();
         setUserData(data);
+        console.log("data", data)
       } catch (err) {
         console.error("Error in fetching data", err);
       }
@@ -37,13 +38,14 @@ const UserProfile = () => {
   return (
     <div className="flex justify-center items-center mt-10 gap-5 h-sm ml-5 mr-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {userData && (
-          <>
-            <UserCardOne userData={userData} />
-            <UserCardTwo userData={userData} />
-            <UserCardThree userData={userData} />
-          </>
-        )}
+       {userData && userData.map((user, index) => (
+          <div key={index}>
+            <h2>{user.cardModel.model}</h2>
+            {user.cardModel.model === "CardOne" ?  <UserCardOne userData={user} /> : "" }
+             {user.cardModel.model === "CardTwo" ?  <UserCardTwo userData={user} /> : "" }
+             {user.cardModel.model === "CardThree" ?  <UserCardThree userData={user} /> : "" }
+          </div>
+        ))}
       </div>
     </div>
   );

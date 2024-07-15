@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
 
+const PostOwnerSchema = new mongoose.Schema({
+  userId: { type: String },
+});
+
+const ModelSelectedSchema = new mongoose.Schema({
+  model: { type: String },
+  color: { type: String },
+});
+
 const DatiPersonaliSchema = new mongoose.Schema({
   image: { type: String },
   nome: { type: String },
@@ -17,14 +26,12 @@ const DatiPersonaliSchema = new mongoose.Schema({
   patente: { type: String },
   sitoWeb: { type: String },
   linkin: { type: String },
-  test: {type: String}
+  test: { type: String },
 });
 
 const CompAndLangSchema = new mongoose.Schema({
-  competenza: { type: String },
-  livello: { type: String },
-  lingua: { type: String },
-  range: { type: String },
+  competenza: [String],
+  lingua: [String],
 });
 
 const ProfileSchema = new mongoose.Schema({
@@ -53,13 +60,10 @@ const BgProfessionalSchema = new mongoose.Schema({
   descrizioneEspr: { type: String },
 });
 
-const PostOwnerSchema = new mongoose.Schema({
-  userId: {type:String}
-})
-
 const CurriculumSchema = new mongoose.Schema(
   {
-    postOwner: {type:PostOwnerSchema},
+    postOwner: { type: PostOwnerSchema },
+    cardModel: { type: ModelSelectedSchema },
     datiPersonali: { type: DatiPersonaliSchema },
     compAndLang: { type: CompAndLangSchema },
     profile: { type: ProfileSchema },
