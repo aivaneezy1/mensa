@@ -61,7 +61,7 @@ const Navbar = () => {
 
           {/*DropDown menu */}
           <div className="sm:block hidden">
-            <DropDownMenu image={image} />
+            <DropDownMenu image={image} userId={session?.user.id}/>
           </div>
         </>
       ) : (

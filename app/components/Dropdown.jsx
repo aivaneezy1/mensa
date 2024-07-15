@@ -84,7 +84,7 @@ export default function DropDownMenu(props) {
                   >
                     <MenuItem onClick={handleClose}>
                       {" "}
-                      <Link href="/profile">
+                      <Link href={`/profile?id=${props.userId}`}>
                         <h2 className="text-black font-semibold">Profilo</h2>
                       </Link>
                     </MenuItem>
