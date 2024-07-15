@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext, useEffect,  } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
 import BasicAlerts from "../utils/Successful";
@@ -149,11 +149,8 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
+
+
 
   // Edit and Delete state
   useEffect(() => {
@@ -306,6 +303,82 @@ export default function Home() {
     exprDataFieldList,
   ]);
 
+  // handle API post
+  const handleCreatePost = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/post", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postOwner:{
+            userId: session?.user.id
+          },
+          datiPersonali: {
+            image: selectedImage,
+            nome: name,
+            cognome: lastName,
+            email: email,
+            telefono: phone,
+            indirizzo: address,
+            codicePostale: postalCode,
+            city: city,
+            dataNascita: dateBirth,
+            luogoNascita: placeBirth,
+            gender: genere,
+            nationality: nationality,
+            statoCivili: civilStatus,
+            patente: license,
+            sitoWeb: website,
+            linkin: linkin,
+          },
+          compAndLang: {
+            competenza: compDati,
+            livello: range,
+            lingua: langDati,
+            range: range,
+          },
+
+          prole: {
+            data: profileContent,
+          },
+
+          bgProfessional: {
+            //Istruzione
+            istruzione: formDati,
+            istituto: formOrg,
+            cityIstruzione: formCity,
+            dataInizioIstruzione: formDateInizio,
+            dataInizioAnnoIstruzione: formDateInizioAnno,
+            datFineIstruzione: formDateFine,
+            dataFineAnnoIstruzione: formDateFineAnno,
+            descrizioneIstruzione: formContent,
+
+            // Esperienze lavortive
+            posizione: expDati,
+            azienda: expOrg,
+            cityEspr: expCity,
+            dataInizioEspr: exprDateInizo,
+            dataInizioAnnoEspr: exprDateInizioAnno,
+            datFineEspr: exprDateFine,
+            dataFineAnnoEspr: exprDateFineAnno,
+            descrizioneEspr: exprContent,
+          },
+        }),
+      });
+
+      if(res.ok){
+        setIsSubmitted(true);
+        router.push("/profile");
+      }else{
+        console.error("Failed to create post")
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -322,7 +395,7 @@ export default function Home() {
           </div>
         )}
         <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
-          <form onSubmit={handleSubmit} className=" ">
+          <form onSubmit={handleCreatePost} className=" ">
             {/*Dati Personali */}
             <DatiPersonali
               selectedImage={selectedImage}
@@ -437,29 +510,31 @@ export default function Home() {
 
             {session && status == "authenticated" ? (
               <button
-              type="submit"
-              className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
-            >
-              Generate CV
-            </button>
-            ) : <ModalDownloadDocument/>}
+                type="submit"
+                className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
+              >
+                Generate CV
+              </button>
+            ) : (
+              <ModalDownloadDocument />
+            )}
           </form>
 
-           {session && status == "authenticated"  && (
-              <div className="justify-center flex items-center">
-                {isClient && selectedDocument && (
-                  <PDFDownloadLink
-                    document={selectedDocument}
-                    fileName="cv.pdf"
-                    className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
-                  >
-                    {({ blob, url, loading, error }) =>
-                      loading ? "Loading document..." : "Download CV"
-                    }
-                  </PDFDownloadLink>
-                )}
-              </div>
-            )}
+          {isSubmitted && session && status == "authenticated" && (
+            <div className="justify-center flex items-center">
+              {isClient && selectedDocument && (
+                <PDFDownloadLink
+                  document={selectedDocument}
+                  fileName="cv.pdf"
+                  className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
+                >
+                  {({ blob, url, loading, error }) =>
+                    loading ? "Loading document..." : "Download CV"
+                  }
+                </PDFDownloadLink>
+              )}
+            </div>
+          )}
         </div>
 
         {/*Left side div */}

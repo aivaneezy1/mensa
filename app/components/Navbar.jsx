@@ -44,6 +44,7 @@ const Navbar = () => {
       <div className="mr-auto">
         <Link href="/">
           <h2 className="text-white text-2xl font-bold">Logo</h2>
+        
         </Link>
       </div>
 
