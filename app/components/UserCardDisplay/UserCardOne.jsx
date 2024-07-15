@@ -22,6 +22,41 @@ const UserCardOne = (props) => {
     );
   };
 
+  const compAndLang = (data) => {
+    return (
+      <>
+        {data.map((post, index) => (
+          <div key={index}>
+            <p className="font-medium text-xxs text-center">
+              {post.competenza}
+            </p>
+            <p className="text-gray-500 text-xxs text-center">{post.livello}</p>
+          </div>
+        ))}
+      </>
+    );
+  };
+
+  const bgProfessional = (data) => {
+    return (
+      <>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <div key={index}>
+              <p className="font-bold text-xxs mt-2">{post.data}</p>
+              <p className="text-blue-500 font-semibold text-xxs">
+                {post.dataInizioAnno} {post.dataInizio} - {post.dataFineAnno}{" "}
+                {post.dataFine}
+              </p>
+              <p className="text-gray-500 font-semibold text-xxs">
+                {post.istitute} | {post.city}
+              </p>
+              <p className="mt-1 text-xxs">{post.content}</p>
+            </div>
+          ))}
+      </>
+    );
+  };
 
   return (
     <div
@@ -49,10 +84,15 @@ const UserCardOne = (props) => {
       {/* Left side div */}
       <div
         className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs shadow-md border`}
+        style={{ backgroundColor: props.userData.cardModel.color }}
       >
         <div className="mt-2">
           <Image
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
+            src={
+              props.userData.datiPersonali.image
+                ? props.userData.datiPersonali.image
+                : ""
+            }
             alt="pic"
             width={20}
             height={20}
@@ -67,30 +107,61 @@ const UserCardOne = (props) => {
             <hr className="border border-b border-blue-500 w-1/2 my-1 mt-2" />
           </div>
           <div className="mt-2 flex gap-0.5 flex-col justify-start">
-            {/* Name */}
-            {datiPersonali("Mario", "Rossi")}
+            {(props.userData.datiPersonali.nome ||
+              props.userData.datiPersonali.cognome) &&
+              datiPersonali(
+                props.userData.datiPersonali.nome,
+                props.userData.datiPersonali.cognome
+              )}
             {/* Email */}
-            {datiPersonali("mario.rossi@gmail.com")}
+            {props.userData.datiPersonali.email &&
+              datiPersonali(props.userData.datiPersonali.email)}
+
             {/* Phone Number */}
-            {datiPersonali("324621299")}
+            {props.userData.datiPersonali.telefono &&
+              datiPersonali(props.userData.datiPersonali.telefono)}
+
             {/* Address */}
-            {datiPersonali("Via delle Rose 123, ", "56124", "Pisa")}
+            {(props.userData.datiPersonali.indirizzo ||
+              props.userData.datiPersonali.codicePostale ||
+              props.userData.datiPersonali.city) &&
+              datiPersonali(
+                props.userData.datiPersonali.indirizzo,
+                props.userData.datiPersonali.codicePostale,
+                props.userData.datiPersonali.city
+              )}
+
             {/* Date of birth */}
-            {datiPersonali("04-02-2001")}
+            {props.userData.datiPersonali.dataNascita &&
+              datiPersonali(props.userData.datiPersonali.dataNascita)}
+
             {/* Place of birth */}
-            {datiPersonali("Italia")}
+            {props.userData.datiPersonali.luogoNascita &&
+              datiPersonali(props.userData.datiPersonali.luogoNascita)}
+
             {/* Gender */}
-            {datiPersonali("Maschio")}
+            {props.userData.datiPersonali.gender &&
+              datiPersonali(props.userData.datiPersonali.gender)}
+
             {/* Nazionalita' */}
-            {datiPersonali("Italiano")}
+            {props.userData.datiPersonali.nationality &&
+              datiPersonali(props.userData.datiPersonali.nationality)}
+
             {/* Civil Status */}
-            {datiPersonali("Studente")}
+            {props.userData.datiPersonali.statoCivili &&
+              datiPersonali(props.userData.datiPersonali.statoCivili)}
+
             {/* Licnese */}
-            {datiPersonali("A1,A2,B")}
+            {props.userData.datiPersonali.patente &&
+              datiPersonali(props.userData.datiPersonali.patente)}
+
             {/* WEbsite */}
-            {datiPersonali("www.mario-rossi.com")}
+            {props.userData.datiPersonali.sitoWeb &&
+              datiPersonali(props.userData.datiPersonali.sitoWeb)}
+
             {/* Linkin */}
-            {datiPersonali("linkedin.com/in/mariorossi")}
+            {props.userData.datiPersonali.linkin &&
+              datiPersonali(props.userData.datiPersonali.linkin)}
           </div>
         </div>
 
@@ -99,11 +170,8 @@ const UserCardOne = (props) => {
         {/* Competence */}
         <div className="flex flex-col justify-start items-center">
           <h2 className="text-title font-bold">Competenze</h2>
-          <p className="font-medium text-xxs">Sicurezza Informatica</p>
-          <p className="text-gray-500 text-xxs">Eccelente</p>
-
-          <p className="font-medium text-xxs">Sviluppo Software</p>
-          <p className="text-gray-500 text-xxs">Buono</p>
+          {props.userData.compAndLang.competenza.length > 0 &&
+            compAndLang(props.userData.compAndLang.competenza)}
         </div>
 
         <hr className="border border-b border-blue-500 w-1/6 my-1" />
@@ -111,12 +179,8 @@ const UserCardOne = (props) => {
         {/* Languages */}
         <div className="flex flex-col justify-start items-center">
           <h2 className="text-title font-bold">Lingue</h2>
-          <p className="font-medium text-xxs">Inglese</p>
-          <p className="text-gray-500 text-xxs">Eccelente</p>
-          <p className="font-medium text-xxs">Italiano</p>
-          <p className="text-gray-500 text-xxs">Fluente</p>
-          <p className="font-medium text-xxs">Spagnolo</p>
-          <p className="text-gray-500 text-xxs">Elementare</p>
+          {props.userData.compAndLang.lingua.length > 0 &&
+            compAndLang(props.userData.compAndLang.lingua)}
         </div>
 
         <hr className="border border-b border-blue-500 w-1/6 my-1" />
@@ -126,8 +190,8 @@ const UserCardOne = (props) => {
       <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
         {/* Name */}
         <div className="mb-1 mt-5">
-          <h2 className="text-xxs font-semibold">Mario</h2>
-          <h2 className="text-xxs text-gray-500 mt-1 font-semibold">Rossi</h2>
+          <h2 className="text-xxs font-semibold">{props.userData.datiPersonali.nome}</h2>
+          <h2 className="text-xxs text-gray-500 mt-1 font-semibold">{props.userData.datiPersonali.cognome}</h2>
         </div>
 
         <hr className="border border-b border-blue-500 w-1/2 my-1" />
@@ -136,16 +200,7 @@ const UserCardOne = (props) => {
         <div className="mb-1">
           <h2 className="text-title font-bold">Profilo</h2>
           <p className="text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum this long but without
-            any apostrtophe
+         {props.userData.profile?.data}
           </p>
         </div>
 
@@ -154,35 +209,8 @@ const UserCardOne = (props) => {
         {/* Istruzione */}
         <div className="mb-1">
           <h2 className="text-title font-bold">Istruzione</h2>
-          <p className="font-bold text-xxs mt-2">
-            Laurea Magistrale in Informatica
-          </p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Universita di Pisa | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s.
-          </p>
-
-          <p className="font-bold text-xxs mt-2">
-            Diploma di Maturità Scientifica
-          </p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Liceo Scientifico | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s.
-          </p>
+         {props.userData.bgProfessional.istruzioneData.length > 0 &&
+            bgProfessional(props.userData.bgProfessional.istruzioneData)}
         </div>
 
         <hr className="border border-b border-blue-500 w-1/2 my-1" />
@@ -190,18 +218,8 @@ const UserCardOne = (props) => {
         {/* Experience */}
         <div className="mb-1">
           <h2 className="mb-1 text-title font-bold">Esperienze</h2>
-          <p className="font-bold text-xxs">Senior IT Consultant</p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Universita di Pisa | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Gestione progetti IT complessi per clienti aziendali, inclusa la
-            pianificazione, l&#39;implementazione e il monitoraggio delle
-            soluzioni informatiche.
-          </p>
+           {props.userData.bgProfessional.esperienzeData.length > 0 &&
+            bgProfessional(props.userData.bgProfessional.esperienzeData)}
         </div>
       </div>
 
@@ -222,7 +240,7 @@ const UserCardOne = (props) => {
       )}
 
       {/* Modal for zoomed content */}
-      <UserCardOneZoomed isZoomed={ isZoomed} setIsZoomed={setIsZoomed}/>
+      <UserCardOneZoomed isZoomed={isZoomed} setIsZoomed={setIsZoomed} />
     </div>
   );
 };
