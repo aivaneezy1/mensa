@@ -46,6 +46,8 @@ const CardTwoModel = (props) => {
       </>
     );
   };
+
+  
   const handleProfile = (data) => {
     // Configure DOMPurify to allow specific tags
     const cleanHTML = DOMPurify.sanitize(data);

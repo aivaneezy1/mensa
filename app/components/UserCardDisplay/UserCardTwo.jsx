@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import UserCardTwoZoomed from "./UserCardTwoZoomed";
+import DOMPurify from "dompurify";
 const UserCardTwo = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -21,20 +22,43 @@ const UserCardTwo = (props) => {
     );
   };
 
-const compAndLang = (data) =>{
-  return (
-    <>
-    {data.map((post, index) =>{
-      <div key={index}>
-        <p className="font-medium text-xxs">{}</p>
-          <p className="text-gray-500 text-xxs">{}</p>
-      </div>
-    })}
-    </>
-  )
-}
+  const compAndLang = (data) => {
+    return (
+      <>
+        {data.map((post, index) => (
+          <div key={index}>
+            <p className="font-medium text-xxs text-center">
+              {post.competenza}
+            </p>
+            <p className="text-gray-500 text-xxs text-center">{post.livello}</p>
+          </div>
+        ))}
+      </>
+    );
+  };
 
-  console.log("data", props.userData.compAndLang)
+  const bgProfessional = (data) => {
+    return (
+      <>
+        {data.length > 0 &&
+          data.map((post, index) => (
+            <div key={index}>
+              <p className="font-bold text-xxs mt-2">{post.data}</p>
+              <p className="text-blue-500 font-semibold text-xxs">
+                {post.dataInizioAnno} {post.dataInizio} - {post.dataFineAnno}{" "}
+                {post.dataFine}
+              </p>
+              <p className="text-gray-500 font-semibold text-xxs">
+                {post.istitute} | {post.city}
+              </p>
+              <p className="mt-1 text-xxs">{post.content}</p>
+            </div>
+          ))}
+      </>
+    );
+  };
+
+  //console.log("data", props.userData.bgProfessional.istruzioneData);
   return (
     <div
       className={`grid grid-cols-2  sm:p-2 min-w-sm h-auto mx-auto shadow-md relative h-full ${
@@ -88,7 +112,7 @@ const compAndLang = (data) =>{
           <div>
             <h2
               className="text-xxs  font-bold  border-b border-gray-500 border-solid text-center  "
-              style={{ color: props.userData.cardModel.color}}
+              style={{ color: props.userData.cardModel.color }}
             >
               Dati Personali
             </h2>
@@ -261,64 +285,61 @@ const compAndLang = (data) =>{
               )}
 
             {/*Website */}
-            { props.userData.datiPersonali.sitoWeb && (
+            {props.userData.datiPersonali.sitoWeb &&
               datiPersonali(
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                className="w-1 h-1"
-              >
-                <path
-                  fill="#74C0FC"
-                  d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"
-                />
-              </svg>,
-              props.userData.datiPersonali.sitoWeb
-            )
-            )}
-          
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className="w-1 h-1"
+                >
+                  <path
+                    fill="#74C0FC"
+                    d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"
+                  />
+                </svg>,
+                props.userData.datiPersonali.sitoWeb
+              )}
+
             {/*Linkdn */}
-            {props.userData.datiPersonali.linkin && (
+            {props.userData.datiPersonali.linkin &&
               datiPersonali(
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                className="w-1 h-1"
-              >
-                <path
-                  fill="#74C0FC"
-                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                />
-              </svg>,
-             props.userData.datiPersonali.linkin
-            )
-            )}
-         
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                  className="w-1 h-1"
+                >
+                  <path
+                    fill="#74C0FC"
+                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                  />
+                </svg>,
+                props.userData.datiPersonali.linkin
+              )}
           </div>
         </div>
 
         {/* Competence */}
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-center items-center">
           <h2
             className="text-xxs  font-bold border-b border-gray-500 border-solid w-auto "
             style={{ color: props.userData.cardModel.color }}
           >
             Competenze
           </h2>
-
+          {props.userData.compAndLang.competenza.length > 0 &&
+            compAndLang(props.userData.compAndLang.competenza)}
         </div>
 
         {/* Languages */}
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-center items-center">
           <h2
             className="text-xxs  font-bold border-b border-gray-500 border-solid"
             style={{ color: props.userData.cardModel.color }}
           >
             Lingue
           </h2>
-          <p className="font-medium text-xxs">{ props.userData.compAndLang.lingua}</p>
-          <p className="text-gray-500 text-xxs">{ props.userData.compAndLang.range}</p>
-        
+          {props.userData.compAndLang.lingua.length > 0 &&
+            compAndLang(props.userData.compAndLang.lingua)}
         </div>
       </div>
 
@@ -330,83 +351,36 @@ const compAndLang = (data) =>{
         <div className="mb-1">
           <h2
             className="text-xxs  font-bold border-b border-gray-500 border-solid"
-            style={{ color: props.selectedColor }}
+            style={{ color: props.userData.cardModel.color }}
           >
             Profilo
           </h2>
-          <p className="text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum this long but without
-            any apostrtophe
-          </p>
+          <p className="text-xxs">{props.userData.profile?.data}</p>
         </div>
 
         {/* Istruzione */}
         <div className="mb-1">
           <h2
             className="text-xxs font-bold border-b border-gray-500 border-solid"
-            style={{ color: props.selectedColor }}
+            style={{ color: props.userData.cardModel.color }}
           >
             Istruzione
           </h2>
-          <p className="font-bold text-xxs mt-2">
-            Laurea Magistrale in Informatica
-          </p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Universita di Pisa | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the standard dummy text ever since
-            the 1500s.
-          </p>
-
-          <p className="font-bold text-xxs mt-2">
-            Diploma di Maturità Scientifica
-          </p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Liceo Scientifico | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s.
-          </p>
+          {props.userData.bgProfessional.istruzioneData.length > 0 &&
+            bgProfessional(props.userData.bgProfessional.istruzioneData)}
         </div>
 
         {/* Experience */}
         <div className="mb-1">
           <h2
             className="mb-1 text-xxs  font-bold border-b border-gray-500 border-solid  "
-            style={{ color: props.selectedColor }}
+            style={{ color:  props.userData.cardModel.color }}
           >
             Esperienze
           </h2>
-          <p className="font-bold text-xxs">Senior IT Consultant</p>
-          <p className="text-blue-500 font-semibold text-xxs">
-            2023 Gen- 2012 Nov
-          </p>
-          <p className="text-gray-500 font-semibold text-xxs">
-            Universita di Pisa | Pisa
-          </p>
-          <p className="mt-1 text-xxs">
-            Gestione progetti IT complessi per clienti aziendali, inclusa la
-            pianificazione, ll&#39;implementazione e il monitoraggio delle
-            soluzioni informatiche.
-          </p>
+
+          {props.userData.bgProfessional.esperienzeData.length > 0 &&
+            bgProfessional(props.userData.bgProfessional.esperienzeData)}
         </div>
       </div>
 

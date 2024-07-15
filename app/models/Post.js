@@ -13,7 +13,7 @@ const DatiPersonaliSchema = new mongoose.Schema({
   image: { type: String },
   nome: { type: String },
   cognome: { type: String },
-  email: { type: String },
+  email: { type: String },  
   telefono: { type: Number },
   indirizzo: { type: String },
   codicePostale: { type: String },
@@ -30,34 +30,41 @@ const DatiPersonaliSchema = new mongoose.Schema({
 });
 
 const CompAndLangSchema = new mongoose.Schema({
-  competenza: [String],
-  lingua: [String],
+  competenza: [{ competenza: String, livello: String }],
+  lingua: [{ competenza: String, livello: String }],
 });
-
 const ProfileSchema = new mongoose.Schema({
   data: { type: String },
 });
 
 const BgProfessionalSchema = new mongoose.Schema({
   /*istruzione */
-  istruzione: { type: String },
-  istituto: { type: String },
-  cityIstruzione: { type: String },
-  dataInizioIstruzione: { type: String },
-  dataInizioAnnoIstruzione: { type: String },
-  datFineIstruzione: { type: String },
-  dataFineAnnoIstruzione: { type: String },
-  descrizioneIstruzione: { type: String },
+  istruzioneData: [
+    {
+      data: String,
+      istitute: String,
+      city: String,
+      dataInizio: String,
+      dataInizioAnno: String,
+      dataFine: String,
+      dataFineAnno: String,
+      content: String,
+    },
+  ],
 
   /*Esperienze */
-  posizione: { type: String },
-  azienda: { type: String },
-  cityEspr: { type: String },
-  dataInizioEspr: { type: String },
-  dataInizioAnnoEspr: { type: String },
-  datFineEspr: { type: String },
-  dataFineAnnoEspr: { type: String },
-  descrizioneEspr: { type: String },
+  esperienzeData: [
+    {
+      data: String,
+      istitute: String,
+      city: String,
+      dataInizio: String,
+      dataInizioAnno: String,
+      dataFine: String,
+      dataFineAnno: String,
+      content: String,
+    },
+  ],
 });
 
 const CurriculumSchema = new mongoose.Schema(

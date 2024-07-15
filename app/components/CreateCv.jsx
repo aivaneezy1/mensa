@@ -33,7 +33,6 @@ import CardChoices from "./CardChoices";
 
 import ModalDownloadDocument from "./ModalDownloadDocument";
 
-
 export default function Home() {
   // Dati states
   const {
@@ -150,7 +149,8 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
-
+  console.log("comp", compFieldList);
+  console.log("lang", langFieldList);
   // Edit and Delete state
   useEffect(() => {
     if (editState) {
@@ -307,7 +307,7 @@ export default function Home() {
     e.preventDefault();
     // Determine which card is selected
     let selectedCard = "";
-    let color = ""
+    let color = "";
     if (cardOneSelected) {
       selectedCard = "CardOne";
       color = cardOneColor;
@@ -318,14 +318,12 @@ export default function Home() {
       selectedCard = "CardThree";
       color = cardTwoColor;
     }
- // Extract all competenza and livello from compFieldList
-  const compData = compFieldList.map(data => data.competenza);
 
+    compFieldList.map((item) => ({
+      competenza: item.competenza,
+      livello: item.livello,
+    }));
 
-  // Extract all competenza and livello from langFieldList
-  const esprData = langFieldList.map(data => data.competenza);
-  console.log("comp", compFieldList)
-  console.log("lang", langFieldList)    
     try {
       const res = await fetch("/api/post", {
         method: "POST",
@@ -339,7 +337,7 @@ export default function Home() {
 
           cardModel: {
             model: selectedCard,
-            color : color
+            color: color,
           },
 
           datiPersonali: {
@@ -360,36 +358,48 @@ export default function Home() {
             sitoWeb: website,
             linkin: linkin,
           },
+
           compAndLang: {
-            competenza:"",
-            lingua: "",
-       
+            //  Extract all competenza and livello from compFieldList
+            competenza: compFieldList.map((item) => ({
+              competenza: item.competenza,
+              livello: item.livello,
+            })),
+            // // Extract all competenza and livello from langFieldList
+            lingua: langFieldList.map((item) => ({
+              competenza: item.competenza,
+              livello: item.livello,
+            })),
           },
 
           profile: {
-            data: profileContent,
+            data: profileContent.replace(/<[^>]+>/g, "")
           },
 
           bgProfessional: {
             //Istruzione
-            istruzione: formDati,
-            istituto: formOrg,
-            cityIstruzione: formCity,
-            dataInizioIstruzione: formDateInizio,
-            dataInizioAnnoIstruzione: formDateInizioAnno,
-            datFineIstruzione: formDateFine,
-            dataFineAnnoIstruzione: formDateFineAnno,
-            descrizioneIstruzione: formContent,
+            istruzioneData: formDataFieldList.map((item) => ({
+              data: item.data,
+              istitute: item.istitute,
+              city: item.city,
+              dataInizio: item.dataInizio,
+              dataInizioAnno: item.dataInizioAnno,
+              dataFine: item.dataFine,
+              dataFineAnno: item.dataFineAnno,
+              content: item.content.replace(/<[^>]+>/g, "")
+            })),
 
             // Esperienze lavortive
-            posizione: expDati,
-            azienda: expOrg,
-            cityEspr: expCity,
-            dataInizioEspr: exprDateInizo,
-            dataInizioAnnoEspr: exprDateInizioAnno,
-            datFineEspr: exprDateFine,
-            dataFineAnnoEspr: exprDateFineAnno,
-            descrizioneEspr: exprContent,
+            esperienzeData: exprDataFieldList.map((item) => ({
+              data: item.data,
+              istitute: item.istitute,
+              city: item.city,
+              dataInizio: item.dataInizio,
+              dataInizioAnno: item.dataInizioAnno,
+              dataFine: item.dataFine,
+              dataFineAnno: item.dataFineAnno,
+              content: item.content.replace(/<[^>]+>/g, "")
+            })),
           },
         }),
       });
