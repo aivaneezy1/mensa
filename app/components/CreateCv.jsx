@@ -149,8 +149,6 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
-  console.log("comp", compFieldList);
-  console.log("lang", langFieldList);
   // Edit and Delete state
   useEffect(() => {
     if (editState) {
@@ -429,6 +427,7 @@ export default function Home() {
             <DeleteAlert />
           </div>
         )}
+        {/*Left right div */}
         <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
           <form onSubmit={handleCreatePost} className=" ">
             {/*Dati Personali */}
@@ -546,7 +545,8 @@ export default function Home() {
             {session && status == "authenticated" ? (
               <button
                 type="submit"
-                className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
+                 className=" px-8 py-4 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 w-full bottom-0"
+       
               >
                 Generate CV
               </button>
@@ -572,7 +572,7 @@ export default function Home() {
           )}
         </div>
 
-        {/*Left side div */}
+        {/*Left right div */}
         <div className=" lg:block hidden mx-auto  h-screen min-h-screen lg:w-7/12 p-5 lg:overflow-y-scroll ">
           {cardOneSelected && (
             <CardOneModel

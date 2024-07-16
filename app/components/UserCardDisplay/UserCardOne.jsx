@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import UserCardOneZoomed from "./UserCardOneZoomed";
+import Link from "next/link";
 
 const UserCardOne = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -228,9 +229,11 @@ const UserCardOne = (props) => {
       {isHovered && (
         <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10">
           <div className="rounded-lg flex flex-col items-center">
-            <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
+            <Link href={`/edit?id=${props.userid}`}>
+              <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
               Modifica
             </button>
+            </Link>
             <button className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition">
               Scarica
             </button>

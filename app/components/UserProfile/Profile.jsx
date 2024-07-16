@@ -6,6 +6,7 @@ import UserCardThree from "../UserCardDisplay/UserCardThree";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import CircularIndeterminate from "@/app/utils/Loading";
 
 const UserProfile = () => {
   // Getting the query paramater
@@ -13,6 +14,7 @@ const UserProfile = () => {
   const id = searchParams.get("id");
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +29,9 @@ const UserProfile = () => {
         console.log("data", data)
       } catch (err) {
         console.error("Error in fetching data", err);
+       
+      }finally{
+         setIsLoading(false)
       }
     };
 
@@ -37,13 +42,17 @@ const UserProfile = () => {
 
   return (
     <div className="flex justify-center items-center mt-10 gap-5 h-sm ml-5 mr-5">
+      {isLoading && (
+        <div>
+        <CircularIndeterminate/>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
        {userData && userData.map((user, index) => (
           <div key={index}>
-            <h2>{user.cardModel.model}</h2>
-            {user.cardModel.model === "CardOne" ?  <UserCardOne userData={user} /> : "" }
-             {user.cardModel.model === "CardTwo" ?  <UserCardTwo userData={user} /> : "" }
-             {user.cardModel.model === "CardThree" ?  <UserCardThree userData={user} /> : "" }
+            {user.cardModel.model === "CardOne" ?  <UserCardOne userData={user} userid={user._id}/> : "" }
+             {user.cardModel.model === "CardTwo" ?  <UserCardTwo userData={user}  userid={user._id}/> : "" }
+             {user.cardModel.model === "CardThree" ?  <UserCardThree userData={user}  userid={user._id} /> : "" }
           </div>
         ))}
       </div>
