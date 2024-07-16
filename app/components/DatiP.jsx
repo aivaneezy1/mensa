@@ -10,49 +10,49 @@ const DatiP = (props) => {
   const { showProfile } = useContext(DatiContext);
 
 
-  // Setting value to the localStorage
-  const setLocalStorageItem = (key, value) => {
-    if (value !== undefined) {
-      localStorage.setItem(key, value);
-    }
-  };
+  // // Setting value to the localStorage
+  // const setLocalStorageItem = (key, value) => {
+  //   if (value !== undefined) {
+  //     localStorage.setItem(key, value);
+  //   }
+  // };
 
-  // Update localStorage whenever the state changes
-  useEffect(() => {
+  // // Update localStorage whenever the state changes
+  // useEffect(() => {
 
-    setLocalStorageItem("name", props.name);
-    setLocalStorageItem("lastName", props.lastName);
-    setLocalStorageItem("email", props.email);
-    setLocalStorageItem("phone", props.phone);
-    setLocalStorageItem("address", props.address);
-    setLocalStorageItem("postalCode", props.postalCode);
-    setLocalStorageItem("city", props.city);
-    setLocalStorageItem("dateBirth", props.dateBirth);
-    setLocalStorageItem("placeBirth", props.placeBirth);
-    setLocalStorageItem("gender", props.genere);
-    setLocalStorageItem("civilStatus", props.civilStatus);
-    setLocalStorageItem("nationality", props.nationality);
-    setLocalStorageItem("license", props.license);
-    setLocalStorageItem("website", props.website);
-    setLocalStorageItem("linkin", props.linkin);
-  }, [
+  //   setLocalStorageItem("name", props.name);
+  //   setLocalStorageItem("lastName", props.lastName);
+  //   setLocalStorageItem("email", props.email);
+  //   setLocalStorageItem("phone", props.phone);
+  //   setLocalStorageItem("address", props.address);
+  //   setLocalStorageItem("postalCode", props.postalCode);
+  //   setLocalStorageItem("city", props.city);
+  //   setLocalStorageItem("dateBirth", props.dateBirth);
+  //   setLocalStorageItem("placeBirth", props.placeBirth);
+  //   setLocalStorageItem("gender", props.genere);
+  //   setLocalStorageItem("civilStatus", props.civilStatus);
+  //   setLocalStorageItem("nationality", props.nationality);
+  //   setLocalStorageItem("license", props.license);
+  //   setLocalStorageItem("website", props.website);
+  //   setLocalStorageItem("linkin", props.linkin);
+  // }, [
  
-    props.name,
-    props.lastName,
-    props.email,
-    props.phone,
-    props.address,
-    props.postalCode,
-    props.city,
-    props.dateBirth,
-    props.placeBirth,
-    props.genere,
-    props.civilStatus,
-    props.nationality,
-    props.license,
-    props.website,
-    props.linkin,
-  ]);
+  //   props.name,
+  //   props.lastName,
+  //   props.email,
+  //   props.phone,
+  //   props.address,
+  //   props.postalCode,
+  //   props.city,
+  //   props.dateBirth,
+  //   props.placeBirth,
+  //   props.genere,
+  //   props.civilStatus,
+  //   props.nationality,
+  //   props.license,
+  //   props.website,
+  //   props.linkin,
+  // ]);
 
   return (
     <>

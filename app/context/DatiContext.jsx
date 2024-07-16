@@ -4,13 +4,6 @@ import React, { createContext, useState, useEffect } from "react";
 export const DatiContext = createContext({});
 
 // Function to safely access localStorage
-const getLocalStorageItem = (key) => {
-  if (typeof window !== "undefined") {
-    const savedValue = localStorage.getItem(key);
-    return savedValue !== null ? savedValue : "";
-  }
-  return "";
-};
 
 const DatiContextProvider = ({ children }) => {
   /*Show button */
@@ -36,23 +29,6 @@ const DatiContextProvider = ({ children }) => {
   const [website, setWebsite] = useState("");
   const [linkin, setLinkin] = useState("");
 
-  useEffect(() => {
-    setName(getLocalStorageItem("name"));
-    setLastName(getLocalStorageItem("lastName"));
-    setEmail(getLocalStorageItem("email"));
-    setPhone(getLocalStorageItem("phone"));
-    setAddress(getLocalStorageItem("address"));
-    setPostalCode(getLocalStorageItem("postalCode"));
-    setCity(getLocalStorageItem("city"));
-    setDateBirth(getLocalStorageItem("dateBirth"));
-    setPlaceBirth(getLocalStorageItem("placeBirth"));
-    setGenere(getLocalStorageItem("gender"));
-    setCivilStatus(getLocalStorageItem("civilStatus"));
-    setNationality(getLocalStorageItem("nationality"));
-    setLicense(getLocalStorageItem("license"));
-    setWebsite(getLocalStorageItem("website"));
-    setLinkin(getLocalStorageItem("linkin"));
-  }, []);
 
 
 
