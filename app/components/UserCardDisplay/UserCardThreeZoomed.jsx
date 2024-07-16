@@ -328,8 +328,9 @@ const UserCardThreeZoomed = (props) => {
                 >
                   Esperienze
                 </h2>
-                {props.esperienzeData.length > 0 &&
-                  bgProfessional(props.esperienzeData)}
+              {props.esperienzeData.length > 0 && (
+                  bgProfessional(props.esperienzeData)
+                )}
               </div>
             </div>
           </div>

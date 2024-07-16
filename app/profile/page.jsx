@@ -1,5 +1,7 @@
+"use client"
 import React from "react";
 import UserProfile from "../components/UserProfile/Profile";
+import { Suspense } from "react";
 const ProfilePage = () => {
   return (
     <div>
@@ -8,7 +10,9 @@ const ProfilePage = () => {
 
         <hr className="border-2 border-b border-gray-500 w-full mt-2" />
       </div>
-      <UserProfile />
+      <Suspense fallback={<div>Loading...</div>}>
+        <UserProfile />
+      </Suspense>
     </div>
   );
 };
