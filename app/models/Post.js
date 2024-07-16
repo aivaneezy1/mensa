@@ -10,7 +10,7 @@ const ModelSelectedSchema = new mongoose.Schema({
 });
 
 const DatiPersonaliSchema = new mongoose.Schema({
-  image: { type: String },
+  image: { type: String,  default: ""  },
   nome: { type: String },
   cognome: { type: String },
   email: { type: String },  

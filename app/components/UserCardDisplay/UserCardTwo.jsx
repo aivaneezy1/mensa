@@ -374,7 +374,7 @@ const UserCardTwo = (props) => {
         <div className="mb-1">
           <h2
             className="mb-1 text-xxs  font-bold border-b border-gray-500 border-solid  "
-            style={{ color:  props.userData.cardModel.color }}
+            style={{ color: props.userData.cardModel.color }}
           >
             Esperienze
           </h2>
@@ -402,7 +402,36 @@ const UserCardTwo = (props) => {
       )}
 
       {/* Modal for zoomed content */}
-      <UserCardTwoZoomed isZoomed={isZoomed} setIsZoomed={setIsZoomed} />
+      <UserCardTwoZoomed
+        color={props.userData.cardModel.color}
+        image={
+          props.userData.datiPersonali.image
+            ? props.userData.datiPersonali.image
+            : ""
+        }
+        nome={props.userData.datiPersonali.nome}
+        cognome={props.userData.datiPersonali.cognome}
+        email={props.userData.datiPersonali.email}
+        telefono={props.userData.datiPersonali.telefono}
+        address={props.userData.datiPersonali.indirizzo}
+        codicePostale={props.userData.datiPersonali.codicePostale}
+        city={props.userData.datiPersonali.city}
+        dataNascita={props.userData.datiPersonali.dataNascita}
+        luogoNascita={props.userData.datiPersonali.luogoNascita}
+        gender={props.userData.datiPersonali.gender}
+        nationality={props.userData.datiPersonali.nationality}
+        statoCivili={props.userData.datiPersonali.statoCivili}
+        patente={props.userData.datiPersonali.patente}
+        website={props.userData.datiPersonali.sitoWeb}
+        linkin={props.userData.datiPersonali.linkin}
+        competenza={props.userData.compAndLang.competenza}
+        lingua={props.userData.compAndLang.lingua}
+        profile={props.userData.profile?.data}
+        istruzioneData={props.userData.bgProfessional.istruzioneData}
+        esperienzeData={props.userData.bgProfessional.esperienzeData}
+        isZoomed={isZoomed}
+        setIsZoomed={setIsZoomed}
+      />
     </div>
   );
 };

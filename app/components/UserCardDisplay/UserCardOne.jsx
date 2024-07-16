@@ -60,7 +60,7 @@ const UserCardOne = (props) => {
 
   return (
     <div
-      className={`grid grid-cols-2 sm:p-2 min-w-sm h-auto mx-auto shadow-md relative ${
+      className={`grid grid-cols-2  sm:p-2 min-w-sm h-auto mx-auto shadow-md relative h-full ${
         isHovered ? "bg-gray-100 0" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -83,7 +83,7 @@ const UserCardOne = (props) => {
 
       {/* Left side div */}
       <div
-        className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs shadow-md border`}
+        className={`gap-2 flex flex-col justify-start items-center mt-5   max-w-xs shadow-md border`}
         style={{ backgroundColor: props.userData.cardModel.color }}
       >
         <div className="mt-2">
@@ -187,11 +187,15 @@ const UserCardOne = (props) => {
       </div>
 
       {/* RIGHT DIV */}
-      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs">
+      <div className="flex flex-col mt-2 ml-2 mb-2 max-w-xs mt-5">
         {/* Name */}
         <div className="mb-1 mt-5">
-          <h2 className="text-xxs font-semibold">{props.userData.datiPersonali.nome}</h2>
-          <h2 className="text-xxs text-gray-500 mt-1 font-semibold">{props.userData.datiPersonali.cognome}</h2>
+          <h2 className="text-xxs font-semibold">
+            {props.userData.datiPersonali.nome}
+          </h2>
+          <h2 className="text-xxs text-gray-500 mt-1 font-semibold">
+            {props.userData.datiPersonali.cognome}
+          </h2>
         </div>
 
         <hr className="border border-b border-blue-500 w-1/2 my-1" />
@@ -199,9 +203,7 @@ const UserCardOne = (props) => {
         {/* Profile */}
         <div className="mb-1">
           <h2 className="text-title font-bold">Profilo</h2>
-          <p className="text-xxs">
-         {props.userData.profile?.data}
-          </p>
+          <p className="text-xxs">{props.userData.profile?.data}</p>
         </div>
 
         <hr className="border border-b border-blue-500 w-1/2 my-1" />
@@ -209,7 +211,7 @@ const UserCardOne = (props) => {
         {/* Istruzione */}
         <div className="mb-1">
           <h2 className="text-title font-bold">Istruzione</h2>
-         {props.userData.bgProfessional.istruzioneData.length > 0 &&
+          {props.userData.bgProfessional.istruzioneData.length > 0 &&
             bgProfessional(props.userData.bgProfessional.istruzioneData)}
         </div>
 
@@ -218,7 +220,7 @@ const UserCardOne = (props) => {
         {/* Experience */}
         <div className="mb-1">
           <h2 className="mb-1 text-title font-bold">Esperienze</h2>
-           {props.userData.bgProfessional.esperienzeData.length > 0 &&
+          {props.userData.bgProfessional.esperienzeData.length > 0 &&
             bgProfessional(props.userData.bgProfessional.esperienzeData)}
         </div>
       </div>
@@ -240,7 +242,36 @@ const UserCardOne = (props) => {
       )}
 
       {/* Modal for zoomed content */}
-      <UserCardOneZoomed isZoomed={isZoomed} setIsZoomed={setIsZoomed} />
+      <UserCardOneZoomed
+        color={props.userData.cardModel.color}
+        image={
+          props.userData.datiPersonali.image
+            ? props.userData.datiPersonali.image
+            : ""
+        }
+        nome={props.userData.datiPersonali.nome}
+        cognome={props.userData.datiPersonali.cognome}
+        email={props.userData.datiPersonali.email}
+        telefono={props.userData.datiPersonali.telefono}
+        address={props.userData.datiPersonali.indirizzo}
+        codicePostale={props.userData.datiPersonali.codicePostale}
+        city={props.userData.datiPersonali.city}
+        dataNascita={props.userData.datiPersonali.dataNascita}
+        luogoNascita={props.userData.datiPersonali.luogoNascita}
+        gender={props.userData.datiPersonali.gender}
+        nationality={props.userData.datiPersonali.nationality}
+        statoCivili={props.userData.datiPersonali.statoCivili}
+        patente={props.userData.datiPersonali.patente}
+        website={props.userData.datiPersonali.sitoWeb}
+        linkin={props.userData.datiPersonali.linkin}
+        competenza={props.userData.compAndLang.competenza}
+        lingua={props.userData.compAndLang.lingua}
+        profile={props.userData.profile?.data}
+        istruzioneData={props.userData.bgProfessional.istruzioneData}
+        esperienzeData={props.userData.bgProfessional.esperienzeData}
+        isZoomed={isZoomed}
+        setIsZoomed={setIsZoomed}
+      />
     </div>
   );
 };
