@@ -59,6 +59,11 @@ const UserCardTwo = (props) => {
     );
   };
 
+  
+
+
+
+
   //console.log("data", props.userData.bgProfessional.istruzioneData);
   return (
     <div
@@ -389,7 +394,7 @@ const UserCardTwo = (props) => {
       {isHovered && (
         <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10">
           <div className="rounded-lg flex flex-col items-center">
-            <Link href={`/edit?id=${props.userid}`}>
+            <Link href={`/edit?id=${props.postId}`}>
             <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
               Modifica
             </button>
@@ -397,7 +402,9 @@ const UserCardTwo = (props) => {
             <button className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition">
               Scarica
             </button>
-            <button className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition">
+            <button 
+            onClick={() => props.handleDelete(props.postId)} 
+            className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition">
               Delete
             </button>
           </div>

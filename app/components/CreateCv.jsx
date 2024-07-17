@@ -32,7 +32,7 @@ import CardTwoModel from "./CardModels/CardTwoModel";
 import CardChoices from "./CardChoices";
 
 import ModalDownloadDocument from "./ModalDownloadDocument";
-
+import { useRouter } from "next/navigation";
 export default function Home() {
   // Dati states
   const {
@@ -146,6 +146,7 @@ export default function Home() {
     cardTwoSelected,
     cardThreeSelected,
   } = useContext(DatiContext);
+  const router = useRouter();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
@@ -404,7 +405,7 @@ export default function Home() {
 
       if (res.ok) {
         setIsSubmitted(true);
-        router.push("/profile");
+       
       } else {
         console.error("Failed to create post");
       }

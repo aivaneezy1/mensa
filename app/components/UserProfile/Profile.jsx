@@ -15,7 +15,9 @@ const UserProfile = () => {
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [postDelete, setPostDelete] = useState(false);
 
+  // GET API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,6 +28,7 @@ const UserProfile = () => {
         }
         const data = await res.json();
         setUserData(data);
+        console.log("userdata", userData)
       } catch (err) {
         console.error("Error in fetching data", err);
       } finally {
@@ -38,6 +41,23 @@ const UserProfile = () => {
     }
   }, [id, session]);
 
+
+  
+  //DELETE API
+   const handleDelete = async (id) =>{
+    try{
+      const res = await fetch(`/api/delete/${id}`,{
+        method: "DELETE"
+      })
+      setUserData(userData.filter(post => post._id !== id))
+      setPostDelete(true);
+    }catch(err){
+        console.error("Error deleting post", err);
+    }
+  }
+
+
+
   return (
     <div className="flex justify-center items-center mt-10 gap-5 h-sm ml-5 mr-5">
       {isLoading && (
@@ -47,32 +67,39 @@ const UserProfile = () => {
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {userData &&
-          userData.map((user, index) => (
+          userData.map((post, index) => (
             <div key={index}>
-            <h2>card {user.cardModel.model }</h2>
-              {user.cardModel.model === "CardOne" ? (
+            <h2>card {post.cardModel.model }</h2>
+              {/*Passing the  userData, postId of the db, model type as props */}
+              {post.cardModel.model === "CardOne" ? (
                 <UserCardOne
-                  userData={user}
-                  userid={user._id}
-                  cardModel={user.cardModel.model}
+                  userData={post}
+                  setUserData={setUserData}
+                  postId={post._id}
+                  cardModel={post.cardModel.model}
+                  handleDelete={handleDelete}
                 />
               ) : (
                 ""
               )}
-              {user.cardModel.model === "CardTwo" ? (
+               {/*Passing the  userData, postId of the db, model type as props */}
+              {post.cardModel.model === "CardTwo" ? (
                 <UserCardTwo
-                  userData={user}
-                  userid={user._id}
-                  cardModel={user.cardModel.model}
+                  userData={post}
+                  postId={post._id}
+                  cardModel={post.cardModel.model}
+                 handleDelete={handleDelete}
                 />
               ) : (
                 ""
               )}
-              {user.cardModel.model === "CardThree" ? (
+               {/*Passing the  userData, postId of the db, model type as props */}
+              {post.cardModel.model === "CardThree" ? (
                 <UserCardThree
-                  userData={user}
-                  userid={user._id}
-                  cardModel={user.cardModel.model}
+                  userData={post}
+                  postId={post._id}
+                  cardModel={post.cardModel.model}
+                  handleDelete={handleDelete}
                 />
               ) : (
                 ""
