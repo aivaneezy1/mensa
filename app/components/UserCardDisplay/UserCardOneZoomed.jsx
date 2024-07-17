@@ -58,6 +58,15 @@ const UserCardOneZoomed = (props) => {
     );
   };
 
+   const colors = [
+    "#FFFFFF",
+    "#F5F5F5",
+    "#EEE8AA",
+    "#FAFAD2",
+    "#FFF5EE",
+    "#E6E6FA ",
+  ];
+
   return (
     <Modal
       open={props.isZoomed}

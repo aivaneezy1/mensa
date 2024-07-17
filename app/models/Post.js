@@ -26,7 +26,7 @@ const DatiPersonaliSchema = new mongoose.Schema({
   patente: { type: String },
   sitoWeb: { type: String },
   linkin: { type: String },
-  test: { type: String },
+ 
 });
 
 const CompAndLangSchema = new mongoose.Schema({

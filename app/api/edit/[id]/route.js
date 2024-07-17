@@ -19,4 +19,24 @@ export const GET = async (request, { params }) => {
   }
 };
 
-export default GET;
+export const PATCH = async (request, { params }) => {
+  const { id } = params;
+
+  const {
+    postOwner,
+    cardModel,
+    datiPersonali,
+    compAndLang,
+    profile,
+    bgProfessional,
+  } = await request.json();
+
+  try{
+    await connectDB();
+    const updatedPost = await CurriculumModel.findOneAndUpdate({_id: id}, {postOwner, cardModel,datiPersonali, compAndLang, profile, bgProfessional}, {new:true})
+    return new NextResponse(JSON.stringify(updatedPost), {status:200});
+  }catch(err){
+    return new NextResponse(err.message, {status:500});
+  }
+};
+

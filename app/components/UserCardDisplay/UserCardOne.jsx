@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import UserCardOneZoomed from "./UserCardOneZoomed";
 import Link from "next/link";
+import { DatiContext } from "@/app/context/DatiContext";
 
 const UserCardOne = (props) => {
   const [isHovered, setIsHovered] = useState(false);
