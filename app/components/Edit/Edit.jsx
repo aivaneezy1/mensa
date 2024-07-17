@@ -241,6 +241,14 @@ const Edit = (props) => {
     }
   };
 
+
+  if (!isClient || loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <CircularIndeterminate />
+      </div>
+    );
+  }
   return (
     <div className="flex justify-center mx-auto  min-h-screen py-10  h-screen flex-row  lg:justify-between lg:ml-5">
       {/*Left Side div */}
