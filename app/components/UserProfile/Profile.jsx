@@ -28,13 +28,15 @@ const UserProfile = () => {
         }
         const data = await res.json();
         setUserData(data);
-      
+   
       } catch (err) {
         console.error("Error in fetching data", err);
       } finally {
         setIsLoading(false);
       }
     };
+
+
 
     if (session?.user.id && status == "authenticated") {
       fetchData();

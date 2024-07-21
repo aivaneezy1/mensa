@@ -223,6 +223,7 @@ const handleBgData = (data) => {
 };
 
 const CardTwoDocument = (props) => {
+  let image = props.selectedImage;
   return (
     <Document>
       <Page>
@@ -249,10 +250,15 @@ const CardTwoDocument = (props) => {
               {props.selectedImage && (
                 <View style={styles.imageWrapper}>
                   <Image
-                    style={styles.image}
-                    src={props.selectedImage}
-                    alt={"profile picture"}
-                  />
+                  style={{ width: 120, height: 120 }}
+                  src={{
+                    uri: image,
+                    method: "GET",
+                    headers: { "Cache-Control": "no-cache" },
+                    body: "",
+                  }}
+                  alt={"profile picture"}
+                ></Image>
                 </View>
               )}
             </View>
@@ -298,7 +304,7 @@ const CardTwoDocument = (props) => {
                   {(props.name || props.lastName) && (
                     <>
                       {datiPersonali(
-                        "/images/user.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/user.png",
                         props.name,
                         props.lastName
                       )}

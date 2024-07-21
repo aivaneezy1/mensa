@@ -25,6 +25,7 @@ const Edit = (props) => {
 
   const { data: session, status } = useSession();
   const [userData, setUserData] = useState();
+  const[editImage, setEditImage] = useState("")
   const [editName, setEditName] = useState("");
   const [editLastName, setEditLastName] = useState("");
   const [editEmail, setEditEmail] = useState("");
@@ -44,9 +45,6 @@ const Edit = (props) => {
   /*Competenza and lingua */
 
   const {
-    /*Dati personali */
-    selectedImage,
-    setSelectedImage,
 
     /*Profile */
     profileContent,
@@ -124,6 +122,7 @@ const Edit = (props) => {
         }
         const data = await res.json();
         setUserData(data);
+    
         //console.log(userData.compAndLang.competenza)
       } catch (err) {
         console.error("Error in fetching data", err);
@@ -140,6 +139,7 @@ const Edit = (props) => {
   // setting the data base on the user input
   useEffect(() => {
     if (userData) {
+      setEditImage(userData.datiPersonali.image);
       setEditName(userData.datiPersonali.nome);
       setEditLastName(userData.datiPersonali.cognome);
       setEditEmail(userData.datiPersonali.email);
@@ -256,8 +256,8 @@ const Edit = (props) => {
       <div className="flex flex-col  gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll h-sm">
         <form className="flex flex-col h-sm" onSubmit={handleSubmit}>
           <DatiPersonali
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
+            selectedImage={editImage}
+            setSelectedImage={setEditImage}
             name={editName}
             setName={setEditName}
             lastName={editLastName}
@@ -375,7 +375,7 @@ const Edit = (props) => {
           <>
             {userData?.cardModel.model === "CardOne" && (
               <CardOneModel
-                selectedImage={selectedImage}
+                selectedImage={editImage}
                 cardColors={cardOneColor}
                 name={editName}
                 lastName={editLastName}
@@ -404,7 +404,7 @@ const Edit = (props) => {
             )}
             {userData?.cardModel.model === "CardTwo" && (
               <CardTwoModel
-                selectedImage={selectedImage}
+                selectedImage={editImage}
                 cardColors={cardTwoColor}
                 name={editName}
                 lastName={editLastName}
@@ -433,7 +433,7 @@ const Edit = (props) => {
             )}
             {userData?.cardModel.model === "CardThree" && (
               <CardThreeModel
-                selectedImage={selectedImage}
+                selectedImage={editImage}
                 cardColors={cardThreeColor}
                 name={editName}
                 lastName={editLastName}

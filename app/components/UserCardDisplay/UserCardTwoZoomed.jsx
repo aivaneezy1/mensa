@@ -91,7 +91,7 @@ const UserCardTwoZoomed = (props) => {
               >
                 <div className="absolute bottom-0 transform translate-y-1/2">
                   <Image
-                    src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
+                    src={props.image}
                     alt="profile"
                     width={60}
                     height={60}

@@ -34,6 +34,7 @@ import CardChoices from "./CardChoices";
 import ModalDownloadDocument from "./ModalDownloadDocument";
 import { useRouter } from "next/navigation";
 import CvAlerts from "../utils/CreatePostSuccess";
+import CircularIndeterminate from "../utils/Loading";
 export default function Home() {
   const {
     /*Dati personali */
@@ -489,6 +490,8 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center mx-auto  min-h-screen py-10  h-screen flex-row  lg:justify-between lg:ml-5  ">
+
+        
         {editState && (
           <div className="absolute top-20 right-50">
             <BasicAlerts />

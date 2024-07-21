@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import UserCardOneZoomed from "./UserCardOneZoomed";
 import Link from "next/link";
 import { DatiContext } from "@/app/context/DatiContext";
+import CardOneDocument from "../Documents/CardOneDocument";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const UserCardOne = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -60,7 +62,35 @@ const UserCardOne = (props) => {
     );
   };
 
-
+  // Document One
+  const handleDownloadDocument = () => {
+    return (
+      <CardOneDocument
+        cardColors={props.userData.cardModel.color}
+        selectedImage={props.userData.datiPersonali.image}
+        name={props.userData.datiPersonali.nome}
+        lastName={props.userData.datiPersonali.cognome}
+        email={props.userData.datiPersonali.email}
+        phone={props.userData.datiPersonali.telefono}
+        address={props.userData.datiPersonali.indirizzo}
+        postalCode={props.userData.datiPersonali.codicePostale}
+        city={props.userData.datiPersonali.city}
+        dateBirth={props.userData.datiPersonali.dataNascita}
+        placeBirth={props.userData.datiPersonali.luogoNascita}
+        genere={props.userData.datiPersonali.gender}
+        civilStatus={props.userData.datiPersonali.statoCivili}
+        nationality={props.userData.datiPersonali.nationality}
+        license={props.userData.datiPersonali.patente}
+        website={props.userData.datiPersonali.sitoWeb}
+        linkin={props.userData.datiPersonali.linkin}
+        compFieldList={props.userData.compAndLang.competenza}
+        langFieldList={props.userData.compAndLang.lingua}
+        profileContent={props.userData.profile?.data}
+        formDataFieldList={props.userData.bgProfessional.istruzioneData}
+        exprDataFieldList={props.userData.bgProfessional.esperienzeData}
+      />
+    );
+  };
 
   return (
     <div
@@ -229,20 +259,58 @@ const UserCardOne = (props) => {
         </div>
       </div>
 
-      {isHovered && ( 
+      {isHovered && (
         <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10">
           <div className="rounded-lg flex flex-col items-center">
             <Link href={`/edit?id=${props.postId}`}>
               <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
-              Modifica
-            </button>
+                Modifica
+              </button>
             </Link>
-            <button className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition">
-              Scarica
-            </button>
-            <button 
-            onClick={() => props.handleDelete(props.postId)} 
-            className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition"
+
+            {/*Download button */}
+            <PDFDownloadLink
+              document={
+                <CardOneDocument
+                  cardColors={props.userData.cardModel.color}
+                  selectedImage={props.userData.datiPersonali.image}
+                  name={props.userData.datiPersonali.nome}
+                  lastName={props.userData.datiPersonali.cognome}
+                  email={props.userData.datiPersonali.email}
+                  phone={props.userData.datiPersonali.telefono}
+                  address={props.userData.datiPersonali.indirizzo}
+                  postalCode={props.userData.datiPersonali.codicePostale}
+                  city={props.userData.datiPersonali.city}
+                  dateBirth={props.userData.datiPersonali.dataNascita}
+                  placeBirth={props.userData.datiPersonali.luogoNascita}
+                  genere={props.userData.datiPersonali.gender}
+                  civilStatus={props.userData.datiPersonali.statoCivili}
+                  nationality={props.userData.datiPersonali.nationality}
+                  license={props.userData.datiPersonali.patente}
+                  website={props.userData.datiPersonali.sitoWeb}
+                  linkin={props.userData.datiPersonali.linkin}
+                  compFieldList={props.userData.compAndLang.competenza}
+                  langFieldList={props.userData.compAndLang.lingua}
+                  profileContent={props.userData.profile?.data}
+                  formDataFieldList={
+                    props.userData.bgProfessional.istruzioneData
+                  }
+                  exprDataFieldList={
+                    props.userData.bgProfessional.esperienzeData
+                  }
+                />
+              }
+              fileName="cv.pdf"
+              className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition"
+            >
+              {({ blob, url, loading, error }) =>
+                loading ? "Loading document..." : "Download CV"
+              }
+            </PDFDownloadLink>
+
+            <button
+              onClick={() => props.handleDelete(props.postId)}
+              className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition"
             >
               Delete
             </button>

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import UserCardThreeZoomed from "./UserCardThreeZoomed";
 import Link from "next/link";
+import CardThreeDocument from "../Documents/CardThreeDocument";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 const UserCardThree = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -347,9 +349,46 @@ const UserCardThree = (props) => {
                 Modifica
               </button>
             </Link>
-            <button className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition">
-              Scarica
-            </button>
+             {/*Download button */}
+            <PDFDownloadLink
+              document={
+                <CardThreeDocument
+                  cardColors={props.userData.cardModel.color}
+                  selectedImage={props.userData.datiPersonali.image}
+                  name={props.userData.datiPersonali.nome}
+                  lastName={props.userData.datiPersonali.cognome}
+                  email={props.userData.datiPersonali.email}
+                  phone={props.userData.datiPersonali.telefono}
+                  address={props.userData.datiPersonali.indirizzo}
+                  postalCode={props.userData.datiPersonali.codicePostale}
+                  city={props.userData.datiPersonali.city}
+                  dateBirth={props.userData.datiPersonali.dataNascita}
+                  placeBirth={props.userData.datiPersonali.luogoNascita}
+                  genere={props.userData.datiPersonali.gender}
+                  civilStatus={props.userData.datiPersonali.statoCivili}
+                  nationality={props.userData.datiPersonali.nationality}
+                  license={props.userData.datiPersonali.patente}
+                  website={props.userData.datiPersonali.sitoWeb}
+                  linkin={props.userData.datiPersonali.linkin}
+                  compFieldList={props.userData.compAndLang.competenza}
+                  langFieldList={props.userData.compAndLang.lingua}
+                  profileContent={props.userData.profile?.data}
+                  formDataFieldList={
+                    props.userData.bgProfessional.istruzioneData
+                  }
+                  exprDataFieldList={
+                    props.userData.bgProfessional.esperienzeData
+                  }
+                />
+              }
+              fileName="cv.pdf"
+              className="bg-green-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-green-600 transition"
+            >
+              {({ blob, url, loading, error }) =>
+                loading ? "Loading document..." : "Download CV"
+              }
+            </PDFDownloadLink>
+
             <button
            onClick={() => props.handleDelete(props.postId)} 
             className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition">

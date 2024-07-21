@@ -188,6 +188,7 @@ const handleBgData = (data) => {
 };
 
 const CardThreeDocument = (props) => {
+    let image = props.selectedImage;
   return (
     <Document>
       <Page>
@@ -206,7 +207,7 @@ const CardThreeDocument = (props) => {
               height: "100%",
             }}
           >
-            {props.selectedImage && (
+            {image && (
               <View
                 style={{
                   display: "flex",
@@ -216,7 +217,12 @@ const CardThreeDocument = (props) => {
               >
                 <Image
                   style={{ width: 120, height: 120 }}
-                  src={props.selectedImage}
+                  src={{
+                    uri: image,
+                    method: "GET",
+                    headers: { "Cache-Control": "no-cache" },
+                    body: "",
+                  }}
                   alt={"profile picture"}
                 ></Image>
               </View>

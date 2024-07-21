@@ -137,15 +137,15 @@ const handleProfile = (data) => {
   );
 };
 
-
 const handleBgData = (data) => {
   return (
     <>
       {data.length > 0 &&
         data.map((post, index) => (
-          <View 
-          style={{ display: "flex", flexDirection: "column" }}
-          key={index}>
+          <View
+            style={{ display: "flex", flexDirection: "column" }}
+            key={index}
+          >
             <Text style={[styles.data, { marginTop: 5 }]}>{post.data}</Text>
             <Text
               style={{
@@ -188,7 +188,7 @@ const handleBorder = () => {
         flexDirection: "center",
         alignItems: "center",
         marginTop: 10,
-        marginBottom:10,
+        marginBottom: 10,
       }}
     >
       <View
@@ -204,6 +204,7 @@ const handleBorder = () => {
 };
 
 const CardOneDocument = (props) => {
+  let image = props.selectedImage;
   return (
     <Document>
       <Page>
@@ -221,7 +222,7 @@ const CardOneDocument = (props) => {
               backgroundColor: props.cardColors,
             }}
           >
-            {props.selectedImage && (
+            {image && (
               <View
                 style={{
                   display: "flex",
@@ -232,7 +233,12 @@ const CardOneDocument = (props) => {
               >
                 <Image
                   style={{ width: 120, height: 120 }}
-                  src={props.selectedImage}
+                  src={{
+                    uri: image,
+                    method: "GET",
+                    headers: { "Cache-Control": "no-cache" },
+                    body: "",
+                  }}
                   alt={"profile picture"}
                 ></Image>
               </View>
@@ -325,7 +331,7 @@ const CardOneDocument = (props) => {
                 {props.linkin && <>{datiPersonali(props.linkin)}</>}
               </View>
             </View>
-             {handleBorder()}
+            {handleBorder()}
             {/*Competenze */}
             <View
               style={{
@@ -358,7 +364,7 @@ const CardOneDocument = (props) => {
                 handleCompAndLang(props.langFieldList)}
             </View>
 
-             {handleBorder()}
+            {handleBorder()}
           </View>
 
           {/*Right column */}
@@ -380,7 +386,7 @@ const CardOneDocument = (props) => {
                   fontFamily: "Open Sans",
                   fontWeight: 600,
                   fontSize: 18,
-                  marginTop:5,
+                  marginTop: 5,
                 }}
               >
                 {props.name}
@@ -402,8 +408,8 @@ const CardOneDocument = (props) => {
                 borderBottomColor: "blue",
                 borderBottomWidth: 1,
                 width: "50%",
-                marginBottom:10,
-                marginTop:10,
+                marginBottom: 10,
+                marginTop: 10,
               }}
             ></View>
 
@@ -419,14 +425,14 @@ const CardOneDocument = (props) => {
               {handleProfile(props.profileContent)}
             </View>
 
-              <View
+            <View
               style={{
                 borderBottom: 1,
                 borderBottomColor: "blue",
                 borderBottomWidth: 1,
                 width: "50%",
-                marginBottom:10,
-                marginTop:10,
+                marginBottom: 10,
+                marginTop: 10,
               }}
             ></View>
             {/*Istruzione */}
@@ -441,14 +447,14 @@ const CardOneDocument = (props) => {
               {handleBgData(props.formDataFieldList)}
             </View>
 
-             <View
+            <View
               style={{
                 borderBottom: 1,
                 borderBottomColor: "blue",
                 borderBottomWidth: 1,
                 width: "50%",
-                marginBottom:10,
-                marginTop:10,
+                marginBottom: 10,
+                marginTop: 10,
               }}
             ></View>
 
