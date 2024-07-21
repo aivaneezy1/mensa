@@ -12,6 +12,9 @@ const DatiContextProvider = ({ children }) => {
   /* Dati Personali */
   const [selectedImage, setSelectedImage] = useState(null);
 
+  /*File name of the image */
+  const [fileName, setFileName] = useState("")
+
   // Initialize states with values from localStorage, but only on the client-side
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -90,6 +93,11 @@ const DatiContextProvider = ({ children }) => {
 
         selectedImage,
         setSelectedImage,
+
+        fileName, 
+        setFileName,
+
+        
         name,
         setName,
         lastName,

@@ -25,7 +25,7 @@ export default function ModalDownloadDocument() {
     <div>
       <button
         onClick={handleOpen}
-        className="p-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 "
+        className="px-8 py-4 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 w-full bottom-0"
       >
         Generate CV
       </button>

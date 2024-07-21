@@ -50,12 +50,11 @@ export const POST = async (request) => {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const fileName = await uploadFileToS3(buffer, file.name);
-    
+    const objectUrl = await uploadFileToS3(buffer, file.name);
 
-    // returning the filename
+    // returning the file name from the AWS cloud
     return NextResponse.json(
-      { success: true, filename: fileName },
+      { success: true, url: objectUrl },
       { status: 200 }
     );
   } catch (err) {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { DatiContext } from "../context/DatiContext";
 import BasicAlerts from "../utils/Successful";
@@ -33,12 +33,13 @@ import CardChoices from "./CardChoices";
 
 import ModalDownloadDocument from "./ModalDownloadDocument";
 import { useRouter } from "next/navigation";
+import CvAlerts from "../utils/CreatePostSuccess";
 export default function Home() {
-  // Dati states
   const {
     /*Dati personali */
     selectedImage,
     setSelectedImage,
+    fileName,
     name,
     setName,
     lastName,
@@ -146,11 +147,19 @@ export default function Home() {
     cardTwoSelected,
     cardThreeSelected,
   } = useContext(DatiContext);
-  const router = useRouter();
 
+  // Timer for the generate cv button
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const cooldownTime = 5000; //120000; // 2 minutes in milliseconds
+
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data: session, status } = useSession();
-  // Edit and Delete state
+
+  const [cvState, setCvState] = useState(false);
+
+  // Edit  state
   useEffect(() => {
     if (editState) {
       const timer = setTimeout(() => {
@@ -161,7 +170,7 @@ export default function Home() {
     }
   }, [editState, setEditState]);
 
-  // Edit and Delete state
+  // Delete state
   useEffect(() => {
     if (deleteState) {
       const timer = setTimeout(() => {
@@ -172,11 +181,23 @@ export default function Home() {
     }
   }, [deleteState, setDeleteState]);
 
-  /*Document rendering */
+  // Cv created state
 
+  // Delete state
+  useEffect(() => {
+    if (cvState) {
+      const timer = setTimeout(() => {
+        setCvState(false);
+      }, 3000); // 2000 milliseconds = 2 seconds
+
+      return () => clearTimeout(timer); // Cleanup the timeout if the component unmounts or editState changes
+    }
+  }, [cvState, setCvState]);
+
+  /*Document rendering */
   const [isClient, setIsClient] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
-
+  
   useEffect(() => {
     setIsClient(true); // This will be true after component mounts on the client
   }, []);
@@ -303,7 +324,6 @@ export default function Home() {
 
   // handle API post
   const handleCreatePost = async (e) => {
-    e.preventDefault();
     // Determine which card is selected
     let selectedCard = "";
     let color = "";
@@ -324,6 +344,25 @@ export default function Home() {
     }));
 
     try {
+      // Upload the image to S3 and get the URL
+      let imageUrl = "";
+      if (selectedImage) {
+        const form = new FormData();
+        form.append("file", fileName);
+
+        const res = await fetch("/api/s3-upload", {
+          method: "POST",
+          body: form,
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          imageUrl = data.url;
+        } else {
+          console.error("Failed to upload image to S3");
+          return;
+        }
+      }
       const res = await fetch("/api/post", {
         method: "POST",
         headers: {
@@ -340,7 +379,7 @@ export default function Home() {
           },
 
           datiPersonali: {
-            image: selectedImage,
+            image: imageUrl,
             nome: name,
             cognome: lastName,
             email: email,
@@ -372,7 +411,7 @@ export default function Home() {
           },
 
           profile: {
-            data: profileContent.replace(/<[^>]+>/g, "")
+            data: profileContent.replace(/<[^>]+>/g, ""),
           },
 
           bgProfessional: {
@@ -385,7 +424,7 @@ export default function Home() {
               dataInizioAnno: item.dataInizioAnno,
               dataFine: item.dataFine,
               dataFineAnno: item.dataFineAnno,
-              content: item.content.replace(/<[^>]+>/g, "")
+              content: item.content.replace(/<[^>]+>/g, ""),
             })),
 
             // Esperienze lavortive
@@ -397,7 +436,7 @@ export default function Home() {
               dataInizioAnno: item.dataInizioAnno,
               dataFine: item.dataFine,
               dataFineAnno: item.dataFineAnno,
-              content: item.content.replace(/<[^>]+>/g, "")
+              content: item.content.replace(/<[^>]+>/g, ""),
             })),
           },
         }),
@@ -405,7 +444,7 @@ export default function Home() {
 
       if (res.ok) {
         setIsSubmitted(true);
-       
+        setCvState(true);
       } else {
         console.error("Failed to create post");
       }
@@ -413,6 +452,39 @@ export default function Home() {
       console.log(err);
     }
   };
+
+  // Handle button click
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+
+    if (!isButtonDisabled) {
+      // Your form submit logic here
+      handleCreatePost();
+
+      // Disable button and start cooldown timer
+      setIsButtonDisabled(true);
+      setTimeLeft(cooldownTime);
+
+      // Start the countdown
+      const interval = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 0) {
+            clearInterval(interval);
+            setIsButtonDisabled(false);
+            return 0;
+          }
+          return prev - 1000; // Decrement by 1 second
+        });
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      // Clean up interval on component unmount
+      clearInterval();
+    };
+  }, []);
 
   return (
     <>
@@ -430,7 +502,7 @@ export default function Home() {
         )}
         {/*Left right div */}
         <div className="flex flex-col gap-10 lg:gap-10 mt-5 lg:w-5/12 lg:overflow-y-scroll">
-          <form onSubmit={handleCreatePost} className=" ">
+          <form onSubmit={handleButtonClick}>
             {/*Dati Personali */}
             <DatiPersonali
               selectedImage={selectedImage}
@@ -546,28 +618,44 @@ export default function Home() {
             {session && status == "authenticated" ? (
               <button
                 type="submit"
-                 className=" px-8 py-4 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 w-full bottom-0"
-       
+                className=" px-8 py-4 bg-blue-500 text-white rounded-xl hover:bg-blue-700 mt-10 w-full bottom-0"
+                disabled={isButtonDisabled}
               >
-                Generate CV
+                {isButtonDisabled
+                  ? `Please wait ${Math.ceil(timeLeft / 1000)}s`
+                  : "Generate CV"}
               </button>
             ) : (
-              <ModalDownloadDocument />
+              ""
             )}
           </form>
+
+
+          {/*CV created alert */}
+          {cvState && (
+            <div className="absolute top-20 right-50">
+              <CvAlerts />
+            </div>
+          )}
+
+          {!session && status != "authenticated" && (
+              <ModalDownloadDocument />
+          )}
 
           {isSubmitted && session && status == "authenticated" && (
             <div className="justify-center flex items-center">
               {isClient && selectedDocument && (
-                <PDFDownloadLink
-                  document={selectedDocument}
-                  fileName="cv.pdf"
-                  className="mt-5 px-3 py-2 bg-green-500 rounded-xl text-white hover:bg-green-700 "
-                >
-                  {({ blob, url, loading, error }) =>
-                    loading ? "Loading document..." : "Download CV"
-                  }
-                </PDFDownloadLink>
+                <div>
+                  <PDFDownloadLink
+                    document={selectedDocument}
+                    fileName="cv.pdf"
+                    className="mt-5 px-8 py-4 bg-green-500 rounded-xl text-white hover:bg-green-700 w-full text-center"
+                  >
+                    {({ blob, url, loading, error }) =>
+                      loading ? "Loading document..." : "Download CV"
+                    }
+                  </PDFDownloadLink>
+                </div>
               )}
             </div>
           )}

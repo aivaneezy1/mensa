@@ -1,12 +1,16 @@
-"use client"
-import  { useState, useEffect, useRef } from "react";
+"use client";
+import { useState, useEffect, useRef, useContext } from "react";
 import Image from "next/image";
 import Cropper from "react-easy-crop";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Modal from "@mui/material/Modal";
+import { DatiContext } from "../context/DatiContext";
 const Upload = (props) => {
+  // Dati context
+  const { fileName, setFileName } = useContext(DatiContext);
+
   const inputRef = useRef();
   const [image, setImage] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
@@ -15,17 +19,16 @@ const Upload = (props) => {
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [open, setOpen] = useState(false);
-
+ 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
 
   const selectedFilePopup = () => {
     inputRef.current.click();
   };
 
-    const onCropComplete = (croppedAreaPercentage, croppedAreaPixels) => {
+  const onCropComplete = (croppedAreaPercentage, croppedAreaPixels) => {
     console.log("pixels", croppedAreaPixels);
     setCroppedArea(croppedAreaPixels);
   };
@@ -33,6 +36,7 @@ const Upload = (props) => {
   const onSelectFile = (event) => {
     const file = event.target.files;
     if (file && file.length > 0) {
+      setFileName(file[0]);
       const reader = new FileReader();
       reader.readAsDataURL(file[0]);
       reader.addEventListener("load", () => {
@@ -95,67 +99,57 @@ const Upload = (props) => {
 
   const rotateLeft = () => setRotation((prev) => (prev - 90) % 360);
 
-
-
-
   return (
     <div>
-          {props.selectedImage ? (
-            <>
-              <input
-                type="file"
-                className="hidden"
-                ref={inputRef}
-                onChange={onSelectFile}
-              />
-              <button onClick={selectedFilePopup}  className="h-full w-full">
-              <div className="p-2 border rounded-md hover:border-blue-500 ">
+      {props.selectedImage ? (
+        <>
+          <input
+            type="file"
+            className="hidden"
+            ref={inputRef}
+            onChange={onSelectFile}
+          />
+          <button onClick={selectedFilePopup} className="h-full w-full">
+            <div className="p-2 border rounded-md hover:border-blue-500 ">
               <Image
                 className="object-cover rounded-md "
                 src={props.selectedImage}
                 alt="p"
-                width={150}  // Adjust  values as needed
+                width={150} // Adjust  values as needed
                 height={150} // Adjust  values as needed
               />
-              </div>
-              </button>
-            </>
-          ) : (
-             <div className=" relative flex flex-col bg-transparent border mt-2 py-5 rounded-md hover:border-blue-500 h-full w-full ">
-            <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer whitespace-nowrap ">
-              <input
-                type="file"
-                className="hidden"
-                onChange={onSelectFile}
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
-                />
-              </svg>
-              Carica una foto
-            </label>
             </div>
-          )}
-       
+          </button>
+        </>
+      ) : (
+        <div className=" relative flex flex-col bg-transparent border mt-2 py-5 rounded-md hover:border-blue-500 h-full w-full ">
+          <label className="flex flex-col justify-center gap-1 items-center bg-transparent p-4 text-2xl text-gray-600 cursor-pointer whitespace-nowrap ">
+            <input type="file" className="hidden" onChange={onSelectFile} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-10 h-10"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
+              />
+            </svg>
+            Carica una foto
+          </label>
+        </div>
+      )}
 
-
-
-       <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={handleClose}>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 rounded-md shadow-lg">
           {image && (
             <div className="flex flex-col items-center">
