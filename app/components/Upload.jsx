@@ -19,16 +19,7 @@ const Upload = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const imageUrl = URL.createObjectURL(file);
-  //     props.setSelectedImage(imageUrl);
-  //     // Reset the input value to null to allow the same file to be selected again
-  //     if (inputRef.current) {
-  //       inputRef.current.value = null;
-  //     }
-  //   }
+
 
   const selectedFilePopup = () => {
     inputRef.current.click();

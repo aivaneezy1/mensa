@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'aivan-image.s3.eu-north-1.amazonaws.com'
+      }
     ],
   },
 };

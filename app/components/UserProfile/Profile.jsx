@@ -28,7 +28,7 @@ const UserProfile = () => {
         }
         const data = await res.json();
         setUserData(data);
-        console.log("userdata", userData)
+      
       } catch (err) {
         console.error("Error in fetching data", err);
       } finally {
@@ -70,7 +70,7 @@ const UserProfile = () => {
           userData.map((post, index) => (
             <div key={index}>
             <h2>card {post.cardModel.model }</h2>
-              {/*Passing the  userData, postId of the db, model type as props */}
+              {/*Passing the  userData, postId of the db and model type as props */}
               {post.cardModel.model === "CardOne" ? (
                 <UserCardOne
                   userData={post}
@@ -82,7 +82,7 @@ const UserProfile = () => {
               ) : (
                 ""
               )}
-               {/*Passing the  userData, postId of the db, model type as props */}
+               {/*Passing the  userData, postId of the db and model type as props */}
               {post.cardModel.model === "CardTwo" ? (
                 <UserCardTwo
                   userData={post}
@@ -93,7 +93,7 @@ const UserProfile = () => {
               ) : (
                 ""
               )}
-               {/*Passing the  userData, postId of the db, model type as props */}
+               {/*Passing the  userData, postId of the db and model type as props */}
               {post.cardModel.model === "CardThree" ? (
                 <UserCardThree
                   userData={post}

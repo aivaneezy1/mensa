@@ -1,5 +1,6 @@
 import Hero from "./components/Hero/Hero";
 import { Footer } from "./components/Footer";
+import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex justify-center items-center flex-col ">
@@ -14,6 +15,7 @@ export default function Home() {
               i colori
             </span>{" "}
             con facilità
+        
           </h2>
         </div>
       </div>
