@@ -90,6 +90,7 @@ const UserCardTwoZoomed = (props) => {
                 style={{ backgroundColor: props.color }}
               >
                 <div className="absolute bottom-0 transform translate-y-1/2">
+                {props.image && (
                   <Image
                     src={props.image}
                     alt="profile"
@@ -102,6 +103,8 @@ const UserCardTwoZoomed = (props) => {
                       overflow: "hidden",
                     }}
                   />
+                )}
+                  
                 </div>
               </div>
 

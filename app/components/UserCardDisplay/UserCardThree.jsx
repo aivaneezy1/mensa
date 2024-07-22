@@ -86,18 +86,21 @@ const UserCardThree = (props) => {
       <div
         className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs bg-gray-100 border-r border-gray-500 border-md border-solid`}
       >
-        <div className="">
+        <div className="mt-2">
+            { props.userData.datiPersonali.image && (
           <Image
             src={
               props.userData.datiPersonali.image
                 ? props.userData.datiPersonali.image
                 : ""
             }
-            alt="profile"
-            width={60}
-            height={60}
-            className="rounded-sm mt-10 "
+            alt="pic"
+            width={20}
+            height={20}
+            className="h-auto w-auto"
           />
+        )}
+          
         </div>
 
         {/* Personal Data */}
