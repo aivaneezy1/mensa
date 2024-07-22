@@ -6,6 +6,7 @@ import Link from "next/link";
 import { DatiContext } from "@/app/context/DatiContext";
 import CardOneDocument from "../Documents/CardOneDocument";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import DeleteAlert from "@/app/utils/Delete";
 
 const UserCardOne = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -62,35 +63,6 @@ const UserCardOne = (props) => {
     );
   };
 
-  // Document One
-  const handleDownloadDocument = () => {
-    return (
-      <CardOneDocument
-        cardColors={props.userData.cardModel.color}
-        selectedImage={props.userData.datiPersonali.image}
-        name={props.userData.datiPersonali.nome}
-        lastName={props.userData.datiPersonali.cognome}
-        email={props.userData.datiPersonali.email}
-        phone={props.userData.datiPersonali.telefono}
-        address={props.userData.datiPersonali.indirizzo}
-        postalCode={props.userData.datiPersonali.codicePostale}
-        city={props.userData.datiPersonali.city}
-        dateBirth={props.userData.datiPersonali.dataNascita}
-        placeBirth={props.userData.datiPersonali.luogoNascita}
-        genere={props.userData.datiPersonali.gender}
-        civilStatus={props.userData.datiPersonali.statoCivili}
-        nationality={props.userData.datiPersonali.nationality}
-        license={props.userData.datiPersonali.patente}
-        website={props.userData.datiPersonali.sitoWeb}
-        linkin={props.userData.datiPersonali.linkin}
-        compFieldList={props.userData.compAndLang.competenza}
-        langFieldList={props.userData.compAndLang.lingua}
-        profileContent={props.userData.profile?.data}
-        formDataFieldList={props.userData.bgProfessional.istruzioneData}
-        exprDataFieldList={props.userData.bgProfessional.esperienzeData}
-      />
-    );
-  };
 
   return (
     <div
@@ -100,6 +72,7 @@ const UserCardOne = (props) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+   
       <div className="absolute top-2 right-2 cursor-pointer z-20">
         <button onClick={() => setIsZoomed(true)}>
           <svg
@@ -115,6 +88,14 @@ const UserCardOne = (props) => {
         </button>
       </div>
 
+
+         {props.editState && (
+        <div>
+        <DeleteAlert/>
+        </div>
+      )}
+
+      
       {/* Left side div */}
       <div
         className={`gap-2 flex flex-col justify-start items-center mt-5   max-w-xs shadow-md border`}

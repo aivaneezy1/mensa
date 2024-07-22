@@ -17,6 +17,7 @@ const UserProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [postDelete, setPostDelete] = useState(false);
 
+
   // GET API
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +53,11 @@ const UserProfile = () => {
         method: "DELETE"
       })
       setUserData(userData.filter(post => post._id !== id))
-      setPostDelete(true);
+      
+      if(res.ok){
+        setPostDelete(true)
+      }
+
     }catch(err){
         console.error("Error deleting post", err);
     }
@@ -71,7 +76,6 @@ const UserProfile = () => {
         {userData &&
           userData.map((post, index) => (
             <div key={index}>
-            <h2>card {post.cardModel.model }</h2>
               {/*Passing the  userData, postId of the db and model type as props */}
               {post.cardModel.model === "CardOne" ? (
                 <UserCardOne
@@ -80,6 +84,7 @@ const UserProfile = () => {
                   postId={post._id}
                   cardModel={post.cardModel.model}
                   handleDelete={handleDelete}
+                  editState={postDelete}
                 />
               ) : (
                 ""
@@ -91,6 +96,7 @@ const UserProfile = () => {
                   postId={post._id}
                   cardModel={post.cardModel.model}
                  handleDelete={handleDelete}
+                  editState={postDelete}
                 />
               ) : (
                 ""
@@ -102,6 +108,7 @@ const UserProfile = () => {
                   postId={post._id}
                   cardModel={post.cardModel.model}
                   handleDelete={handleDelete}
+                   editState={postDelete}
                 />
               ) : (
                 ""

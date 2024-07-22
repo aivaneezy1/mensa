@@ -3,6 +3,9 @@ import React from "react";
 import UserProfile from "../components/UserProfile/Profile";
 import { Suspense } from "react";
 import Image from "next/image";
+
+
+
 const ProfilePage = () => {
   return (
     <div>

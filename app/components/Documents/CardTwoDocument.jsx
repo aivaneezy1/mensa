@@ -250,7 +250,7 @@ const CardTwoDocument = (props) => {
               {props.selectedImage && (
                 <View style={styles.imageWrapper}>
                   <Image
-                  style={{ width: 120, height: 120 }}
+                  style={styles.image}
                   src={{
                     uri: image,
                     method: "GET",
