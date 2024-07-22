@@ -61,11 +61,6 @@ const UserCardTwo = (props) => {
     );
   };
 
-  
-
-
-
-
   //console.log("data", props.userData.bgProfessional.istruzioneData);
   return (
     <div
@@ -100,18 +95,19 @@ const UserCardTwo = (props) => {
           style={{ backgroundColor: props.userData.cardModel.color }}
         >
           <div className="absolute bottom-0 transform translate-y-1/2">
-            <Image
-              src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/35af6a41332353.57a1ce913e889.jpg"
-              alt="profile"
-              width={60}
-              height={60}
-              style={{
-                borderRadius: "50%",
-                width: "50px",
-                height: "50px",
-                overflow: "hidden",
-              }}
-            />
+            {props.userData.datiPersonali.image && (
+              <Image
+                src={
+                  props.userData.datiPersonali.image
+                    ? props.userData.datiPersonali.image
+                    : ""
+                }
+                alt="pic"
+                width={20}
+                height={20}
+                className="h-auto w-auto"
+              />
+            )}
           </div>
         </div>
 
@@ -397,11 +393,11 @@ const UserCardTwo = (props) => {
         <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10">
           <div className="rounded-lg flex flex-col items-center">
             <Link href={`/edit?id=${props.postId}`}>
-            <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
-              Modifica
-            </button>
+              <button className="bg-blue-500 text-white rounded-lg px-4 py-2 mb-2 hover:bg-blue-600 transition">
+                Modifica
+              </button>
             </Link>
-              {/*Download button */}
+            {/*Download button */}
             <PDFDownloadLink
               document={
                 <CardTwoDocument
@@ -441,10 +437,10 @@ const UserCardTwo = (props) => {
               }
             </PDFDownloadLink>
 
-
-            <button 
-            onClick={() => props.handleDelete(props.postId)} 
-            className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition">
+            <button
+              onClick={() => props.handleDelete(props.postId)}
+              className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition"
+            >
               Delete
             </button>
           </div>

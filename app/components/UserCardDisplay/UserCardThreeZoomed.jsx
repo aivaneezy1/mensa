@@ -88,14 +88,16 @@ const UserCardThreeZoomed = (props) => {
             <div
               className={`gap-2 flex flex-col justify-start items-center mt-5 max-w-xs bg-gray-100 border-r border-gray-500 border-md border-solid`}
             >
-              <div className="">
-                <Image
-                  src={props.image}
-                  alt="profile"
-                  width={60}
-                  height={60}
-                  className="rounded-sm mt-10 "
-                />
+              <div className="mt-2">
+                {props.image && (
+                  <Image
+                    src={props.image}
+                    alt="profile"
+                    width={60}
+                    height={60}
+                    className="rounded-sm mt-10 "
+                  />
+                )}
               </div>
 
               {/* Personal Data */}
@@ -328,9 +330,8 @@ const UserCardThreeZoomed = (props) => {
                 >
                   Esperienze
                 </h2>
-              {props.esperienzeData.length > 0 && (
-                  bgProfessional(props.esperienzeData)
-                )}
+                {props.esperienzeData.length > 0 &&
+                  bgProfessional(props.esperienzeData)}
               </div>
             </div>
           </div>

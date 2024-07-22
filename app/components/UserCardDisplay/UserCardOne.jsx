@@ -102,6 +102,7 @@ const UserCardOne = (props) => {
         style={{ backgroundColor: props.userData.cardModel.color }}
       >
         <div className="mt-2">
+        { props.userData.datiPersonali.image && (
           <Image
             src={
               props.userData.datiPersonali.image
@@ -113,6 +114,8 @@ const UserCardOne = (props) => {
             height={20}
             className="h-auto w-auto"
           />
+        )}
+          
         </div>
 
         {/* Personal Data */}

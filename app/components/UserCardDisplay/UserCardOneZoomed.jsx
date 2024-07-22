@@ -99,6 +99,7 @@ const UserCardOneZoomed = (props) => {
               style={{ backgroundColor: props.color }}
             >
               <div className=" mt-2">
+              {props.image && (
                 <Image
                   src={props.image}
                   alt="pic"
@@ -106,6 +107,8 @@ const UserCardOneZoomed = (props) => {
                   height={60}
                   className="h-auto w-auto"
                 />
+              )}
+                
               </div>
 
               {/* Personal Data */}
