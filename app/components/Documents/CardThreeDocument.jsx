@@ -65,7 +65,11 @@ const datiPersonali = (image, dati, dati2) => {
       }}
     >
       <View style={{ marginRight: 3 }}>
-        <Image style={{ width: "8", height: "8" }} src={image} alt={"logo picture"}></Image>
+        <Image
+          style={{ width: "8", height: "8" }}
+          src={image}
+          alt={"logo picture"}
+        ></Image>
       </View>
       <View>
         <Text style={{ fontWeight: "medium", fontSize: 10, marginLeft: 3 }}>
@@ -144,15 +148,15 @@ const handleProfile = (data) => {
   );
 };
 
-
 const handleBgData = (data) => {
   return (
     <>
       {data.length > 0 &&
         data.map((post, index) => (
-          <View 
-          style={{ display: "flex", flexDirection: "column" }}
-          key={index}>
+          <View
+            style={{ display: "flex", flexDirection: "column" }}
+            key={index}
+          >
             <Text style={[styles.data, { marginTop: 5 }]}>{post.data}</Text>
             <Text
               style={{
@@ -188,6 +192,7 @@ const handleBgData = (data) => {
 };
 
 const CardThreeDocument = (props) => {
+  let image = props.selectedImage;
   return (
     <Document>
       <Page>
@@ -206,7 +211,7 @@ const CardThreeDocument = (props) => {
               height: "100%",
             }}
           >
-            {props.selectedImage && (
+            {image && (
               <View
                 style={{
                   display: "flex",
@@ -216,7 +221,12 @@ const CardThreeDocument = (props) => {
               >
                 <Image
                   style={{ width: 120, height: 120 }}
-                  src={props.selectedImage}
+                  src={{
+                    uri: image,
+                    method: "GET",
+                    headers: { "Cache-Control": "no-cache" },
+                    body: "",
+                  }}
                   alt={"profile picture"}
                 ></Image>
               </View>
@@ -263,7 +273,7 @@ const CardThreeDocument = (props) => {
                   {(props.name || props.lastName) && (
                     <>
                       {datiPersonali(
-                        "/marilyn/user.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/user.png",
                         props.name,
                         props.lastName
                       )}
@@ -274,13 +284,23 @@ const CardThreeDocument = (props) => {
                 {/*email */}
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   {props.email && (
-                    <>{datiPersonali("/marilyn/email.png", props.email)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/email.png",
+                        props.email
+                      )}
+                    </>
                   )}
                 </View>
                 {/*phone */}
                 <View>
                   {props.phone && (
-                    <>{datiPersonali("/marilyn/phone.png", props.phone)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/phone.png",
+                        props.phone
+                      )}
+                    </>
                   )}
                 </View>
 
@@ -289,7 +309,7 @@ const CardThreeDocument = (props) => {
                   {(props.address || props.postalCode || props.city) && (
                     <>
                       {datiPersonali(
-                        "/marilyn/house.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/house.png",
                         props.address,
                         props.postalCode,
                         props.city
@@ -324,7 +344,10 @@ const CardThreeDocument = (props) => {
                 <View>
                   {props.dateBirth && (
                     <>
-                      {datiPersonali("/marilyn/calendar.png", props.dateBirth)}
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/calendar.png",
+                        props.dateBirth
+                      )}
                     </>
                   )}
                 </View>
@@ -333,7 +356,10 @@ const CardThreeDocument = (props) => {
                 <View>
                   {props.placeBirth && (
                     <>
-                      {datiPersonali("/marilyn/location.png", props.placeBirth)}
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/location.png",
+                        props.placeBirth
+                      )}
                     </>
                   )}
                 </View>
@@ -341,14 +367,24 @@ const CardThreeDocument = (props) => {
                 {/*Gender */}
                 <View>
                   {props.genere && (
-                    <>{datiPersonali("/marilyn/gender.png", props.genere)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/gender.png",
+                        props.genere
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*Nazionalita' */}
                 <View>
                   {props.nationality && (
-                    <>{datiPersonali("/marilyn/flag.png", props.nationality)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/flag.png",
+                        props.nationality
+                      )}
+                    </>
                   )}
                 </View>
 
@@ -356,28 +392,46 @@ const CardThreeDocument = (props) => {
                 <View>
                   {props.civilStatus && (
                     <>
-                      {datiPersonali("/marilyn/users.png", props.civilStatus)}
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/users.png",
+                        props.civilStatus
+                      )}
                     </>
                   )}
                 </View>
                 {/*Licnese */}
                 <View>
                   {props.license && (
-                    <>{datiPersonali("/marilyn/car.png", props.license)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/car.png",
+                        props.license
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*Website */}
                 <View>
                   {props.website && (
-                    <>{datiPersonali("/marilyn/globe.png", props.website)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/globe.png",
+                        props.website
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*lINKDN */}
                 <View>
                   {props.linkin && (
-                    <>{datiPersonali("/marilyn/linkedin.png", props.linkin)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentThree/linkedin.png",
+                        props.linkin
+                      )}
+                    </>
                   )}
                 </View>
               </View>

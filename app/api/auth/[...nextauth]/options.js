@@ -11,6 +11,7 @@ export const options = {
         let userRole = "Github User";
         if (profile?.email == process.env.ADMIN) userRole = "admin";
 
+      
         return {
           ...profile,
           role: userRole,
@@ -32,7 +33,7 @@ export const options = {
           ...profile,
           role: userRole,
           id: profile.sub,
-          image: profile.avatar_url,
+          image: profile.picture,
         };
       },
 
@@ -46,6 +47,7 @@ export const options = {
       if (user) {
         token.id = user.id;
         token.role = user.role;
+        token.picture = user.image
       }
       return token;
     },
@@ -53,6 +55,7 @@ export const options = {
       if (session?.user) {
         session.user.id = token.id;
         session.user.role = token.role;
+        session.user.image = token.picture;
       }
       return session;
     },

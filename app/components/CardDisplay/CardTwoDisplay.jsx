@@ -18,7 +18,10 @@ const CardTwoDisplay = (props) => {
         </div>
       </div>
     );
-  };
+  };  
+
+
+
 
   const colors = [
     "#395a86",

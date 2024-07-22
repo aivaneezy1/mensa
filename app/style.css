@@ -7,3 +7,11 @@
 .range-input::-ms-thumb {
   background-color: blue; /* For Edge */
 }
+
+
+.text-title{
+  font-size:6px;
+}
+.text-xxs {
+  font-size: 6px; /* Adjust the value as needed */
+}

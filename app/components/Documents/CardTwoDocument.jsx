@@ -10,8 +10,6 @@ import {
   Font,
 } from "@react-pdf/renderer";
 
-
-
 Font.register({
   family: "Open Sans",
   fonts: [
@@ -85,7 +83,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 let currentYear = new Date().getFullYear();
 
 const datiPersonali = (image, dati, dati2) => {
@@ -100,8 +97,8 @@ const datiPersonali = (image, dati, dati2) => {
     >
       <View style={{ marginRight: 3 }}>
         <Image
-          style={{ width: "8", height: "8" }}
-          src={image}
+          style={{ width: 8, height: 8 }}
+         source={{ uri: image }}
           alt={"logo picture"}
         ></Image>
       </View>
@@ -226,6 +223,7 @@ const handleBgData = (data) => {
 };
 
 const CardTwoDocument = (props) => {
+  let image = props.selectedImage;
   return (
     <Document>
       <Page>
@@ -252,10 +250,15 @@ const CardTwoDocument = (props) => {
               {props.selectedImage && (
                 <View style={styles.imageWrapper}>
                   <Image
-                    style={styles.image}
-                    src={props.selectedImage}
-                    alt={"profile picture"}
-                  />
+                  style={styles.image}
+                  src={{
+                    uri: image,
+                    method: "GET",
+                    headers: { "Cache-Control": "no-cache" },
+                    body: "",
+                  }}
+                  alt={"profile picture"}
+                ></Image>
                 </View>
               )}
             </View>
@@ -301,7 +304,7 @@ const CardTwoDocument = (props) => {
                   {(props.name || props.lastName) && (
                     <>
                       {datiPersonali(
-                       "/Images/user.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/user.png",
                         props.name,
                         props.lastName
                       )}
@@ -314,7 +317,7 @@ const CardTwoDocument = (props) => {
                   {props.email && (
                     <>
                       {datiPersonali(
-                        "/Images/email.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/email.png",
                         props.email
                       )}
                     </>
@@ -325,7 +328,7 @@ const CardTwoDocument = (props) => {
                   {props.phone && (
                     <>
                       {datiPersonali(
-                       "/Images/phone.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/phone.png",
                         props.phone
                       )}
                     </>
@@ -337,7 +340,7 @@ const CardTwoDocument = (props) => {
                   {(props.address || props.postalCode || props.city) && (
                     <>
                       {datiPersonali(
-                        "/Images/house.png",
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/house.png",
                         props.address,
                         props.postalCode,
                         props.city
@@ -372,7 +375,10 @@ const CardTwoDocument = (props) => {
                 <View>
                   {props.dateBirth && (
                     <>
-                      {datiPersonali("/Images/calendar.png", props.dateBirth)}
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/calendar.png",
+                        props.dateBirth
+                      )}
                     </>
                   )}
                 </View>
@@ -381,7 +387,10 @@ const CardTwoDocument = (props) => {
                 <View>
                   {props.placeBirth && (
                     <>
-                      {datiPersonali("/Images/location.png", props.placeBirth)}
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/location.png",
+                        props.placeBirth
+                      )}
                     </>
                   )}
                 </View>
@@ -389,41 +398,71 @@ const CardTwoDocument = (props) => {
                 {/*Gender */}
                 <View>
                   {props.genere && (
-                    <>{datiPersonali("/Images/gender.png", props.genere)}</>
+                    <>
+                        {datiPersonali(
+                          "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/gender.png",
+                          props.genere
+                        )}
+                    </>
                   )}
                 </View>
 
                 {/*Nazionalita' */}
                 <View>
                   {props.nationality && (
-                    <>{datiPersonali("/Images/flag.png", props.nationality)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/flag.png",
+                        props.nationality
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*Civil Status */}
                 <View>
                   {props.civilStatus && (
-                    <>{datiPersonali("/Images/civil.png", props.civilStatus)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/civil.png",
+                        props.civilStatus
+                      )}
+                    </>
                   )}
                 </View>
                 {/*Licnese */}
                 <View>
                   {props.license && (
-                    <>{datiPersonali("/Images/car.png", props.license)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/car.png",
+                        props.license
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*Website */}
                 <View>
                   {props.website && (
-                    <>{datiPersonali("/Images/globe.png", props.website)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/globe.png",
+                        props.website
+                      )}
+                    </>
                   )}
                 </View>
 
                 {/*lINKDN */}
                 <View>
                   {props.linkin && (
-                    <>{datiPersonali("/Images/linkedin.png", props.linkin)}</>
+                    <>
+                      {datiPersonali(
+                        "https://aivan-image.s3.eu-north-1.amazonaws.com/documentTwo/linkedin.png",
+                        props.linkin
+                      )}
+                    </>
                   )}
                 </View>
               </View>
