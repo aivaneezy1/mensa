@@ -9,9 +9,25 @@ User-Friendly Interface: An intuitive interface that makes curriculum creation s
 
 
 # Technologies Used
- Next.js: A React framework for building server-side rendered applications and static websites.
-TailwindCSS: A utility-first CSS framework for creating custom designs without leaving your HTML.
-MongoDB: A NoSQL database used for storing and managing application data.
+
+# FrontEnd
+# Next.js: 
+  A React framework for building server-side rendered applications and static websites.
+# TailwindCSS: 
+ A utility-first CSS framework for creating custom designs without leaving your HTML.
+
+ # Backend
+ # Node.js
+ A JavaScript runtime built on Chrome's V8 engine, used for handling server-side logic and building scalable network applications
+ # Express.js
+ flexible Node.js web application framework that provides set of features for building web and mobile applications.
+
+  
+# Database
+# MongoDB: 
+ A NoSQL database used for storing and managing application data.
+ # File Storage
+ Amazon S3
 
 # Demo
 You can view a live demo of the Curriculum Generator at the following link: https://www.cvcreator.it/
