@@ -1,32 +1,33 @@
 # Curriculum Generator
-Our Quiz Game Website is an interactive platform where users can challenge themselves across six different categories. The website tracks user performance, allowing players to view their stats and compete on leaderboards.
+Curriculum Generator is a tool designed to help users create customizable curricula with ease. The application allows users to generate a curriculum based on various inputs and customize its appearance with different colors.
+
+# Features
+Generate Customizable Curricula: Create and customize curricula based on user inputs.
+Color Customization: Personalize the appearance of the curriculum with customizable color schemes.
+User-Friendly Interface: An intuitive interface that makes curriculum creation straightforward.
 
 
-## Features
-- **Diverse Quiz Categories:** Choose from six different categories to test your knowledge.
-- **Personal Stats Tracking:** Keep track of your quiz performance and monitor your progress over time.
-- **Leaderboards:** Compete with others and see where you rank on the global leaderboards.
-- **User Authentication:** Securely sign up and log in to save your stats and access personalized features.
 
+# Technologies Used
 
-## Technologies Used
+# FrontEnd
+# Next.js: 
+  A React framework for building server-side rendered applications and static websites.
+# TailwindCSS: 
+ A utility-first CSS framework for creating custom designs without leaving your HTML.
 
-### Frontend
-- **Next.js:** A powerful React framework for building server-rendered applications and static websites, optimized for performance and SEO.
-- **TypeScript:** A statically typed superset of JavaScript that ensures safer and more predictable code.
-- **TailwindCSS:** A utility-first CSS framework that allows for rapid UI development with custom designs.
+ # Backend
+ # Node.js
+ A JavaScript runtime built on Chrome's V8 engine, used for handling server-side logic and building scalable network applications
+ # Express.js
+ flexible Node.js web application framework that provides set of features for building web and mobile applications.
 
-### Backend
-- **Node.js:** A JavaScript runtime built on Chrome's V8 engine, used to manage server-side operations and handle quiz logic.
-- **Express.js:** A flexible Node.js web application framework that simplifies the process of building robust and scalable web applications.
+  
+# Database
+# MongoDB: 
+ A NoSQL database used for storing and managing application data.
+ # File Storage
+ Amazon S3
 
-### Database
-- **MongoDB:** A NoSQL database used to store and manage user data, quiz questions, and performance statistics.
-- **Sanity:** A content platform used to store and manage quiz questions efficiently.
-
-### Authentication
-- **Clerk:** A user authentication platform that provides secure sign-up, log-in, and session management features.
-
-- ## Demo
-You can view a live demo of the Quiz Game Website at the following link: https://www.quizify.it/
-
+# Demo
+You can view a live demo of the Curriculum Generator at the following link: https://www.cvcreator.it/
